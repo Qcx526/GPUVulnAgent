@@ -1,0 +1,42 @@
+# --- secrets -------------------------------------------------------------
+.env
+.env.local
+
+# --- python --------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# --- local runtime state (never tracked) ---------------------------------
+.local/
+
+# --- toolchains: binaries stay on disk, manifests are tracked -------------
+toolchains/cuda/
+toolchains/binary_tools/*/
+toolchains/compilers/*/
+toolchains/installers/*
+!toolchains/installers/README.md
+toolchains/debuggers/*/
+!toolchains/manifests/
+
+# --- bulky binaries only (research text/JSON evidence stays tracked) ------
+*.dll
+*.lib
+*.exe
+*.obj
+*.pdb
+*.zip
+*.7z
+*.iso
+*.msi
+
+# --- scratch -------------------------------------------------------------
+*.log
+.pytest_cache/

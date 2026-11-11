@@ -1,0 +1,133 @@
+{
+ "PIL": "missing: ModuleNotFoundError(\"No module named 'PIL'\")",
+ "numpy": "missing: ModuleNotFoundError(\"No module named 'numpy'\")",
+ "images": {
+  "pil_error": "ModuleNotFoundError(\"No module named 'PIL'\")",
+  "hand_gray": "imgs\\hand_gray.jpg"
+ },
+ "image_sha": {
+  "hand_gray": "51ad478cf652e5cb"
+ },
+ "nvjpeg": {
+  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg64_11.dll": {
+   "exists": true,
+   "size": 3424256,
+   "version": {
+    "major": [
+     "SUCCESS",
+     11
+    ],
+    "minor": [
+     "SUCCESS",
+     4
+    ],
+    "patch": [
+     "SUCCESS",
+     0
+    ]
+   },
+   "decodes": {
+    "hand_gray": {
+     "getinfo": "SUCCESS",
+     "ncomp": 1,
+     "css": "GRAY",
+     "widths": [
+      32,
+      0,
+      0,
+      0
+     ],
+     "heights": [
+      32,
+      0,
+      0,
+      0
+     ],
+     "state_create": "SUCCESS",
+     "decode": "EXECUTION_FAILED"
+    }
+   },
+   "load": "ok"
+  },
+  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg64_12.dll": {
+   "exists": true,
+   "size": 4913152,
+   "version": {
+    "major": [
+     "SUCCESS",
+     12
+    ],
+    "minor": [
+     "SUCCESS",
+     3
+    ],
+    "patch": [
+     "SUCCESS",
+     1
+    ]
+   },
+   "decodes": {
+    "hand_gray": {
+     "getinfo": "SUCCESS",
+     "ncomp": 1,
+     "css": "GRAY",
+     "widths": [
+      32,
+      0,
+      0,
+      0
+     ],
+     "heights": [
+      32,
+      0,
+      0,
+      0
+     ],
+     "state_create": "SUCCESS",
+     "decode": "EXECUTION_FAILED"
+    }
+   },
+   "load": "ok"
+  },
+  "D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg64_13.dll": {
+   "exists": true,
+   "size": 4523120,
+   "version": {
+    "major": [
+     "SUCCESS",
+     13
+    ],
+    "minor": [
+     "SUCCESS",
+     2
+    ],
+    "patch": [
+     "SUCCESS",
+     2
+    ]
+   },
+   "decodes": {
+    "hand_gray": {
+     "getinfo": "SUCCESS",
+     "ncomp": 1,
+     "css": "GRAY",
+     "widths": [
+      32,
+      0,
+      0,
+      0
+     ],
+     "heights": [
+      32,
+      0,
+      0,
+      0
+     ],
+     "state_create": "SUCCESS",
+     "decode": "EXECUTION_FAILED"
+    }
+   },
+   "load": "ok"
+  }
+ }
+}

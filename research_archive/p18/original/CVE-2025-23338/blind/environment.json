@@ -1,0 +1,29 @@
+{
+ "os": "Windows-10-10.0.19045-SP0",
+ "gpu": "NVIDIA GeForce GTX 1660, 610.47, 6144 MiB",
+ "python": "3.12.13",
+ "cuda_dirs": [
+  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2",
+  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4",
+  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4"
+ ],
+ "tools": {
+  "cuobjdump": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cuobjdump.EXE",
+  "nvdisasm": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvdisasm.EXE",
+  "nvcc": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvcc.EXE"
+ },
+ "nvjpeg": {
+  "nvjpeg64_11.dll": {
+   "path": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg64_11.dll",
+   "sha256": "f53e8d5d1940e6caf9dbdc617afb05b60d30556671eb2cec50dd9b0575902e00"
+  },
+  "nvjpeg64_12.dll": {
+   "path": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg64_12.dll",
+   "sha256": "07876623d1f6d992bd0c31428dee93c489968b24870d536657e6d50a615acc3f"
+  },
+  "nvjpeg64_13.dll": {
+   "path": "D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg64_13.dll",
+   "sha256": "957bb73818e62883ac4bfc0aa15204bba5e341a8f7964a11b0289742df4e0da2"
+  }
+ }
+}

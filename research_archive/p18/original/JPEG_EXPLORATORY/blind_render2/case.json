@@ -1,0 +1,9 @@
+{
+ "case": "JPEG_EXPLORATORY",
+ "mode": "blind",
+ "budget": {
+  "turns": 10,
+  "wall_clock_s": 1800
+ },
+ "provided_seed": false
+}

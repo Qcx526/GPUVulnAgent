@@ -1,0 +1,59 @@
+python 3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]
+exe C:\Users\Administrator\.workbuddy\binaries\python\versions\3.13.12\python.exe
+
+==== cwd ====
+F:\qcx\code\test\cuda_poc_generator\data\agent\benchmarks\p18\JPEG_EXPLORATORY\blind\run\workspace
+ws: ['probe.py']
+
+==== cuda root ====
+['v11.2', 'v12.4', 'v13.4']
+
+==== cuda v11.2 -> C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2 ====
+top: ['CUDA_Toolkit_Release_Notes.txt', 'DOCS', 'EULA.txt', 'README', 'bin', 'compute-sanitizer', 'extras', 'include', 'lib', 'libnvvp', 'nvml', 'nvvm', 'nvvm-prev', 'src', 'tools', 'version.json']
+bin -> ['nvjpeg64_11.dll']
+include -> ['nvjpeg.h']
+lib -> []
+lib\x64 -> ['nvjpeg.lib']
+lib\Win32 -> []
+
+==== cuda v12.4 -> C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4 ====
+top: ['CUDA_Toolkit_Release_Notes.txt', 'DOCS', 'EULA.txt', 'LICENSE', 'README', 'bin', 'compute-sanitizer', 'extras', 'include', 'lib', 'libnvvp', 'nvml', 'nvvm', 'src', 'tools', 'version.json']
+bin -> ['nvjpeg64_12.dll']
+include -> ['nvjpeg.h']
+lib -> []
+lib\x64 -> ['nvjpeg.lib']
+lib\Win32 -> []
+
+==== cuda v13.4 -> C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.4 ====
+top: ['CUDA_Toolkit_Release_Notes.txt', 'DOCS', 'EULA.txt', 'LICENSE', 'README', 'bin', 'compute-sanitizer', 'extras', 'include', 'lib', 'nvml', 'nvvm', 'src', 'tools', 'version.json']
+bin -> []
+include -> ['nvjpeg.h']
+lib -> []
+lib\x64 -> ['nvjpeg.lib']
+lib\Win32 -> []
+
+==== D:\cuda1341_extract ====
+1372 D:\cuda1341_extract\libnvjpeg\nvjpeg\nvjpeg.nvi
+4523120 D:\cuda1341_extract\libnvjpeg\nvjpeg\bin\x64\nvjpeg64_13.dll
+1497 D:\cuda1341_extract\libnvjpeg\nvjpeg_dev\nvjpeg_dev.nvi
+36293 D:\cuda1341_extract\libnvjpeg\nvjpeg_dev\include\nvjpeg.h
+22608 D:\cuda1341_extract\libnvjpeg\nvjpeg_dev\lib\x64\nvjpeg.lib
+
+==== nvjpeg dll version resources ====
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin\nvjpeg64_11.dll exists=True ver=6.14.11.1140
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\bin\nvjpeg64_12.dll exists=True ver=6.14.11.1231
+D:\cuda1341_extract\libnvjpeg\nvjpeg\bin\x64\nvjpeg64_13.dll exists=True ver=6.14.11.1322
+
+==== load each dll with ctypes ====
+LOAD OK C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin\nvjpeg64_11.dll handle 140713712549888
+LOAD OK C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\bin\nvjpeg64_12.dll handle 140713707569152
+LOAD OK D:\cuda1341_extract\libnvjpeg\nvjpeg\bin\x64\nvjpeg64_13.dll handle 140713702981632
+
+==== python packages ====
+numpy MISSING No module named 'numpy'
+PIL MISSING No module named 'PIL'
+cv2 MISSING No module named 'cv2'
+ctypes OK 1.1.0
+
+==== nvcc ====
+True

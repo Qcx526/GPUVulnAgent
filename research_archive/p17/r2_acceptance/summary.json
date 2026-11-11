@@ -1,0 +1,54 @@
+{
+ "providers": [
+  {
+   "provider": "tavily",
+   "sdk_installed": true,
+   "key_present": true,
+   "available": true,
+   "reason": "ready"
+  }
+ ],
+ "steps": [
+  {
+   "step": "search",
+   "ok": true,
+   "status": "success"
+  },
+  {
+   "step": "extract",
+   "ok": true,
+   "status": "success",
+   "chars": 5890
+  },
+  {
+   "step": "artifact_read",
+   "ok": true,
+   "status": "success",
+   "has_more": false,
+   "read_bytes": 2352
+  },
+  {
+   "step": "invalid_max_results",
+   "ok": false,
+   "status": "failed"
+  },
+  {
+   "step": "invalid_url",
+   "ok": false,
+   "status": "failed"
+  }
+ ],
+ "verdict": "ACCEPTED",
+ "artifact": {
+  "artifact": "http/1271dcb3992e-tavily-extract.json",
+  "sha256": "1271dcb3992e523e40ad0fcd4b4962425c1568ea9305c2f6e731e4113e7f9f8b",
+  "bytes": 6352
+ },
+ "evidence": "data/agent/r2_acceptance/evidence.jsonl",
+ "records": {
+  "ok": true,
+  "errors": [],
+  "records": 4,
+  "last_record_sha256": "a0ab72ed04234d1af7db43489464be2785540e455b0794098c92334458e8ea16"
+ }
+}

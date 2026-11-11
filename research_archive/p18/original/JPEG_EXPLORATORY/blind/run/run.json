@@ -1,0 +1,12 @@
+{
+ "run_id": "run-2b949f4f754c",
+ "goal": "# 研究目标：nvJPEG 的 JPEG 输入处理\n\n目标对象：NVIDIA nvJPEG 库（CUDA Toolkit 内的 JPEG 解码库）。这里没有指定的 CVE，\n也不要求你复现任何漏洞。要做的是把这个库的输入处理摸清楚，并给出有证据的结论。\n\n请自己判断并回答：\n- 本机有哪些 nvJPEG 版本，各自怎么调用（这是库，不是命令行工具）；\n- 一张合法 JPEG 能否被它解码成功，你怎么确认成功；\n- 如果要做输入变异（改 JPEG 结构字段），哪些字段能改、哪些改了会让解码器直接拒绝；\n- 本机是否已经存在可复用的 JPEG 构造/变异工具，你愿意用就用，不愿意就自己写。\n\n环境事实（不是方法建议）：\n- 操作系统：Windows-10-10.0.19045-SP0\n- GPU/驱动：NVIDIA GeForce GTX 1660, 610.47, 6144 MiB\n- Python：3.12.13\n- cuobjdump：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cuobjdump.EXE\n- nvdisasm：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvdisasm.EXE\n- nvcc：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvcc.EXE\n- nvjpeg64_11.dll：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg64_11.dll\n- nvjpeg64_12.dll：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg64_12.dll\n- nvjpeg64_13.dll：D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg64_13.dll\n- CUDA 目录：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2, C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4, C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\n\n工作区就是当前目录。允许联网、写文件、编译、运行。不要修改系统驱动。\n结束时写清：做了什么、观察到什么、哪些是推测、哪些有证据、还缺什么。",
+ "goal_sha256": "e4745927f20605768895b3c02bc787ecdfa5ca5cbdb49d8e3ac64bb829c20cd1",
+ "created_at": "2026-11-11T16:13:29",
+ "status": "finished",
+ "turns": 10,
+ "tools": [],
+ "finished_at": "2026-11-11T16:16:05",
+ "evidence_head": "a40d13703cc61c6a0fef3dd5b0dd9daf0a1ae90a085ff11c8492ffe315d405ad",
+ "evidence_sequence": 20
+}

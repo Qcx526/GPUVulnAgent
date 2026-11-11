@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpuvulnagent"
+version = "0.1.0"
+description = "NVIDIA GPU autonomous vulnerability research agent"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+authors = [{ name = "GPUVulnAgent" }]
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+search = ["tavily-python>=0.5"]
+jpeg = ["Pillow>=10.0"]
+elf = ["pyelftools>=0.31"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+gpuvulnagent = "gpuvulnagent.cli:main"
+
+[tool.setuptools]
+packages = [
+    "gpuvulnagent",
+    "gpuvulnagent.adapters",
+    "gpuvulnagent.adapters.elf_cubin",
+    "gpuvulnagent.adapters.jpeg",
+    "gpuvulnagent.benchmarks",
+    "gpuvulnagent.config",
+    "gpuvulnagent.context",
+    "gpuvulnagent.discovery",
+    "gpuvulnagent.evidence",
+    "gpuvulnagent.memory",
+    "gpuvulnagent.providers",
+    "gpuvulnagent.registry",
+    "gpuvulnagent.runtime",
+    "gpuvulnagent.tools",
+]
+
+[tool.setuptools.package-data]
+gpuvulnagent = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning:gpuvulnagent.*"]

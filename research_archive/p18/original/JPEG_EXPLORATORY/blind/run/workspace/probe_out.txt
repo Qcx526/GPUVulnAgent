@@ -1,0 +1,42 @@
+=== cudart ===
+loaded C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.4\bin\cudart64_12.dll
+=== nvjpeg dlls ===
+DLL 11.2 size=3424256 mtime=2021-02-15 sha256_16= f53e8d5d1940e6ca nvjpeg_version(major,minor,patch,build)= [11, 4, 0, None] create= 0 state= 0
+DLL 12.4 size=4913152 mtime=2024-02-28 sha256_16= 07876623d1f6d992 nvjpeg_version(major,minor,patch,build)= [12, 3, 1, None] create= 0 state= 0
+DLL 13.4 size=4523120 mtime=2026-07-17 sha256_16= 957bb73818e62883 nvjpeg_version(major,minor,patch,build)= [13, 2, 2, None] create= 0 state= 0
+=== sample jpeg search ===
+pattern C:\Windows\Web\**\*.jpg -> 27
+pattern C:\Users\Public\Pictures\**\*.jpg -> 0
+pattern C:\ProgramData\NVIDIA Corporation\**\*.jpg -> 66
+pattern C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\**\*.jpg -> 56
+pattern F:\qcx\code\test\cuda_poc_generator\data\agent\benchmarks\p18\JPEG_EXPLORATORY\blind\run\workspace\**\*.jpg -> 0
+total jpg candidates 149
+chosen C:\ProgramData\NVIDIA Corporation\CUDA Samples\v11.2\2_Graphics\volumeFiltering\doc\sshot_sm.JPG bytes 3872 sha256_16 859501a30050cd08
+segments APP0@2 APP1@20 DQT@126 DQT@195 SOF0@264 DHT@283 DHT@316 DHT@499 DHT@532 SOS@715 EOI@3870
+SOF marker=0xC0 payload_first8=0800800080030122
+=== baseline decode per version ===
+baseline 12.4 exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+baseline 11.2 exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+baseline 13.4 exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+=== mutations on 12.4 ===
+using version 12.4
+MUT baseline exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT soi_ffd8_to_ffd9 exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT eoi_removed exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT drop_APP0 exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT drop_DQT                       len=  3734 gi= 0 ncomp=3 sub=2 128x128 dec=  4 md5=-            nz4k=-1    -
+MUT drop_DHT                       len=  3440 gi= 0 ncomp=3 sub=2 128x128 dec=  4 md5=-            nz4k=-1    -
+MUT drop_SOF0                      len=  3853 gi=10 ncomp=0 sub=0 0x0 dec= 10 md5=-            nz4k=-1    -
+MUT SOF0_marker_to_SOF1_0xC1 exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT SOF0_marker_to_SOF2_0xC2 exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT SOF_Nf_3_to_4                  len=  3872 gi= 0 ncomp=4 sub=-1 22x64 dec=  3 md5=-            nz4k=-1    -
+MUT SOF_Y_sampling_22_to_11 exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT DQT_Pq_8bit_to_16bit_flag      len=  3872 gi= 0 ncomp=3 sub=2 128x128 dec=  3 md5=-            nz4k=-1    -
+MUT truncate_at_SOS                len=   715 gi= 0 ncomp=3 sub=2 128x128 dec= 10 md5=-            nz4k=-1    -
+MUT truncate_at_SOS_plus_EOI exception OSError('exception: access violation reading 0x0000000000000000')
+MUT SOS_Ns_3_to_4                  len=  3872 gi= 0 ncomp=3 sub=2 128x128 dec=  3 md5=-            nz4k=-1    -
+MUT zero_entropy_scan exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT truncate_half exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT append_1KB_zeros exception OSError('exception: access violation reading 0xFFFFFFFFFFFFFFFF')
+MUT insert_unknown_marker_FFC9     len=  3878 gi= 4 ncomp=0 sub=0 0x0 dec=  4 md5=-            nz4k=-1    -
+=== done ===

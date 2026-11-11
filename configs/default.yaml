@@ -1,0 +1,21 @@
+# GPUVulnAgent defaults.
+# Precedence: process environment > .env > this file > built-in defaults.
+# Credentials never belong here; they live in .env (git-ignored).
+
+llm:
+  model: deepseek-chat
+  base_url: https://api.deepseek.com
+  temperature: 0.2
+  max_tokens: 8192
+  timeout: 300
+  max_attempts: 3
+
+paths:
+  toolchain_root: toolchains
+  research_data_root: research_archive
+  artifact_root: .local/artifacts
+
+agent:
+  max_turns: 12
+  run_timeout: 900
+  shell_timeout: 300

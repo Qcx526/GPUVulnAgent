@@ -1,0 +1,221 @@
+{
+ "schema": "gpuvulnagent-toolchain/v1",
+ "generated_at": "2026-11-11T17:29:06+0800",
+ "generated_by": "scripts/setup_toolchain.py",
+ "host": {
+  "os": "Windows-10-10.0.19045-SP0",
+  "gpu": "NVIDIA GeForce GTX 1660, 610.47",
+  "cuda_toolkits_seen": [
+   "v11.2",
+   "v12.4",
+   "v13.4"
+  ]
+ },
+ "policy": "copied, never moved; the system CUDA installation and the NVIDIA driver are untouched; large binaries stay out of git",
+ "absent": {
+  "cuda-gdb": "CUDA debugger is Linux-only on this host",
+  "cuobjdump-13.4-nvjpeg": "CUDA 13.4 does not ship nvjpeg64 in bin; 13.2.2 comes from the extracted package"
+ },
+ "tools": [
+  {
+   "name": "cuobjdump-11.2",
+   "path": "binary_tools/cuda-11.2/bin/cuobjdump.exe",
+   "version": "11.2",
+   "kind": "binary",
+   "sha256": "da9f5983bd9c003d6b468b4ba66c6f496fa9e340ccf6051331c2102e8a198e6b",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\cuobjdump.exe",
+   "depends": [],
+   "status": "verified",
+   "notes": "cuobjdump from CUDA Toolkit v11.2",
+   "capabilities": [
+    "cubin",
+    "fatbin",
+    "sass",
+    "ptx",
+    "elf"
+   ]
+  },
+  {
+   "name": "cuobjdump-12.4",
+   "path": "binary_tools/cuda-12.4/bin/cuobjdump.exe",
+   "version": "12.4",
+   "kind": "binary",
+   "sha256": "fb25802b2a8b39d63edefe0cdbc1f4b44939bcf8916ffbc33e03e4d5c4b197c5",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cuobjdump.exe",
+   "depends": [],
+   "status": "verified",
+   "notes": "cuobjdump from CUDA Toolkit v12.4",
+   "capabilities": [
+    "cubin",
+    "fatbin",
+    "sass",
+    "ptx",
+    "elf"
+   ]
+  },
+  {
+   "name": "cuobjdump-13.4",
+   "path": "binary_tools/cuda-13.4/bin/cuobjdump.exe",
+   "version": "13.4",
+   "kind": "binary",
+   "sha256": "db89b939a19ba2910cb639116bd71d01f42173d8e6479fd988395effe2e40df5",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\cuobjdump.exe",
+   "depends": [],
+   "status": "verified",
+   "notes": "cuobjdump from CUDA Toolkit v13.4",
+   "capabilities": [
+    "cubin",
+    "fatbin",
+    "sass",
+    "ptx",
+    "elf"
+   ]
+  },
+  {
+   "name": "nvcc-12.4",
+   "path": "compilers/cuda-12.4/bin/nvcc.exe",
+   "version": "12.4",
+   "kind": "binary",
+   "sha256": "9fd6d38221c524b536c181c5eeb10b3c3e4363059e221601c7e29abca17dcb2a",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvcc.exe",
+   "depends": [
+    "compilers/cuda-12.4/nvvm/bin"
+   ],
+   "status": "verified",
+   "notes": "nvcc with its cicc/ptxas/nvlink/fatbinary dependencies",
+   "capabilities": [
+    "compile",
+    "ptx",
+    "cubin"
+   ]
+  },
+  {
+   "name": "nvdisasm-11.2",
+   "path": "binary_tools/cuda-11.2/bin/nvdisasm.exe",
+   "version": "11.2",
+   "kind": "binary",
+   "sha256": "8154c5d61b5f8a71a524f62f6321f6976f941c68b3e624d8cccba036fe649c07",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvdisasm.exe",
+   "depends": [],
+   "status": "verified",
+   "notes": "nvdisasm from CUDA Toolkit v11.2",
+   "capabilities": [
+    "cubin",
+    "sass",
+    "control-flow"
+   ]
+  },
+  {
+   "name": "nvdisasm-12.4",
+   "path": "binary_tools/cuda-12.4/bin/nvdisasm.exe",
+   "version": "12.4",
+   "kind": "binary",
+   "sha256": "1dbfb4a8eef8d3e5043d08093e4a2678e6c1963b4cc54ea05233dedc44461c20",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvdisasm.exe",
+   "depends": [],
+   "status": "verified",
+   "notes": "nvdisasm from CUDA Toolkit v12.4",
+   "capabilities": [
+    "cubin",
+    "sass",
+    "control-flow"
+   ]
+  },
+  {
+   "name": "nvdisasm-13.4",
+   "path": "binary_tools/cuda-13.4/bin/nvdisasm.exe",
+   "version": "13.4",
+   "kind": "binary",
+   "sha256": "71c5c94eecde05c2fa7c9bfe2a96bb1ef2627bc631c4193143ffca9ca2ff9a6c",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\nvdisasm.exe",
+   "depends": [],
+   "status": "verified",
+   "notes": "nvdisasm from CUDA Toolkit v13.4",
+   "capabilities": [
+    "cubin",
+    "sass",
+    "control-flow"
+   ]
+  },
+  {
+   "name": "nvjpeg.h-13.2.2",
+   "path": "cuda/nvjpeg/13.2.2/dev/include/nvjpeg.h",
+   "version": "13.2.2",
+   "kind": "library",
+   "sha256": "46982c4b4a34070a219668719d3d75797abfba5860ec6042a89ffdb4c0890570",
+   "source": "D:\\cuda1341_extract\\libnvjpeg\\nvjpeg_dev\\include\\nvjpeg.h",
+   "depends": [],
+   "status": "present",
+   "notes": "nvJPEG from CUDA 13.2.2",
+   "capabilities": [
+    "nvjpeg",
+    "jpeg",
+    "decode"
+   ]
+  },
+  {
+   "name": "nvjpeg.lib-13.2.2",
+   "path": "cuda/nvjpeg/13.2.2/dev/lib/x64/nvjpeg.lib",
+   "version": "13.2.2",
+   "kind": "library",
+   "sha256": "90ede3e2b85cc5e4cd05bca72dc17bba6e7f52b98d8b1a6605935ed68402f269",
+   "source": "D:\\cuda1341_extract\\libnvjpeg\\nvjpeg_dev\\lib\\x64\\nvjpeg.lib",
+   "depends": [],
+   "status": "present",
+   "notes": "nvJPEG from CUDA 13.2.2",
+   "capabilities": [
+    "nvjpeg",
+    "jpeg",
+    "decode"
+   ]
+  },
+  {
+   "name": "nvjpeg64_11.dll-11.2",
+   "path": "cuda/nvjpeg/11.2/x64/nvjpeg64_11.dll",
+   "version": "11.2",
+   "kind": "library",
+   "sha256": "f53e8d5d1940e6caf9dbdc617afb05b60d30556671eb2cec50dd9b0575902e00",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg64_11.dll",
+   "depends": [],
+   "status": "present",
+   "notes": "nvJPEG from CUDA 11.2",
+   "capabilities": [
+    "nvjpeg",
+    "jpeg",
+    "decode"
+   ]
+  },
+  {
+   "name": "nvjpeg64_12.dll-12.4",
+   "path": "cuda/nvjpeg/12.4/x64/nvjpeg64_12.dll",
+   "version": "12.4",
+   "kind": "library",
+   "sha256": "07876623d1f6d992bd0c31428dee93c489968b24870d536657e6d50a615acc3f",
+   "source": "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg64_12.dll",
+   "depends": [],
+   "status": "present",
+   "notes": "nvJPEG from CUDA 12.4",
+   "capabilities": [
+    "nvjpeg",
+    "jpeg",
+    "decode"
+   ]
+  },
+  {
+   "name": "nvjpeg64_13.dll-13.2.2",
+   "path": "cuda/nvjpeg/13.2.2/x64/nvjpeg64_13.dll",
+   "version": "13.2.2",
+   "kind": "library",
+   "sha256": "957bb73818e62883ac4bfc0aa15204bba5e341a8f7964a11b0289742df4e0da2",
+   "source": "D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg64_13.dll",
+   "depends": [],
+   "status": "present",
+   "notes": "nvJPEG from CUDA 13.2.2",
+   "capabilities": [
+    "nvjpeg",
+    "jpeg",
+    "decode"
+   ]
+  }
+ ]
+}

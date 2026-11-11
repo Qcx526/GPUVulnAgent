@@ -1,0 +1,295 @@
+{
+ "run_id": "run-2b949f4f754c",
+ "goal": "# 研究目标：nvJPEG 的 JPEG 输入处理\n\n目标对象：NVIDIA nvJPEG 库（CUDA Toolkit 内的 JPEG 解码库）。这里没有指定的 CVE，\n也不要求你复现任何漏洞。要做的是把这个库的输入处理摸清楚，并给出有证据的结论。\n\n请自己判断并回答：\n- 本机有哪些 nvJPEG 版本，各自怎么调用（这是库，不是命令行工具）；\n- 一张合法 JPEG 能否被它解码成功，你怎么确认成功；\n- 如果要做输入变异（改 JPEG 结构字段），哪些字段能改、哪些改了会让解码器直接拒绝；\n- 本机是否已经存在可复用的 JPEG 构造/变异工具，你愿意用就用，不愿意就自己写。\n\n环境事实（不是方法建议）：\n- 操作系统：Windows-10-10.0.19045-SP0\n- GPU/驱动：NVIDIA GeForce GTX 1660, 610.47, 6144 MiB\n- Python：3.12.13\n- cuobjdump：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cuobjdump.EXE\n- nvdisasm：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvdisasm.EXE\n- nvcc：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvcc.EXE\n- nvjpeg64_11.dll：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg64_11.dll\n- nvjpeg64_12.dll：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg64_12.dll\n- nvjpeg64_13.dll：D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg64_13.dll\n- CUDA 目录：C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2, C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4, C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\n\n工作区就是当前目录。允许联网、写文件、编译、运行。不要修改系统驱动。\n结束时写清：做了什么、观察到什么、哪些是推测、哪些有证据、还缺什么。",
+ "final": "未在 10 轮内得出结论。最后一轮观测：{\"ok\": false, \"summary\": {\"exit\": 1, \"timed_out\": false, \"stdout\": \"\", \"stderr\": \"FINDSTR: Cannot open decode\\nFINDSTR: Cannot open reject\\nFINDSTR: Cannot open accept\\nFINDSTR: Cannot open imageinfo\\nFINDSTR: Cannot open bitstream\\nFINDSTR: Cannot open score\\\"\\n\"}, \"status\": \"failed\", \"artifacts\": [{\"artifact\": \"stdout/e3b0c44298fc-shell-161605.out\", \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"bytes\": 0}, {\"artifact\": \"stderr/f16e53e0d9a8-shell-161605.err\", \"s",
+ "stopped": "max_turns",
+ "resume_state": "NEW",
+ "workspace": "F:\\qcx\\code\\test\\cuda_poc_generator\\data\\agent\\benchmarks\\p18\\JPEG_EXPLORATORY\\blind\\run\\workspace",
+ "turns": [
+  {
+   "index": 1,
+   "thought": "先确认工作区、CUDA/nvJPEG 安装布局、头文件与可用的 Python 图像库/编译工具，再决定用 ctypes 还是 C++ 调用 nvJPEG。",
+   "tool": "shell",
+   "args": {
+    "command": "pwd; echo '--- workspace'; Get-ChildItem -Force | Select-Object Mode,Length,LastWriteTime,Name; echo '--- CUDA dirs'; Get-ChildItem 'C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA' | Select-Object Name; echo '--- nvjpeg dlls'; @('C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg64_11.dll','C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg64_12.dll','D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg64_13.dll') | ForEach-Object { if(Test-Path $_){ $f=Get-Item $_; [PSCustomObject]@{Path=$f.FullName;Length=$f.Length;Version=$f.VersionInfo.FileVersion;Product=$f.VersionInfo.ProductVersion} } else { Write-Output \"MISSING $_\" } }; echo '--- headers'; Get-ChildItem -Path 'C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\include','C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\include' -Filter 'nvjpeg*.h' -ErrorAction SilentlyContinue | Select-Object FullName,Length; echo '--- python'; python --version; python -c \"import PIL, numpy; print('PIL', PIL.__version__); print('numpy', numpy.__version__)\" 2>&1; echo '--- compilers'; where.exe cl 2>&1; where.exe nvcc 2>&1",
+    "timeout": 120
+   },
+   "status": "failed",
+   "dispatched": true,
+   "operation_ok": false,
+   "at": "16:13:38",
+   "observation": {
+    "ok": false,
+    "summary": {
+     "exit": 255,
+     "timed_out": false,
+     "stdout": "",
+     "stderr": "'Select-Object' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���\n���������ļ���\n"
+    },
+    "status": "failed",
+    "artifacts": [
+     {
+      "artifact": "stdout/e3b0c44298fc-shell-161338.out",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+     },
+     {
+      "artifact": "stderr/c2fefcaedf3f-shell-161338.err",
+      "sha256": "c2fefcaedf3f39ce4eea4620c5680df3edd2a9c14a5c04165d9b2129831a0edc",
+      "bytes": 138
+     }
+    ],
+    "timeout_seconds": 120
+   }
+  },
+  {
+   "index": 2,
+   "thought": "上一轮失败原因已明确：shell 实际是 cmd.exe，不是 PowerShell，`Select-Object` 不可用。改用 cmd 内建命令重新盘点环境。",
+   "tool": "shell",
+   "args": {
+    "command": "cd & echo --- CWD & cd & echo --- WORKSPACE & dir /a & echo --- CUDA ROOT & dir \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\" & echo --- V124 BIN nvjpeg & dir \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg*\" & echo --- V112 BIN nvjpeg & dir \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg*\" & echo --- V134 & dir \"D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg*\"",
+    "timeout": 120
+   },
+   "status": "failed",
+   "dispatched": true,
+   "operation_ok": false,
+   "at": "16:13:41",
+   "observation": {
+    "truncated": true,
+    "preview": "{\"ok\": false, \"summary\": {\"exit\": 1, \"timed_out\": false, \"stdout\": \"F:\\\\qcx\\\\code\\\\test\\\\cuda_poc_generator\\\\data\\\\agent\\\\benchmarks\\\\p18\\\\JPEG_EXPLORATORY\\\\blind\\\\run\\\\workspace\\n--- CWD \\nF:\\\\qcx\\\\code\\\\test\\\\cuda_poc_generator\\\\data\\\\agent\\\\benchmarks\\\\p18\\\\JPEG_EXPLORATORY\\\\blind\\\\run\\\\workspace\\n--- WORKSPACE \\n ������ F �еľ�û�б�ǩ��\\n �������к��� DADF-6F25\\n\\n F:\\\\qcx\\\\code\\\\test\\\\cuda_poc_generator\\\\data\\\\agent\\\\benchmarks\\\\p18\\\\JPEG_EXPLORATORY\\\\blind\\\\run\\\\workspace ��Ŀ¼\\n\\n2026/11/11  16:13    <DIR>          .\\n2026/11/11  16:13    <DIR>          ..\\n               0 ���ļ�              0 �ֽ�\\n               2 ��Ŀ¼ 121,272,963,072 �����ֽ�\\n--- CUDA ROOT \\n--- V124 BIN nvjpeg \\n--- V112 BIN nvjpeg \\n--- V134 \\n\", \"stderr\": \"�ļ�����Ŀ¼��������﷨����ȷ��\\n�ļ�����Ŀ¼��������﷨����ȷ��\\n�ļ�����Ŀ¼��������﷨����ȷ��\\n�ļ�����Ŀ¼��������﷨����ȷ��\\n\"}, \"status\": \"failed\", \"artifacts\": [{\"artifact\": \"stdout/036fc8ffb6c5-shell-161341.out\", \"sha256\": \"036fc8ffb6c542d408afdbce80c57f88f940f12c36499ddbf496cc6d4d32c364\", \"bytes\": 695}, {\"artifact\": \"stderr/7645622ced18-shell-161341.err\", \"sha256\": \"7645622ced185f925ee4f64f15b043604471518346d2be6c05e5934d6d9acc92\", \"bytes\": 288}], \"timeout_seconds\": 1"
+   }
+  },
+  {
+   "index": 3,
+   "thought": "第2轮确认 shell 是 cmd.exe 且输出是 GBK 乱码。本轮改用 chcp 65001 并只用 cmd 内建命令，盘点工作区、CUDA 各版本 nvjpeg 头文件/DLL 与 Python 图像库是否可用。",
+   "tool": "shell",
+   "args": {
+    "command": "chcp 65001 >nul & cd & echo ---WS & dir /b & echo ---CUDAROOT & dir /b \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\" & echo ---INC124 & dir /b \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\include\\nvjpeg*\" & echo ---INC112 & dir /b \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\include\\nvjpeg*\" & echo ---DLLS & dir /b \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg*.dll\" \"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg*.dll\" \"D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg*.dll\" & echo ---PY & python -c \"import sys;print(sys.version)\" & python -c \"import PIL,numpy;print('PIL',PIL.__version__);print('numpy',numpy.__version__)\"",
+    "timeout": 180
+   },
+   "status": "failed",
+   "dispatched": true,
+   "operation_ok": false,
+   "at": "16:13:48",
+   "observation": {
+    "ok": false,
+    "summary": {
+     "exit": 1,
+     "timed_out": false,
+     "stdout": "F:\\qcx\\code\\test\\cuda_poc_generator\\data\\agent\\benchmarks\\p18\\JPEG_EXPLORATORY\\blind\\run\\workspace\n---WS \n---CUDAROOT \n---INC124 \n---INC112 \n---DLLS \n---PY \n",
+     "stderr": "�ļ�����Ŀ¼��������﷨����ȷ��\n�ļ�����Ŀ¼��������﷨����ȷ��\n�ļ�����Ŀ¼��������﷨����ȷ��\n�ļ�����Ŀ¼��������﷨����ȷ��\n  File \"<string>\", line 1\n    \"import\n    ^\nSyntaxError: unterminated string literal (detected at line 1)\n  File \"<string>\", line 1\n    \"import\n    ^\nSyntaxError: unterminated string literal (detected at line 1)\n"
+    },
+    "status": "failed",
+    "artifacts": [
+     {
+      "artifact": "stdout/f8ac6d493699-shell-161348.out",
+      "sha256": "f8ac6d493699f1930b0a570c8ced59bd3aee6a4af12f0dea6275b8143085ba20",
+      "bytes": 157
+     },
+     {
+      "artifact": "stderr/60ac69f77843-shell-161348.err",
+      "sha256": "60ac69f77843f6543c504e5d8f4989b5a35029975dfbe15949a6e723c6409a3e",
+      "bytes": 500
+     }
+    ],
+    "timeout_seconds": 180
+   }
+  },
+  {
+   "index": 4,
+   "thought": "前三轮都因 cmd.exe 的引号/转义处理失败。改用最稳的路径：用 fs_write 把一个自包含的 Python 探测脚本写进工作区，再用 shell 只执行 `python probe.py`（无复杂引号）。脚本负责盘点 CUDA 各版本、nvjpeg DLL 版本资源、头文件、Python 图像库，并验证 nvjpeg DLL 能否被 ctypes 以 CDLL 加导出符号方式加载（这只做能力探测，不做危险操作）。",
+   "tool": "fs_write",
+   "args": {
+    "path": "probe.py",
+    "content": "import os, sys, glob, json\n\ndef sec(t):\n    print(\"\\n==== \" + t + \" ====\")\n\nCUDA_ROOT = r\"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\"\nprint(\"python\", sys.version.replace(\"\\n\",\" \"))\nprint(\"exe\", sys.executable)\nsec(\"cwd\")\nprint(os.getcwd())\ntry:\n    print(\"ws:\", sorted(os.listdir(\".\")))\nexcept Exception as e:\n    print(\"ERR ws\", e)\n\nsec(\"cuda root\")\ntry:\n    print(sorted(os.listdir(CUDA_ROOT)))\nexcept Exception as e:\n    print(\"ERR\", e)\n\nfor ver in [\"v11.2\", \"v12.4\", \"v13.4\"]:\n    d = os.path.join(CUDA_ROOT, ver)\n    sec(\"cuda \" + ver + \" -> \" + d)\n    if not os.path.isdir(d):\n        print(\"MISSING\")\n        continue\n    try:\n        print(\"top:\", sorted(os.listdir(d)))\n    except Exception as e:\n        print(\"ERR top\", e)\n    for sub in [\"bin\", \"include\", \"lib\", \"lib\\\\x64\", \"lib\\\\Win32\"]:\n        p = os.path.join(d, sub)\n        if os.path.isdir(p):\n            try:\n                hits = [n for n in sorted(os.listdir(p)) if \"nvjpeg\" in n.lower() or n.lower() in (\"nvjpeg.h\",)]\n            except Exception as e:\n                hits = [\"ERR %s\" % e]\n            print(sub, \"->\", hits)\n        else:\n            print(sub, \"-> (no dir)\")\n\nsec(\"D:\\\\cuda1341_extract\")\nfor root in [r\"D:\\cuda1341_extract\"]:\n    if os.path.isdir(root):\n        for dirpath, dirnames, filenames in os.walk(root):\n            for f in filenames:\n                if \"nvjpeg\" in f.lower():\n                    fp = os.path.join(dirpath, f)\n                    try:\n                        sz = os.path.getsize(fp)\n                    except Exception:\n                        sz = -1\n                    print(sz, fp)\n    else:\n        print(\"missing\", root)\n\n# version resources\nimport ctypes\nfrom ctypes import wintypes\n\ndef file_version(path):\n    try:\n        size = ctypes.windll.version.GetFileVersionInfoSizeW(path, None)\n        if not size:\n            return None\n        buf = ctypes.create_string_buffer(size)\n        if not ctypes.windll.version.GetFileVersionInfoW(path, 0, size, buf):\n            return None\n        r = ctypes.c_void_p(); l = wintypes.UINT()\n        if not ctypes.windll.version.VerQueryValueW(buf, \"\\\\\", ctypes.byref(r), ctypes.byref(l)):\n            return None\n        class VS_FIXEDFILEINFO(ctypes.Structure):\n            _fields_ = [(\"dwSignature\", wintypes.DWORD), (\"dwStrucVersion\", wintypes.DWORD),\n                        (\"dwFileVersionMS\", wintypes.DWORD), (\"dwFileVersionLS\", wintypes.DWORD),\n                        (\"dwProductVersionMS\", wintypes.DWORD), (\"dwProductVersionLS\", wintypes.DWORD),\n                        (\"dwFileFlagsMask\", wintypes.DWORD), (\"dwFileFlags\", wintypes.DWORD),\n                        (\"dwFileOS\", wintypes.DWORD), (\"dwFileType\", wintypes.DWORD),\n                        (\"dwFileSubtype\", wintypes.DWORD), (\"dwFileDateMS\", wintypes.DWORD),\n                        (\"dwFileDateLS\", wintypes.DWORD)]\n        fi = VS_FIXEDFILEINFO.from_address(r.value)\n        return \"%d.%d.%d.%d\" % (fi.dwFileVersionMS >> 16, fi.dwFileVersionMS & 0xFFFF,\n                                 fi.dwFileVersionLS >> 16, fi.dwFileVersionLS & 0xFFFF)\n    except Exception as e:\n        return \"ERR %s\" % e\n\nsec(\"nvjpeg dll version resources\")\ndlls = [\n    r\"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg64_11.dll\",\n    r\"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg64_12.dll\",\n    r\"D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg64_13.dll\",\n]\nfor d in dlls:\n    print(d, \"exists=\" + str(os.path.isfile(d)), \"ver=\" + str(file_version(d) if os.path.isfile(d) else None))\n\nsec(\"load each dll with ctypes\")\nfor d in dlls:\n    if not os.path.isfile(d):\n        continue\n    try:\n        kernel32 = ctypes.WinDLL(\"kernel32\", use_last_error=True)\n        kernel32.LoadLibraryExW.restype = wintypes.HMODULE\n        kernel32.LoadLibraryExW.argtypes = [wintypes.LPCWSTR, wintypes.HANDLE, wintypes.DWORD]\n        h = kernel32.LoadLibraryExW(d, None, 0x00000001 | 0x00001000)  # DONT_RESOLVE_DLL_REFERENCES | ALTERED_SEARCH_PATH\n        if not h:\n            print(\"LOAD FAIL\", d, \"err\", ctypes.get_last_error())\n        else:\n            print(\"LOAD OK\", d, \"handle\", h)\n    except Exception as e:\n        print(\"LOAD EXC\", d, e)\n\nsec(\"python packages\")\nfor m in [\"numpy\", \"PIL\", \"cv2\", \"ctypes\"]:\n    try:\n        mod = __import__(m)\n        print(m, \"OK\", getattr(mod, \"__version__\", \"\"))\n    except Exception as e:\n        print(m, \"MISSING\", e)\n\nsec(\"nvcc\")\ntry:\n    print(os.path.isfile(r\"C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvcc.EXE\"))\nexcept Exception as e:\n    print(e)\n"
+   },
+   "status": "success",
+   "dispatched": true,
+   "operation_ok": true,
+   "at": "16:14:02",
+   "observation": {
+    "ok": true,
+    "summary": {
+     "path": "probe.py",
+     "bytes": 4591
+    },
+    "artifacts": [
+     {
+      "artifact": "files/d74ddc02ab10-probe.py",
+      "sha256": "d74ddc02ab105f30d7e37803e0e51fac4a5bcf3405cc8f7bf5ecbff3955f903c",
+      "bytes": 4591
+     }
+    ]
+   }
+  },
+  {
+   "index": 5,
+   "thought": "probe.py 已成功写入（4591 字节）。本轮直接用 shell 执行 `python probe.py`，避免 cmd 引号问题，拿到探测输出。",
+   "tool": "shell",
+   "args": {
+    "command": "python probe.py",
+    "timeout": 180
+   },
+   "status": "success",
+   "dispatched": true,
+   "operation_ok": true,
+   "at": "16:14:06",
+   "observation": {
+    "truncated": true,
+    "preview": "{\"ok\": true, \"summary\": {\"exit\": 0, \"timed_out\": false, \"stdout\": \"python 3.13.14 (main, Jun 11 2026, 04:04:46) [MSC v.1944 64 bit (AMD64)]\\nexe C:\\\\Users\\\\Administrator\\\\.workbuddy\\\\binaries\\\\python\\\\versions\\\\3.13.12\\\\python.exe\\n\\n==== cwd ====\\nF:\\\\qcx\\\\code\\\\test\\\\cuda_poc_generator\\\\data\\\\agent\\\\benchmarks\\\\p18\\\\JPEG_EXPLORATORY\\\\blind\\\\run\\\\workspace\\nws: ['probe.py']\\n\\n==== cuda root ====\\n['v11.2', 'v12.4', 'v13.4']\\n\\n==== cuda v11.2 -> C:\\\\Program Files\\\\NVIDIA GPU Computing Toolkit\\\\CUDA\\\\v11.2 ====\\ntop: ['CUDA_Toolkit_Release_Notes.txt', 'DOCS', 'EULA.txt', 'README', 'bin', 'compute-sanitizer', 'extras', 'include', 'lib', 'libnvvp', 'nvml', 'nvvm', 'nvvm-prev', 'src', 'tools', 'version.json']\\nbin -> ['nvjpeg64_11.dll']\\ninclude -> ['nvjpeg.h']\\nlib -> []\\nlib\\\\x64 -> ['nvjpeg.lib']\\nlib\\\\Win32 -> []\\n\\n==== cuda v12.4 -> C:\\\\Program Files\\\\NVIDIA GPU Computing Toolkit\\\\CUDA\\\\v12.4 ====\\ntop: ['CUDA_Toolkit_Release_Notes.txt', 'DOCS', 'EULA.txt', 'LICENSE', 'README', 'bin', 'compute-sanitizer', 'extras', 'include', 'lib', 'libnvvp', 'nvml', 'nvvm', 'src', 'tools', 'version.json']\\nbin -> ['nvjpeg64_12.dll']\\ninclude -> ['nvjpeg.h']\\nlib -> []\\nlib\\\\x64 -> ['nvjpeg.li"
+   }
+  },
+  {
+   "index": 6,
+   "thought": "前三轮 shell 引号问题已定位，probe.py 已跑通并确认存在三个 CUDA 版本与 nvjpeg DLL。剩余轮次有限（5），需要一次性拿到关键证据：①各 DLL 的真实 nvjpeg 版本（nvjpegGetProperty）②合法 JPEG 解码成功与否（ctypes 调 nvjpegGetImageInfo/nvjpegDecode + cudart 分配设备内存，校验解码像素哈希）③结构字段变异后哪些被拒/哪些被接受。为避免 cmd 引号问题，全部写进一个自包含 Python 脚本，脚本内路径统一用正斜杠+normpath，避免 JSON 反斜杠转义出错。",
+   "tool": "fs_write",
+   "args": {
+    "path": "nvjpeg_probe.py",
+    "content": "import os, sys, glob, struct, hashlib, ctypes, traceback, time\nfrom ctypes import c_int, c_void_p, c_size_t, POINTER, byref, cast, create_string_buffer\n\ndef log(*a):\n    print(*a, flush=True)\n\nCUDA = \"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA\"\nDLLS = [\n (\"11.2\", os.path.normpath(CUDA + \"/v11.2/bin/nvjpeg64_11.dll\")),\n (\"12.4\", os.path.normpath(CUDA + \"/v12.4/bin/nvjpeg64_12.dll\")),\n (\"13.4\", os.path.normpath(\"D:/cuda1341_extract/libnvjpeg/nvjpeg/bin/x64/nvjpeg64_13.dll\")),\n]\nCUDART = os.path.normpath(CUDA + \"/v12.4/bin/cudart64_12.dll\")\n\nclass NvjpegImage(ctypes.Structure):\n    _fields_ = [(\"channel\", c_void_p*4), (\"pitch\", c_size_t*4)]\n\nclass Cudart:\n    def __init__(self, path):\n        os.add_dll_directory(os.path.dirname(path))\n        self.dll = ctypes.WinDLL(path)\n        d = self.dll\n        d.cudaMalloc.argtypes = [POINTER(c_void_p), c_size_t]; d.cudaMalloc.restype = c_int\n        d.cudaFree.argtypes = [c_void_p]; d.cudaFree.restype = c_int\n        d.cudaMemcpy.argtypes = [c_void_p, c_void_p, c_size_t, c_int]; d.cudaMemcpy.restype = c_int\n        d.cudaDeviceSynchronize.argtypes = []; d.cudaDeviceSynchronize.restype = c_int\n    def malloc(self, n):\n        p = c_void_p(); r = self.dll.cudaMalloc(byref(p), c_size_t(int(n))); return r, p\n    def d2h(self, dst, src, n):\n        return self.dll.cudaMemcpy(cast(dst, c_void_p), src, c_size_t(int(n)), 2)\n\nclass Nvjpeg:\n    def __init__(self, ver, path):\n        self.ver = ver; self.path = path; self.loaderr = None\n        self.handle = c_void_p(); self.state = c_void_p()\n        self.props = [None]*4; self.create_status = None; self.state_status = None\n        try:\n            d0 = os.path.dirname(path)\n            if os.path.isdir(d0):\n                os.add_dll_directory(d0)\n            self.dll = ctypes.WinDLL(path)\n            d = self.dll\n            d.nvjpegGetProperty.argtypes = [c_int, POINTER(c_int)]; d.nvjpegGetProperty.restype = c_int\n            d.nvjpegCreateSimple.argtypes = [POINTER(c_void_p)]; d.nvjpegCreateSimple.restype = c_int\n            d.nvjpegJpegStateCreate.argtypes = [c_void_p, POINTER(c_void_p)]; d.nvjpegJpegStateCreate.restype = c_int\n            d.nvjpegGetImageInfo.argtypes = [c_void_p, c_void_p, c_size_t, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int)]\n            d.nvjpegGetImageInfo.restype = c_int\n            d.nvjpegDecode.argtypes = [c_void_p, c_void_p, c_void_p, c_size_t, c_int, POINTER(NvjpegImage)]\n            d.nvjpegDecode.restype = c_int\n        except Exception as e:\n            self.loaderr = repr(e); return\n        for i in range(4):\n            v = c_int(-1)\n            try:\n                r = d.nvjpegGetProperty(i, byref(v))\n            except Exception:\n                r = -1\n            if r == 0: self.props[i] = v.value\n        self.create_status = d.nvjpegCreateSimple(byref(self.handle))\n        if self.create_status == 0:\n            self.state_status = d.nvjpegJpegStateCreate(self.handle, byref(self.state))\n\n    def info(self, data):\n        buf = create_string_buffer(data, len(data))\n        nc = c_int(0); sub = c_int(0); w = (c_int*4)(); h = (c_int*4)()\n        r = self.dll.nvjpegGetImageInfo(self.handle, cast(buf, c_void_p), c_size_t(len(data)), byref(nc), byref(sub), w, h)\n        return [r, nc.value, sub.value, [w[i] for i in range(4)], [h[i] for i in range(4)]]\n\n    def decode(self, data, cud):\n        gi = self.info(data)\n        if gi[0] != 0:\n            return gi[0], gi, None\n        W = gi[3][0]; H = gi[4][0]\n        if W <= 0 or H <= 0 or W > 20000 or H > 20000:\n            return -2000, gi, None\n        nbytes = W*3*H\n        cr, dp = cud.malloc(max(nbytes, 256))\n        if cr != 0:\n            return -1000-cr, gi, None\n        img = NvjpegImage()\n        img.channel[0] = dp; img.pitch[0] = c_size_t(W*3)\n        buf = create_string_buffer(data, len(data))\n        st = self.dll.nvjpegDecode(self.handle, self.state, cast(buf, c_void_p), c_size_t(len(data)), 5, byref(img))\n        out = None\n        if st == 0:\n            cud.dll.cudaDeviceSynchronize()\n            hb = create_string_buffer(nbytes)\n            mr = cud.d2h(hb, dp, nbytes)\n            if mr == 0:\n                out = bytes(hb.raw[:nbytes])\n        cud.dll.cudaFree(dp)\n        return st, gi, out\n\nSEGNAME = {0xD8:'SOI',0xD9:'EOI',0xDA:'SOS',0xDB:'DQT',0xC4:'DHT',0xDD:'DRI',0xC0:'SOF0',0xC1:'SOF1',0xC2:'SOF2',0xE0:'APP0',0xE1:'APP1',0xEE:'APP14',0xFE:'COM'}\n\ndef segs(data):\n    out = []\n    n = len(data)\n    if data[:2] != b'\\xff\\xd8':\n        return out\n    i = 2\n    while i + 1 < n:\n        if data[i] != 0xFF:\n            break\n        m = data[i+1]\n        if m == 0xD8 or m == 0x01 or (0xD0 <= m <= 0xD7):\n            out.append((i, m, i+2, i+2)); i += 2; continue\n        if m == 0xD9:\n            out.append((i, m, i+2, i+2)); break\n        if i + 3 >= n:\n            break\n        L = struct.unpack('>H', data[i+2:i+4])[0]\n        end = i + 2 + L\n        if L < 2 or end > n:\n            out.append((i, m, i+4, n)); break\n        out.append((i, m, i+4, end))\n        if m == 0xDA:\n            j = end\n            while j + 1 < n:\n                if data[j] == 0xFF:\n                    m2 = data[j+1]\n                    if m2 != 0x00 and not (0xD0 <= m2 <= 0xD7):\n                        break\n                    j += 2; continue\n                j += 1\n            i = j; continue\n        i = end\n    return out\n\ndef rm(data, ss):\n    for s in sorted(ss, key=lambda x: -x[0]):\n        data = data[:s[0]] + data[s[3]:]\n    return data\n\ndef build_muts(data):\n    S = segs(data)\n    by = {}\n    for s in S:\n        by.setdefault(s[1], []).append(s)\n    muts = []\n    muts.append(('baseline', data))\n    muts.append(('soi_ffd8_to_ffd9', b'\\xff\\xd9' + data[2:]))\n    muts.append(('eoi_removed', data[:-2] if data[-2:] == b'\\xff\\xd9' else data))\n    if 0xE0 in by: muts.append(('drop_APP0', rm(data, by[0xE0])))\n    if 0xDB in by: muts.append(('drop_DQT', rm(data, by[0xDB])))\n    if 0xC4 in by: muts.append(('drop_DHT', rm(data, by[0xC4])))\n    if 0xC0 in by:\n        s = by[0xC0][0]\n        muts.append(('drop_SOF0', rm(data, [s])))\n        muts.append(('SOF0_marker_to_SOF1_0xC1', data[:s[0]+1] + b'\\xc1' + data[s[0]+2:]))\n        muts.append(('SOF0_marker_to_SOF2_0xC2', data[:s[0]+1] + b'\\xc2' + data[s[0]+2:]))\n        nf_off = s[2] + 5\n        if nf_off < s[3]:\n            muts.append(('SOF_Nf_3_to_4', data[:nf_off] + b'\\x04' + data[nf_off+1:]))\n        samp_off = s[2] + 6 + 1\n        if samp_off < s[3]:\n            old = data[samp_off:samp_off+1]\n            muts.append(('SOF_Y_sampling_%02x_to_11' % data[samp_off], data[:samp_off] + b'\\x11' + data[samp_off+1:]))\n    if 0xDB in by:\n        q = by[0xDB][0]\n        muts.append(('DQT_Pq_8bit_to_16bit_flag', data[:q[2]] + bytes([data[q[2]] | 0x10]) + data[q[2]+1:]))\n    if 0xDA in by:\n        s = by[0xDA][0]\n        muts.append(('truncate_at_SOS', data[:s[0]]))\n        muts.append(('truncate_at_SOS_plus_EOI', data[:s[0]] + b'\\xff\\xd9'))\n        muts.append(('SOS_Ns_3_to_4', data[:s[2]] + b'\\x04' + data[s[2]+1:]))\n        muts.append(('zero_entropy_scan', data[:s[3]] + b'\\x00' * (len(data) - s[3])))\n    muts.append(('truncate_half', data[:len(data)//2]))\n    muts.append(('append_1KB_zeros', data + b'\\x00'*1024))\n    muts.append(('insert_unknown_marker_FFC9', data[:2] + b'\\xff\\xc9\\x00\\x04\\x00\\x00' + data[2:]))\n    return muts\n\nlog('=== cudart ===')\ncud = None\ntry:\n    cud = Cudart(CUDART)\n    log('loaded', CUDART)\nexcept Exception as e:\n    log('cudart load failed:', repr(e))\n\nlog('=== nvjpeg dlls ===')\nlibs = {}\nfor ver, p in DLLS:\n    if not os.path.exists(p):\n        log('DLL', ver, 'MISSING', p); continue\n    stt = os.stat(p)\n    meta = 'size=%d mtime=%s' % (stt.st_size, time.strftime('%Y-%m-%d', time.localtime(stt.st_mtime)))\n    h = hashlib.sha256(open(p,'rb').read()).hexdigest()[:16]\n    try:\n        nv = Nvjpeg(ver, p)\n    except Exception as e:\n        log('DLL', ver, meta, 'ctor_error', repr(e)); continue\n    if nv.loaderr:\n        log('DLL', ver, meta, 'load_error=', nv.loaderr); continue\n    log('DLL', ver, meta, 'sha256_16=', h, 'nvjpeg_version(major,minor,patch,build)=', nv.props, 'create=', nv.create_status, 'state=', nv.state_status)\n    libs[ver] = nv\n\nlog('=== sample jpeg search ===')\npats = [\n  os.path.normpath('C:/Windows/Web/**/*.jpg'),\n  os.path.normpath('C:/Users/Public/Pictures/**/*.jpg'),\n  os.path.normpath('C:/ProgramData/NVIDIA Corporation/**/*.jpg'),\n  os.path.normpath(CUDA + '/**/*.jpg'),\n  os.path.normpath(os.getcwd() + '/**/*.jpg'),\n]\ncands = []\nfor pat in pats:\n    try:\n        got = glob.glob(pat, recursive=True)\n        cands += got\n        log('pattern', pat, '->', len(got))\n    except Exception as e:\n        log('pattern', pat, 'err', repr(e))\nlog('total jpg candidates', len(cands))\nbest = None\nfor c in cands:\n    try:\n        d = open(c, 'rb').read()\n    except Exception:\n        continue\n    if len(d) < 100 or len(d) > 4*1024*1024 or d[:2] != b'\\xff\\xd8':\n        continue\n    S = segs(d)\n    mk = [s[1] for s in S]\n    if 0xC0 in mk and 0xDA in mk and 0xD9 in mk:\n        if best is None or len(d) < len(best[1]):\n            best = (c, d)\nif best is None:\n    for c in cands:\n        try:\n            d = open(c, 'rb').read()\n        except Exception:\n            continue\n        if d[:2] == b'\\xff\\xd8' and 0xDA in [s[1] for s in segs(d)]:\n            best = (c, d); break\nif best is None:\n    log('NO_USABLE_JPEG_FOUND')\n    sys.exit(0)\nspath, sdata = best\nS = segs(sdata)\nlog('chosen', spath, 'bytes', len(sdata), 'sha256_16', hashlib.sha256(sdata).hexdigest()[:16])\nlog('segments', ' '.join((SEGNAME.get(s[1], hex(s[1]))) + '@' + str(s[0]) for s in S))\nsof = [s for s in S if s[1] in (0xC0,0xC1,0xC2)]\nif sof:\n    s = sof[0]\n    log('SOF marker=0x%02X payload_first8=%s' % (s[1], sdata[s[2]:s[2]+8].hex()))\n\nlog('=== baseline decode per version ===')\nbase = {}\nfor ver in ('12.4','11.2','13.4'):\n    nv = libs.get(ver)\n    if nv is None:\n        log('baseline', ver, 'not_loaded'); continue\n    if cud is None:\n        log('baseline', ver, 'no cudart'); continue\n    try:\n        st, gi, out = nv.decode(sdata, cud)\n        md5 = hashlib.md5(out).hexdigest()[:12] if out else '-'\n        nz = sum(1 for b in out[:8192] if b) if out else -1\n        log('baseline v%s gi=%s ncomp=%s sub=%s wh=%sx%s dec_status=%s md5=%s nonzero_first8k=%s' % (ver, gi[0], gi[1], gi[2], gi[3][0], gi[4][0], st, md5, nz))\n        if out: base[ver] = md5\n    except Exception as e:\n        log('baseline', ver, 'exception', repr(e))\n\nlog('=== mutations on 12.4 ===')\nnv = libs.get('12.4') or (list(libs.values())[0] if libs else None)\nif nv is None or cud is None:\n    log('cannot run mutations')\nelse:\n    log('using version', nv.ver)\n    for label, md in build_muts(sdata):\n        try:\n            st, gi, out = nv.decode(md, cud)\n            md5 = hashlib.md5(out).hexdigest()[:12] if out else '-'\n            nz = sum(1 for b in out[:4096] if b) if out else -1\n            same = 'same' if (out and md5 == base.get(nv.ver)) else ('diff' if out else '-')\n            log('MUT %-30s len=%6d gi=%2s ncomp=%s sub=%s %sx%s dec=%3s md5=%-12s nz4k=%-5s %s' % (label, len(md), gi[0], gi[1], gi[2], gi[3][0], gi[4][0], st, md5, nz, same))\n        except Exception as e:\n            log('MUT', label, 'exception', repr(e))\nlog('=== done ===')\n"
+   },
+   "status": "success",
+   "dispatched": true,
+   "operation_ok": true,
+   "at": "16:15:29",
+   "observation": {
+    "ok": true,
+    "summary": {
+     "path": "nvjpeg_probe.py",
+     "bytes": 11355
+    },
+    "artifacts": [
+     {
+      "artifact": "files/4fa6353bf0c3-nvjpeg_probe.py",
+      "sha256": "4fa6353bf0c301ac75de44f2b7304a7a417c6fb1dc97425ddcc9c2cd2e1684d2",
+      "bytes": 11355
+     }
+    ]
+   }
+  },
+  {
+   "index": 7,
+   "thought": "第6轮已把自包含的 nvjpeg_probe.py（11.3KB，ctypes 调 nvjpegGetProperty + nvjpegGetImageInfo + 解码）写入工作区，尚未执行。本轮直接运行它，拿到各版本 DLL 的真实版本号、合法 JPEG 是否解码成功、以及拒绝/接受的判定证据。若进程崩溃，退出码与部分 stdout 会保留在 artifact 里。",
+   "tool": "shell",
+   "args": {
+    "command": "python nvjpeg_probe.py",
+    "timeout": 300
+   },
+   "status": "success",
+   "dispatched": true,
+   "operation_ok": true,
+   "at": "16:15:35",
+   "observation": {
+    "truncated": true,
+    "preview": "{\"ok\": true, \"summary\": {\"exit\": 0, \"timed_out\": false, \"stdout\": \"=== cudart ===\\nloaded C:\\\\Program Files\\\\NVIDIA GPU Computing Toolkit\\\\CUDA\\\\v12.4\\\\bin\\\\cudart64_12.dll\\n=== nvjpeg dlls ===\\nDLL 11.2 size=3424256 mtime=2021-02-15 sha256_16= f53e8d5d1940e6ca nvjpeg_version(major,minor,patch,build)= [11, 4, 0, None] create= 0 state= 0\\nDLL 12.4 size=4913152 mtime=2024-02-28 sha256_16= 07876623d1f6d992 nvjpeg_version(major,minor,patch,build)= [12, 3, 1, None] create= 0 state= 0\\nDLL 13.4 size=4523120 mtime=2026-07-17 sha256_16= 957bb73818e62883 nvjpeg_version(major,minor,patch,build)= [13, 2, 2, None] create= 0 state= 0\\n=== sample jpeg search ===\\npattern C:\\\\Windows\\\\Web\\\\**\\\\*.jpg -> 27\\npattern C:\\\\Users\\\\Public\\\\Pictures\\\\**\\\\*.jpg -> 0\\npattern C:\\\\ProgramData\\\\NVIDIA Corporation\\\\**\\\\*.jpg -> 66\\npattern C:\\\\Program Files\\\\NVIDIA GPU Computing Toolkit\\\\CUDA\\\\**\\\\*.jpg -> 56\\npattern F:\\\\qcx\\\\code\\\\test\\\\cuda_poc_generator\\\\data\\\\agent\\\\benchmarks\\\\p18\\\\JPEG_EXPLORATORY\\\\blind\\\\run\\\\workspace\\\\**\\\\*.jpg -> 0\\ntotal jpg candidates 149\\nchosen C:\\\\ProgramData\\\\NVIDIA Corporation\\\\CUDA Samples\\\\v11.2\\\\2_Graphics\\\\volumeFiltering\\\\doc\\\\sshot_sm.JPG bytes 3872 sha256_16 859501a30"
+   }
+  },
+  {
+   "index": 8,
+   "thought": "第 7 轮的 probe 脚本已成功执行（exit 0），确认了三个 DLL 的版本：11.2→nvjpeg 11.4.0、12.4→12.3.1、13.4→...，但 preview 被截断，最关键的后半段（合法 JPEG 是否解码成功、变异字段被接受/拒绝）看不到。剩余 3 轮，策略：本轮把完整输出重定向到文件（shell 无引号，最稳），下一轮 fs_read 拿全文，最后一轮写结论。",
+   "tool": "shell",
+   "args": {
+    "command": "python nvjpeg_probe.py > probe_out.txt 2>&1",
+    "timeout": 300
+   },
+   "status": "success",
+   "dispatched": true,
+   "operation_ok": true,
+   "at": "16:15:44",
+   "observation": {
+    "ok": true,
+    "summary": {
+     "exit": 0,
+     "timed_out": false,
+     "stdout": "",
+     "stderr": ""
+    },
+    "status": "success",
+    "artifacts": [
+     {
+      "artifact": "stdout/e3b0c44298fc-shell-161544.out",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+     },
+     {
+      "artifact": "stderr/e3b0c44298fc-shell-161544.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+     }
+    ],
+    "timeout_seconds": 300
+   }
+  },
+  {
+   "index": 9,
+   "thought": "第8轮的输出被重定向进 probe_out.txt（shell stdout 为空），完整结果在文件里。剩余仅 2 轮，不能冒险全量 fs_read 被截断。本轮用一条 shell+python -c 只抽取关键行（段标题 + decode/reject/accept 相关行），尽量短，确保 preview 不被裁掉。",
+   "tool": "shell",
+   "args": {
+    "command": "python -c \"L=open('probe_out.txt',encoding='utf-8',errors='replace').read().splitlines();print('N',len(L));[print(l[:150]) for l in L if l.startswith('===') or 'decode' in l.lower() or 'reject' in l.lower() or 'accept' in l.lower() or 'valid' in l.lower()]\"",
+    "timeout": 120
+   },
+   "status": "failed",
+   "dispatched": true,
+   "operation_ok": false,
+   "at": "16:15:57",
+   "observation": {
+    "ok": false,
+    "summary": {
+     "exit": 1,
+     "timed_out": false,
+     "stdout": "",
+     "stderr": "  File \"<string>\", line 1\n    \"L=open('probe_out.txt',encoding='utf-8',errors='replace').read().splitlines();print('N',len(L));[print(l[:150])\n    ^\nSyntaxError: unterminated string literal (detected at line 1)\n"
+    },
+    "status": "failed",
+    "artifacts": [
+     {
+      "artifact": "stdout/e3b0c44298fc-shell-161557.out",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+     },
+     {
+      "artifact": "stderr/fced89834093-shell-161557.err",
+      "sha256": "fced89834093f4833011144dec1dc62cca3e3900f75c2ce295364301328252f8",
+      "bytes": 211
+     }
+    ],
+    "timeout_seconds": 120
+   }
+  },
+  {
+   "index": 10,
+   "thought": "只剩 1 轮，必须一次拿到 probe_out.txt 里的关键结论。之前 python -c 的引号被 shell 破坏导致 SyntaxError；这次改用不依赖 Python 引号的 findstr 过滤行（段标题 + decode/reject/accept 相关），避免嵌套引号问题。",
+   "tool": "shell",
+   "args": {
+    "command": "findstr /i /n \"=== decode reject accept imageinfo bitstream score\" probe_out.txt",
+    "timeout": 120
+   },
+   "status": "failed",
+   "dispatched": true,
+   "operation_ok": false,
+   "at": "16:16:05",
+   "observation": {
+    "ok": false,
+    "summary": {
+     "exit": 1,
+     "timed_out": false,
+     "stdout": "",
+     "stderr": "FINDSTR: Cannot open decode\nFINDSTR: Cannot open reject\nFINDSTR: Cannot open accept\nFINDSTR: Cannot open imageinfo\nFINDSTR: Cannot open bitstream\nFINDSTR: Cannot open score\"\n"
+    },
+    "status": "failed",
+    "artifacts": [
+     {
+      "artifact": "stdout/e3b0c44298fc-shell-161605.out",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+     },
+     {
+      "artifact": "stderr/f16e53e0d9a8-shell-161605.err",
+      "sha256": "f16e53e0d9a846d94bdb7dba47383d8720bd0c7c822a9b8a26ea2a0f0e1db447",
+      "bytes": 174
+     }
+    ],
+    "timeout_seconds": 120
+   }
+  }
+ ]
+}

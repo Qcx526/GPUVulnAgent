@@ -1,0 +1,110 @@
+{
+ "cwd": "F:\\qcx\\code\\test\\cuda_poc_generator\\data\\agent\\benchmarks\\p18\\JPEG_EXPLORATORY\\blind_render2\\run\\workspace",
+ "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2": {
+  "exists": true,
+  "top": [
+   "CUDA_Toolkit_Release_Notes.txt",
+   "DOCS",
+   "EULA.txt",
+   "README",
+   "bin",
+   "compute-sanitizer",
+   "extras",
+   "include",
+   "lib",
+   "libnvvp",
+   "nvml",
+   "nvvm",
+   "nvvm-prev",
+   "src",
+   "tools",
+   "version.json"
+  ]
+ },
+ "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4": {
+  "exists": true,
+  "top": [
+   "CUDA_Toolkit_Release_Notes.txt",
+   "DOCS",
+   "EULA.txt",
+   "LICENSE",
+   "README",
+   "bin",
+   "compute-sanitizer",
+   "extras",
+   "include",
+   "lib",
+   "libnvvp",
+   "nvml",
+   "nvvm",
+   "src",
+   "tools",
+   "version.json"
+  ]
+ },
+ "D:\\cuda1341_extract": {
+  "exists": true,
+  "top": [
+   "libnvjpeg"
+  ]
+ },
+ "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4": {
+  "exists": true,
+  "top": [
+   "CUDA_Toolkit_Release_Notes.txt",
+   "DOCS",
+   "EULA.txt",
+   "LICENSE",
+   "README",
+   "bin",
+   "compute-sanitizer",
+   "extras",
+   "include",
+   "lib",
+   "nvml",
+   "nvvm",
+   "src",
+   "tools",
+   "version.json"
+  ]
+ },
+ "nvjpeg_hits": {
+  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2": [
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\cudart64_110.dll",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\bin\\nvjpeg64_11.dll",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\include\\nvjpeg.h",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.2\\lib\\x64\\nvjpeg.lib"
+  ],
+  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4": [
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cudart64_12.dll",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\nvjpeg64_12.dll",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\include\\nvjpeg.h",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\lib\\x64\\nvjpeg.lib"
+  ],
+  "D:\\cuda1341_extract": [
+   "D:\\cuda1341_extract\\libnvjpeg\\nvjpeg\\bin\\x64\\nvjpeg64_13.dll",
+   "D:\\cuda1341_extract\\libnvjpeg\\nvjpeg_dev\\include\\nvjpeg.h",
+   "D:\\cuda1341_extract\\libnvjpeg\\nvjpeg_dev\\lib\\x64\\nvjpeg.lib"
+  ],
+  "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4": [
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\arm64\\cudart64_13.dll",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\arm64\\nvjpeg64_13.dll",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\x64\\cudart64_13.dll",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\bin\\x64\\nvjpeg64_13.dll",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\include\\nvjpeg.h",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\lib\\arm64\\nvjpeg.lib",
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v13.4\\lib\\x64\\nvjpeg.lib"
+  ]
+ },
+ "python": {
+  "PIL": "MISSING: No module named 'PIL'",
+  "numpy": "MISSING: No module named 'numpy'",
+  "cv2": "MISSING: No module named 'cv2'",
+  "ctypes": "1.1.0",
+  "turbojpeg": "MISSING: No module named 'turbojpeg'",
+  "imageio": "MISSING: No module named 'imageio'",
+  "skimage": "MISSING: No module named 'skimage'"
+ },
+ "python_exe": "C:\\Users\\Administrator\\.workbuddy\\binaries\\python\\versions\\3.13.12\\python.exe",
+ "path_env": "D;F:\\APP\\WorkBuddy\\resources\\app.asar.unpacked\\cli\\vendor\\shim\\safe-bin;C:\\Users\\Administrator\\.workbuddy\\binaries\\node\\versions\\22.22.2-6;C:\\Users\\Administrator\\.workbuddy\\binaries\\node\\versions\\.locks;C:\\Users\\Administrator\\.workbuddy\\binaries\\python\\versions\\3.13.12;C:\\Users\\Administrator\\.workbuddy\\binaries\\python\\versions\\.locks;C:\\Users\\Administrator\\.workbuddy\\binaries\\node\\cli-connector-pa"
+}

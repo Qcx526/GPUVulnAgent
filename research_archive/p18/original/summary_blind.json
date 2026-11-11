@@ -1,0 +1,26 @@
+[
+ {
+  "case": "run",
+  "mode": "blind",
+  "tool_calls": 10,
+  "executions": 8,
+  "unique_tools": [
+   "shell"
+  ],
+  "crash_events": [],
+  "crash_observed": false,
+  "differential_supported": "NOT_ESTABLISHED",
+  "mechanism_supported": "NOT_ESTABLISHED",
+  "cve_attributed": "NOT_ESTABLISHED",
+  "artifacts": 18,
+  "evidence_records": 20,
+  "note": "崩溃仅按异常终止计数；差值与机制需要配对对照与根因证据，没有就是 NOT_ESTABLISHED。",
+  "duration_s": 156.4,
+  "usage": {
+   "calls": 10,
+   "with_usage": 10,
+   "total_tokens": 49177
+  },
+  "final_claim": "未在 10 轮内得出结论。最后一轮观测：{\"ok\": false, \"summary\": {\"exit\": 1, \"timed_out\": false, \"stdout\": \"\", \"stderr\": \"FINDSTR: Cannot open decode\\nFINDSTR: Cannot open reject\\nFINDSTR: Cannot open accept\\nFINDSTR: Cannot open imageinfo\\nFINDSTR: Cannot open bitstream\\nFINDSTR: Cannot open score\\\"\\n\"}, \"status\": \"failed\", \"artifacts\": [{\"artifact\": \"stdout/e3b0c44298fc-shell-161605.out\", \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"bytes\": 0}, {\"artifact\": \"stderr/f16e53e0d9a8-shell-161605.err\", \"s"
+ }
+]

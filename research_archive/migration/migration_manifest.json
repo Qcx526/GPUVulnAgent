@@ -1,0 +1,2017 @@
+{
+ "schema": "gpuvulnagent-migration/v1",
+ "generated_at": "2026-11-11T17:29:35+0800",
+ "source_repository": "https://github.com/Qcx526/cuda_poc_generator",
+ "source_commits": {
+  "main": "0e299aff954e797b94d3b48bec666ca5d92df423",
+  "archive_branch": "archive/pre-agent-runtime-2026-11-11",
+  "archive_commit": "0a119a0dc017141fc7478f0317c39d89fe149f01",
+  "agent_branch": "research/autonomous-agent-completion",
+  "agent_commit": "c80efe18fcb60a1986f7d3dc570268356866d73c"
+ },
+ "source_commit_verified": "c80efe18fcb60a1986f7d3dc570268356866d73c",
+ "source_branch_verified": "HEAD",
+ "policy": "copied byte for byte; original verdicts, evidence and artifacts are not edited; historical conclusions are audited separately",
+ "file_count": 333,
+ "total_bytes": 2023717,
+ "files": [
+  {
+   "source": "docs/P17_AGENT_ARCHITECTURE.md",
+   "destination": "research_archive/p17/P17_AGENT_ARCHITECTURE.md",
+   "sha256": "95b077cee8ee5abaa21413c0ca77d69dc3eca116e6e6a8bfdc4b121cbfaffeb8",
+   "bytes": 6213
+  },
+  {
+   "source": "docs/P17_LEGACY_AUDIT.md",
+   "destination": "research_archive/p17/P17_LEGACY_AUDIT.md",
+   "sha256": "95114805e0d2e100f62da183dfc5f8dd01adf0fa1149b8f8af036a9ac80edb03",
+   "bytes": 7327
+  },
+  {
+   "source": "docs/P17_R1_BASELINE_AUDIT.md",
+   "destination": "research_archive/p17/P17_R1_BASELINE_AUDIT.md",
+   "sha256": "ca918abba29d21352edb0331ca822eb9dfa1e93d8e0600ded5c1aa65b19e70ad",
+   "bytes": 2564
+  },
+  {
+   "source": "docs/P17_R1_EVIDENCE_ARCHIVE.md",
+   "destination": "research_archive/p17/P17_R1_EVIDENCE_ARCHIVE.md",
+   "sha256": "55bd21330cfb4b02bf11c2ec31fdee266774016b696b38bc8c1588cb61f9ceaf",
+   "bytes": 1578
+  },
+  {
+   "source": "docs/P17_R1_EVIDENCE_DESIGN.md",
+   "destination": "research_archive/p17/P17_R1_EVIDENCE_DESIGN.md",
+   "sha256": "82fe3b10662c9e3dd2aead950f5e06ef1b30270d7e8d6f39a6da4a756e81e2a1",
+   "bytes": 2119
+  },
+  {
+   "source": "docs/P17_R1_IMPLEMENTATION.md",
+   "destination": "research_archive/p17/P17_R1_IMPLEMENTATION.md",
+   "sha256": "daa681966f914ddd5e3e7e7859bb10365ba770a9c468ad78b1c696402675de7d",
+   "bytes": 3782
+  },
+  {
+   "source": "docs/P17_R1_LIMITATIONS.md",
+   "destination": "research_archive/p17/P17_R1_LIMITATIONS.md",
+   "sha256": "e926c0b1dbdde67a716fefe6ec68ff4ab2d659921f2e41195c341280d8459204",
+   "bytes": 2530
+  },
+  {
+   "source": "docs/P17_R1_TAVILY.md",
+   "destination": "research_archive/p17/P17_R1_TAVILY.md",
+   "sha256": "0c67f2b09245a806f8452948774cddd1dcf9c278cd2cde09f953ea521c597b90",
+   "bytes": 2575
+  },
+  {
+   "source": "docs/P17_R1_VALIDATION.md",
+   "destination": "research_archive/p17/P17_R1_VALIDATION.md",
+   "sha256": "e6a815b1b9fa5bbef0186911a51c5be71c6b9f28d3b404c91e3597647833ee78",
+   "bytes": 1895
+  },
+  {
+   "source": "docs/P17_R2_IMPLEMENTATION.md",
+   "destination": "research_archive/p17/P17_R2_IMPLEMENTATION.md",
+   "sha256": "e2aa32ce0f1e34d26b000fbc46c89e3c000b8b3cc8eeeda63aab68251642aebe",
+   "bytes": 1918
+  },
+  {
+   "source": "docs/P17_R2_LIMITATIONS.md",
+   "destination": "research_archive/p17/P17_R2_LIMITATIONS.md",
+   "sha256": "93015664d3606caf8906ea98ae65d4c913fbecdb16c2981a989fa728b6c4ac3c",
+   "bytes": 1081
+  },
+  {
+   "source": "docs/P17_R2_TOOL_CONTRACT.md",
+   "destination": "research_archive/p17/P17_R2_TOOL_CONTRACT.md",
+   "sha256": "17bc7ff330e75b210ca3b488b0fc1d2efaa626ccdc6e50d1a1a17949ef1761c8",
+   "bytes": 1561
+  },
+  {
+   "source": "docs/P17_R2_VALIDATION.md",
+   "destination": "research_archive/p17/P17_R2_VALIDATION.md",
+   "sha256": "a0554848978927ec822153cb9bc69b1e903a514c8a99143b737c4426549ea627",
+   "bytes": 2317
+  },
+  {
+   "source": "data/agent/r2_acceptance/artifacts/http/1271dcb3992e-tavily-extract.json",
+   "destination": "research_archive/p17/r2_acceptance/artifacts/http/1271dcb3992e-tavily-extract.json",
+   "sha256": "1271dcb3992e523e40ad0fcd4b4962425c1568ea9305c2f6e731e4113e7f9f8b",
+   "bytes": 6352
+  },
+  {
+   "source": "data/agent/r2_acceptance/artifacts/http/7a3377cc0d5a-tavily-search.json",
+   "destination": "research_archive/p17/r2_acceptance/artifacts/http/7a3377cc0d5a-tavily-search.json",
+   "sha256": "7a3377cc0d5a69bef24cd3d869879cc45ed30a4428b487d637d73f39a8eff577",
+   "bytes": 7926
+  },
+  {
+   "source": "data/agent/r2_acceptance/artifacts/http/a148b2b159db-tavily-extract.json",
+   "destination": "research_archive/p17/r2_acceptance/artifacts/http/a148b2b159db-tavily-extract.json",
+   "sha256": "a148b2b159db610a397dde2b04be2dc3a348ed001cf4a86ddcc897b45deb7abc",
+   "bytes": 193
+  },
+  {
+   "source": "data/agent/r2_acceptance/evidence.jsonl",
+   "destination": "research_archive/p17/r2_acceptance/evidence.jsonl",
+   "sha256": "42e9b5750da221ce3fec8bbe0393f908215279efabcd2c7d0aa30a8a019ef5fe",
+   "bytes": 2461
+  },
+  {
+   "source": "data/agent/r2_acceptance/memory.jsonl",
+   "destination": "research_archive/p17/r2_acceptance/memory.jsonl",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/r2_acceptance/summary.json",
+   "destination": "research_archive/p17/r2_acceptance/summary.json",
+   "sha256": "8e49830a4a86dc829516509ecc3d3faad0259db2aa2f7eff653fe00b21f2c901",
+   "bytes": 997
+  },
+  {
+   "source": "data/agent/archive/p17_case1/archive.json",
+   "destination": "research_archive/p17/runs/p17_case1/archive.json",
+   "sha256": "af5016c4193f1a99739312f73730b9f6dd0e488fe63584bd1829cc6c5e76229a",
+   "bytes": 4598
+  },
+  {
+   "source": "data/agent/archive/p17_case1/evidence.jsonl",
+   "destination": "research_archive/p17/runs/p17_case1/evidence.jsonl",
+   "sha256": "5859591bad4572114e195e798220a8f3866a33bcaa2a805e2ec2ae70c691d9a9",
+   "bytes": 19857
+  },
+  {
+   "source": "data/agent/archive/p17_case1/memory.jsonl",
+   "destination": "research_archive/p17/runs/p17_case1/memory.jsonl",
+   "sha256": "60dc426af91848a0fda95433aa44f62c5f50b506d1cf8674956fb52b14736046",
+   "bytes": 4209
+  },
+  {
+   "source": "data/agent/archive/p17_case1/result.json",
+   "destination": "research_archive/p17/runs/p17_case1/result.json",
+   "sha256": "65c71669c3986e224aa14003059bad29c502c31b9e5f8e7bff7f31f0069510cd",
+   "bytes": 19312
+  },
+  {
+   "source": "data/agent/archive/p17_case1/transcript.jsonl",
+   "destination": "research_archive/p17/runs/p17_case1/transcript.jsonl",
+   "sha256": "d8521b68be3d7cbac012c89e5ed20ad539d22280ede45d6003192fbf8d489464",
+   "bytes": 28708
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/cve_65160_nvd.json",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/cve_65160_nvd.json",
+   "sha256": "c065f0bccee99246ef2d50ab1aaa51a4829a225a983fd4cb133c906075279db0",
+   "bytes": 4448
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/cve_report.txt",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/cve_report.txt",
+   "sha256": "6b720da84fcefc4fa8aa2d3a63e09eacfa6feb57ebf5daeebb7e69a6f23fd0f9",
+   "bytes": 724
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/dump_cve.py",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/dump_cve.py",
+   "sha256": "a25b7b770573fc3b9416361e961abc9df54292327d97401044de1fe3a9cafcff",
+   "bytes": 2218
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/fetch_cve.py",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/fetch_cve.py",
+   "sha256": "80fae128c0998eb20a04d95bb95c695f8090d6cfb30681b53abc92038b54a890",
+   "bytes": 1640
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/nvd_CVE-2026-65160.json",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/nvd_CVE-2026-65160.json",
+   "sha256": "4297d99af5b6c2abf73bbfa2002bc61f00fca5afb8c28bbbe9ec25fbfd8d9e79",
+   "bytes": 4103
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/probe_nvjpeg.ps1",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/probe_nvjpeg.ps1",
+   "sha256": "cfabd39e86224b86c796d9ad4b05267962eb691b5036a8b8812ca47b0f002166",
+   "bytes": 1463
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/ref_0.html",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/ref_0.html",
+   "sha256": "686cc36d88616507089b54bf440fbc08219b2ee98fdf1306d71ac6c32aebb981",
+   "bytes": 187799
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/ref_0.txt",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/ref_0.txt",
+   "sha256": "29f4e76fcd79f17082f0b00d4cb1e76e2e05abea17cb9496823781b5f716666f",
+   "bytes": 3437
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/ref_1.html",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/ref_1.html",
+   "sha256": "270a2245af9eeadefb2cfd43262f8a1989573d7e7d5e2f007164fbcfbdf39f3d",
+   "bytes": 2703
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/ref_1.txt",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/ref_1.txt",
+   "sha256": "2d5f2304fee2f5dc31381a6efd12a72b3defabd1954c7d96ee601e51d2f6ccd5",
+   "bytes": 66
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/ref_2.html",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/ref_2.html",
+   "sha256": "0b95bbde99c48552a38d4f253ff55f8331c23f6b4464a70ec5bd1119352dd002",
+   "bytes": 918
+  },
+  {
+   "source": "data/agent/archive/p17_case1/workspace/ref_2.txt",
+   "destination": "research_archive/p17/runs/p17_case1/workspace/ref_2.txt",
+   "sha256": "b4a92443de5a1b3f5e25c4c770e40e6f1a041c14a90ca4ea7e46a7636bf73e4e",
+   "bytes": 213
+  },
+  {
+   "source": "data/agent/archive/p17_case2/archive.json",
+   "destination": "research_archive/p17/runs/p17_case2/archive.json",
+   "sha256": "6edff8c58990c0d195bcf1393d1dae975e1c990d439c1f5cea15248cfb76ef80",
+   "bytes": 4883
+  },
+  {
+   "source": "data/agent/archive/p17_case2/evidence.jsonl",
+   "destination": "research_archive/p17/runs/p17_case2/evidence.jsonl",
+   "sha256": "2ac5d4b088117dc95282c031e1b63c51994c3ac6375bdc277ae4e886a369addc",
+   "bytes": 21051
+  },
+  {
+   "source": "data/agent/archive/p17_case2/memory.jsonl",
+   "destination": "research_archive/p17/runs/p17_case2/memory.jsonl",
+   "sha256": "f5a65d855d6ee7b6f789eac3e864456d8303b2fa5a62fd4cd6ca592b7ff718ba",
+   "bytes": 3735
+  },
+  {
+   "source": "data/agent/archive/p17_case2/result.json",
+   "destination": "research_archive/p17/runs/p17_case2/result.json",
+   "sha256": "6d700e17258a8aee035188261c9cca921d69506e2f2ff3abf46f8fa6c2d8b3bc",
+   "bytes": 13949
+  },
+  {
+   "source": "data/agent/archive/p17_case2/transcript.jsonl",
+   "destination": "research_archive/p17/runs/p17_case2/transcript.jsonl",
+   "sha256": "566acfabd6531f4f5190826eb0bc9cf9ddc239aaf4120a7a7a35c81480e35532",
+   "bytes": 17974
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/cve_65160_nvd.json",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/cve_65160_nvd.json",
+   "sha256": "c065f0bccee99246ef2d50ab1aaa51a4829a225a983fd4cb133c906075279db0",
+   "bytes": 4448
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/cve_report.txt",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/cve_report.txt",
+   "sha256": "6b720da84fcefc4fa8aa2d3a63e09eacfa6feb57ebf5daeebb7e69a6f23fd0f9",
+   "bytes": 724
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/dump_cve.py",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/dump_cve.py",
+   "sha256": "a25b7b770573fc3b9416361e961abc9df54292327d97401044de1fe3a9cafcff",
+   "bytes": 2218
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/fetch_cve.py",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/fetch_cve.py",
+   "sha256": "80fae128c0998eb20a04d95bb95c695f8090d6cfb30681b53abc92038b54a890",
+   "bytes": 1640
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/nvd_CVE-2026-65160.json",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/nvd_CVE-2026-65160.json",
+   "sha256": "4297d99af5b6c2abf73bbfa2002bc61f00fca5afb8c28bbbe9ec25fbfd8d9e79",
+   "bytes": 4103
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/probe_nvjpeg.ps1",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/probe_nvjpeg.ps1",
+   "sha256": "cfabd39e86224b86c796d9ad4b05267962eb691b5036a8b8812ca47b0f002166",
+   "bytes": 1463
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/ref_0.html",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/ref_0.html",
+   "sha256": "686cc36d88616507089b54bf440fbc08219b2ee98fdf1306d71ac6c32aebb981",
+   "bytes": 187799
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/ref_0.txt",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/ref_0.txt",
+   "sha256": "29f4e76fcd79f17082f0b00d4cb1e76e2e05abea17cb9496823781b5f716666f",
+   "bytes": 3437
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/ref_1.html",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/ref_1.html",
+   "sha256": "270a2245af9eeadefb2cfd43262f8a1989573d7e7d5e2f007164fbcfbdf39f3d",
+   "bytes": 2703
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/ref_1.txt",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/ref_1.txt",
+   "sha256": "2d5f2304fee2f5dc31381a6efd12a72b3defabd1954c7d96ee601e51d2f6ccd5",
+   "bytes": 66
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/ref_2.html",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/ref_2.html",
+   "sha256": "0b95bbde99c48552a38d4f253ff55f8331c23f6b4464a70ec5bd1119352dd002",
+   "bytes": 918
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/ref_2.txt",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/ref_2.txt",
+   "sha256": "b4a92443de5a1b3f5e25c4c770e40e6f1a041c14a90ca4ea7e46a7636bf73e4e",
+   "bytes": 213
+  },
+  {
+   "source": "data/agent/archive/p17_case2/workspace/search_refs.py",
+   "destination": "research_archive/p17/runs/p17_case2/workspace/search_refs.py",
+   "sha256": "554c05696c75cbf9c37281ba47934e64188430e6cfa51c479c810dbbae629347",
+   "bytes": 1126
+  },
+  {
+   "source": "docs/P18_AUTONOMOUS_AGENT_FINAL_REPORT.md",
+   "destination": "research_archive/p18/P18_AUTONOMOUS_AGENT_FINAL_REPORT.md",
+   "sha256": "5c8f8e68b8b013083377614781984626f081f188c3dfd5e888a6bc14c1b8b47a",
+   "bytes": 8956
+  },
+  {
+   "source": "data/agent/goal_nvjpeg.md",
+   "destination": "research_archive/p18/goals/goal_nvjpeg.md",
+   "sha256": "7218d8d9aca8116601a3f84d88309b08a84d8b32deabec3a5715b944ea71fea9",
+   "bytes": 1155
+  },
+  {
+   "source": "data/agent/goal_nvjpeg2.md",
+   "destination": "research_archive/p18/goals/goal_nvjpeg2.md",
+   "sha256": "8aa2552b656df72971c681bcabd63e4d05d6801c0c3d9fb6db9660590c8540b7",
+   "bytes": 906
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/case.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/case.json",
+   "sha256": "f9bc3d2a463d1fbdf3e323907d66a3c177d69a1896093ff81e4b2b55b3035fbf",
+   "bytes": 125
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/environment.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/report.md",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/report.md",
+   "sha256": "0f99601c704838bffd3f6f41f20524aa05839b533d1242b4caa5f6e94db01a03",
+   "bytes": 316
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/artifacts/http/b5523dabcac8-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/artifacts/http/b5523dabcac8-tavily-search.json",
+   "sha256": "b5523dabcac8ba787e60f4a84fdc5450f51326d6b8884a6200e4923c8c840f81",
+   "bytes": 8534
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/artifacts/http/defd8541667e-services-nvd-nist-gov-rest-json-cves-2-0-cveId-CVE-2024-0111.body",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/artifacts/http/defd8541667e-services-nvd-nist-gov-rest-json-cves-2-0-cveId-CVE-2024-0111.body",
+   "sha256": "defd8541667e82b7e463982d33884cf8a889a712c51449257e228f2c61273fba",
+   "bytes": 2982
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/artifacts/stderr/defc24b8bc54-shell-160519.err",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/artifacts/stderr/defc24b8bc54-shell-160519.err",
+   "sha256": "20668242420b5af5af833b93eba8598bc3ae3ef3f7b3df5066f000c5fa55537e",
+   "bytes": 110
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/artifacts/stderr/defc24b8bc54-shell-160529.err",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/artifacts/stderr/defc24b8bc54-shell-160529.err",
+   "sha256": "20668242420b5af5af833b93eba8598bc3ae3ef3f7b3df5066f000c5fa55537e",
+   "bytes": 110
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/artifacts/stdout/e3b0c44298fc-shell-160519.out",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/artifacts/stdout/e3b0c44298fc-shell-160519.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/artifacts/stdout/e3b0c44298fc-shell-160529.out",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/artifacts/stdout/e3b0c44298fc-shell-160529.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/evidence.jsonl",
+   "sha256": "6c5fb119553cce0800b13d8d6c9ed90524c31f44fda0f62c4d3fcec1eba006f9",
+   "bytes": 15466
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/memory.jsonl",
+   "sha256": "8a132acc1f61f82c0bb639a99be8a977a9e3d71c34f8b64d98ef9b4c6dc51065",
+   "bytes": 3519
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/result.json",
+   "sha256": "a74e759966958e587a0caff3dea3d7325b447df1badad1075f873afffbff0479",
+   "bytes": 11632
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/run.json",
+   "sha256": "16933c33502bd24a8f13dd69e51ce1eaeea79ebec8aef88ed8070025f43c3338",
+   "bytes": 2061
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/run/transcript.jsonl",
+   "sha256": "68a20a44393249e3d67c67bafca7458083a98b6ce913593fd6b2fb91c8a53bfd",
+   "bytes": 13349
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/blind/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/blind/verdict.json",
+   "sha256": "aee29c74cdb8fbda79e75cb7c5ebd1b8215ae1451354e877107d07f422c43be1",
+   "bytes": 779
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/case.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/case.json",
+   "sha256": "bdbac0369812b8a6dd9371423eed6f3939925b1e2d444a458220726941c57106",
+   "bytes": 124
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/environment.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/report.md",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/report.md",
+   "sha256": "dbfdcf5ae9471e5e0a4fdbe535d509d40889ccabdb321583c2a061751582fbcf",
+   "bytes": 6106
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/files/a290298f1c10-fetch_evidence.py",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/files/a290298f1c10-fetch_evidence.py",
+   "sha256": "a290298f1c10b222af9d17c2a146a7578f1eaed2bb346dff0283c3ed45556ea8",
+   "bytes": 2875
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/http/41402b765942-services-nvd-nist-gov-rest-json-cves-2-0-cveId-CVE-2024-0111.body",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/http/41402b765942-services-nvd-nist-gov-rest-json-cves-2-0-cveId-CVE-2024-0111.body",
+   "sha256": "41402b7659426789987e5362a919a1a4d008007ad84b3823c59170f8bb76ca98",
+   "bytes": 2982
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/http/6d5850409e8e-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/http/6d5850409e8e-tavily-extract.json",
+   "sha256": "6d5850409e8ea19743171f85ff8acc8c137462337f97720f47284c184ecb1278",
+   "bytes": 5554
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/http/a81748485c01-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/http/a81748485c01-tavily-search.json",
+   "sha256": "a81748485c01c301cd139a932ca61718ba6b64274812f9e67444c19e2d0d73e2",
+   "bytes": 16093
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/stderr/defc24b8bc54-shell-161249.err",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/stderr/defc24b8bc54-shell-161249.err",
+   "sha256": "20668242420b5af5af833b93eba8598bc3ae3ef3f7b3df5066f000c5fa55537e",
+   "bytes": 110
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/stderr/e3b0c44298fc-shell-161138.err",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/stderr/e3b0c44298fc-shell-161138.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/stderr/e3b0c44298fc-shell-161207.err",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/stderr/e3b0c44298fc-shell-161207.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/stdout/35ab8d3b06e0-shell-161207.out",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/stdout/35ab8d3b06e0-shell-161207.out",
+   "sha256": "3153a1d3fb085c6c36bef5ecf2c1dd1b7595c79bb493eab27e55fb5834dab606",
+   "bytes": 5388
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/stdout/c748294f4773-shell-161138.out",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/stdout/c748294f4773-shell-161138.out",
+   "sha256": "d30e0b834f82c8a0cba32cb3f8ba460a86b71773f9ac9535e59181d0452464ab",
+   "bytes": 254
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/artifacts/stdout/e3b0c44298fc-shell-161249.out",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/artifacts/stdout/e3b0c44298fc-shell-161249.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/evidence.jsonl",
+   "sha256": "89f87884cf13b78611a506d22f3de405293db945d90c650c0dd206d44ac4b7a7",
+   "bytes": 24616
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/memory.jsonl",
+   "sha256": "66cee5e2048b626c0b077ea9f575f1004047a6ebced9d25b9f78906820ac4cc2",
+   "bytes": 4387
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/result.json",
+   "sha256": "fbce53e1f483fa0f13cdeffc43abfdad2a8ec251f16c0f23697ba26fe5049d4a",
+   "bytes": 24862
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/run.json",
+   "sha256": "1c7d8b0cbe63e4358490cc2cea455569584225a7d7bc4ec1218b2f2193ee336d",
+   "bytes": 2556
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/transcript.jsonl",
+   "sha256": "4fa449316c22f9246d94f50143b573e8e814e7205354019637b64012ac243a48",
+   "bytes": 22550
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/workspace/bulletin_5564.html",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/workspace/bulletin_5564.html",
+   "sha256": "3c9e391bdd9e6a4ba592168ff668992c63fac85b62eab5cd94c95d235f9a4a88",
+   "bytes": 34187
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/workspace/bulletin_5564.txt",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/workspace/bulletin_5564.txt",
+   "sha256": "21cf8a2e47f2b3c8a1efac033a3358afa1e53af92e16f1ccdc79900e88f85048",
+   "bytes": 5157
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/workspace/fetch_evidence.py",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/workspace/fetch_evidence.py",
+   "sha256": "a290298f1c10b222af9d17c2a146a7578f1eaed2bb346dff0283c3ed45556ea8",
+   "bytes": 2875
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/run/workspace/nvd_0111.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/run/workspace/nvd_0111.json",
+   "sha256": "f39990f076804ece776c2247583e84f5a9de9ef0f9a41ac22e4398b18c1aed81",
+   "bytes": 2982
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0111/seed/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2024-0111/seed/verdict.json",
+   "sha256": "70885e32b7aade78de7b1c2f85a8118ba8f43654377fb6a08629d2222f6fa697",
+   "bytes": 6644
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/case.json",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/case.json",
+   "sha256": "48ea72e0b23e1656112770ce56105f0250c9e0debf8b9cf69398cb1d80a50bcd",
+   "bytes": 125
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/environment.json",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/report.md",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/report.md",
+   "sha256": "b0d95c88e38572b6d819803faf8cab8668fb3a9a57524b379d444b26876d0c45",
+   "bytes": 3834
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/artifacts/http/47efc70736bc-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/artifacts/http/47efc70736bc-tavily-search.json",
+   "sha256": "47efc70736bc3cb662f0afa4fedba45c89bf7aef6e58a69a59e0efe5efcc4263",
+   "bytes": 10681
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/artifacts/http/97d41939e307-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/artifacts/http/97d41939e307-tavily-extract.json",
+   "sha256": "97d41939e307fa276f0dfc03a3a1f4dcd668ee247e164980de80f84ea82df2e9",
+   "bytes": 203
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/artifacts/http/a45bfea57cdd-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/artifacts/http/a45bfea57cdd-tavily-extract.json",
+   "sha256": "a45bfea57cddc47afdea708af007cb590f3b96a4ee841fbfc7a3b06f2c80d7f3",
+   "bytes": 2859
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/artifacts/stderr/579d354909d9-shell-160728.err",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/artifacts/stderr/579d354909d9-shell-160728.err",
+   "sha256": "b6db7c298f08e804f098eaee505f84517505c286c811240cfedf4cba8627d4ea",
+   "bytes": 48
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/artifacts/stderr/defc24b8bc54-shell-160712.err",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/artifacts/stderr/defc24b8bc54-shell-160712.err",
+   "sha256": "20668242420b5af5af833b93eba8598bc3ae3ef3f7b3df5066f000c5fa55537e",
+   "bytes": 110
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/artifacts/stdout/7f8e6d3f5359-shell-160728.out",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/artifacts/stdout/7f8e6d3f5359-shell-160728.out",
+   "sha256": "ee7445a188a7815051d120756213e37c30f39256374e4f9070cff27eb413bfc7",
+   "bytes": 418
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/artifacts/stdout/e3b0c44298fc-shell-160712.out",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/artifacts/stdout/e3b0c44298fc-shell-160712.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/evidence.jsonl",
+   "sha256": "19d924c0a30962ae59818c15338f5155f4e3fcc38f3c07e9df1c1ac6d97a0541",
+   "bytes": 13933
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/memory.jsonl",
+   "sha256": "a5eccecbb5965d52b44a134371aaee9645708eaf2fc0960b3cf4504c88fb6867",
+   "bytes": 2891
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/result.json",
+   "sha256": "cd08ad287db23873edd79a8290a78592981a7c8ea19f1805564c39732e13df70",
+   "bytes": 14029
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/run.json",
+   "sha256": "b98d72b4a72d388f5a5f303487d6af1c7c70f5a83e4a89e644d9ec7493182f0b",
+   "bytes": 2061
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/run/transcript.jsonl",
+   "sha256": "f9dc7ac0465a1e01db3ffef460dd0ef93cc1f2a8c14a78110c243aa8c738b468",
+   "bytes": 17666
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0124/blind/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2024-0124/blind/verdict.json",
+   "sha256": "1d5cfd18e4d9358f982ba4907b3bee40edece8c2aff20d196e79440e58097734",
+   "bytes": 4299
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/case.json",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/case.json",
+   "sha256": "448f0bcc97212587533e72ffecf8f471a6e226f94019dc5f1ebe9a43e1d48d22",
+   "bytes": 125
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/environment.json",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/report.md",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/report.md",
+   "sha256": "41fed74bc04c72d76cfcdab69173908923e803bad6a9ab08bdedf4f3f0b1b0b5",
+   "bytes": 3774
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/artifacts/http/4228c6ab279d-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/artifacts/http/4228c6ab279d-tavily-extract.json",
+   "sha256": "4228c6ab279d5212d909485ee6d423400eeb9cba59320b26aadcd607469c6ad1",
+   "bytes": 203
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/artifacts/http/cce203c1df6b-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/artifacts/http/cce203c1df6b-tavily-search.json",
+   "sha256": "cce203c1df6bf13b5dd47b68552559df4ec40a9fe5c449ed7bab169b6f004381",
+   "bytes": 18061
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/artifacts/stderr/defc24b8bc54-shell-160838.err",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/artifacts/stderr/defc24b8bc54-shell-160838.err",
+   "sha256": "20668242420b5af5af833b93eba8598bc3ae3ef3f7b3df5066f000c5fa55537e",
+   "bytes": 110
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/artifacts/stdout/e3b0c44298fc-shell-160838.out",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/artifacts/stdout/e3b0c44298fc-shell-160838.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/evidence.jsonl",
+   "sha256": "986ccc14e4fe2fb9230ea3ddbaf3d84879c816b22801b23f640b9724a57b394e",
+   "bytes": 13817
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/memory.jsonl",
+   "sha256": "15a80a09750207dc5e1cd05ac2590732fbfcb6f5b4196b7effbffe29d4819b27",
+   "bytes": 3972
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/result.json",
+   "sha256": "7aec3b2733de9656db01b5711c8bf28514c50b2e6893ea1b99ff06b937627158",
+   "bytes": 16502
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/run.json",
+   "sha256": "8503421bc9a232bfa4f4a344e6247442e2354fe02ae37e19e3aad3d7ae4f7d75",
+   "bytes": 2061
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/run/transcript.jsonl",
+   "sha256": "8bb399a072c8171dee3ac029698dbb77340302b9c6810526bc73e2c10d2ddc80",
+   "bytes": 13371
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2024-0125/blind/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2024-0125/blind/verdict.json",
+   "sha256": "0b8af24b504aaeac66074137686361e799fc6e863859a51333647553b423467e",
+   "bytes": 4263
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/case.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/case.json",
+   "sha256": "5cef8134e2da5675305ae793e33a58f339b0a7b09c1849e752a07eee91cb49d3",
+   "bytes": 126
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/environment.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/report.md",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/report.md",
+   "sha256": "2d7df8f29ecf70b9e07ff92f0b3db69496223394b91a0c953c96d997312cc21e",
+   "bytes": 4162
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/run/artifacts/http/c3f2ffd340d5-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/run/artifacts/http/c3f2ffd340d5-tavily-extract.json",
+   "sha256": "c3f2ffd340d547fe4570a1dd570c207dcb0a793adc8473bd066adb6bbc379214",
+   "bytes": 204
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/run/artifacts/http/e15dad4cae23-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/run/artifacts/http/e15dad4cae23-tavily-search.json",
+   "sha256": "e15dad4cae239834b3658d42274790dc3f7e86974188ac74a3b244c03647ce9b",
+   "bytes": 13580
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/run/artifacts/http/fd4011ece9af-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/run/artifacts/http/fd4011ece9af-tavily-extract.json",
+   "sha256": "fd4011ece9af2f8a02094f902c3e1796f9c449451cfc47ab66cbf6e3971af413",
+   "bytes": 9905
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/run/evidence.jsonl",
+   "sha256": "1f9039874ddbb3cc10e2fd81c0c009ff91115b5fefd84d0087e2b50240301bf3",
+   "bytes": 11010
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/run/memory.jsonl",
+   "sha256": "0fe9c0531b3f56bf9207ea234d8692f9f89e8b1c8e6082a2e9cf4e0cd6f9988c",
+   "bytes": 3299
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/run/result.json",
+   "sha256": "c9381b8fac1b279154946470c7dbf382ee69b6b55442fb0c070187c50b90148a",
+   "bytes": 16418
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/run/run.json",
+   "sha256": "2223087ab15a2da83b6ebd90d6462b21d845d38ef17eea52c530d77861d7138c",
+   "bytes": 2063
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/run/transcript.jsonl",
+   "sha256": "2f6fa0210693615d128641b5e7008cdfec3d8fc0b1473a22b3f2a56c75398e71",
+   "bytes": 12814
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind/verdict.json",
+   "sha256": "9908c5ccb2561a545295bd320e0112a5523fd88ceb6d5a731ae86a0a0d0ec1e8",
+   "bytes": 4631
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/case.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/case.json",
+   "sha256": "5cef8134e2da5675305ae793e33a58f339b0a7b09c1849e752a07eee91cb49d3",
+   "bytes": 126
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/environment.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/report.md",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/report.md",
+   "sha256": "0713d946443aed650ef100e1391f00005c44e956580bd1114440a7118b724f7a",
+   "bytes": 5917
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/artifacts/files/a86dbf2198cb-nvdisasm_fuzz.py",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/artifacts/files/a86dbf2198cb-nvdisasm_fuzz.py",
+   "sha256": "a86dbf2198cb2c6c8d322d42b21adfb3aa68db841b69d5d0766a1d292de47d8b",
+   "bytes": 6974
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/artifacts/http/83835f84043f-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/artifacts/http/83835f84043f-tavily-search.json",
+   "sha256": "83835f84043f4f10e398e8f18ad7d0c894ad7b546afd408cddd1c868f6fc8024",
+   "bytes": 19466
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/artifacts/stderr/28e8e299ec1c-shell-162532.err",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/artifacts/stderr/28e8e299ec1c-shell-162532.err",
+   "sha256": "6317722e4c813ad24de1c93d0fddcaf128b7a94302f004b4ec095ebc45d52b58",
+   "bytes": 73
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/artifacts/stderr/e3b0c44298fc-shell-163126.err",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/artifacts/stderr/e3b0c44298fc-shell-163126.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/artifacts/stdout/e3b0c44298fc-shell-162532.out",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/artifacts/stdout/e3b0c44298fc-shell-162532.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/artifacts/stdout/f0c2cb990584-shell-163126.out",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/artifacts/stdout/f0c2cb990584-shell-163126.out",
+   "sha256": "fd36de8687df7fce0d408ee6ac5bce1f1dfa5ac2d6ae0b727b71bf4405bf2c63",
+   "bytes": 5225
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/evidence.jsonl",
+   "sha256": "fe74176e534c9aeb0f9eee0a619a0027c3f1815548acf6e5f1480a34f4e190e0",
+   "bytes": 21048
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/memory.jsonl",
+   "sha256": "548a6ae5c32a6b783539c7333fc35dd830cdf39b0a761b39bc993c472a0a43fd",
+   "bytes": 3524
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/result.json",
+   "sha256": "ba81a7cba56157e26853d04f1cc8b2477893c913ab99a219218463d6b571de1d",
+   "bytes": 24632
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/run.json",
+   "sha256": "6d8b69092fa52d36abda4b64a93c45945cb3a47742c15efea58e2121952867d2",
+   "bytes": 2063
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/transcript.jsonl",
+   "sha256": "2e54706027c0b13b50e535effc91d37574f4bab6d8cf49d2cf84a3033bc6ee13",
+   "bytes": 22004
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/nvdisasm_fuzz.py",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/nvdisasm_fuzz.py",
+   "sha256": "a86dbf2198cb2c6c8d322d42b21adfb3aa68db841b69d5d0766a1d292de47d8b",
+   "bytes": 6974
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/base.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/base.cubin",
+   "sha256": "945902331d80bc2ad16ca2cf5cf80cdf2e509f3d7183cc3840ae72983dc34d67",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/case.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/case.cubin",
+   "sha256": "55c10eb8cf0fcde611bfd9fbedd30cfe2529a7bc7afe9c249f57e6615647ec15",
+   "bytes": 1024
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh10_sh_addralign_ffffffffffffffff_3a22b3bc11803b00.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh10_sh_addralign_ffffffffffffffff_3a22b3bc11803b00.cubin",
+   "sha256": "3a22b3bc11803b00e65111480351a57409f55bfdc94bb1fbbe6a43081238c3ff",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_addralign_1_7e5e1b821e7ac45f.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_addralign_1_7e5e1b821e7ac45f.cubin",
+   "sha256": "7e5e1b821e7ac45fd6d6ae1d95c338f433ed380e3d150ce8627288af42bce9a6",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_addralign_2_ed50d88c408e0f5e.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_addralign_2_ed50d88c408e0f5e.cubin",
+   "sha256": "ed50d88c408e0f5eba357799b8576f51112a83fce4476a0d09d56b2e28a640e8",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_addralign_7f_ba7a0d966c6fab1b.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_addralign_7f_ba7a0d966c6fab1b.cubin",
+   "sha256": "ba7a0d966c6fab1b4323fa5ce5b297d357c6b89adb9f66c24b19294cba5abae5",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_addralign_80_3c940e9fd963a9ae.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_addralign_80_3c940e9fd963a9ae.cubin",
+   "sha256": "3c940e9fd963a9ae1510b5dd3fa7f81fe9cac68b0a0bea289070a7f73b6a3aee",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_0_92c7e055a8323d37.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_0_92c7e055a8323d37.cubin",
+   "sha256": "92c7e055a8323d3767d56fbb4d23591a86d876841cdbcf40aa8b8d0e2f1427a1",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_100_e470759749bfba8f.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_100_e470759749bfba8f.cubin",
+   "sha256": "e470759749bfba8f620fbc2242ebabf74fd8bcd6aa83c7a8f25939c9839757bb",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_1_2ba9d34a0365e080.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_1_2ba9d34a0365e080.cubin",
+   "sha256": "2ba9d34a0365e080952c66269d8dc91c3faaa3814fa4a3d7fbee888994540f93",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_7f_b320ec84e71fd6d5.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_7f_b320ec84e71fd6d5.cubin",
+   "sha256": "b320ec84e71fd6d5c9d4f9df8309072527a83e68a43bbbc728261bee92cd2cc9",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_7fffffff_6ab78590b45b606d.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_7fffffff_6ab78590b45b606d.cubin",
+   "sha256": "6ab78590b45b606d2d944280817407a2d9f13eb5dcc4b53b01f6a632e9f00a3a",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_80_e0aaf157c64bf4c3.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_80_e0aaf157c64bf4c3.cubin",
+   "sha256": "e0aaf157c64bf4c3cb647dd5ccf44c2efaa1f7fe0c2b69eb3e4f8e9405580d0c",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_ff_b1833ff8ed9249de.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_ff_b1833ff8ed9249de.cubin",
+   "sha256": "b1833ff8ed9249de8bb9e882c1409590ba98d47b63a5268335271f5ff6c4b683",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_ffff_1882fb4fd0185200.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_ffff_1882fb4fd0185200.cubin",
+   "sha256": "1882fb4fd01852000248d5ebe3d71ccea566fcf72ecfbcade26ea3f2123b95be",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_ffffffff_f6abf40391413bd0.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh3_sh_type_ffffffff_f6abf40391413bd0.cubin",
+   "sha256": "f6abf40391413bd0ea42aa6ff3b1f1117335f80828fbc996f6e3104cd0f035cb",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh4_sh_addralign_0_4d592f1b40458806.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh4_sh_addralign_0_4d592f1b40458806.cubin",
+   "sha256": "4d592f1b404588069a17936a5129ba0e809f21e330f1b0f13d03fe33d31b4130",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh4_sh_addralign_ffffffffffffffff_ea333cc6c6093de5.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh4_sh_addralign_ffffffffffffffff_ea333cc6c6093de5.cubin",
+   "sha256": "ea333cc6c6093de56344915f44b29a34924a8646f6292aaf84c0fda54ab70cd4",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh5_sh_addralign_ffffffffffffffff_919776da81d969fa.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh5_sh_addralign_ffffffffffffffff_919776da81d969fa.cubin",
+   "sha256": "919776da81d969faf92eee8464ef21e9dbf44a12a35bb65a8f70a080b9b540b5",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh6_sh_addralign_ffffffffffffffff_9d7ab0d7373b18cd.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh6_sh_addralign_ffffffffffffffff_9d7ab0d7373b18cd.cubin",
+   "sha256": "9d7ab0d7373b18cd6638b491be5feb076ae9cdc23c3aa7b8a294a456d8a8b185",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh7_sh_type_2_13062a4a725ce507.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh7_sh_type_2_13062a4a725ce507.cubin",
+   "sha256": "13062a4a725ce507ff79be4a27d3de30ef809ec5439a1468a0bbf1e8b12d49f4",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh8_sh_addralign_ffffffffffffffff_483c9798bc07756d.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh8_sh_addralign_ffffffffffffffff_483c9798bc07756d.cubin",
+   "sha256": "483c9798bc07756d2ff013a88b4fd653758c53700eb9f7bd7b1ef94c5f4e4dab",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh9_sh_size_0_79426155f68842cc.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh9_sh_size_0_79426155f68842cc.cubin",
+   "sha256": "79426155f68842ccfc73061b7cbafef440115e5e76603e28636e65af19a44fef",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh9_sh_size_1_533be476dc920c09.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh9_sh_size_1_533be476dc920c09.cubin",
+   "sha256": "533be476dc920c0943372e69f201bc59c0cc583da31eaa63d3bce5ac8f9a6e12",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh9_sh_size_2_ceb96e00fca4770d.cubin",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/crashes/sh9_sh_size_2_ceb96e00fca4770d.cubin",
+   "sha256": "ceb96e00fca4770d0e83e9a17f5453160d83739e1b79e4ad0fa8c0be0c836462",
+   "bytes": 2600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/fuzz_report.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/fuzz_report.json",
+   "sha256": "a80cfe3cbd35d92373afc70cc8a69138bf119c0f0eacbf66032477a70daf00a1",
+   "bytes": 11353
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/run/workspace/poc/k.cu",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/run/workspace/poc/k.cu",
+   "sha256": "0bc714f5f81325155aa5fbb17e3602c4fe661f7b483499e94afebde061c467eb",
+   "bytes": 174
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23308/blind_render2/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2025-23308/blind_render2/verdict.json",
+   "sha256": "47b83edb56f3f2066473a949ccf1ad2c5a9005562477ccb4eb203db0ffb71c55",
+   "bytes": 6358
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/case.json",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/case.json",
+   "sha256": "cf01e68ff7ba31a65873d978a9acbe2054da9a8c50469171b56be8990268e578",
+   "bytes": 126
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/environment.json",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/report.md",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/report.md",
+   "sha256": "dfe2db6f4b78b502d548f0db5bd855c5a1a52dd8ecb4fb99671985ddfd6999a8",
+   "bytes": 733
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/http/29147e16efdf-nvd-nist-gov-vuln-detail-CVE-2025-23338.body",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/http/29147e16efdf-nvd-nist-gov-vuln-detail-CVE-2025-23338.body",
+   "sha256": "696727c0efd43948eb8afc57257d06249e7874ab532d478750f7eb3c091b1196",
+   "bytes": 2666
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/http/82bacdb9b3e7-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/http/82bacdb9b3e7-tavily-extract.json",
+   "sha256": "82bacdb9b3e73cd8bb83319e1a2d968dd67a63f585cfc445562e155bc64a9cd0",
+   "bytes": 11305
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/http/92d20bce357b-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/http/92d20bce357b-tavily-search.json",
+   "sha256": "92d20bce357b1a91b46ccc68255e4c284d77f950a0f19bda42f02e83fb487852",
+   "bytes": 10375
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/stderr/3670f7f3f425-shell-160348.err",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/stderr/3670f7f3f425-shell-160348.err",
+   "sha256": "ee1d6f8cfdd694c89f7b564b142f20160171d28889459dfbe869934a54295472",
+   "bytes": 116
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/stderr/cdd5bc2ed2d1-shell-160251.err",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/stderr/cdd5bc2ed2d1-shell-160251.err",
+   "sha256": "972d41850a524dafcd15072468e2c80866e0c30f4b9d5c321db845fc07a4d656",
+   "bytes": 116
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/stderr/e3b0c44298fc-shell-160246.err",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/stderr/e3b0c44298fc-shell-160246.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/stdout/5d5844ffb465-shell-160246.out",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/stdout/5d5844ffb465-shell-160246.out",
+   "sha256": "fd0662e4fb29e845ca0e9b05601b3dd6d36ae4ac19e3777aa3342ff5b32c4290",
+   "bytes": 1225
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/stdout/96f98616f9dd-shell-160251.out",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/stdout/96f98616f9dd-shell-160251.out",
+   "sha256": "07378dbdd4029cf58980f49e20a0d006c8c206a0a2ff3ae440d7c93b3e31141c",
+   "bytes": 325
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/artifacts/stdout/e3b0c44298fc-shell-160348.out",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/artifacts/stdout/e3b0c44298fc-shell-160348.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/evidence.jsonl",
+   "sha256": "806d5cc2a33639caf4eda04b23ae7ff466d398a48b30a98bcf0eaba63907aac3",
+   "bytes": 23148
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/memory.jsonl",
+   "sha256": "9f3ea4c595e1467451f3741c6eb6649f5e4148bd45438132ad296dd87623111e",
+   "bytes": 3694
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/result.json",
+   "sha256": "f156e07468ba722ad91aa69c3280ad3e9ebaf1fe159a9abe3d3a777e35354c10",
+   "bytes": 16081
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/run.json",
+   "sha256": "d855633f6824d4aa78561f86e2cd3d2706798362ddbcb5f190327f399af5141e",
+   "bytes": 2063
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/run/transcript.jsonl",
+   "sha256": "2fd5fe4e7df042d742a7fda0adda4a79efbd7a8470b8c0a1f04d76b9bced89df",
+   "bytes": 12556
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23338/blind/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2025-23338/blind/verdict.json",
+   "sha256": "976df13619714eef2cd029906e85a6d5e8384b4bfbd7129967f4d4d361014bbc",
+   "bytes": 1222
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/case.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/case.json",
+   "sha256": "eb969c322d814f6dc9e5b387c6f958f0cbafc9846606f071faa0df851536ef07",
+   "bytes": 126
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/environment.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/report.md",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/report.md",
+   "sha256": "240ed7a1366b6f1aa05ccb6c1eee210dc2646fa008f2b639b93bf15f1c016fd2",
+   "bytes": 5168
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/artifacts/http/178e67c2291b-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/artifacts/http/178e67c2291b-tavily-extract.json",
+   "sha256": "178e67c2291bda68564ccb489eb4397cc0bcf7ea39b3c1184eee97d05cde4a5f",
+   "bytes": 9888
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/artifacts/http/488ae8b9f018-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/artifacts/http/488ae8b9f018-tavily-search.json",
+   "sha256": "488ae8b9f018b2e9ad64d7e55c5559b6ed42937e0c3a843b6c7d7491a8690800",
+   "bytes": 10649
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/artifacts/http/823cc081cdb7-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/artifacts/http/823cc081cdb7-tavily-search.json",
+   "sha256": "823cc081cdb730914b40231ccaeb450916792b8d33d4725d518bec8acce68ec1",
+   "bytes": 12254
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/artifacts/http/e0951adb09e1-nvd-nist-gov-vuln-detail-CVE-2025-23346.body",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/artifacts/http/e0951adb09e1-nvd-nist-gov-vuln-detail-CVE-2025-23346.body",
+   "sha256": "a8b0566468f1bdde94f079314799afc613f7aa864d7767f6281db3135bb3ad13",
+   "bytes": 2666
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/artifacts/http/e1a2f5a1c7bc-services-nvd-nist-gov-rest-json-cves-2-0-cveId-CVE-2025-2334.body",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/artifacts/http/e1a2f5a1c7bc-services-nvd-nist-gov-rest-json-cves-2-0-cveId-CVE-2025-2334.body",
+   "sha256": "e1a2f5a1c7bc3f351807010bcd60645e88a705640bde991e26176709ee6c4a7d",
+   "bytes": 3321
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/artifacts/stderr/5be3a8c509bf-shell-160054.err",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/artifacts/stderr/5be3a8c509bf-shell-160054.err",
+   "sha256": "e24452d30b25ef5096a58691555225913e9af56ef67069d65cf8f64b1fbb6eeb",
+   "bytes": 1618
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/artifacts/stdout/1af232e1a72e-shell-160054.out",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/artifacts/stdout/1af232e1a72e-shell-160054.out",
+   "sha256": "35b37ae5895afe672bb53dbe663d95aa3edcad6a2a9723d0af34f78b2b9f2d61",
+   "bytes": 134
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/evidence.jsonl",
+   "sha256": "5464c5ef1bbe7319759bdcdadc428d689d5101ccf0c000dc9bd4b7893f001a37",
+   "bytes": 19189
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/memory.jsonl",
+   "sha256": "9866312ae8633150d51ef487aa7f3dd91da2e5a3a5069e4e3f9f125ffb50a835",
+   "bytes": 3815
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/result.json",
+   "sha256": "399ccca5c10ccb6010d1e018309133e083f2c9cee9d485f48ee093e1cf3764a1",
+   "bytes": 20602
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/run.json",
+   "sha256": "aef8ab860ee2025288d51843cbbee7ab85a91ed3005178258773afd38aef1137",
+   "bytes": 2063
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/run/transcript.jsonl",
+   "sha256": "5641a49680db4e59f39e8d335b3cbdaa0cd273bdcac3e947d30b9d9490cfe595",
+   "bytes": 16631
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/blind/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/blind/verdict.json",
+   "sha256": "e05e9cff4ceb23ba67d4ba801853f4103d0fe249ca95c8408fb2708b5b9c105c",
+   "bytes": 5664
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/case.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/case.json",
+   "sha256": "d4d0b1a0abad3e03bb3d85e824fb61d0ad1462ee57f18d5ef12e2e4fb13cf68c",
+   "bytes": 125
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/environment.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/report.md",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/report.md",
+   "sha256": "331e2f53527d0d408f86e25baeb681c6d59b9a3205669084580e79e29909cbbb",
+   "bytes": 734
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/http/19b6e0b2cff4-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/http/19b6e0b2cff4-tavily-extract.json",
+   "sha256": "19b6e0b2cff4d558412dfd214b7dd02116d3352452e55e31607b28a9fc7be074",
+   "bytes": 9888
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/http/24a06b91745f-tavily-extract.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/http/24a06b91745f-tavily-extract.json",
+   "sha256": "24a06b91745f863e640001bf325166b3f6059f337562227318aa9b64feda388a",
+   "bytes": 5970
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/http/5cef150d5b74-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/http/5cef150d5b74-tavily-search.json",
+   "sha256": "5cef150d5b747807e1c80a6388d7b4fc14e5546084e4a256826687ca3ed6dfbf",
+   "bytes": 9972
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/http/ae99801a9ebb-tavily-search.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/http/ae99801a9ebb-tavily-search.json",
+   "sha256": "ae99801a9ebb795fe24fea92b5410d09fcf09a793d13e4e7efa5748897fa4474",
+   "bytes": 14906
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/stderr/8ea3c4222ca3-shell-161031.err",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/stderr/8ea3c4222ca3-shell-161031.err",
+   "sha256": "bb6099db96ffc4859485d20b848a33e41267df41e74e4d9547fd6e5830901e41",
+   "bytes": 567
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/stderr/b42adec44d99-shell-161059.err",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/stderr/b42adec44d99-shell-161059.err",
+   "sha256": "ec0670e908c9c28f5cb444533c2d93c13e57f7d21499a3229afb0fd4b5a96334",
+   "bytes": 483
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/stderr/defc24b8bc54-shell-161011.err",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/stderr/defc24b8bc54-shell-161011.err",
+   "sha256": "20668242420b5af5af833b93eba8598bc3ae3ef3f7b3df5066f000c5fa55537e",
+   "bytes": 110
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/stderr/e3b0c44298fc-shell-160922.err",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/stderr/e3b0c44298fc-shell-160922.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/stdout/137fa9f23311-shell-161031.out",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/stdout/137fa9f23311-shell-161031.out",
+   "sha256": "b3a61d725bff866d4ab82df544a0e0c4bd3ee3d5975320bcb18fcc46f91c03f0",
+   "bytes": 285
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/stdout/7e2747e9d61e-shell-161011.out",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/stdout/7e2747e9d61e-shell-161011.out",
+   "sha256": "dfb256b7ac3ac86ec55b0a39b0603a5a088f30e9ca979b663ca5058f695942d6",
+   "bytes": 12
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/stdout/dac17de6d43b-shell-161059.out",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/stdout/dac17de6d43b-shell-161059.out",
+   "sha256": "41866bd8401c17f08491d6a80602f517623d4c72f47ac42dbf683641b244aac8",
+   "bytes": 600
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/artifacts/stdout/e7ad5ab63120-shell-160922.out",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/artifacts/stdout/e7ad5ab63120-shell-160922.out",
+   "sha256": "499dcffc0705922e9d5c21ccb940dc924bacbe1f912d43ad6e5abe40e5789980",
+   "bytes": 277
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/evidence.jsonl",
+   "sha256": "540626488cb6feacbd3d68fe27751cb6f1d881d471ab44adab3108adad1014ab",
+   "bytes": 28462
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/memory.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/memory.jsonl",
+   "sha256": "a630eaa514d55cec37b85538ddb960a6fe5a63611b17a57741fadc03303fe3ff",
+   "bytes": 5673
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/result.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/result.json",
+   "sha256": "06aea6970325c3a1f8ffe4e9dc308e85d131713ab43372964c2601eafc925b82",
+   "bytes": 21404
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/run.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/run.json",
+   "sha256": "318340bee24c899158439b4c8389e421624b55b40c0bdf080447a7a268bba96a",
+   "bytes": 2559
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/transcript.jsonl",
+   "sha256": "279fe5d16984049fa5fac0b2121653e307cc05403cf8ab64212c8ec4d92f9bbf",
+   "bytes": 15333
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/run/workspace/mitre.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/run/workspace/mitre.json",
+   "sha256": "125c588b75ec6d653ad37f2cb3d00d854b1d7ffb6aae68dd772a806fdfbd0efa",
+   "bytes": 2512
+  },
+  {
+   "source": "data/agent/benchmarks/p18/CVE-2025-23346/seed/verdict.json",
+   "destination": "research_archive/p18/original/CVE-2025-23346/seed/verdict.json",
+   "sha256": "87338b45e62157f5a874cb4362468abcecd53fd94f57ce7e00053caf73b2d1e4",
+   "bytes": 1232
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/case.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/case.json",
+   "sha256": "1bc62d52ee2980986ad30c96f7857bc5551e2b660a284605418190f000e33868",
+   "bytes": 129
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/environment.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/report.md",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/report.md",
+   "sha256": "4a4f9266fafa12f83087a02202f9d53d65a018aec8286742b07f49bd1f96101b",
+   "bytes": 737
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/files/4fa6353bf0c3-nvjpeg_probe.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/files/4fa6353bf0c3-nvjpeg_probe.py",
+   "sha256": "4fa6353bf0c301ac75de44f2b7304a7a417c6fb1dc97425ddcc9c2cd2e1684d2",
+   "bytes": 11355
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/files/d74ddc02ab10-probe.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/files/d74ddc02ab10-probe.py",
+   "sha256": "d74ddc02ab105f30d7e37803e0e51fac4a5bcf3405cc8f7bf5ecbff3955f903c",
+   "bytes": 4591
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stderr/60ac69f77843-shell-161348.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stderr/60ac69f77843-shell-161348.err",
+   "sha256": "8c343e4ba9eb8bb928b59094de98a490b8c7ec2d705f59614c5e017baac06350",
+   "bytes": 512
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stderr/7645622ced18-shell-161341.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stderr/7645622ced18-shell-161341.err",
+   "sha256": "cc6480d4538240967876a797f23f48cb7dbfab78e0a5cfffb3798d065e11dd7b",
+   "bytes": 292
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stderr/c2fefcaedf3f-shell-161338.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stderr/c2fefcaedf3f-shell-161338.err",
+   "sha256": "899251243ad7bbcd70ff892efa3840fdf415eed70bde49835e23860071a18a17",
+   "bytes": 140
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stderr/e3b0c44298fc-shell-161406.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stderr/e3b0c44298fc-shell-161406.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stderr/e3b0c44298fc-shell-161535.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stderr/e3b0c44298fc-shell-161535.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stderr/e3b0c44298fc-shell-161544.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stderr/e3b0c44298fc-shell-161544.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stderr/f16e53e0d9a8-shell-161605.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stderr/f16e53e0d9a8-shell-161605.err",
+   "sha256": "5ac7930a66d47b560fde3b0b33ec3f08c70cd14c44f05912477d4904c0678f73",
+   "bytes": 180
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stderr/fced89834093-shell-161557.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stderr/fced89834093-shell-161557.err",
+   "sha256": "3b7c46afd3c5055031e7012350f9fe02cad2b36abc678daf3d5ffbb8cb00c93f",
+   "bytes": 215
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stdout/036fc8ffb6c5-shell-161341.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stdout/036fc8ffb6c5-shell-161341.out",
+   "sha256": "dc66ef4aca212aba686d19a5db467979fc8bbf6cef4cc9706d18a6017e1106e7",
+   "bytes": 712
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stdout/c35bc58c05a5-shell-161535.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stdout/c35bc58c05a5-shell-161535.out",
+   "sha256": "ea639971dc3ca57ec685131569a7369617b58f3a8c2f31924e9683385206a091",
+   "bytes": 3597
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stdout/dcd9f6c5416f-shell-161406.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stdout/dcd9f6c5416f-shell-161406.out",
+   "sha256": "543bdc4a4762f97ba0302575b4b7855506321fe6537b600882426ba9ecf0de12",
+   "bytes": 2712
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stdout/e3b0c44298fc-shell-161338.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stdout/e3b0c44298fc-shell-161338.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stdout/e3b0c44298fc-shell-161544.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stdout/e3b0c44298fc-shell-161544.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stdout/e3b0c44298fc-shell-161557.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stdout/e3b0c44298fc-shell-161557.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stdout/e3b0c44298fc-shell-161605.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stdout/e3b0c44298fc-shell-161605.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/artifacts/stdout/f8ac6d493699-shell-161348.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/artifacts/stdout/f8ac6d493699-shell-161348.out",
+   "sha256": "ec8c8c9606da8be1f3a444dcdf6a24424fad8d99226d970eff5c3cd97f699b4f",
+   "bytes": 164
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/evidence.jsonl",
+   "sha256": "7308814fcd7d18bbb7a4f4121a76176fae4de8b26df1bed22814d48e7810a797",
+   "bytes": 49616
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/memory.jsonl",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/memory.jsonl",
+   "sha256": "ae78e6a9698a114d365b0222ca1f64c35f2214f259127d11312844ce53876d96",
+   "bytes": 6069
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/result.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/result.json",
+   "sha256": "c100f51c197f1b9db4ea97d9592876dff8c76dda38fb89b54e755172f2c115d6",
+   "bytes": 36317
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/run.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/run.json",
+   "sha256": "a21ed1623f12137591fb1b8d9828778d8b7d73720631a188bb61c41afe0ee2e4",
+   "bytes": 2224
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/transcript.jsonl",
+   "sha256": "4b552cd9c12d70aa91de865dba542ebb4da2de57ad6e27682fdb66a3c810a4a5",
+   "bytes": 32117
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/workspace/nvjpeg_probe.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/workspace/nvjpeg_probe.py",
+   "sha256": "4fa6353bf0c301ac75de44f2b7304a7a417c6fb1dc97425ddcc9c2cd2e1684d2",
+   "bytes": 11355
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/workspace/probe.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/workspace/probe.py",
+   "sha256": "d74ddc02ab105f30d7e37803e0e51fac4a5bcf3405cc8f7bf5ecbff3955f903c",
+   "bytes": 4591
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/run/workspace/probe_out.txt",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/run/workspace/probe_out.txt",
+   "sha256": "72c39ce969e3db54bbdeec42d3b6eb4baf486250743e902623d8a3e5ba45c940",
+   "bytes": 3555
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind/verdict.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind/verdict.json",
+   "sha256": "31848750014f9f23a8fce266c1b161720b84ae51f41c54e44542218c56b85fe0",
+   "bytes": 1192
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/case.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/case.json",
+   "sha256": "1bc62d52ee2980986ad30c96f7857bc5551e2b660a284605418190f000e33868",
+   "bytes": 129
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/environment.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/environment.json",
+   "sha256": "168649c4b5934c4f4f3953d82cdf96f60d2c4ca19625ef7b36f03da74f822e60",
+   "bytes": 1245
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/report.md",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/report.md",
+   "sha256": "936c2e0b2d24625f5e3d2ceddea77152f0975d5a940a6eeba9974c795aa7b436",
+   "bytes": 861
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/files/87de53e497c6-probe1.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/files/87de53e497c6-probe1.py",
+   "sha256": "87de53e497c6ed98ef6c0855539df31166dd1546a6888d737d88cf52a2143fc6",
+   "bytes": 1758
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/files/a5bb9568d9b6-nvjpeg_probe.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/files/a5bb9568d9b6-nvjpeg_probe.py",
+   "sha256": "a5bb9568d9b6a8a9bb1b5b42301bcbe771693a8d33efb53a11543c59c174aef6",
+   "bytes": 7497
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/files/c34e73f44d7c-jpeg_probe2.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/files/c34e73f44d7c-jpeg_probe2.py",
+   "sha256": "c34e73f44d7c140c8839022dea435adc6c9ecd98859e23dc344e5dfe25be473d",
+   "bytes": 15875
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/01b6c1b001c6-shell-163313.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/01b6c1b001c6-shell-163313.err",
+   "sha256": "6462ea43154a11c89450c516b1f932439b2ea95d1b3a745304b5aba0aadd0f4e",
+   "bytes": 834
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/258f9b648057-shell-163648.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/258f9b648057-shell-163648.err",
+   "sha256": "35802eaf7e1c1493576a3598521737d86ed56a4719443ec563323cd39956ad60",
+   "bytes": 342
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/ab175ecb1d96-shell-163605.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/ab175ecb1d96-shell-163605.err",
+   "sha256": "ace907337ef0e63b07b86da4934ffb51d22811c271eadb984f2547e1f24f1f99",
+   "bytes": 521
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/defc24b8bc54-shell-163623.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/defc24b8bc54-shell-163623.err",
+   "sha256": "20668242420b5af5af833b93eba8598bc3ae3ef3f7b3df5066f000c5fa55537e",
+   "bytes": 110
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/e3b0c44298fc-shell-163323.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/e3b0c44298fc-shell-163323.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/e3b0c44298fc-shell-163418.err",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stderr/e3b0c44298fc-shell-163418.err",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/3a2eaec4f1f5-shell-163313.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/3a2eaec4f1f5-shell-163313.out",
+   "sha256": "69bb21c44b8962aabd278669dde3384dac39aec7a1e3dee1f6f58d12fc648bf9",
+   "bytes": 306
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/5237012c33c4-shell-163323.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/5237012c33c4-shell-163323.out",
+   "sha256": "4329f2019262445c9d3abd99de0a360926dabff0b501b054df19b82418a21ae3",
+   "bytes": 4059
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/dd7936a21e1f-shell-163418.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/dd7936a21e1f-shell-163418.out",
+   "sha256": "1eff68008719f6aeeb4643863dee65e6606624e1e3008ee4a50ae723fd506efb",
+   "bytes": 2268
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/e3b0c44298fc-shell-163605.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/e3b0c44298fc-shell-163605.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/e3b0c44298fc-shell-163623.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/e3b0c44298fc-shell-163623.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/e3b0c44298fc-shell-163648.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/artifacts/stdout/e3b0c44298fc-shell-163648.out",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/evidence.jsonl",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/evidence.jsonl",
+   "sha256": "f03d07aca762f00808f45f3fffe4ded4090a4adc2e57ca7e23360bf24efbfe8b",
+   "bytes": 55594
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/memory.jsonl",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/memory.jsonl",
+   "sha256": "3473a4c3f0306d584a3606b3ec5c6204fe83d348c1a11760bff0863b78074831",
+   "bytes": 5954
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/result.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/result.json",
+   "sha256": "ffd43baa285e200dc303b3c6864d3c140f0cd0b0e5794e8bc897587cd7a29c8e",
+   "bytes": 46072
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/run.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/run.json",
+   "sha256": "c95bf72cb8ecf825a8453ae9f7677c0b2c9b80c1a02fbf02021c8120e035ee3a",
+   "bytes": 2224
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/transcript.jsonl",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/transcript.jsonl",
+   "sha256": "31fbaeab7f172fcd89fe0f8bc7b5d295f0d85887377d0c40c67ecd99452e0151",
+   "bytes": 41294
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/imgs/hand_gray.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/imgs/hand_gray.jpg",
+   "sha256": "51ad478cf652e5cb3494a077ccdadca411ccfcbfec9122363e78b8be9b3405c5",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/jp3.out",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/jp3.out",
+   "sha256": "52e4c52d17a541328c20bb7a5362c406204c4e093a8b6916c323eb0a67146f29",
+   "bytes": 199
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/jpeg_probe2.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/jpeg_probe2.py",
+   "sha256": "c34e73f44d7c140c8839022dea435adc6c9ecd98859e23dc344e5dfe25be473d",
+   "bytes": 15875
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/manifest.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/manifest.json",
+   "sha256": "0a5040be65fd5135db271939cfe2885de9933f639539ba0017cc64cb5ec433ec",
+   "bytes": 7639
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/append_ff_ff.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/append_ff_ff.jpg",
+   "sha256": "50e17d8d2a4e459542ef154d58b87fa798873a8f23a3f093acb8f35b1fc8c2ee",
+   "bytes": 146
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/append_garbage16.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/append_garbage16.jpg",
+   "sha256": "a2e3958412c3e39ec3f327f7e0359b54384837ccba0d3a731aa0f9fe2e4dac59",
+   "bytes": 160
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/base_original.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/base_original.jpg",
+   "sha256": "51ad478cf652e5cb3494a077ccdadca411ccfcbfec9122363e78b8be9b3405c5",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dht_tc_1_dc_to_ac.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dht_tc_1_dc_to_ac.jpg",
+   "sha256": "24047484d95e67090a80173d8ab4a15fe2380808f63bd832802751dc5db4ac81",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dht_th_3.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dht_th_3.jpg",
+   "sha256": "c1432b42b09f59b419334a5a800ad88c4c493ca117a0d3302328f63e29276471",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dqt_pq_16bit.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dqt_pq_16bit.jpg",
+   "sha256": "313e889188a72fcc54dc82b2f94f22b043584e16e676fb2cd4166a0b5c25dc1e",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dqt_tq_3.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dqt_tq_3.jpg",
+   "sha256": "1e028c32b95f8b8d222a2bd1dde06f4079cc6e81dc3950a5d31288cae8aeb66f",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/drop_eoi.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/drop_eoi.jpg",
+   "sha256": "7e0a001a1e9ee1cbcfbabca4595d572bfefdd1aa3af9f23ab0eb237c75291fcd",
+   "bytes": 142
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dup_soi.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/dup_soi.jpg",
+   "sha256": "92ffe2eda0b7e96f1f6931eda1baf4718e014627e7cd0de1ccc9d14d3fa6551a",
+   "bytes": 146
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_app15_after_soi.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_app15_after_soi.jpg",
+   "sha256": "406ae2355201a89c8ddb9a1560f85b8fb4a0fd3d3ac4a1dab147dfa58a1e196b",
+   "bytes": 152
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_com_after_soi.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_com_after_soi.jpg",
+   "sha256": "2dddad5db8dccadaf847119069bfa55bf5a7bba0d6db93a6b15e26e13b2bffdc",
+   "bytes": 152
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_dri_ri0.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_dri_ri0.jpg",
+   "sha256": "a644be7aecc7a12ae6245ec2de5fa60c04c77aab5c238663b04448e21f4e5efc",
+   "bytes": 150
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_dri_ri1.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_dri_ri1.jpg",
+   "sha256": "970517ae531adb76d74849ad3a8d859e1ba5556bcf2a416fe7b03964fdbf2eb1",
+   "bytes": 150
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_reserved_marker.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/insert_reserved_marker.jpg",
+   "sha256": "7cd6a7f0970b2a829323e9b597bff3e749f44518f46262c4751165bde798b1e3",
+   "bytes": 150
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof0_to_sof2_progressive.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof0_to_sof2_progressive.jpg",
+   "sha256": "36b43dd3aab44e74c1d7d11574e95d81f4c03fe99b306e22addc17b1b8458ba8",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof0_to_sof3_lossless.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof0_to_sof3_lossless.jpg",
+   "sha256": "12805b4fbc15611fe465ca137fe0a011944022191e16c58797c603cad0113c50",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof0_to_sof9_arithmetic.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof0_to_sof9_arithmetic.jpg",
+   "sha256": "1b566a31f793bff90115428c9c2b73584ab4b9902e6d67dfa9dc6fcaff018831",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_comp0_id_5.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_comp0_id_5.jpg",
+   "sha256": "0be99d1ab3904fa7f1a130e661d4569d0a343ce23760d7f1b2e778fbb1e6fdc2",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_comp0_sampling_11.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_comp0_sampling_11.jpg",
+   "sha256": "51ad478cf652e5cb3494a077ccdadca411ccfcbfec9122363e78b8be9b3405c5",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_comp0_sampling_22.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_comp0_sampling_22.jpg",
+   "sha256": "7aa4726709c3e2bcb90fd8527e6deecbd02033a395674ef8034877ddd73f9422",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_comp0_tq_3.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_comp0_tq_3.jpg",
+   "sha256": "f3bce0bfaf54d846b34ad87421499af7446b102f6e0aa7b2b9ae51dc0d3d6c2f",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_h_0.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_h_0.jpg",
+   "sha256": "f163cbf6ac856e8d79cd3c7938ccc464487fa6857eb609fbb0a9c80df0b538ff",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_h_big.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_h_big.jpg",
+   "sha256": "fa190e22d2988f5e064c41e5c3ad73f737ba539be26640a18eff781fbbcc3496",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_nc_minus1.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_nc_minus1.jpg",
+   "sha256": "51ad478cf652e5cb3494a077ccdadca411ccfcbfec9122363e78b8be9b3405c5",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_prec_0.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_prec_0.jpg",
+   "sha256": "8b1eb8d04124655c385a97364ef8268a294c1d4b184ad59884e1f6a41968a430",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_prec_12.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_prec_12.jpg",
+   "sha256": "5af8fb23a993a439563ef4edfec32f952352a2ca433b0c45fc80c3ccb97b753d",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_w_0.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_w_0.jpg",
+   "sha256": "da49c73755f18dc66372e353334545250ee7a2951235fce6cb0b360d18a69872",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_w_big.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_w_big.jpg",
+   "sha256": "6660fc3ea268170f8cb9dc6ea6b86fb0777892a7a44e5aa01e454c082376a034",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_w_plus1.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sof_w_plus1.jpg",
+   "sha256": "a4f4e624b5cc90eab3472e18feb77ce215c9b9857c77cfa987c1b0d9a3e6c17a",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sos_ahal_0x11.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sos_ahal_0x11.jpg",
+   "sha256": "36086d225d15b0891620b678e0e3e5df6cd3801c682b16af9a724c68c9cc417a",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sos_ns_minus1.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sos_ns_minus1.jpg",
+   "sha256": "51ad478cf652e5cb3494a077ccdadca411ccfcbfec9122363e78b8be9b3405c5",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sos_se_0.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sos_se_0.jpg",
+   "sha256": "83deb8aab4a78e2da93037821b7cb2f626ea5c219f91bc4b845ed0a7045fc02d",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sos_ss_1.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/sos_ss_1.jpg",
+   "sha256": "331b09d51d6598eb1e5cb8eb9b6d30746962f674f8a61f2a421e67ce818dcfab",
+   "bytes": 144
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/trunc_95pct.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/trunc_95pct.jpg",
+   "sha256": "b2a2fe7eada88a354a3be6b684b6754ebb09d3bdd8a2fd4de63f4edc7ffe335f",
+   "bytes": 136
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/zeros_after_soi.jpg",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/mutants/zeros_after_soi.jpg",
+   "sha256": "dc3c981bfa5b98429f8ae7ed80f9c7d46eb8f56842defbc728a6c54c193d0e28",
+   "bytes": 152
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/nvjpeg_probe.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/nvjpeg_probe.py",
+   "sha256": "a5bb9568d9b6a8a9bb1b5b42301bcbe771693a8d33efb53a11543c59c174aef6",
+   "bytes": 7497
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/run/workspace/probe1.py",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/run/workspace/probe1.py",
+   "sha256": "87de53e497c6ed98ef6c0855539df31166dd1546a6888d737d88cf52a2143fc6",
+   "bytes": 1758
+  },
+  {
+   "source": "data/agent/benchmarks/p18/JPEG_EXPLORATORY/blind_render2/verdict.json",
+   "destination": "research_archive/p18/original/JPEG_EXPLORATORY/blind_render2/verdict.json",
+   "sha256": "867f782ee5a2ae6b2c3777c0564082038336f1ef2f8941d137d2ee6704b80f94",
+   "bytes": 1296
+  },
+  {
+   "source": "data/agent/benchmarks/p18/summary_blind.json",
+   "destination": "research_archive/p18/original/summary_blind.json",
+   "sha256": "c1d9211681788d2b894c43c2741f19a7de965ac9611718378979963dc75f643e",
+   "bytes": 1193
+  },
+  {
+   "source": "data/agent/benchmarks/p18/summary_blind_render2.json",
+   "destination": "research_archive/p18/original/summary_blind_render2.json",
+   "sha256": "ee31bbc168f95dbf6fdc6ea96c638d59d1ef957c362a2db421b6fd4413b82825",
+   "bytes": 1326
+  },
+  {
+   "source": "data/agent/benchmarks/p18/summary_seed.json",
+   "destination": "research_archive/p18/original/summary_seed.json",
+   "sha256": "8d41ec027502cd48f24b7b3afb818fd9ebd795afe9cdb41a9f61f063a1a23635",
+   "bytes": 7770
+  }
+ ]
+}

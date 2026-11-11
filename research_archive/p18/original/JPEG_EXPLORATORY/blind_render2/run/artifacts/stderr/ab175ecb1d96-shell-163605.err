@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "F:\qcx\code\test\cuda_poc_generator\data\agent\benchmarks\p18\JPEG_EXPLORATORY\blind_render2\run\workspace\jpeg_probe2.py", line 333, in <module>
+    main()
+    ~~~~^^
+  File "F:\qcx\code\test\cuda_poc_generator\data\agent\benchmarks\p18\JPEG_EXPLORATORY\blind_render2\run\workspace\jpeg_probe2.py", line 298, in main
+    R['mutants'] = [[m['name'], m['note'], len(m['blob'])] for m in manifest]
+                                               ~^^^^^^^^
+KeyError: 'blob'

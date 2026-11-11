@@ -1,0 +1,4 @@
+https://www.cve.org/CVERecord?id=CVE-2026-65160
+ 
+ Common vulnerabilities and Exposures (CVE) 
+ We're sorry but the CVE Website doesn't work properly without JavaScript enabled. Please enable it to continue. 
