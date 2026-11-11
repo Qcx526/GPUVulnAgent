@@ -19,6 +19,7 @@ four questions an agent actually asks before choosing a tool.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
 from ..discovery.manifest import ToolchainManifest
@@ -100,14 +101,22 @@ class CapabilityCatalog:
         for name in manifest.names():
             entry = manifest.get(name)
             resolved = manifest.path_of(name)
-            runnable = manifest.runnable(name) if resolved else False
+            is_binary = entry.kind == "binary"
+            runnable = manifest.runnable(name) if (resolved and is_binary) else False
+            if not resolved:
+                reason = "recorded in the manifest but the file is missing"
+            elif not is_binary:
+                reason = "%s is a %s, not an executable" % (Path(entry.path).name, entry.kind)
+            elif not runnable:
+                reason = "the binary exists but did not run"
+            else:
+                reason = ""
             capability = Capability(
                 name=name, kind="binary", purpose=entry.notes or "%s (%s)" % (name, entry.kind),
                 location=str(resolved or (manifest.root / entry.path)),
                 formats=list(entry.capabilities), requires=list(entry.depends),
                 available=runnable, version=entry.version, sha256=entry.sha256,
-                reason="" if runnable else "manifest binary is missing or does not run",
-                tags=list(entry.capabilities) + [entry.kind])
+                reason=reason, tags=list(entry.capabilities) + [entry.kind])
             self.entries[name] = capability
             added.append(name)
         return added
@@ -115,9 +124,12 @@ class CapabilityCatalog:
     def _add_from_spec(self, spec: ToolSpec, registry: Optional[ToolRegistry]) -> Capability:
         available, missing = availability(spec)
         registered = bool(registry and spec.name in registry)
+        # An adapter is a project-owned capability over a format or a binary; keeping that
+        # distinction in the catalog makes "what ships with this project" answerable.
+        is_adapter = spec.category == "adapter" or spec.source.startswith("adapter:")
         existing = self.entries.get(spec.name)
         capability = Capability(
-            name=spec.name, kind="tool" if registered else "adapter",
+            name=spec.name, kind="adapter" if is_adapter else "tool",
             purpose=spec.description, location=spec.location or spec.source,
             formats=list(spec.formats), requires=list(spec.requires), available=available,
             reason="" if available else "requires %s on PATH" % ", ".join(missing),
