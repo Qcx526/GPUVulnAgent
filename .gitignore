@@ -16,6 +16,7 @@ dist/
 
 # --- local runtime state (never tracked) ---------------------------------
 .local/
+.workbuddy/
 
 # --- toolchains: binaries stay on disk, manifests are tracked -------------
 toolchains/cuda/
