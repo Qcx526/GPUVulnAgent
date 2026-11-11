@@ -331,8 +331,8 @@ $ git diff --check                                        → clean
 ```
 分支：main（新建，未推送）
 提交：4a062fc  feat: initialize GPUVulnAgent from the P18 agent baseline
-             （+ 本报告所在提交 docs: add migration final report）
-跟踪文件：414（不含 .env / .venv / .local / 工具链二进制 / *.dll,*.exe,*.lib）
+      3136de9  docs: add the migration final report and the source audit notes
+跟踪文件：421（不含 .env / .venv / .local / 工具链二进制 / *.dll,*.exe,*.lib）
 忽略规则要点：.env、.local/、.venv/、toolchains 下二进制、*.dll/*.exe/*.lib/*.zip...
 ```
 
