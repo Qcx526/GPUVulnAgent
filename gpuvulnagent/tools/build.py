@@ -70,6 +70,17 @@ def build_assembly(*, workspace, runner, log, memory, toolchain_root: Optional[P
                                     "reason": error})
                 continue
             registry.extend(specs)
+            # Reference-based staging: large binaries cannot travel through a tool call.
+            try:
+                from .stage_tool import build_stage_tools
+                stage_specs = build_stage_tools(
+                    trail_root=Path(log.path).parent / "trails", log=log,
+                    wsl_refs=str(Path(__import__("gpuvulnagent.backends.wsl_docker", fromlist=["WslConfig"]).WslConfig().worker_root) / "refs"),
+                    repo_root=Path(__file__).resolve().parents[2])
+                existing = set(registry.names())
+                registry.extend([spec for spec in stage_specs if spec.name not in existing])
+            except Exception as exc:  # noqa: BLE001 - keep the run alive, but say why
+                adapter_errors["trail_stage"] = "%s: %s" % (type(exc).__name__, exc)
 
     if enable_search:
         state = tavily_provider.status(tavily_api_key)

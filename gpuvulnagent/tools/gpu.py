@@ -306,7 +306,9 @@ def build_gpu_tools(*, backend: WslDockerBackend, trail_root, run_id: str, log,
 
         ToolSpec(name="container_exec", description=(
             "Run one argv inside a Docker container on the GPU machine. The trail directory "
-            "is mounted at /work and its files are staged before the run; everything written "
+            "is mounted at /work. Only files written with trail_write are staged, copied FLAT into "
+            "/work (subdirectories are not preserved); files written with fs_write live in the "
+            "agent workspace and are NOT visible inside the container. Everything written "
             "under /work is copied back as an artifact. Exit status, termination kind, image "
             "digest, pull policy and container id are recorded. Each call writes its own "
             "artifact snapshot under execs/execNN/, so an earlier binary or log is never "
