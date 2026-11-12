@@ -189,22 +189,53 @@ class EvidenceResolver:
             sequence = int(raw_sequence)
         except ValueError:
             return None
+        matches = []
         for log_obj in self._logs(log):
             if log_obj.run_id != run_id:
                 continue
             record = log_obj.get(sequence)
             if record:
-                return record
-        return None
+                matches.append(record)
+        if not matches:
+            return None
+        # The same id must resolve to the same record. Two different records for one id means
+        # the search roots disagree, and guessing which one is right would be a false citation.
+        digests = {record.get("record_sha256") for record in matches}
+        if len(digests) > 1:
+            return None
+        return matches[0]
+
+    def _candidates(self, root: Path) -> List[Path]:
+        """Every place an evidence log legitimately lives under one search root.
+
+        Two layouts exist and both must work: a run directory holding ``evidence.jsonl``, and
+        a trial holding ``evidence/evidence.jsonl``. A third shape (``<root>/<run>/evidence.jsonl``)
+        appears when a root is a parent of runs, so it is searched one level down.
+        """
+        root = Path(root)
+        found = []
+        if root.is_file() and root.suffix == ".jsonl":
+            return [root]
+        for candidate in (root / "evidence.jsonl", root / "evidence" / "evidence.jsonl"):
+            if candidate.is_file():
+                found.append(candidate)
+        if root.is_dir():
+            for pattern in ("*/evidence.jsonl", "*/evidence/evidence.jsonl"):
+                found.extend(sorted(root.glob(pattern)))
+        return found
 
     def _logs(self, log: Optional[EvidenceLog]) -> List[EvidenceLog]:
         logs: List[EvidenceLog] = []
+        seen = set()
         if log is not None:
             logs.append(log)
+            seen.add(Path(log.path).resolve())
         for root in self.search_roots:
-            candidate = Path(root)
-            path = candidate if candidate.name.endswith(".jsonl") else candidate / "evidence.jsonl"
-            if path.is_file():
+            for path in self._candidates(Path(root)):
+                resolved = path.resolve()
+                if resolved in seen:
+                    continue
+                seen.add(resolved)
                 try:
                     logs.append(EvidenceLog(path))
                 except Exception:  # noqa: BLE001 - a foreign log must not break validation
