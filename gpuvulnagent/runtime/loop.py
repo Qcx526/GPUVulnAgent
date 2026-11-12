@@ -208,6 +208,15 @@ class AgentRuntime:
                 messages.append({"role": "user", "content": budget_note(remaining_turns)})
                 self._last_budget_note = remaining_turns
             self.decisions += 1
+            # Pre-flight: reserve room for this request before sending it, so a run cannot
+            # overshoot by one whole prompt (R6 spent 118k against a 100k cap). The estimate is
+            # the previous prompt size; provider billing can differ by a few percent.
+            if self.max_tokens and self.decisions > 0:
+                spent = self.usage.total_tokens or 0
+                last = self.usage.prompt_tokens or 0
+                if spent + last > self.max_tokens:
+                    stopped = "token_budget"
+                    break
             try:
                 response = self.provider.chat(
                     messages, tools=self.registry.openai_tools(),
@@ -228,22 +237,6 @@ class AgentRuntime:
                 break
 
             self.usage = self.usage.add(response.usage)
-            # Pre-flight: reserve room for this request before sending it, so a run cannot
-            # overshoot by one whole prompt (R6 spent 118k against a 100k cap).
-            if self.max_tokens:
-                spent = self.usage.total_tokens or 0
-                last = (self.usage.prompt_tokens or 0)
-                if spent + last > self.max_tokens and self.decisions > 0:
-                    stopped = "token_budget"
-                    break
-            # Pre-flight: reserve room for this request before sending it, so a run cannot
-            # overshoot by one whole prompt (R6 spent 118k against a 100k cap).
-            if self.max_tokens:
-                spent = self.usage.total_tokens or 0
-                last = (self.usage.prompt_tokens or 0)
-                if spent + last > self.max_tokens and self.decisions > 0:
-                    stopped = "token_budget"
-                    break
             if self.max_tokens and (self.usage.total_tokens or 0) > self.max_tokens:
                 # Hard budget: stop starting new work, but still allow the closing turn.
                 stopped = "token_budget"
@@ -275,8 +268,11 @@ class AgentRuntime:
                     turn = self._record(call.name, call.arguments, outcome,
                                         thought=(response.content or "")[:400],
                                         tool_call_id=call.id, via="native", mode="native")
-                    payload = (outcome["result"] if outcome["dispatched"]
-                               else {"error": outcome["error"]})
+                    payload = outcome["result"] if outcome["dispatched"] else None
+                    if not isinstance(payload, dict) or (
+                            payload is None and outcome.get("error")):
+                        payload = {"error": outcome.get("error") or "tool produced no result",
+                                   "status": "dispatch_error"}
                     if isinstance(payload, dict):
                         payload = {"evidence_id": turn.evidence_id, **payload}
                     messages.append(tool_message(call.id, call.name, payload))
