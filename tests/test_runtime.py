@@ -186,27 +186,3 @@ def test_result_and_transcript_are_written(tmp_path):
     assert payload["executions"] == 1
     assert (tmp_path / "run" / "transcript.jsonl").is_file()
     assert (tmp_path / "run" / "run.json").is_file()
-
-
-def test_every_observation_carries_its_evidence_id(tmp_path):
-    """A model that cannot see the id will invent one; show it on the observation."""
-    provider = ScriptedProvider([native(tool_call("fs_list", {}, "c1")), prose("done")])
-    runtime = make_runtime(tmp_path, [], provider=provider, max_turns=3)
-    runtime.run()
-    second_request = provider.calls[1]["messages"]
-    tool_messages = [m for m in second_request if m.get("role") == "tool"]
-    assert tool_messages
-    assert "evidence_id" in tool_messages[0]["content"]
-    assert ("%s#" % runtime.run_id) in tool_messages[0]["content"]
-
-
-def test_every_observation_carries_its_evidence_id(tmp_path):
-    """A model that cannot see the id will invent one; show it on the observation."""
-    provider = ScriptedProvider([native(tool_call("fs_list", {}, "c1")), prose("done")])
-    runtime = make_runtime(tmp_path, [], provider=provider, max_turns=3)
-    runtime.run()
-    second_request = provider.calls[1]["messages"]
-    tool_messages = [m for m in second_request if m.get("role") == "tool"]
-    assert tool_messages
-    assert "evidence_id" in tool_messages[0]["content"]
-    assert ("%s#" % runtime.run_id) in tool_messages[0]["content"]

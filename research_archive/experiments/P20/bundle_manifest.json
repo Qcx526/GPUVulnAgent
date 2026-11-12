@@ -73,7 +73,30 @@
    "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/vector_add.cubin",
    "sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
    "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/trails/trail1/inputs/vector_add.cu",
+   "sha256": "f40f6554d83da325f9a69848275d882e949e7e2c94589c12ffd5110f9c414bf7",
+   "bytes": 251,
+   "restored_from": ".local/runs/p20-cve-2024-0124/trails/trail1/inputs/vector_add.cu"
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/execs/exec00/logs/docker_run.stderr",
+   "sha256": "10c43f4b828e143f1c15d1c6bdc9966c3d425743210ddcbd636ea5fa6f2a7cac",
+   "bytes": 489,
+   "restored_from": ".local/runs/p20-cve-2024-0124/trails/trail0/execs/exec00/logs/docker_run.stderr"
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/execs/exec00/logs/docker_run.stdout",
+   "sha256": "c48e3ec5cfaf065d13a80f9382d91a2a9a78b6621016a01ca575603e88a1b1eb",
+   "bytes": 1834,
+   "restored_from": ".local/runs/p20-cve-2024-0124/trails/trail0/execs/exec00/logs/docker_run.stdout"
   }
  ],
- "skipped": []
+ "skipped": [],
+ "restored": [
+  "research_archive/experiments/P20/runs/p20-cve-2024-0124/trails/trail1/inputs/vector_add.cu",
+  "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/execs/exec00/logs/docker_run.stderr",
+  "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/execs/exec00/logs/docker_run.stdout"
+ ]
 }

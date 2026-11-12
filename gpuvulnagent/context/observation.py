@@ -78,8 +78,6 @@ def render(observation, budget: int = 2400) -> str:
             parts.append("artifacts: " + ", ".join(refs))
     if observation.get("evidence_id"):
         parts.append("evidence_id: %s" % observation["evidence_id"])
-    if observation.get("evidence_id"):
-        parts.append("evidence_id: %s" % observation["evidence_id"])
     if not observation.get("ok", True):
         parts.insert(0, "STATUS=failed")
     return "\n".join(parts)[:budget + 900]

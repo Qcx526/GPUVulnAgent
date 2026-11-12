@@ -342,11 +342,6 @@ class AgentRuntime:
         if isinstance(observation, dict):
             observation = dict(observation)
             observation.setdefault("evidence_id", record.get("evidence_id", ""))
-        # The model can only cite what it can see: put the record id on the observation
-        # itself, so "cite the evidence id" does not depend on the model guessing it.
-        if isinstance(observation, dict):
-            observation = dict(observation)
-            observation.setdefault("evidence_id", record.get("evidence_id", ""))
         turn = Turn(step=self.decisions, index=len(self.turns) + 1, thought=thought,
                     tool=tool, args=args, observation=observation, status=status,
                     tool_call_id=tool_call_id, via=via, mode=mode,

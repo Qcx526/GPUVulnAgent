@@ -13,3 +13,6 @@ ce359ef168820465152b9f2ff7aa5a7edf925cf15e3d4edd128c82972811f93a  research_archi
 3865d859107f82553bc0f1cdd2acef239a17579702acc49251fc361040130565  research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v3_shoff_oob.cubin
 6453817741f73ac9185b135a946d84b28cade0d263d1133c571965c7e80fb158  research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v4_trunc512.cubin
 823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c  research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/vector_add.cubin
+f40f6554d83da325f9a69848275d882e949e7e2c94589c12ffd5110f9c414bf7  research_archive/experiments/P20/runs/p20-cve-2024-0124/trails/trail1/inputs/vector_add.cu
+10c43f4b828e143f1c15d1c6bdc9966c3d425743210ddcbd636ea5fa6f2a7cac  research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/execs/exec00/logs/docker_run.stderr
+c48e3ec5cfaf065d13a80f9382d91a2a9a78b6621016a01ca575603e88a1b1eb  research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/execs/exec00/logs/docker_run.stdout
