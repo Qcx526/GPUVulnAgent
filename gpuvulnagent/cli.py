@@ -48,6 +48,8 @@ def main(argv=None) -> int:
     run_p.add_argument("--resume", action="store_true")
     run_p.add_argument("--no-search", action="store_true")
     run_p.add_argument("--no-adapters", action="store_true")
+    run_p.add_argument("--sessions-dir", default="",
+                       help="Put this run in the next runs/trialN under this directory.")
     run_p.add_argument("--no-gpu-backend", action="store_true",
                        help="do not register the WSL/Docker GPU tools for this run")
 
@@ -104,7 +106,15 @@ def _cmd_run(args, settings) -> int:
               "       (%s)" % ("DEEPSEEK_API_KEY", missing.get("DEEPSEEK_API_KEY", "")),
               file=sys.stderr)
         return 3
-    root = Path(args.root) if args.root else settings.paths.runs_root / "cli"
+    trial_root = None
+    if args.sessions_dir:
+        from .artifacts.trial import TrialSession
+        trial = TrialSession.allocate(Path(args.sessions_dir), goal=goal,
+                                      case_id=args.case)
+        trial_root = trial.root
+        root = trial.root / "session" / "run"
+    else:
+        root = Path(args.root) if args.root else settings.paths.runs_root / "cli"
     provider = DeepSeekProvider(api_key=settings.llm.api_key, model=settings.llm.model,
                                 base_url=settings.llm.base_url, timeout=settings.llm.timeout,
                                 max_attempts=settings.llm.max_attempts,
@@ -122,7 +132,7 @@ def _cmd_run(args, settings) -> int:
                            enable_gpu_backend=(settings.backend.enabled
                                                and not args.no_gpu_backend),
                            backend_config=WslConfig.from_settings(settings),
-                           resume=args.resume)
+                           trial_root=trial_root, resume=args.resume)
     for provider_state in runtime.assembly.providers:
         print("[provider] %s available=%s (%s)"
               % (provider_state["provider"], provider_state["available"],

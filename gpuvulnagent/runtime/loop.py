@@ -86,6 +86,7 @@ class AgentRuntime:
                  manifest_path: Optional[Path] = None, tavily_api_key: str = "",
                  enable_search: bool = True, include_adapters: bool = True,
                  enable_gpu_backend: bool = True, backend_config=None,
+                 trial_root: Optional[Path] = None,
                  resume: bool = False, assembly: Optional[Assembly] = None,
                  deadline: Optional[float] = None) -> None:
         if not goal or not goal.strip():
@@ -94,7 +95,20 @@ class AgentRuntime:
         self.provider = provider
         self.max_turns = max_turns
         self.case_id = case_id
+        # P21-R2: a trial is the unit a human opens later. The run directory lives inside it,
+        # while the hash chain is written to the trial's evidence/ so the whole attempt has one
+        # authoritative log.
+        self.trial = None
+        if trial_root is not None:
+            from ..artifacts.trial import TrialSession
+            trial_root = Path(trial_root)
+            self.trial = TrialSession(trial_root, trial_id=trial_root.name, goal=self.goal,
+                                      case_id=case_id)
+            root = trial_root / "session" / "run"
         self.paths = RunPaths.under(Path(root))
+        if self.trial is not None:
+            self.paths.evidence = self.trial.root / "evidence" / "evidence.jsonl"
+            self.paths.workspace = self.paths.root / "workspace"
         self.state = RunState(self.paths)
         self.resume = resume
         if resume:
@@ -309,6 +323,20 @@ class AgentRuntime:
                            case_id=self.case_id, evidence_ok=check["ok"])
         self.paths.result.write_text(json.dumps(result.to_dict(), ensure_ascii=False,
                                                 indent=1), encoding="utf-8")
+        if getattr(self, "trial", None) is not None:
+            # A last harvest catches anything produced by the closing turn, then the report is
+            # written once so it cannot disagree with the registry.
+            self.trial.harvest(self._harvest_roots(), tool="final", turn=self.decisions)
+            self.trial.finish(final_text, stopped=stopped, usage=self.usage.to_dict(),
+                              extra={"evidence_records": check.get("records"),
+                                     "evidence_ok": check.get("ok")})
+        if getattr(self, "trial", None) is not None:
+            # A last harvest catches anything produced by the closing turn, then the report is
+            # written once so it cannot disagree with the registry.
+            self.trial.harvest(self._harvest_roots(), tool="final", turn=self.decisions)
+            self.trial.finish(final_text, stopped=stopped, usage=self.usage.to_dict(),
+                              extra={"evidence_records": check.get("records"),
+                                     "evidence_ok": check.get("ok")})
         return result
 
     # -- one execution ---------------------------------------------------
@@ -348,6 +376,10 @@ class AgentRuntime:
                     evidence_id=record.get("evidence_id", ""),
                     at=time.strftime("%H:%M:%S"))
         self.turns.append(turn)
+        if getattr(self, "trial", None) is not None:
+            self.trial.record_turn(turn)
+            self.trial.harvest(self._harvest_roots(), tool=tool,
+                               evidence_id=turn.evidence_id, turn=turn.index)
         self._append_transcript({"decision": self.decisions, "step": turn.index,
                                  "tool": tool, "status": status, "via": via,
                                  "evidence_id": turn.evidence_id,
@@ -360,6 +392,13 @@ class AgentRuntime:
         except Exception:  # noqa: BLE001 - memory must never break a run
             pass
         return turn
+
+    def _harvest_roots(self):
+        roots = [self.workspace.root]
+        trails = self.paths.root / "trails"
+        if trails.is_dir():
+            roots.extend(sorted(trails.glob("trail*/execs/*/outputs")))
+        return roots
 
     # -- closing ---------------------------------------------------------
     def _closing_turn(self, messages: List[dict]) -> str:

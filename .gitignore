@@ -41,3 +41,6 @@ toolchains/debuggers/*/
 # --- scratch -------------------------------------------------------------
 *.log
 .pytest_cache/
+
+# Trial directories are local research state (artifacts can be large).
+runs/
