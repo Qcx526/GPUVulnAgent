@@ -42,6 +42,21 @@
    "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/POC_CATALOG.md",
    "sha256": "5cfac803840877303c77a45b832469b0a60db2defd5f5044a1f1b1dd3a658dc2",
    "bytes": 221
+  },
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/poc/base.cu",
+   "sha256": "1ecee4cbcef1ed4918636529d3a0186375218753309d550c2ed6522cdd0c8d69",
+   "bytes": 571
+  },
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/poc/base.cubin",
+   "sha256": "e95ed268d3614323ea14ed440ad74b910dc7e0a3095be829f18e927c52d5e19a",
+   "bytes": 10216
+  },
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/poc/mutate.py",
+   "sha256": "a68e8a2401633e883f25fca3ca67475670d2a5f93bf1424be80540d751af1a9c",
+   "bytes": 4074
   }
  ],
  "skipped": []
