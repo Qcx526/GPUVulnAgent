@@ -1,0 +1,262 @@
+[
+ {
+  "cve": "CVE-2024-53870",
+  "component": "cuobjdump",
+  "cwe": "CWE-125 OOB read",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53871",
+  "component": "nvdisasm",
+  "cwe": "CWE-125 OOB read",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53872",
+  "component": "cuobjdump",
+  "cwe": "CWE-125 OOB read",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53873",
+  "component": "cuobjdump (Windows)",
+  "cwe": "CWE-125 OOB read",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53874",
+  "component": "cuobjdump",
+  "cwe": "CWE-125 OOB read",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53875",
+  "component": "cuobjdump",
+  "cwe": "CWE-125 OOB read",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53876",
+  "component": "nvdisasm",
+  "cwe": "CWE-125 OOB read",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53877",
+  "component": "nvdisasm",
+  "cwe": "CWE-476 NULL deref",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53878",
+  "component": "cuobjdump",
+  "cwe": "CWE-1284 invalid length",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-53879",
+  "component": "cuobjdump",
+  "cwe": "CWE-1284 invalid length",
+  "affected": "<= 12.8",
+  "fixed": "12.8",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5594",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23248",
+  "component": "nvdisasm",
+  "cwe": "CWE-125 OOB read",
+  "affected": "< 13.0",
+  "fixed": "13.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23255",
+  "component": "cuobjdump",
+  "cwe": "CWE-125 OOB read",
+  "affected": "< 13.0",
+  "fixed": "13.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23271",
+  "component": "nvdisasm",
+  "cwe": "CWE-125 OOB read",
+  "affected": "< 13.0",
+  "fixed": "13.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23273",
+  "component": "nvJPEG",
+  "cwe": "CWE-369 div by zero",
+  "affected": "nvJPEG < 13.0.0",
+  "fixed": "nvJPEG 13.0.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "nvJPEG (CUDA Toolkit / standalone)",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23274",
+  "component": "nvJPEG",
+  "cwe": "CWE-125 OOB read",
+  "affected": "nvJPEG < 13.0.0",
+  "fixed": "nvJPEG 13.0.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "nvJPEG (CUDA Toolkit / standalone)",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23275",
+  "component": "nvJPEG",
+  "cwe": "CWE-787 OOB write",
+  "affected": "nvJPEG < 13.0.0",
+  "fixed": "nvJPEG 13.0.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "nvJPEG (CUDA Toolkit / standalone)",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23308",
+  "component": "nvdisasm",
+  "cwe": "CWE-122 heap overflow (REL parsing)",
+  "affected": "< 13.0",
+  "fixed": "13.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23338",
+  "component": "nvdisasm",
+  "cwe": "CWE-129 invalid index",
+  "affected": "< 13.0",
+  "fixed": "13.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23339",
+  "component": "cuobjdump",
+  "cwe": "CWE-121 stack overflow (DWARF)",
+  "affected": "< 13.0",
+  "fixed": "13.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23340",
+  "component": "nvdisasm",
+  "cwe": "CWE-125 OOB read",
+  "affected": "< 13.0",
+  "fixed": "13.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23346",
+  "component": "cuobjdump",
+  "cwe": "CWE-476 NULL deref",
+  "affected": "< 13.0",
+  "fixed": "13.0",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5661",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2025-23247",
+  "component": "cuobjdump",
+  "cwe": "CWE-130 length check",
+  "affected": "<= 12.9",
+  "fixed": "12.9",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5643",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-0124",
+  "component": "nvdisasm",
+  "cwe": "CWE-416 UAF",
+  "affected": "<= 12.6U1",
+  "fixed": "12.6U2",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5577",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-0109",
+  "component": "cuobjdump",
+  "cwe": "CWE-125",
+  "affected": "<= 12.6",
+  "fixed": "12.6U1",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5564",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-0110",
+  "component": "cuobjdump",
+  "cwe": "CWE-125",
+  "affected": "<= 12.6",
+  "fixed": "12.6U1",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5564",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ },
+ {
+  "cve": "CVE-2024-0111",
+  "component": "cuobjdump",
+  "cwe": "CWE-476",
+  "affected": "<= 12.6",
+  "fixed": "12.6U1",
+  "bulletin": "https://nvidia.custhelp.com/app/answers/detail/a_id/5564",
+  "family": "cuda-toolkit",
+  "verified": "search result only"
+ }
+]

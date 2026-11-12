@@ -1,0 +1,43 @@
+{
+ "runs": 36,
+ "inputs": 6,
+ "crashes": [
+  {
+   "tool": "nvdisasm",
+   "version": "12.6.68",
+   "input": "rel_offset_huge",
+   "rc": 139,
+   "signal": "SIGSEGV"
+  }
+ ],
+ "differential": {
+  "input": "rel_offset_huge",
+  "affected_12.6.68": "SIGSEGV (supervisor-verified)",
+  "12.8.55": "exit 1, fatal: Relocation offset outside section",
+  "12.8.90": "exit 1, fatal: Relocation offset outside section",
+  "13.0.85": "exit 1 (warning only)"
+ },
+ "versions": {
+  "nvdisasm 12.6.68": "deb 34848a95…, binary 9f146d28…",
+  "nvdisasm 12.8.55": "deb ad094254…, binary 1080bc90…",
+  "nvdisasm 12.8.90": "deb 0c4b84ce…, binary 250ebe97…",
+  "nvdisasm 13.0.85": "deb a0edae45…, binary 3c27bded…",
+  "cuobjdump 12.8.55": "deb 4daf0632…, binary ad1d0f06…",
+  "cuobjdump 13.0.85": "deb c175036d…, binary 1763b536…"
+ },
+ "verdict": {
+  "TOOL_EXECUTED": true,
+  "INPUT_ACCEPTED": true,
+  "TARGET_PATH_REACHED": true,
+  "CRASH_OBSERVED": true,
+  "DIFFERENTIAL_SUPPORTED": true,
+  "MECHANISM_SUPPORTED": false,
+  "CVE_ATTRIBUTED": false
+ },
+ "caveats": [
+  "one crash input, one run: stability not yet measured",
+  "no dump or stack, so the faulting instruction and the freed/overrun object are unknown",
+  "12.6.68 is inside several bulletins' affected ranges; attribution needs the stack, not the version alone",
+  "cuobjdump parsed every mutant without a crash"
+ ]
+}

@@ -1,0 +1,495 @@
+{
+ "inputs": [
+  {
+   "name": "baseline",
+   "sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "notes": {
+    "origin": "P20 cubin (sm_75)"
+   }
+  },
+  {
+   "name": "rel_entsize1",
+   "sha256": "a3cdd9cd11a36daca2088e4321c7ba049b9b76c81e6879b51a35c1692d23a1d9",
+   "notes": {
+    "section": 9,
+    "type": 9,
+    "old_entsize": 16,
+    "new_entsize": 1,
+    "size": 16,
+    "hypothesis": "count becomes size/1; the parser walks far past the section"
+   }
+  },
+  {
+   "name": "rel_entsize0",
+   "sha256": "8008074af234472c83911c10c47b299308f8bef969abaf0f98cc4d04627d24f6",
+   "notes": {
+    "section": 9,
+    "old_entsize": 16,
+    "new_entsize": 0,
+    "hypothesis": "division by zero / unbounded loop"
+   }
+  },
+  {
+   "name": "rel_size_plus1",
+   "sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
+   "notes": {
+    "section": 9,
+    "old_size": 16,
+    "new_size": 32,
+    "hypothesis": "one extra entry is read past the section end"
+   }
+  },
+  {
+   "name": "rel_info_huge",
+   "sha256": "6c1db6b73a1726e60aba76982c70855c1c00885527be547713146f31a2a5def9",
+   "notes": {
+    "section": 9,
+    "patched": "first r_info sym index",
+    "hypothesis": "symbol lookup outside .symtab"
+   }
+  },
+  {
+   "name": "rel_offset_huge",
+   "sha256": "65dbc522a676135a8ab644c6727bf159a604ed802b8491dd41855df5fa5d25bf",
+   "notes": {
+    "section": 9,
+    "patched": "first r_offset",
+    "hypothesis": "target address outside every section"
+   }
+  }
+ ],
+ "rows": [
+  {
+   "tool": "nvdisasm",
+   "version": "12.6.68",
+   "input": "baseline",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.55",
+   "input": "baseline",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.90",
+   "input": "baseline",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "13.0.85",
+   "input": "baseline",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "nvdisasm warning : Disassembling Std Elf to Old format or Old Elf to Std format not supported yet, switching to Old form",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-12.8.55",
+   "input": "baseline",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6771
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-13.0.85",
+   "input": "baseline",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6771
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.6.68",
+   "input": "rel_entsize1",
+   "input_sha256": "a3cdd9cd11a36daca2088e4321c7ba049b9b76c81e6879b51a35c1692d23a1d9",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.55",
+   "input": "rel_entsize1",
+   "input_sha256": "a3cdd9cd11a36daca2088e4321c7ba049b9b76c81e6879b51a35c1692d23a1d9",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.90",
+   "input": "rel_entsize1",
+   "input_sha256": "a3cdd9cd11a36daca2088e4321c7ba049b9b76c81e6879b51a35c1692d23a1d9",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "13.0.85",
+   "input": "rel_entsize1",
+   "input_sha256": "a3cdd9cd11a36daca2088e4321c7ba049b9b76c81e6879b51a35c1692d23a1d9",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "nvdisasm warning : Invalid Entry size 9 for section at index 1, expected:16 nvdisasm warning : Disassembling Std Elf to ",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-12.8.55",
+   "input": "rel_entsize1",
+   "input_sha256": "a3cdd9cd11a36daca2088e4321c7ba049b9b76c81e6879b51a35c1692d23a1d9",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6771
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-13.0.85",
+   "input": "rel_entsize1",
+   "input_sha256": "a3cdd9cd11a36daca2088e4321c7ba049b9b76c81e6879b51a35c1692d23a1d9",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6771
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.6.68",
+   "input": "rel_entsize0",
+   "input_sha256": "8008074af234472c83911c10c47b299308f8bef969abaf0f98cc4d04627d24f6",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.55",
+   "input": "rel_entsize0",
+   "input_sha256": "8008074af234472c83911c10c47b299308f8bef969abaf0f98cc4d04627d24f6",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.90",
+   "input": "rel_entsize0",
+   "input_sha256": "8008074af234472c83911c10c47b299308f8bef969abaf0f98cc4d04627d24f6",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "13.0.85",
+   "input": "rel_entsize0",
+   "input_sha256": "8008074af234472c83911c10c47b299308f8bef969abaf0f98cc4d04627d24f6",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "nvdisasm warning : Invalid Entry size 9 for section at index 0, expected:16 nvdisasm warning : Disassembling Std Elf to ",
+   "stdout_bytes": 6667
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-12.8.55",
+   "input": "rel_entsize0",
+   "input_sha256": "8008074af234472c83911c10c47b299308f8bef969abaf0f98cc4d04627d24f6",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6771
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-13.0.85",
+   "input": "rel_entsize0",
+   "input_sha256": "8008074af234472c83911c10c47b299308f8bef969abaf0f98cc4d04627d24f6",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6771
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.6.68",
+   "input": "rel_size_plus1",
+   "input_sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm fatal : Unsupported data relocator, bitSpan=0",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.55",
+   "input": "rel_size_plus1",
+   "input_sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm fatal : Unsupported data relocator, bitSpan=0",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.90",
+   "input": "rel_size_plus1",
+   "input_sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm fatal : Unsupported data relocator, bitSpan=0",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "13.0.85",
+   "input": "rel_size_plus1",
+   "input_sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm warning : Disassembling Std Elf to Old format or Old Elf to Std format not supported yet, switching to Old form",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-12.8.55",
+   "input": "rel_size_plus1",
+   "input_sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6799
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-13.0.85",
+   "input": "rel_size_plus1",
+   "input_sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6799
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.6.68",
+   "input": "rel_info_huge",
+   "input_sha256": "6c1db6b73a1726e60aba76982c70855c1c00885527be547713146f31a2a5def9",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm error : Unknown relocator type: -16 nvdisasm warning : Dataflow analysis disabled due to previous warnings",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.55",
+   "input": "rel_info_huge",
+   "input_sha256": "6c1db6b73a1726e60aba76982c70855c1c00885527be547713146f31a2a5def9",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm error : Unknown relocator type: -16 nvdisasm warning : Dataflow analysis disabled due to previous warnings",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.90",
+   "input": "rel_info_huge",
+   "input_sha256": "6c1db6b73a1726e60aba76982c70855c1c00885527be547713146f31a2a5def9",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm error : Unknown relocator type: -16 nvdisasm warning : Dataflow analysis disabled due to previous warnings",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "13.0.85",
+   "input": "rel_info_huge",
+   "input_sha256": "6c1db6b73a1726e60aba76982c70855c1c00885527be547713146f31a2a5def9",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm warning : Disassembling Std Elf to Old format or Old Elf to Std format not supported yet, switching to Old form",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-12.8.55",
+   "input": "rel_info_huge",
+   "input_sha256": "6c1db6b73a1726e60aba76982c70855c1c00885527be547713146f31a2a5def9",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6758
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-13.0.85",
+   "input": "rel_info_huge",
+   "input_sha256": "6c1db6b73a1726e60aba76982c70855c1c00885527be547713146f31a2a5def9",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6758
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.6.68",
+   "input": "rel_offset_huge",
+   "input_sha256": "65dbc522a676135a8ab644c6727bf159a604ed802b8491dd41855df5fa5d25bf",
+   "rc": 139,
+   "signaled": true,
+   "signal": "SIGSEGV",
+   "exited_with": -1,
+   "stderr": "",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.55",
+   "input": "rel_offset_huge",
+   "input_sha256": "65dbc522a676135a8ab644c6727bf159a604ed802b8491dd41855df5fa5d25bf",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm fatal : Relocation offset outside section size",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "12.8.90",
+   "input": "rel_offset_huge",
+   "input_sha256": "65dbc522a676135a8ab644c6727bf159a604ed802b8491dd41855df5fa5d25bf",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm fatal : Relocation offset outside section size",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "nvdisasm",
+   "version": "13.0.85",
+   "input": "rel_offset_huge",
+   "input_sha256": "65dbc522a676135a8ab644c6727bf159a604ed802b8491dd41855df5fa5d25bf",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 1,
+   "stderr": "nvdisasm warning : Disassembling Std Elf to Old format or Old Elf to Std format not supported yet, switching to Old form",
+   "stdout_bytes": 0
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-12.8.55",
+   "input": "rel_offset_huge",
+   "input_sha256": "65dbc522a676135a8ab644c6727bf159a604ed802b8491dd41855df5fa5d25bf",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6778
+  },
+  {
+   "tool": "cuobjdump",
+   "version": "cuobjdump-13.0.85",
+   "input": "rel_offset_huge",
+   "input_sha256": "65dbc522a676135a8ab644c6727bf159a604ed802b8491dd41855df5fa5d25bf",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "exited_with": 0,
+   "stderr": "",
+   "stdout_bytes": 6778
+  }
+ ]
+}

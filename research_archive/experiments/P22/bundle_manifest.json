@@ -1,0 +1,48 @@
+{
+ "schema": "gpuvulnagent-experiment-bundle/v1",
+ "experiment": "P22",
+ "files": [
+  {
+   "path": "research_archive/experiments/P22/matrix.json",
+   "sha256": "aa1c256818e0b8047486737d0c3a57176e02ab2721365c9f6cebb6adcac77ca7",
+   "bytes": 13723
+  },
+  {
+   "path": "research_archive/experiments/P22/cve_inventory.json",
+   "sha256": "710786f4d70369a198ef0a2e6caf647ac937108fb6cbae4b4f373a280b89e279",
+   "bytes": 7474
+  },
+  {
+   "path": "research_archive/experiments/P22/result.json",
+   "sha256": "b32654c1cb0a7ba65e34ad09750c6e834281de61cd252180ca490a0edfe0177f",
+   "bytes": 1420
+  },
+  {
+   "path": "research_archive/experiments/P22/rel_entsize0.cubin",
+   "sha256": "8008074af234472c83911c10c47b299308f8bef969abaf0f98cc4d04627d24f6",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P22/rel_entsize1.cubin",
+   "sha256": "a3cdd9cd11a36daca2088e4321c7ba049b9b76c81e6879b51a35c1692d23a1d9",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P22/rel_info_huge.cubin",
+   "sha256": "6c1db6b73a1726e60aba76982c70855c1c00885527be547713146f31a2a5def9",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P22/rel_offset_huge.cubin",
+   "sha256": "65dbc522a676135a8ab644c6727bf159a604ed802b8491dd41855df5fa5d25bf",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P22/rel_size_plus1.cubin",
+   "sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
+   "bytes": 2728
+  }
+ ],
+ "skipped": [],
+ "note": "36 supervised runs over 6 inputs and 4 nvdisasm / 2 cuobjdump builds"
+}
