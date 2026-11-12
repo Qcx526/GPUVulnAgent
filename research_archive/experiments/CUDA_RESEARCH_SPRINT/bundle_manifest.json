@@ -1,0 +1,38 @@
+{
+ "schema": "gpuvulnagent-experiment-bundle/v1",
+ "experiment": "CUDA_RESEARCH_SPRINT",
+ "trial": "trial0",
+ "files": [
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/session/decisions.jsonl",
+   "sha256": "3cae87bb393e9d5ef607b2d614985b806fab99fe88c0085bb9df62892a37326f",
+   "bytes": 7232
+  },
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/session/tool_calls.jsonl",
+   "sha256": "b681d2b59d8706520f8abc21a20b3a753dc350c7e6010440275f8a27e1820876",
+   "bytes": 44043
+  },
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/evidence/evidence.jsonl",
+   "sha256": "3266d7f58de2255817289a3f4247096c4c9eeaf41f6ed40d710226abb8413671",
+   "bytes": 164586
+  },
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/report/final_report.md",
+   "sha256": "cbc26f89f28ef2fd58b3284e72b75565ac1d39744fb4eecae2a848ee1b855669",
+   "bytes": 10429
+  },
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/poc/marker.txt",
+   "sha256": "a4e53f38f338ccfb5bf7ec882ce49fbe75baaf751e48aae18ab439bdf86c8573",
+   "bytes": 21
+  },
+  {
+   "path": "research_archive/experiments/CUDA_RESEARCH_SPRINT/sprint1/poc/stage_refs.sh",
+   "sha256": "954608866e7fde9d7a8ad1e3070aa96b9247a1f614eb8816664e14dfb3423bf6",
+   "bytes": 381
+  }
+ ],
+ "skipped": []
+}
