@@ -29,6 +29,8 @@ packages = [
     "gpuvulnagent.adapters",
     "gpuvulnagent.adapters.elf_cubin",
     "gpuvulnagent.adapters.jpeg",
+    "gpuvulnagent.backends",
+    "gpuvulnagent.backends.worker",
     "gpuvulnagent.benchmarks",
     "gpuvulnagent.config",
     "gpuvulnagent.context",

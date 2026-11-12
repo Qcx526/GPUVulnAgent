@@ -85,6 +85,7 @@ class AgentRuntime:
                  toolchain_root: Optional[Path] = None,
                  manifest_path: Optional[Path] = None, tavily_api_key: str = "",
                  enable_search: bool = True, include_adapters: bool = True,
+                 enable_gpu_backend: bool = True, backend_config=None,
                  resume: bool = False, assembly: Optional[Assembly] = None,
                  deadline: Optional[float] = None) -> None:
         if not goal or not goal.strip():
@@ -124,9 +125,11 @@ class AgentRuntime:
             workspace=self.workspace, runner=self.runner, log=self.log, memory=self.memory,
             toolchain_root=toolchain_root, manifest_path=manifest_path,
             tavily_api_key=tavily_api_key, enable_search=enable_search,
-            include_adapters=include_adapters)
+            include_adapters=include_adapters, enable_gpu_backend=enable_gpu_backend,
+            backend_config=backend_config)
         self.registry = self.assembly.registry
         self.catalog = self.assembly.catalog
+        self.backend = getattr(self.assembly, "backend", None)
 
         self.turns: List[Turn] = self._load_turns() if resume else []
         self.decisions = int(self.state.data.get("decisions", 0)) if resume else 0

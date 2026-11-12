@@ -72,7 +72,8 @@ def render(observation, budget: int = 2400) -> str:
         if summary.get(key):
             parts.append("%s: %s" % (key, str(summary[key])[:300]))
     if observation.get("artifacts"):
-        refs = [a.get("artifact") for a in observation["artifacts"][:4] if isinstance(a, dict)]
+        refs = [str(item.get("artifact")) for item in observation["artifacts"]
+                if isinstance(item, dict) and item.get("artifact")]
         if refs:
             parts.append("artifacts: " + ", ".join(refs))
     if not observation.get("ok", True):

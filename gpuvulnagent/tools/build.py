@@ -29,17 +29,21 @@ class Assembly:
     providers: List[dict] = field(default_factory=list)
     conflicts: List[dict] = field(default_factory=list)
     adapter_errors: dict = field(default_factory=dict)
+    backend: Optional[object] = None
+    backend_status: dict = field(default_factory=dict)
 
     def describe(self) -> dict:
         return {"tools": self.registry.names(), "conflicts": self.conflicts,
                 "providers": self.providers, "adapter_errors": self.adapter_errors,
+                "backend": self.backend_status,
                 "catalog": self.catalog.summary()}
 
 
 def build_assembly(*, workspace, runner, log, memory, toolchain_root: Optional[Path] = None,
                    manifest_path: Optional[Path] = None, tavily_api_key: str = "",
-                   enable_search: bool = True,
-                   include_adapters: bool = True) -> Assembly:
+                   enable_search: bool = True, include_adapters: bool = True,
+                   enable_gpu_backend: bool = True,
+                   backend_config=None) -> Assembly:
     manifest = _load_manifest(toolchain_root, manifest_path)
     # The catalog exists before the tools so tool_search can close over it; it is populated
     # after registration, which is safe because the tools hold the object, not a snapshot.
@@ -76,6 +80,36 @@ def build_assembly(*, workspace, runner, log, memory, toolchain_root: Optional[P
         providers.append({"provider": "tavily", "sdk_installed": None, "key_present": None,
                           "available": False, "reason": "search disabled for this run"})
 
+    # The Linux GPU backend. Registered even when WSL is absent: the tools then answer
+    # "backend unavailable" with the reason, which is a finding the agent can use, instead
+    # of the capability silently not existing.
+    backend = None
+    backend_status: dict = {"enabled": bool(enable_gpu_backend)}
+    if enable_gpu_backend:
+        try:
+            from ..backends.wsl_docker import WslConfig, WslDockerBackend
+            from .gpu import build_gpu_tools
+
+            backend = WslDockerBackend(backend_config or WslConfig())
+            specs = build_gpu_tools(backend=backend,
+                                    trail_root=Path(log.path).parent / "trails",
+                                    run_id=getattr(log, "run_id", ""), log=log,
+                                    workspace=workspace)
+            registry.extend(specs)
+            backend_status.update({"registered": True, "tools": [spec.name for spec in specs],
+                                   "config": backend.describe()})
+        except Exception as exc:  # noqa: BLE001 - a missing backend must not break a run
+            backend_status.update({"registered": False,
+                                   "error": "%s: %s" % (type(exc).__name__, exc)})
+            adapter_errors["wsl_docker"] = backend_status["error"]
+            unavailable.append({"name": "linux_gpu_backend", "kind": "adapter",
+                                "purpose": "Run Linux/CUDA experiments in Docker on WSL2.",
+                                "location": "gpuvulnagent/backends/",
+                                "requires": ["wsl.exe", "docker"],
+                                "formats": [".cu", ".cubin", ".so"],
+                                "usage": "container_exec(...)", "tags": ["gpu", "docker"],
+                                "reason": backend_status["error"]})
+
     catalog.registry = registry
     if manifest is not None:
         catalog.add_manifest(manifest)
@@ -85,7 +119,8 @@ def build_assembly(*, workspace, runner, log, memory, toolchain_root: Optional[P
 
     return Assembly(registry=registry, catalog=catalog, manifest=manifest,
                     providers=providers, conflicts=list(registry.conflicts),
-                    adapter_errors=adapter_errors)
+                    adapter_errors=adapter_errors, backend=backend,
+                    backend_status=backend_status)
 
 
 def _load_manifest(toolchain_root: Optional[Path],

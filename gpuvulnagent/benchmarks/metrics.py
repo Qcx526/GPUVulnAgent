@@ -42,29 +42,42 @@ def read_records(run_dir: Path) -> List[dict]:
 
 
 def target_program(record: dict, targets: Iterable[str]) -> str:
-    """Which target tool, if any, this process record started.
+    """Which program this process record actually ran.
 
     A shell call is inspected too: ``cmd /c "cuobjdump -elf a.cubin"`` is a cuobjdump
     invocation wrapped in a shell, and pretending otherwise would undercount the target.
+
+    A container record (``backend`` set) is the target environment by construction: the
+    agent started a container in order to run something. Its program is the first real
+    token of the command, including when that command is inside ``bash -lc``.
     """
     names = {os.path.basename(t).lower() for t in targets}
     argv = record.get("argv") or []
     if not argv:
         return ""
-    first = os.path.basename(str(argv[0])).lower()
-    if first.endswith(".exe"):
-        first = first[:-4]
+    first = _program_name(str(argv[0]))
     if first in names:
         return first
-    if first in ("cmd", "sh", "bash", "powershell"):
+    if first in ("cmd", "sh", "bash", "powershell", "pwsh"):
         command = " ".join(str(a) for a in argv[1:])
-        for token in _tokens(command):
-            base = os.path.basename(token).lower()
-            if base.endswith(".exe"):
-                base = base[:-4]
+        tokens = _tokens(command)
+        for token in tokens:
+            base = _program_name(token)
             if base in names:
                 return base
+        if record.get("backend") and tokens:
+            # Inside a container the command string *is* the experiment.
+            return _program_name(tokens[0]) or first
+    if record.get("backend"):
+        return first
     return ""
+
+
+def _program_name(token: str) -> str:
+    base = os.path.basename(token).lower().strip("\"'")
+    if base.endswith(".exe"):
+        base = base[:-4]
+    return base
 
 
 def compute_metrics(run_dir: Path, *, targets: Iterable[str] = DEFAULT_TARGET_TOOLS) -> dict:

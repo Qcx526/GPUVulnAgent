@@ -20,6 +20,9 @@ with its own toolchain, research archive and tests. The legacy pipeline stays wh
   memory persist, including refuted directions.
 - **Capability catalog.** Tools, adapters and toolchain binaries are searchable by purpose,
   file format and dependency - including the ones that cannot run here, with the reason.
+- **Linux GPU execution.** Nine tools drive WSL2 + Docker + a real NVIDIA GPU: probe the
+  environment, allocate a trail, stage inputs, run any argv in a container, read the
+  artifacts back. Evidence records image digest, container id, exit status and termination.
 - **Toolchain manifest.** No hardcoded drive letters; binaries live under `toolchains/`
   with version, SHA256 and provenance.
 - **Benchmark runner.** Unique run ids, explicit case/mode identity, disjoint metrics, a
@@ -32,12 +35,13 @@ gpuvulnagent/
   runtime/      agent loop, run state, workspace guard
   providers/    DeepSeek (native tool calling), Tavily
   registry/     typed tool specs, validation, dispatch
-  tools/        builtin tools, assembly
+  tools/        builtin tools, GPU tools, assembly
   discovery/    capability catalog, toolchain manifest
   evidence/     hash chain, artifacts, process runner, termination classes
   memory/       run / case / global research memory
   context/      prompt assembly, observation rendering
   adapters/     elf_cubin, jpeg
+  backends/     WSL2 + Docker execution backend and its in-WSL worker
   benchmarks/   runner, metrics, crash classification, summary index
   config/       .env + YAML loader with explicit precedence
 ```
@@ -84,6 +88,41 @@ acceptance is a separate, explicit step:
 ```
 
 It writes `.local/logs/acceptance.json` and prints one line per check.
+
+Real WSL/Docker/GPU tests are gated behind an environment variable, so a machine without a
+GPU still gets a green suite:
+
+```bash
+GPUVULNAGENT_LIVE=1 .venv/Scripts/python.exe -m pytest tests/test_live_gpu_backend.py -q
+.venv/Scripts/python.exe scripts/p19_acceptance.py --turns 10
+```
+
+## Linux GPU backend
+
+The agent runs on Windows; Linux work happens in WSL2 as an ordinary user. A small
+stdlib-only worker inside WSL receives a JSON request, builds an allow-listed `docker run`,
+starts the container, reads its exit status and OOM flag from the daemon, kills it at the
+deadline, copies artifacts back and hashes them on both sides.
+
+```bash
+gpuvulnagent tools --search docker          # the tools are discoverable, not prescribed
+```
+
+| tool | purpose |
+|---|---|
+| `gpu_environment_probe` | distro, kernel, docker, GPU, CC, driver, CUDA, per-tool status |
+| `gpu_toolchain_discover` | run each CUDA tool and report ok / missing / not runnable |
+| `trail_new` / `trail_write` / `trail_read` / `trail_list` / `trail_manifest` | per-attempt directories with readable names and SHA256 manifests |
+| `container_exec` | one argv in one container, artifacts collected, evidence recorded |
+| `gpu_cleanup` | remove containers left behind by an interrupted run |
+
+`container_exec` never sees a shell string from Windows: it takes an argv array. Options are
+named fields, so `--privileged`, host mounts and the docker socket are not reachable. The
+only mount is the trail's work directory at `/work`; network is `none` by default.
+
+Known limit: containers share the WSL2 kernel and use the host NVIDIA driver, so this is
+**not** isolation for kernel-mode or physical GPU driver research. See
+`docs/P19_LINUX_GPU_BACKEND.md`.
 
 ## Independence
 

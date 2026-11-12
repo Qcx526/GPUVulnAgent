@@ -35,6 +35,12 @@ DEFAULTS: Dict[str, str] = {
     "AGENT_MAX_TURNS": "12",
     "AGENT_RUN_TIMEOUT": "900",
     "SHELL_TIMEOUT": "300",
+    "GPU_BACKEND_ENABLED": "1",
+    "WSL_DISTRO": "Ubuntu-22.04",
+    "WSL_USER": "pocdev",
+    "WSL_WORKER_ROOT": "/home/pocdev/gpuvulnagent-worker",
+    "GPU_IMAGE": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+    "WSL_CALL_TIMEOUT": "300",
 }
 
 SECRET_NAMES = ("DEEPSEEK_API_KEY", "TAVILY_API_KEY", "LLM_API_KEY")
@@ -137,12 +143,33 @@ class AgentSettings:
 
 
 @dataclass
+class BackendSettings:
+    """Where the Linux GPU execution backend lives.
+
+    Defaults describe the machine this was built on; every field can be overridden from
+    ``.env`` so the same code can talk to a differently named distro or user.
+    """
+    enabled: bool = True
+    wsl_distro: str = DEFAULTS["WSL_DISTRO"]
+    wsl_user: str = DEFAULTS["WSL_USER"]
+    wsl_worker_root: str = DEFAULTS["WSL_WORKER_ROOT"]
+    gpu_image: str = DEFAULTS["GPU_IMAGE"]
+    call_timeout: int = int(DEFAULTS["WSL_CALL_TIMEOUT"])
+
+    def describe(self) -> dict:
+        return {"enabled": self.enabled, "wsl_distro": self.wsl_distro,
+                "wsl_user": self.wsl_user, "wsl_worker_root": self.wsl_worker_root,
+                "gpu_image": self.gpu_image, "call_timeout": self.call_timeout}
+
+
+@dataclass
 class Settings:
     project_root: Path
     llm: LLMSettings = field(default_factory=LLMSettings)
     tavily_api_key: str = ""
     paths: Optional[PathSettings] = None
     agent: AgentSettings = field(default_factory=AgentSettings)
+    backend: BackendSettings = field(default_factory=BackendSettings)
     sources: Dict[str, str] = field(default_factory=dict)
 
     def path(self, name: str) -> Path:
@@ -156,6 +183,7 @@ class Settings:
                 "agent": {"max_turns": self.agent.max_turns,
                           "run_timeout": self.agent.run_timeout,
                           "shell_timeout": self.agent.shell_timeout},
+                "backend": self.backend.describe(),
                 "paths": {k: str(v) for k, v in vars(self.paths).items()},
                 "sources": dict(self.sources)}
 
@@ -197,7 +225,12 @@ class ConfigLoader:
                 "ARTIFACT_ROOT": ("paths", "artifact_root"),
                 "AGENT_MAX_TURNS": ("agent", "max_turns"),
                 "AGENT_RUN_TIMEOUT": ("agent", "run_timeout"),
-                "SHELL_TIMEOUT": ("agent", "shell_timeout")}
+                "SHELL_TIMEOUT": ("agent", "shell_timeout"),
+                "WSL_DISTRO": ("backend", "wsl_distro"),
+                "WSL_USER": ("backend", "wsl_user"),
+                "WSL_WORKER_ROOT": ("backend", "wsl_worker_root"),
+                "GPU_IMAGE": ("backend", "gpu_image"),
+                "WSL_CALL_TIMEOUT": ("backend", "call_timeout")}
         section, key = flat.get(name, ("", ""))
         node = self.yaml.get(section) if section else None
         return node.get(key) if isinstance(node, dict) else None
@@ -244,9 +277,19 @@ class ConfigLoader:
         agent.max_turns, _ = self._number("AGENT_MAX_TURNS", int, minimum=1)
         agent.run_timeout, _ = self._number("AGENT_RUN_TIMEOUT", int, minimum=1)
         agent.shell_timeout, _ = self._number("SHELL_TIMEOUT", int, minimum=1)
+
+        backend = BackendSettings()
+        enabled_raw, sources["GPU_BACKEND_ENABLED"] = self._get("GPU_BACKEND_ENABLED")
+        backend.enabled = str(enabled_raw).strip().lower() not in ("0", "false", "no", "off")
+        backend.wsl_distro, sources["WSL_DISTRO"] = self._get("WSL_DISTRO")
+        backend.wsl_user, sources["WSL_USER"] = self._get("WSL_USER")
+        backend.wsl_worker_root, sources["WSL_WORKER_ROOT"] = self._get("WSL_WORKER_ROOT")
+        backend.gpu_image, sources["GPU_IMAGE"] = self._get("GPU_IMAGE")
+        backend.call_timeout, _ = self._number("WSL_CALL_TIMEOUT", int, minimum=10)
+
         sources["TAVILY_API_KEY"] = tavily_source
         return Settings(project_root=self.project_root, llm=llm, tavily_api_key=tavily_key,
-                        paths=paths, agent=agent, sources=sources)
+                        paths=paths, agent=agent, backend=backend, sources=sources)
 
     def _secret(self, name: str) -> tuple:
         """Secrets are looked up but never echoed: the source is reported, not the value."""
@@ -264,6 +307,10 @@ class ConfigLoader:
     @property
     def agent(self) -> AgentSettings:
         return self.settings.agent
+
+    @property
+    def backend(self) -> BackendSettings:
+        return self.settings.backend
 
     # Convenience proxies: the CLI talks to the loader, the loader holds the settings.
     @property

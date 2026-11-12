@@ -137,12 +137,22 @@ def envelope(dispatched: bool, operation_ok: bool, payload, error: str, *,
     result = payload if isinstance(payload, dict) else {"value": payload}
     reported = result.get("ok") if isinstance(payload, dict) and "ok" in result else None
     ok = bool(reported) if reported is not None else bool(operation_ok)
-    if error:
-        status = "dispatch_error" if not dispatched else "failed"
-    elif ok:
-        status = result.get("status", "success") if isinstance(payload, dict) else "success"
-    else:
+    # A tool that reports failure usually explains why in its summary; lifting that to the
+    # envelope keeps one place to look for the reason instead of two.
+    if not error and isinstance(result.get("summary"), dict):
+        candidate = result["summary"].get("error")
+        if candidate:
+            error = str(candidate)
+    tool_status = result.get("status") if isinstance(payload, dict) else None
+    if error and not dispatched:
+        status = "dispatch_error"
+    elif tool_status:
+        # The tool knows whether this was rejected, a backend problem or a real failure.
+        status = tool_status
+    elif error or not ok:
         status = "failed"
+    else:
+        status = "success"
     return {"dispatched": dispatched, "ok": ok, "status": status, "result": payload,
             "summary": result.get("summary") if isinstance(payload, dict) else None,
             "artifacts": result.get("artifacts", []) if isinstance(payload, dict) else [],
