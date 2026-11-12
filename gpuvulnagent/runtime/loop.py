@@ -81,6 +81,7 @@ class RunResult:
 class AgentRuntime:
     def __init__(self, *, goal: str, root: Path, provider: Provider,
                  max_turns: int = 12, run_timeout: int = 900, shell_timeout: int = 300,
+                 max_tokens: int = 0,
                  case_id: str = "", research_root: Optional[Path] = None,
                  toolchain_root: Optional[Path] = None,
                  manifest_path: Optional[Path] = None, tavily_api_key: str = "",
@@ -153,6 +154,7 @@ class AgentRuntime:
         self.turns: List[Turn] = self._load_turns() if resume else []
         self.decisions = int(self.state.data.get("decisions", 0)) if resume else 0
         self.usage = Usage()
+        self.max_tokens = int(max_tokens or 0)
         self._log_start()
 
     # -- evidence --------------------------------------------------------
@@ -226,6 +228,10 @@ class AgentRuntime:
                 break
 
             self.usage = self.usage.add(response.usage)
+            if self.max_tokens and (self.usage.total_tokens or 0) > self.max_tokens:
+                # Hard budget: stop starting new work, but still allow the closing turn.
+                stopped = "token_budget"
+                break
             self.log.append("assistant", {
                 "decision": self.decisions,
                 "mode": response.mode,

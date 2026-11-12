@@ -48,6 +48,8 @@ def main(argv=None) -> int:
     run_p.add_argument("--resume", action="store_true")
     run_p.add_argument("--no-search", action="store_true")
     run_p.add_argument("--no-adapters", action="store_true")
+    run_p.add_argument("--max-tokens", type=int, default=0,
+                       help="Hard token budget for this run (0 = no limit).")
     run_p.add_argument("--research-root", default="",
                        help="Isolate cross-run memory (blind runs use a fresh directory).")
     run_p.add_argument("--sessions-dir", default="",
@@ -124,6 +126,7 @@ def _cmd_run(args, settings) -> int:
                                 max_tokens=settings.llm.max_tokens)
     runtime = AgentRuntime(goal=goal, root=root, provider=provider,
                            max_turns=args.turns or settings.agent.max_turns,
+                           max_tokens=args.max_tokens,
                            run_timeout=args.timeout or settings.agent.run_timeout,
                            shell_timeout=settings.agent.shell_timeout,
                            case_id=args.case,

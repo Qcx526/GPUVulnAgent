@@ -108,8 +108,11 @@ class ToolRegistry:
 
         values, errors, coercions = coerce_arguments(spec, arguments)
         if errors:
-            return envelope(False, False, None, "bad arguments for %s: %s"
-                            % (name, "; ".join(errors)), tool_call_id=tool_call_id, via=via,
+            accepted = ", ".join(sorted(getattr(item, "name", str(item)) for item in getattr(spec, "parameters", []) or []))
+            return envelope(False, False, None,
+                            "bad arguments for %s: %s | accepted parameters: %s"
+                            % (name, "; ".join(errors), accepted),
+                            tool_call_id=tool_call_id, via=via,
                             arguments=values, coercions=coercions)
         try:
             payload = spec.handler(**values)

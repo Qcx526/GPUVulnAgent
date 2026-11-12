@@ -186,3 +186,14 @@ def test_result_and_transcript_are_written(tmp_path):
     assert payload["executions"] == 1
     assert (tmp_path / "run" / "transcript.jsonl").is_file()
     assert (tmp_path / "run" / "run.json").is_file()
+
+
+def test_token_budget_stops_the_run(tmp_path):
+    provider = ScriptedProvider([native(tool_call("fs_list", {}, "c1")), prose("done")])
+    runtime = AgentRuntime(goal="budget", root=tmp_path / "b", provider=provider,
+                           max_turns=5, run_timeout=60, max_tokens=1,
+                           research_root=tmp_path / "arch", toolchain_root=None,
+                           enable_search=False)
+    result = runtime.run()
+    assert result.stopped == "token_budget"
+    assert result.usage.total_tokens >= 0
