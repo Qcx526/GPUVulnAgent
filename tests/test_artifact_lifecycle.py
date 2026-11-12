@@ -209,3 +209,27 @@ def test_registry_reloads_from_the_journal(trial):
     reloaded = ArtifactRegistry(trial.root, "trial0")
     assert reloaded.get(item.artifact_id) is not None
     assert reloaded.verify()["ok"] is True
+
+
+def test_trial_records_who_did_what(trial):
+    import json as _json
+    payload = _json.loads((trial.root / "session" / "provenance.json").read_text("utf-8"))
+    assert payload["defaults"]["poc_source"] == "agent"
+    assert payload["defaults"]["cve_selection"] == "human"
+    assert payload["defaults"]["runtime_fixes"] == "workbuddy"
+    trial.record_turn({"step": 1, "index": 1, "thought": "t", "tool": "shell",
+                       "status": "success", "evidence_id": "r#2", "at": "10:00"})
+    line = (trial.root / "session" / "decisions.jsonl").read_text("utf-8").splitlines()[0]
+    assert _json.loads(line)["origin"] == "agent"
+
+
+def test_trial_records_who_did_what(trial):
+    import json as _json
+    payload = _json.loads((trial.root / "session" / "provenance.json").read_text("utf-8"))
+    assert payload["defaults"]["poc_source"] == "agent"
+    assert payload["defaults"]["cve_selection"] == "human"
+    assert payload["defaults"]["runtime_fixes"] == "workbuddy"
+    trial.record_turn({"step": 1, "index": 1, "thought": "t", "tool": "shell",
+                       "status": "success", "evidence_id": "r#2", "at": "10:00"})
+    line = (trial.root / "session" / "decisions.jsonl").read_text("utf-8").splitlines()[0]
+    assert _json.loads(line)["origin"] == "agent"

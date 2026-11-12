@@ -1,0 +1,8 @@
+{
+ "schema": "gpuvulnagent-trial/v1",
+ "trial_id": "trial0",
+ "case_id": "",
+ "goal": "(resumed harvest)",
+ "created_at": "2026-11-12T20:26:12",
+ "root": "F:\\qcx\\code\\GPUVulnAgent\\runs-p23r1\\trial0"
+}

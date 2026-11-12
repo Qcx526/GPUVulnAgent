@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 SCHEMA = "gpuvulnagent-finding/v1"
-ID_PATTERN = re.compile(r"^FND-[a-z0-9]+-\d{4}$")
+ID_PATTERN = re.compile(r"^FND-[A-Za-z0-9._-]+-\d{4}$")
 CVE_PATTERN = re.compile(r"CVE-\d{4}-\d{4,}", re.I)
 
 # Crash classes we are willing to name. Anything else stays UNKNOWN.

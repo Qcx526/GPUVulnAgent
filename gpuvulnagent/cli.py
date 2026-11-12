@@ -48,6 +48,8 @@ def main(argv=None) -> int:
     run_p.add_argument("--resume", action="store_true")
     run_p.add_argument("--no-search", action="store_true")
     run_p.add_argument("--no-adapters", action="store_true")
+    run_p.add_argument("--research-root", default="",
+                       help="Isolate cross-run memory (blind runs use a fresh directory).")
     run_p.add_argument("--sessions-dir", default="",
                        help="Put this run in the next runs/trialN under this directory.")
     run_p.add_argument("--no-gpu-backend", action="store_true",
@@ -124,7 +126,9 @@ def _cmd_run(args, settings) -> int:
                            max_turns=args.turns or settings.agent.max_turns,
                            run_timeout=args.timeout or settings.agent.run_timeout,
                            shell_timeout=settings.agent.shell_timeout,
-                           case_id=args.case, research_root=settings.paths.research_data_root,
+                           case_id=args.case,
+                           research_root=(Path(args.research_root) if args.research_root
+                                          else settings.paths.research_data_root),
                            toolchain_root=settings.paths.toolchain_root,
                            tavily_api_key=settings.tavily_api_key,
                            enable_search=not args.no_search,

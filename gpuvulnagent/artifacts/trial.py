@@ -49,6 +49,8 @@ class TrialSession:
         self._seen: Dict[str, str] = {}
         self.turns: List[dict] = []
         self._write_task()
+        self._write_provenance()
+        self._write_provenance()
 
     # -- allocation ------------------------------------------------------
     @classmethod
@@ -73,6 +75,64 @@ class TrialSession:
         (self.root / "session" / "task.json").write_text(
             json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
 
+    # Who did what. A research result is only the agent's if the agent produced it; the
+    # engineer's fixes to the harness are recorded separately and never counted as findings.
+    PROVENANCE = {
+        "cve_selection": "human",
+        "research_goal": "human",
+        "cve_reading": "agent",
+        "version_acquisition": "agent",
+        "hypothesis": "agent",
+        "poc_source": "agent",
+        "mutation": "agent",
+        "compilation": "agent",
+        "execution": "agent",
+        "crash_analysis": "agent",
+        "finding_registration": "agent",
+        "runtime_fixes": "workbuddy",
+        "environment_setup": "workbuddy",
+        "final_audit": "workbuddy",
+    }
+
+    def _write_provenance(self) -> None:
+        payload = {"schema": "gpuvulnagent-provenance/v1", "trial_id": self.trial_id,
+                   "defaults": dict(self.PROVENANCE),
+                   "overrides": {},
+                   "note": ("Every tool call in this trial was produced by the agent loop; "
+                            "workbuddy entries describe repairs to the harness, not research "
+                            "results.")}
+        (self.root / "session" / "provenance.json").write_text(
+            json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    # Who did what. A research result is only the agent's if the agent produced it; the
+    # engineer's fixes to the harness are recorded separately and never counted as findings.
+    PROVENANCE = {
+        "cve_selection": "human",
+        "research_goal": "human",
+        "cve_reading": "agent",
+        "version_acquisition": "agent",
+        "hypothesis": "agent",
+        "poc_source": "agent",
+        "mutation": "agent",
+        "compilation": "agent",
+        "execution": "agent",
+        "crash_analysis": "agent",
+        "finding_registration": "agent",
+        "runtime_fixes": "workbuddy",
+        "environment_setup": "workbuddy",
+        "final_audit": "workbuddy",
+    }
+
+    def _write_provenance(self) -> None:
+        payload = {"schema": "gpuvulnagent-provenance/v1", "trial_id": self.trial_id,
+                   "defaults": dict(self.PROVENANCE),
+                   "overrides": {},
+                   "note": ("Every tool call in this trial was produced by the agent loop; "
+                            "workbuddy entries describe repairs to the harness, not research "
+                            "results.")}
+        (self.root / "session" / "provenance.json").write_text(
+            json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+
     def _append_jsonl(self, name: str, payload: dict) -> None:
         path = self.root / "session" / name
         with path.open("a", encoding="utf-8") as handle:
@@ -84,7 +144,7 @@ class TrialSession:
         self.turns.append(entry)
         self._append_jsonl("transcript.jsonl", entry)
         self._append_jsonl("decisions.jsonl", {
-            "step": entry.get("step"), "index": entry.get("index"),
+            "step": entry.get("step"), "index": entry.get("index"), "origin": "agent", "origin": "agent",
             "thought": entry.get("thought", ""), "tool": entry.get("tool"),
             "status": entry.get("status"), "evidence_id": entry.get("evidence_id"),
             "at": entry.get("at"), "usage": usage or {}})

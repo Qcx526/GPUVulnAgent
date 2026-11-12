@@ -1,0 +1,530 @@
+{
+ "schema": "gpuvulnagent-experiment-bundle/v1",
+ "experiment": "P23R1",
+ "trial": "trial0",
+ "run_id": "run-20261112T121106Z-3389c2",
+ "files": [
+  {
+   "path": "research_archive/experiments/P23R1/session/task.json",
+   "sha256": "9e3b005741e39e1526af0486cf9739104c643c5b33fc4b577f7cf3f8fdf87a6f",
+   "bytes": 212
+  },
+  {
+   "path": "research_archive/experiments/P23R1/session/decisions.jsonl",
+   "sha256": "f50abb6a2afdc9046d33b1f11a40f00ab1f364e6c810116815db0511276d0d17",
+   "bytes": 14438
+  },
+  {
+   "path": "research_archive/experiments/P23R1/session/tool_calls.jsonl",
+   "sha256": "78fada1ad68ec2ee30341c0c8ce4bf246736f3e46a9920e424b1b770dc946e2c",
+   "bytes": 92945
+  },
+  {
+   "path": "research_archive/experiments/P23R1/session/transcript.jsonl",
+   "sha256": "aa02cc2eb1c7614dc67440c2ce12427491db6233e2e086cddc62811c3eac68e5",
+   "bytes": 102007
+  },
+  {
+   "path": "research_archive/experiments/P23R1/session/provenance.json",
+   "sha256": "c08b2e2882c37d36d0915a8832dbc7be99cc340f2696832bfb7e596a75257875",
+   "bytes": 671
+  },
+  {
+   "path": "research_archive/experiments/P23R1/evidence/evidence.jsonl",
+   "sha256": "54cc011c667cbe74e0b34c587206d21694bd930a034b2af2646f2a406e99a3ef",
+   "bytes": 321242
+  },
+  {
+   "path": "research_archive/experiments/P23R1/evidence/artifact_index.json",
+   "sha256": "cdde7ac428ad42993a2bf584fc750766aa45db9c4d65f11520662a68a910f102",
+   "bytes": 70728
+  },
+  {
+   "path": "research_archive/experiments/P23R1/report/final_report.md",
+   "sha256": "cdac4de5a6e4f21f11761b165898ffe4d1aaaeda63416efbc205432ae549df29",
+   "bytes": 9088
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-0699554e774d.json",
+   "sha256": "a18140dc5b95f0a040b89aa6917f824eb3538b18c2d58f47de6e179277a170c8",
+   "bytes": 905
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-0f398c8411cc.json",
+   "sha256": "2e9f03401d54b4b0ad53588d27b2378f5172f78cf3375f22151ae371802ad73b",
+   "bytes": 884
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-10ed4b8f5d50.json",
+   "sha256": "a523307135bc306df5e6b5589e47e70e4cf51d985ecf52ff21378958c5616984",
+   "bytes": 878
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-121c5f1355e0.json",
+   "sha256": "e5c502e7963c9952cf62bcac92c5f140429dc5e16967fa39ef0b32fdfd0212a3",
+   "bytes": 913
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-14178fddce17.json",
+   "sha256": "d3696b848bdf01cf5567f163f115dff2f62271eebe6d389d380532479275b567",
+   "bytes": 902
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-1a37ec0f876d.json",
+   "sha256": "9b1461a6755d73d2e48c5149da44eeed923c01362fdf4b6cd042d459d888c0f0",
+   "bytes": 894
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-1cb686fe40ea.json",
+   "sha256": "b6592bf6b5c5c8de452c96360ad79308f2576346c1eb8ece0fdf36b83591b248",
+   "bytes": 882
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-1cfab9fbc482.json",
+   "sha256": "5e197ad0a3838ce897a7888b0abae203c4fb9a74ade43f4ed51b854d6034bcd3",
+   "bytes": 881
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-217a061d858e.json",
+   "sha256": "fc23e4a02715568fd47a614a12707bdb0c4c2c876f60316742592f6c78db13a1",
+   "bytes": 911
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-2d5eccd5abd6.json",
+   "sha256": "02a285aa45fa8fac360520bac0e9a33b419e6a9e2742ea4e1040f348498611e0",
+   "bytes": 893
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-2f0154b8cbd6.json",
+   "sha256": "efcc193d114082320709d1aa24213909207ff42c4da510fbcf94d7f356150fa1",
+   "bytes": 829
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-34a10b28e681.json",
+   "sha256": "82c8ce8cdbfd1b7ac2d5d0e4ca041fc8793618cc0bc9153f186ee47031668bc1",
+   "bytes": 823
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-37ab4d8af88f.json",
+   "sha256": "6ea17ceecc4eeb311e9e5cf306c02ae2c24a016dfd10e37ea4e459eac7b0c14e",
+   "bytes": 902
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-3b7749a6cd63.json",
+   "sha256": "f0d4a845da095989207d61e2a4189ef36a0feabd355f63fed06803b110b9c5c8",
+   "bytes": 911
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-3bab1b4c2dfa.json",
+   "sha256": "dea2b635defc3505fa2ce164213ec075b1b1d87c0bf7ff74ad4d5f6930d8335f",
+   "bytes": 888
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-3c10749601ba.json",
+   "sha256": "3a663f27dfa17d9cd996fd0e8ee87815a2f2ed0d74b57b35d64b0a217c207dc1",
+   "bytes": 1658
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-412a2106c3cb.json",
+   "sha256": "18cbd991ec98ba1022d2cb01d8908c36f83d223384284fcc4a2a41ada044e08f",
+   "bytes": 902
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-41b8e3f4ae01.json",
+   "sha256": "64af793970c8a41fa2992b80bbb0a1d9ed10acc2ac06e3dab24409b1ca8a6a3d",
+   "bytes": 905
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-4284f071c613.json",
+   "sha256": "71ca3b8f58cf80b2b896454302a01da9877f90d0f5fefee07334ec4de648b76c",
+   "bytes": 825
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-49d44710c6a8.json",
+   "sha256": "9492b369929f75fb5556bf5b3d7f933ea2ec57943956149a103605db27aa5042",
+   "bytes": 865
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-4eb8994f5a2b.json",
+   "sha256": "6e639addf4a212a69dbab111e0d3a89f634caac54fb21dffbaed2658ab56d1d6",
+   "bytes": 902
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-5059d09248fd.json",
+   "sha256": "a75725b940ec5c2f407e9678d9825e82c22998aad01be86bedd845552e53d75c",
+   "bytes": 908
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-51dc2b739e0d.json",
+   "sha256": "43e3b4fee81fcdfc0cf87a18a20ba37a39ded157bb2212391e4757b106db9870",
+   "bytes": 826
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-54489a1452e0.json",
+   "sha256": "dca26ce870061a8c6dd4a9cf8130ec3d90b275bc56bf4bdb403c3d3ffc875331",
+   "bytes": 893
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-56de319ddd3a.json",
+   "sha256": "718c2edbf3d589d031f14c9f06193eb051ff21f6c298586681c510dab1be95c0",
+   "bytes": 899
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-5c4111f921be.json",
+   "sha256": "9f5f8f9f9569a3e4558e790b4623713d98fee3a46ce2a9a16aadc7d3d65895d8",
+   "bytes": 890
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-5c5715011c56.json",
+   "sha256": "8ab53d6e1bc9d204ca2fcc0126531f0481d236f015d3d97780e653747cd828de",
+   "bytes": 905
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-5ca7e0bc39e2.json",
+   "sha256": "4fb848b0f95354c388cd6c4a0a4c65d073d9974d406e6c769701b762e6e11969",
+   "bytes": 1582
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-5e15fe36c92d.json",
+   "sha256": "2d8e0199727fe52c5e90a4bcb36899228ba7e30ec5f222623167609246479566",
+   "bytes": 881
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-5fc456907e7f.json",
+   "sha256": "d37dfdd864a17aef6f9f3d34f87e6b213ccbc77a8612aa0cb61917e6fd766d4b",
+   "bytes": 905
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-6416072dd3a0.json",
+   "sha256": "21ae9e752f38433a269f826ab33119c7e7c4ab641c76827ad5fdac1f427a2051",
+   "bytes": 899
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-6541d448f0d7.json",
+   "sha256": "b19cb3b524f1548f7e0c4ca64343753bd67e10e261521ef66b8883c6a430f5b7",
+   "bytes": 865
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-66f9da5504cf.json",
+   "sha256": "c7c78f8e175b5e769c0159e23870f052ad908b21f6f2a7cf55018817192c73cb",
+   "bytes": 1655
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-69d4cb8240a7.json",
+   "sha256": "4936ce9dea2dba503ce1fd9b30390e92cced8d08468e3608bc9de257489b5c9c",
+   "bytes": 852
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-6a215aff2ffd.json",
+   "sha256": "250eafc2c7b87a2d0664789f156f288117375093fd6f0b0f31bb1b0af4b0a165",
+   "bytes": 824
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-6a9c154756f6.json",
+   "sha256": "4ed0865584a04277cc6add9560601e6e8c7539908dcfa94e62c593c4523ec89c",
+   "bytes": 902
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-704d8d48809c.json",
+   "sha256": "5963b62878bf95162f2baa5d9d54d1fbc3fbefc803a069ceb69fe5194838f484",
+   "bytes": 890
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-7077c11da993.json",
+   "sha256": "74e55ad1e35a8915f0ad31851525b81c5a37d46451229746cc39b644a9e86894",
+   "bytes": 887
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-710edc3abbd0.json",
+   "sha256": "c76339a36aae9ffe92cec87c1c54508191ac3abdbe3bc960655ed13a0c73517a",
+   "bytes": 881
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-734f4d9fb41b.json",
+   "sha256": "06f3e7a7bfcc0db2bc13ecee6085932c7dfa52d15ae013eca9b6170902faa3a3",
+   "bytes": 833
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-7427264ff96b.json",
+   "sha256": "240e6cbf310c4b0cfe89584b5f287ccc26d165c9eaf654bf1ba7684281a63f26",
+   "bytes": 899
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-787e0d94d3a2.json",
+   "sha256": "9fcf086ab1aed88ce88e2237a29800506a0dbcd4ba3be9ecf88a049f952aad61",
+   "bytes": 1643
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-78d33b059a02.json",
+   "sha256": "dd318d40b131b56adba9f8b55c43a940d432823cb473bbeeca812ee56a093adb",
+   "bytes": 824
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-7b7772edb047.json",
+   "sha256": "e7d01e804bc7a9a513ea8dccfbd01d10c2075b98707c821fb7ffd03d31a9e0fc",
+   "bytes": 1646
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-7be985d0cd0a.json",
+   "sha256": "4d28c97ee8c0ac19d25a4df01c3d077d9f8006d306d2854ffa147cf38b8862f3",
+   "bytes": 879
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-7cc68330a548.json",
+   "sha256": "cc062745e8799bab09bc8dafcec38b56b264e6d3ebc03343db1559108e5c48b6",
+   "bytes": 902
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-7f9b86cc1ed1.json",
+   "sha256": "8735f4d26eddae90e458446fe0df3c143ce90e0442762fe39b46d8cdf30ef782",
+   "bytes": 911
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-811d811989b5.json",
+   "sha256": "64ffa1928b8a4c83ef695f29880b75ef4eddfe7579f4205fde0f5388ada727e9",
+   "bytes": 908
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-820ad8266484.json",
+   "sha256": "bc043a33a08d3d80551886ce7c210c617d61e12393dab890e452adb94e7a6384",
+   "bytes": 896
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-83c77747d4cc.json",
+   "sha256": "2ab8d3eb4512b5bb7dcc4749fc4b3470e4cac4cb0941575ba611d170fd6cacc3",
+   "bytes": 1664
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-86611ed780aa.json",
+   "sha256": "b550d704ac5b4b82dade99fafb4d5fbdb88b7ef29de9b2002760eed2a844f492",
+   "bytes": 849
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-8999e497ee69.json",
+   "sha256": "c281e85b05a9873935cf281de7facb2b3322e5f8e8e34e47e6776dccb0451077",
+   "bytes": 911
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-8a5f4cc0dce2.json",
+   "sha256": "d8fe0dac21fee6f805f7b956bfa4746f041b585a510673813c43fdabfaa78741",
+   "bytes": 814
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-8d5522af6146.json",
+   "sha256": "e38b620002ca1d3e2b184b6f3581639c3eebf7895d4ba82d914192e9ef54c375",
+   "bytes": 896
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-936ed04d5a93.json",
+   "sha256": "63a37d2cfccb0c10d07040c6fa51b74f98272837925e0b8b63cbed9b523751bd",
+   "bytes": 839
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-9495624ad13a.json",
+   "sha256": "93a0e9f47ca07ba979b1c9cce8d189d6d36f5bf24511d0f0c0cc060150242b03",
+   "bytes": 914
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-9c2be48511db.json",
+   "sha256": "e1e07263ed6d8c8e4dce21de36bd9e7a3b764b2727276f6622ad209488ab2cc1",
+   "bytes": 914
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-9d120160e602.json",
+   "sha256": "81188e4323a28aa6dfe1971d728bc85d705c930452f54728c261aacf53516000",
+   "bytes": 849
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-9e15c1ebcf52.json",
+   "sha256": "47ca92880dc423900f56f4824af378fdb987961d77828f92f3e54276f1bd1819",
+   "bytes": 896
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-9ebc425c9816.json",
+   "sha256": "283acb70e987a8a6f28497f3252c9d0b45be14d880a4cefefac1655138488087",
+   "bytes": 890
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-9ed0d99f668c.json",
+   "sha256": "161bd55d60e74d2888205c4898dc257f200c0b0c9f0bb8cca00cc1b02fa8c574",
+   "bytes": 826
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-a2682a9d1cd2.json",
+   "sha256": "4b22625cfea7241b21481c16faf96e9088a927a0e4f58f094767a7a685c141b8",
+   "bytes": 911
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-a4254eb79b1e.json",
+   "sha256": "b6244fffe313510d5dd0a53bbdd04c1829a66e555d498aaf8d3c6f00f77e10d1",
+   "bytes": 896
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-a5106db3f706.json",
+   "sha256": "f2f721fe9ac6e596712a210f83512388fbefd112ea21f47d96853ebd81a139e8",
+   "bytes": 923
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-aa8b57202421.json",
+   "sha256": "14478ce8963e458454f264bd1b41b751d94af61f64690f5f18d7f46f6a57f642",
+   "bytes": 905
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-adda619922b1.json",
+   "sha256": "33d85dc6c82ceafcd14e6e33d39217451dfcfe2d820ee410d3fd39fe641ff7e4",
+   "bytes": 893
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-afd649def589.json",
+   "sha256": "4b002c4131d89e9b0284a3ce71a107d0733dbd70efa037cb1ad86292a7d51fac",
+   "bytes": 896
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-b4275c0093ed.json",
+   "sha256": "ec4a628b2be3dc61699a78b1778aa05c15d29237bf8dde7a9494314fe8dbe527",
+   "bytes": 893
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-b9df9a3797ef.json",
+   "sha256": "935d6155a1223073a3a6f8c1896c899ed1ffd10aa7b6fd0b41a021f2686891bd",
+   "bytes": 911
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-bc2cab513ede.json",
+   "sha256": "c2424c86fbf656ed7d98f3bcd284266efaf510d543352b9ad3a246f803c06e16",
+   "bytes": 1661
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-c95ea71ecc1d.json",
+   "sha256": "4a46a144b1d89c69e83b5aff6435185afab38e28257ee3299871c3fb8d049b8f",
+   "bytes": 831
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-c9a68e97e1dc.json",
+   "sha256": "87b593412730f45858bb24fd8f632bbd4bd06f39b4eb61537763be43b5f90c29",
+   "bytes": 914
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-cc0bbda922b7.json",
+   "sha256": "60a256756181cb1136bc404153f47f1efffdcba8ebfdb356af461a0a43392365",
+   "bytes": 887
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-cc94a08970f6.json",
+   "sha256": "9f0ef31b2726b7400bc3d117e24551f902920c5ed7e55708425ea3959d15a89d",
+   "bytes": 855
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-cf9c73ef6252.json",
+   "sha256": "ad3c5bedca51892e3d1457f6fc43a3f73219c3cc69b4702827a02caacee7bf9e",
+   "bytes": 900
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-d0be9cbdf382.json",
+   "sha256": "ac00d2c4bc81e15abdd76350c3708f6fddda320854ab556a83879b19006033cc",
+   "bytes": 1649
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-d38a10f052bf.json",
+   "sha256": "b35b3fd5467a90686d91182077000e7b3c2da3e52afd4defb6e3d55d55c9bf78",
+   "bytes": 896
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-d6199ec0f8ef.json",
+   "sha256": "dff95c4348dbb89707c730cb7b8744c92a93565a0bf14698fb751aa5cc351f79",
+   "bytes": 1587
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-d75cb018c52d.json",
+   "sha256": "c5c8b9cf66954519ed92a6ae283333bc0636bd71753d33113cb2dd639e9046b0",
+   "bytes": 878
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-d932cf29b012.json",
+   "sha256": "8bb2dced1063d6f6e3ffea30c0e71b18b4f9b7902feafb1e925a2a1b3032499e",
+   "bytes": 902
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-d987d320cf80.json",
+   "sha256": "68dd709e0feafc15575900c03743c9eb943f47338075f325b131333be6347800",
+   "bytes": 878
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-db3bae5595dd.json",
+   "sha256": "73e7b05e277d44b5c5e9406749b6d2ed6d4ff27e95e39b7d16a4c8c0c55a5b34",
+   "bytes": 893
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-db46642f88ad.json",
+   "sha256": "d3238994c447e11bbb76663458a5eccf50ea4f6d8a11f996bbb2408b4a540b1a",
+   "bytes": 923
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-e0ba2daa923d.json",
+   "sha256": "4755af2b4abf2256e870e91e1bda6db273056f84608a51ba9f4237c4faf247a8",
+   "bytes": 920
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-e91885c7b692.json",
+   "sha256": "70cf034355a0ddcc51d0a725e77fd938c4128a0da20e99dc48dd7ed34f7ac186",
+   "bytes": 852
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-e92be4acda89.json",
+   "sha256": "1434da93bc2046fd43eb93e7d0c7763fa949c782d22a5fe8b48cff2118fe39b3",
+   "bytes": 1587
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-ec1359ed5d2b.json",
+   "sha256": "3e157d36f684a01a90ab554e59a17ad4045eaefbeb5729697d0d51e91acc977d",
+   "bytes": 908
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-ee091fdf1439.json",
+   "sha256": "f42da12b7f8dc58466b599396f68a67e108a98a4c3f47f32e0ea1692780fd715",
+   "bytes": 890
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-ee47cd89e56a.json",
+   "sha256": "eef28b7962cedb1dccb75dd0372b2f5d17dd44e2b1ce6413ff35934fd51b2bc1",
+   "bytes": 890
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-f2744eaba808.json",
+   "sha256": "a3790e2c3a197a771733cdcf147229fa75851d38ed93b565d6234178291f0da0",
+   "bytes": 908
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-f662b88f9211.json",
+   "sha256": "ce01e7754b82146063e4fd95c67930d9180883133a2741becefa3f805d17b424",
+   "bytes": 884
+  },
+  {
+   "path": "research_archive/experiments/P23R1/poc/manifests/art-fb0717e5c490.json",
+   "sha256": "f0a23c6ed10183314186014f2fae4dcc099f864a9ba2749edd4ee478cf4fdb21",
+   "bytes": 902
+  },
+  {
+   "path": "research_archive/experiments/P23R1/findings/FND-t0-0001.json",
+   "sha256": "d14beb53b37c884f3b1c4fd14bfbd2e6a81fe269dd8fd42c1d22191069b92f75",
+   "bytes": 1730
+  },
+  {
+   "path": "research_archive/experiments/P23R1/findings/FND-t0-0001.md",
+   "sha256": "6da70fc6a0f6a495f4d807b296f55358339fbf84e32026822a337e0acc71ea7c",
+   "bytes": 1817
+  },
+  {
+   "path": "research_archive/experiments/P23R1/findings/FND-t0-0002.json",
+   "sha256": "5d05e208d83b9f3d843ba0ab02e487b97069c991687bb7701bb7a945be679fda",
+   "bytes": 1362
+  },
+  {
+   "path": "research_archive/experiments/P23R1/findings/FND-t0-0002.md",
+   "sha256": "3bc577016a2113342a84b72c0a5e2658f0d77f89a2f85907ec36e9e761d01781",
+   "bytes": 1476
+  }
+ ],
+ "skipped": [],
+ "note": "blind agent run, text artifacts only; binaries stay in runs-p23r1"
+}

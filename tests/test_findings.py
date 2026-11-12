@@ -96,3 +96,17 @@ def test_report_marks_unknown_fields_as_unknown():
     text = render_report(Finding(finding_id="FND-t0-0001", title="x"))
     assert "UNKNOWN" in text
     assert "Internal finding" in text and "an assigned CVE" in text
+
+
+def test_run_id_style_trial_slugs_are_accepted(tmp_path):
+    store = FindingStore(tmp_path / "trial7", "run-20261112T121106Z-3389c2")
+    finding = store.create("id shape check")
+    assert finding.finding_id == "FND-run-20261112T121106Z-3389c2-0001"
+    assert "CVE" not in finding.finding_id
+
+
+def test_run_id_style_trial_slugs_are_accepted(tmp_path):
+    store = FindingStore(tmp_path / "trial7", "run-20261112T121106Z-3389c2")
+    finding = store.create("id shape check")
+    assert finding.finding_id == "FND-run-20261112T121106Z-3389c2-0001"
+    assert "CVE" not in finding.finding_id

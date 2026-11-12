@@ -1,0 +1,49 @@
+{
+ "artifact_id": "art-bc2cab513ede",
+ "trial_id": "trial0",
+ "artifact_type": "input",
+ "relative_path": "evidence/trails/trail1/execs/exec08/outputs/mut/relocobj.o.reloc_entsize_zero.bin",
+ "filename": "relocobj.o.reloc_entsize_zero.bin",
+ "sha256": "43f1a2bcc168ff3f88b9f1b6130de5fa448f6a4acb1f96e9159f0cc411ab6a87",
+ "size": 10160,
+ "media_type": "application/octet-stream",
+ "language": "binary",
+ "origin": "generated",
+ "parent_artifact_ids": [
+  "art-734f4d9fb41b"
+ ],
+ "producer_tool": "container_exec",
+ "producer_evidence_id": "UNKNOWN",
+ "producer_turn": -1,
+ "execution_id": "trail/exec08",
+ "created_at": "2026-11-12T20:26:13",
+ "version": 1,
+ "status": "active",
+ "intent": "",
+ "schema": "gpuvulnagent-artifact/v1",
+ "path_on_disk": "F:\\qcx\\code\\GPUVulnAgent\\runs-p23r1\\trial0\\evidence\\trails\\trail1\\execs\\exec08\\outputs\\mut\\relocobj.o.reloc_entsize_zero.bin",
+ "parents": [
+  {
+   "artifact_id": "art-734f4d9fb41b",
+   "trial_id": "trial0",
+   "artifact_type": "object",
+   "relative_path": "evidence/trails/trail1/execs/exec07/outputs/in/relocobj.o",
+   "filename": "relocobj.o",
+   "sha256": "43f1a2bcc168ff3f88b9f1b6130de5fa448f6a4acb1f96e9159f0cc411ab6a87",
+   "size": 10160,
+   "media_type": "application/octet-stream",
+   "language": "elf",
+   "origin": "generated",
+   "parent_artifact_ids": [],
+   "producer_tool": "container_exec",
+   "producer_evidence_id": "UNKNOWN",
+   "producer_turn": -1,
+   "execution_id": "trail/exec07",
+   "created_at": "2026-11-12T20:26:13",
+   "version": 1,
+   "status": "active",
+   "intent": "",
+   "schema": "gpuvulnagent-artifact/v1"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "finding_id": "FND-t0-0002",
+ "title": "nvdisasm 12.6.77 still SIGSEGV on an out-of-range relocation symbol index",
+ "component": "nvdisasm",
+ "trial_id": "trial0",
+ "created_at": "2026-11-12T20:26:26",
+ "source_evidence_ids": [
+  "run-20261112T121106Z-3389c2#84"
+ ],
+ "input_path": "(trial0) reloc_sym_oob.cubin",
+ "input_sha256": "",
+ "parent_artifact_ids": [],
+ "mutation": "Rela r_info symbol index set to 0x0fffffff",
+ "target_versions": {
+  "12.6.68": "V12.6.68",
+  "12.6.77": "V12.6.77"
+ },
+ "reproduction_command": "",
+ "stdout_ref": "",
+ "stderr_ref": "",
+ "crash_class": "SIGSEGV",
+ "signal": "SIGSEGV",
+ "exit_code": 139,
+ "differential": {
+  "12.6.68": "SIGSEGV",
+  "12.6.77": "SIGSEGV (the fix level also crashes)",
+  "12.8/13.0": "not tested (index query failed in the run)"
+ },
+ "stability": {
+  "runs": 1
+ },
+ "cwe": "UNKNOWN",
+ "related_cves": [
+  "CVE-2024-0123",
+  "CVE-2024-0125"
+ ],
+ "root_cause_status": "not_started",
+ "impact": "UNKNOWN",
+ "verification_status": "new",
+ "open_questions": [],
+ "notes": "Unattributed. It crashes on the version NVIDIA shipped as the fix for the 12.6 branch, which is either a separate defect or an incomplete fix; both need evidence. The agent tried to register it and the tool rejected the id shape - fixed afterwards.",
+ "schema": "gpuvulnagent-finding/v1"
+}

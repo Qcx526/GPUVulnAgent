@@ -1,0 +1,49 @@
+{
+ "artifact_id": "art-d6199ec0f8ef",
+ "trial_id": "trial0",
+ "artifact_type": "binary",
+ "relative_path": "evidence/trails/trail1/execs/exec07/outputs/in/reloc.cubin",
+ "filename": "reloc.cubin",
+ "sha256": "109f312bcd0789fcd928a492a29c1e0efdee93fab4d37b9f1fbe928f20b0727e",
+ "size": 3720,
+ "media_type": "application/octet-stream",
+ "language": "cubin",
+ "origin": "generated",
+ "parent_artifact_ids": [
+  "art-51dc2b739e0d"
+ ],
+ "producer_tool": "container_exec",
+ "producer_evidence_id": "UNKNOWN",
+ "producer_turn": -1,
+ "execution_id": "trail/exec07",
+ "created_at": "2026-11-12T20:26:13",
+ "version": 1,
+ "status": "active",
+ "intent": "",
+ "schema": "gpuvulnagent-artifact/v1",
+ "path_on_disk": "F:\\qcx\\code\\GPUVulnAgent\\runs-p23r1\\trial0\\evidence\\trails\\trail1\\execs\\exec07\\outputs\\in\\reloc.cubin",
+ "parents": [
+  {
+   "artifact_id": "art-51dc2b739e0d",
+   "trial_id": "trial0",
+   "artifact_type": "source",
+   "relative_path": "evidence/trails/trail1/execs/exec07/outputs/in/reloc.cu",
+   "filename": "reloc.cu",
+   "sha256": "798d964feaf0e0096f604e1b2ad51d4f5b017d4da6dc568e3605f5b06dfd6d44",
+   "size": 230,
+   "media_type": "application/octet-stream",
+   "language": "cuda",
+   "origin": "generated",
+   "parent_artifact_ids": [],
+   "producer_tool": "container_exec",
+   "producer_evidence_id": "UNKNOWN",
+   "producer_turn": -1,
+   "execution_id": "trail/exec07",
+   "created_at": "2026-11-12T20:26:13",
+   "version": 1,
+   "status": "active",
+   "intent": "",
+   "schema": "gpuvulnagent-artifact/v1"
+  }
+ ]
+}

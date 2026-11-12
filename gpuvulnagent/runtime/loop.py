@@ -398,10 +398,15 @@ class AgentRuntime:
         return turn
 
     def _harvest_roots(self):
+        """Where produced files can appear. GPU tools put trails next to the evidence log."""
         roots = [self.workspace.root]
-        trails = self.paths.root / "trails"
-        if trails.is_dir():
-            roots.extend(sorted(trails.glob("trail*/execs/*/outputs")))
+        candidates = [self.paths.root / "trails",
+                      Path(self.paths.evidence).parent / "trails"]
+        if self.trial is not None:
+            candidates.append(self.trial.root / "evidence" / "trails")
+        for trails in candidates:
+            if trails.is_dir():
+                roots.extend(sorted(trails.glob("trail*/execs/*/outputs")))
         return roots
 
     # -- closing ---------------------------------------------------------

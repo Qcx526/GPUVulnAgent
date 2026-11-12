@@ -12,7 +12,8 @@ from ..registry.spec import ParamSpec, ToolSpec
 
 
 def build_finding_tools(*, trial_root: Path, trial_id: str, log) -> List[ToolSpec]:
-    store = FindingStore(Path(trial_root), trial_id)
+    # The trial directory name (trial0) is the readable id a human cites; the run id is long.
+    store = FindingStore(Path(trial_root), Path(trial_root).name or trial_id)
 
     def finding_new(title: str, component: str = "UNKNOWN", crash_class: str = "UNKNOWN",
                     input_path: str = "", input_sha256: str = "",

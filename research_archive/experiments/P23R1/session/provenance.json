@@ -1,0 +1,22 @@
+{
+ "schema": "gpuvulnagent-provenance/v1",
+ "trial_id": "trial0",
+ "defaults": {
+  "cve_selection": "human",
+  "research_goal": "human",
+  "cve_reading": "agent",
+  "version_acquisition": "agent",
+  "hypothesis": "agent",
+  "poc_source": "agent",
+  "mutation": "agent",
+  "compilation": "agent",
+  "execution": "agent",
+  "crash_analysis": "agent",
+  "finding_registration": "agent",
+  "runtime_fixes": "workbuddy",
+  "environment_setup": "workbuddy",
+  "final_audit": "workbuddy"
+ },
+ "overrides": {},
+ "note": "Every tool call in this trial was produced by the agent loop; workbuddy entries describe repairs to the harness, not research results."
+}

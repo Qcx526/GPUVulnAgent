@@ -1,0 +1,49 @@
+{
+ "artifact_id": "art-5ca7e0bc39e2",
+ "trial_id": "trial0",
+ "artifact_type": "binary",
+ "relative_path": "evidence/trails/trail1/execs/exec07/outputs/in/smem.cubin",
+ "filename": "smem.cubin",
+ "sha256": "020d5286d99d54762b5e56ec3d1873794ce02bf6002d143e4d3583bffe2e1f60",
+ "size": 3296,
+ "media_type": "application/octet-stream",
+ "language": "cubin",
+ "origin": "generated",
+ "parent_artifact_ids": [
+  "art-34a10b28e681"
+ ],
+ "producer_tool": "container_exec",
+ "producer_evidence_id": "UNKNOWN",
+ "producer_turn": -1,
+ "execution_id": "trail/exec07",
+ "created_at": "2026-11-12T20:26:13",
+ "version": 1,
+ "status": "active",
+ "intent": "",
+ "schema": "gpuvulnagent-artifact/v1",
+ "path_on_disk": "F:\\qcx\\code\\GPUVulnAgent\\runs-p23r1\\trial0\\evidence\\trails\\trail1\\execs\\exec07\\outputs\\in\\smem.cubin",
+ "parents": [
+  {
+   "artifact_id": "art-34a10b28e681",
+   "trial_id": "trial0",
+   "artifact_type": "source",
+   "relative_path": "evidence/trails/trail1/execs/exec07/outputs/in/smem.cu",
+   "filename": "smem.cu",
+   "sha256": "3e7172cf6ac661a600c4a39d02bb7adcbaf75b4fccaf9f2ef4552954088c3142",
+   "size": 186,
+   "media_type": "application/octet-stream",
+   "language": "cuda",
+   "origin": "generated",
+   "parent_artifact_ids": [],
+   "producer_tool": "container_exec",
+   "producer_evidence_id": "UNKNOWN",
+   "producer_turn": -1,
+   "execution_id": "trail/exec07",
+   "created_at": "2026-11-12T20:26:13",
+   "version": 1,
+   "status": "active",
+   "intent": "",
+   "schema": "gpuvulnagent-artifact/v1"
+  }
+ ]
+}
