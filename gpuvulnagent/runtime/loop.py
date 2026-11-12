@@ -228,6 +228,22 @@ class AgentRuntime:
                 break
 
             self.usage = self.usage.add(response.usage)
+            # Pre-flight: reserve room for this request before sending it, so a run cannot
+            # overshoot by one whole prompt (R6 spent 118k against a 100k cap).
+            if self.max_tokens:
+                spent = self.usage.total_tokens or 0
+                last = (self.usage.prompt_tokens or 0)
+                if spent + last > self.max_tokens and self.decisions > 0:
+                    stopped = "token_budget"
+                    break
+            # Pre-flight: reserve room for this request before sending it, so a run cannot
+            # overshoot by one whole prompt (R6 spent 118k against a 100k cap).
+            if self.max_tokens:
+                spent = self.usage.total_tokens or 0
+                last = (self.usage.prompt_tokens or 0)
+                if spent + last > self.max_tokens and self.decisions > 0:
+                    stopped = "token_budget"
+                    break
             if self.max_tokens and (self.usage.total_tokens or 0) > self.max_tokens:
                 # Hard budget: stop starting new work, but still allow the closing turn.
                 stopped = "token_budget"
