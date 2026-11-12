@@ -1,0 +1,53 @@
+{
+ "schema": "gpuvulnagent-experiment-bundle/v1",
+ "experiment": "P21",
+ "case": "CVE-2024-0124",
+ "files": [
+  {
+   "path": "research_archive/experiments/P21/refs.json",
+   "sha256": "c843e40d2c1b4fb756dc4b78f8674be76a290a71a023a656b97455a5a8bd63f3",
+   "bytes": 1996
+  },
+  {
+   "path": "research_archive/experiments/P21/matrix.json",
+   "sha256": "a1a88e941b7a758abb883ecc4c3c0832082e569dd5701d504c16ab79f3449230",
+   "bytes": 11286
+  },
+  {
+   "path": "research_archive/experiments/P21/inputs/p20_v2_shnum_ffff.cubin",
+   "sha256": "ce359ef168820465152b9f2ff7aa5a7edf925cf15e3d4edd128c82972811f93a",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P21/inputs/p20_v3_shoff_oob.cubin",
+   "sha256": "3865d859107f82553bc0f1cdd2acef239a17579702acc49251fc361040130565",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P21/inputs/p20_v4_trunc512.cubin",
+   "sha256": "6453817741f73ac9185b135a946d84b28cade0d263d1133c571965c7e80fb158",
+   "bytes": 512
+  },
+  {
+   "path": "research_archive/experiments/P21/inputs/p20_vector_add.cubin",
+   "sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P21/inputs/m1_nvinfo_short.cubin",
+   "sha256": "d639d00f22deb9b907b5df7f315dce1217d7d5d280b75bc76bb58f61a60cb3bc",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P21/inputs/m2_symtab_link.cubin",
+   "sha256": "5a732ef42e0b060fedbf898daa5eddf52e2594f24c72ff014268bafe6b8c9474",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P21/inputs/m3_shstrtab_oob.cubin",
+   "sha256": "f859f97d599b1bb8f362df1c580d49851b8e602e622d32df50c64d7dd37e3629",
+   "bytes": 2728
+  }
+ ],
+ "skipped": []
+}

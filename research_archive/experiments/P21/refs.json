@@ -1,0 +1,46 @@
+{
+ "apt_repo": "https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64",
+ "metadata": {
+  "InRelease_bytes": 1578,
+  "Packages_gz_sha256": "ef982b64001fba06432c2f57fa18494183fc1977ee0bb0911a75d062b3b5efe1",
+  "signature": "good",
+  "key": "RSA EB693B3035CD5710E231E123A4B469963BF863CC (cudatools@nvidia.com)"
+ },
+ "packages": [
+  {
+   "version": "12.6.68-1",
+   "deb": "cuda-nvdisasm-12-6_12.6.68-1_amd64.deb",
+   "deb_sha256": "34848a9576ea45c302d98d83298b1fbb88812ab5c16294f80a448f42ec20b05c",
+   "binary_sha256": "9f146d289e8ac6d7f00b36c0ef921f24a00cf25c75ae2db66cc250ebfc4d880c",
+   "binary_bytes": 50683864,
+   "release": "Cuda compilation tools, release 12.6, V12.6.68"
+  },
+  {
+   "version": "12.6.77-1",
+   "deb": "cuda-nvdisasm-12-6_12.6.77-1_amd64.deb",
+   "deb_sha256": "c36030eaa14ec1fcac53021071e71317251bd3aaa5d96008b8e276f50fc1cb2c",
+   "binary_sha256": "534cbe6ba3f14130b1096eb063d3b415c7c36ec592f1ddcfaac736031a61fb30",
+   "binary_bytes": 50683896,
+   "release": "Cuda compilation tools, release 12.6, V12.6.77"
+  },
+  {
+   "version": "12.8.55-1",
+   "deb": "cuda-nvdisasm-12-8_12.8.55-1_amd64.deb",
+   "deb_sha256": "ad0942545c1e6ec81b1d2ed86efe23e14be72530ef3f3f8433a117589a516441",
+   "binary_sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+   "binary_bytes": 5894744,
+   "release": "Cuda compilation tools, release 12.8, V12.8.55"
+  }
+ ],
+ "windows_reference": [
+  {
+   "version": "V12.4.99",
+   "path": "toolchains/binary_tools/cuda-12.4/bin/nvdisasm.exe"
+  },
+  {
+   "version": "V12.8.55",
+   "path": "toolchains/binary_tools/cuda-13.4/bin/nvdisasm.exe (host 12.8 toolchain)"
+  }
+ ],
+ "method": "curl InRelease+Packages.gz from the NVIDIA repo, gpg --verify InRelease with cudatools key, sha256(Packages.gz) compared to the InRelease entry, then each .deb sha256 compared to its Packages stanza before dpkg-deb -x into refs/<version>/; identity confirmed by nvdisasm --version"
+}

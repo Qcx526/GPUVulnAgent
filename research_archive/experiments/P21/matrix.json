@@ -1,0 +1,321 @@
+{
+ "inventory": [
+  {
+   "input": "baseline",
+   "sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "bytes": 2728,
+   "notes": {
+    "origin": "P20 trail1 exec00 output"
+   }
+  },
+  {
+   "input": "v2_shnum_ffff",
+   "sha256": "ce359ef168820465152b9f2ff7aa5a7edf925cf15e3d4edd128c82972811f93a",
+   "bytes": 2728,
+   "notes": {
+    "origin": "P20 sample"
+   }
+  },
+  {
+   "input": "v3_shoff_oob",
+   "sha256": "3865d859107f82553bc0f1cdd2acef239a17579702acc49251fc361040130565",
+   "bytes": 2728,
+   "notes": {
+    "origin": "P20 sample"
+   }
+  },
+  {
+   "input": "v4_trunc512",
+   "sha256": "6453817741f73ac9185b135a946d84b28cade0d263d1133c571965c7e80fb158",
+   "bytes": 512,
+   "notes": {
+    "origin": "P20 sample"
+   }
+  },
+  {
+   "input": "m1_nvinfo_short",
+   "sha256": "d639d00f22deb9b907b5df7f315dce1217d7d5d280b75bc76bb58f61a60cb3bc",
+   "bytes": 2728,
+   "notes": {
+    "section": ".nv.info",
+    "old_size": 36,
+    "new_size": 12
+   }
+  },
+  {
+   "input": "m2_symtab_link",
+   "sha256": "5a732ef42e0b060fedbf898daa5eddf52e2594f24c72ff014268bafe6b8c9474",
+   "bytes": 2728,
+   "notes": {
+    "section": ".symtab",
+    "old_link": 2,
+    "new_link": 17
+   }
+  },
+  {
+   "input": "m3_shstrtab_oob",
+   "sha256": "f859f97d599b1bb8f362df1c580d49851b8e602e622d32df50c64d7dd37e3629",
+   "bytes": 2728,
+   "notes": {
+    "section": ".nv.info",
+    "old_name_off": 41,
+    "new_name_off": 318,
+    "shstrtab_size": 254
+   }
+  }
+ ],
+ "matrix": [
+  {
+   "version": "12.6.68",
+   "input": "baseline",
+   "binary_sha256": "9f146d289e8ac6d7f00b36c0ef921f24a00cf25c75ae2db66cc250ebfc4d880c",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "version": "12.6.77",
+   "input": "baseline",
+   "binary_sha256": "534cbe6ba3f14130b1096eb063d3b415c7c36ec592f1ddcfaac736031a61fb30",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "version": "12.8.55",
+   "input": "baseline",
+   "binary_sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+   "input_sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "",
+   "stdout_bytes": 6667
+  },
+  {
+   "version": "12.6.68",
+   "input": "v2_shnum_ffff",
+   "binary_sha256": "9f146d289e8ac6d7f00b36c0ef921f24a00cf25c75ae2db66cc250ebfc4d880c",
+   "input_sha256": "ce359ef168820465152b9f2ff7aa5a7edf925cf15e3d4edd128c82972811f93a",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Object file /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v2",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.77",
+   "input": "v2_shnum_ffff",
+   "binary_sha256": "534cbe6ba3f14130b1096eb063d3b415c7c36ec592f1ddcfaac736031a61fb30",
+   "input_sha256": "ce359ef168820465152b9f2ff7aa5a7edf925cf15e3d4edd128c82972811f93a",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Object file /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v2",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.8.55",
+   "input": "v2_shnum_ffff",
+   "binary_sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+   "input_sha256": "ce359ef168820465152b9f2ff7aa5a7edf925cf15e3d4edd128c82972811f93a",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Object file /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v2",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.68",
+   "input": "v3_shoff_oob",
+   "binary_sha256": "9f146d289e8ac6d7f00b36c0ef921f24a00cf25c75ae2db66cc250ebfc4d880c",
+   "input_sha256": "3865d859107f82553bc0f1cdd2acef239a17579702acc49251fc361040130565",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : File /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v3_shoff_",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.77",
+   "input": "v3_shoff_oob",
+   "binary_sha256": "534cbe6ba3f14130b1096eb063d3b415c7c36ec592f1ddcfaac736031a61fb30",
+   "input_sha256": "3865d859107f82553bc0f1cdd2acef239a17579702acc49251fc361040130565",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : File /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v3_shoff_",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.8.55",
+   "input": "v3_shoff_oob",
+   "binary_sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+   "input_sha256": "3865d859107f82553bc0f1cdd2acef239a17579702acc49251fc361040130565",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : File /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v3_shoff_",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.68",
+   "input": "v4_trunc512",
+   "binary_sha256": "9f146d289e8ac6d7f00b36c0ef921f24a00cf25c75ae2db66cc250ebfc4d880c",
+   "input_sha256": "6453817741f73ac9185b135a946d84b28cade0d263d1133c571965c7e80fb158",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : File /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v4_trunc5",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.77",
+   "input": "v4_trunc512",
+   "binary_sha256": "534cbe6ba3f14130b1096eb063d3b415c7c36ec592f1ddcfaac736031a61fb30",
+   "input_sha256": "6453817741f73ac9185b135a946d84b28cade0d263d1133c571965c7e80fb158",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : File /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v4_trunc5",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.8.55",
+   "input": "v4_trunc512",
+   "binary_sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+   "input_sha256": "6453817741f73ac9185b135a946d84b28cade0d263d1133c571965c7e80fb158",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : File /mnt/f/qcx/code/GPUVulnAgent/research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v4_trunc5",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.68",
+   "input": "m1_nvinfo_short",
+   "binary_sha256": "9f146d289e8ac6d7f00b36c0ef921f24a00cf25c75ae2db66cc250ebfc4d880c",
+   "input_sha256": "d639d00f22deb9b907b5df7f315dce1217d7d5d280b75bc76bb58f61a60cb3bc",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "",
+   "stdout_bytes": 6207
+  },
+  {
+   "version": "12.6.77",
+   "input": "m1_nvinfo_short",
+   "binary_sha256": "534cbe6ba3f14130b1096eb063d3b415c7c36ec592f1ddcfaac736031a61fb30",
+   "input_sha256": "d639d00f22deb9b907b5df7f315dce1217d7d5d280b75bc76bb58f61a60cb3bc",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "",
+   "stdout_bytes": 6207
+  },
+  {
+   "version": "12.8.55",
+   "input": "m1_nvinfo_short",
+   "binary_sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+   "input_sha256": "d639d00f22deb9b907b5df7f315dce1217d7d5d280b75bc76bb58f61a60cb3bc",
+   "rc": 0,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "",
+   "stdout_bytes": 6207
+  },
+  {
+   "version": "12.6.68",
+   "input": "m2_symtab_link",
+   "binary_sha256": "9f146d289e8ac6d7f00b36c0ef921f24a00cf25c75ae2db66cc250ebfc4d880c",
+   "input_sha256": "5a732ef42e0b060fedbf898daa5eddf52e2594f24c72ff014268bafe6b8c9474",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Invalid index 0x11 for section header table",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.77",
+   "input": "m2_symtab_link",
+   "binary_sha256": "534cbe6ba3f14130b1096eb063d3b415c7c36ec592f1ddcfaac736031a61fb30",
+   "input_sha256": "5a732ef42e0b060fedbf898daa5eddf52e2594f24c72ff014268bafe6b8c9474",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Invalid index 0x11 for section header table",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.8.55",
+   "input": "m2_symtab_link",
+   "binary_sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+   "input_sha256": "5a732ef42e0b060fedbf898daa5eddf52e2594f24c72ff014268bafe6b8c9474",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Invalid index 0x11 for section header table",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.68",
+   "input": "m3_shstrtab_oob",
+   "binary_sha256": "9f146d289e8ac6d7f00b36c0ef921f24a00cf25c75ae2db66cc250ebfc4d880c",
+   "input_sha256": "f859f97d599b1bb8f362df1c580d49851b8e602e622d32df50c64d7dd37e3629",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Invalid section name index 0x13e for the section at index 0x5",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.6.77",
+   "input": "m3_shstrtab_oob",
+   "binary_sha256": "534cbe6ba3f14130b1096eb063d3b415c7c36ec592f1ddcfaac736031a61fb30",
+   "input_sha256": "f859f97d599b1bb8f362df1c580d49851b8e602e622d32df50c64d7dd37e3629",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Invalid section name index 0x13e for the section at index 0x5",
+   "stdout_bytes": 0
+  },
+  {
+   "version": "12.8.55",
+   "input": "m3_shstrtab_oob",
+   "binary_sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+   "input_sha256": "f859f97d599b1bb8f362df1c580d49851b8e602e622d32df50c64d7dd37e3629",
+   "rc": 1,
+   "signaled": false,
+   "signal": "",
+   "signaled_verified": false,
+   "stderr_head": "nvdisasm fatal : Invalid section name index 0x13e for the section at index 0x5",
+   "stdout_bytes": 0
+  }
+ ]
+}
