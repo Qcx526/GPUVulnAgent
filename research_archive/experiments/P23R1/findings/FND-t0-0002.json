@@ -7,8 +7,8 @@
  "source_evidence_ids": [
   "run-20261112T121106Z-3389c2#84"
  ],
- "input_path": "(trial0) reloc_sym_oob.cubin",
- "input_sha256": "",
+ "input_path": "runs-p23r1/trial0/evidence/trails/trail1/execs/exec08/outputs/mut/reloc.cubin.reloc_sym_oob.bin",
+ "input_sha256": "8b23036c0cac6159b7878145b9380184d261d14991d4a0d3b643413698ab4c06",
  "parent_artifact_ids": [],
  "mutation": "Rela r_info symbol index set to 0x0fffffff",
  "target_versions": {
@@ -38,6 +38,6 @@
  "impact": "UNKNOWN",
  "verification_status": "new",
  "open_questions": [],
- "notes": "Unattributed. It crashes on the version NVIDIA shipped as the fix for the 12.6 branch, which is either a separate defect or an incomplete fix; both need evidence. The agent tried to register it and the tool rejected the id shape - fixed afterwards.",
+ "notes": "FORENSIC CORRECTION: the input actually executed is reloc.cubin.reloc_sym_oob.bin (sha256 8b23036c0cac6159b7878145b9380184d261d14991d4a0d3b643413698ab4c06), which contains one SHT_REL entry with sym=0x0FFFFFFF (268435455) and type 57, well beyond nsyms=11. The previously recovered plain.cubin.reloc_sym_oob.bin (0daec10b...) is clean (sym=6, nsyms=7) and was the wrong file. Execution records #81 and #83 both ran /work/mut/reloc.cubin.reloc_sym_oob.bin on 12.6.68 and 12.6.77 and both returned exit 139, BUT both were driven by campaign1.py and carry no supervisor signaled=true, so 'SIGSEGV' is inferred from 139, not verified. Status downgraded to unverified.",
  "schema": "gpuvulnagent-finding/v1"
 }
