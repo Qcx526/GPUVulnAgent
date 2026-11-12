@@ -139,11 +139,18 @@ class Trail:
         relative = _safe_relative(name)
         path = self.root / relative
         if not path.is_file():
-            # Accept a bare name for a file that lives in a section directory.
-            for section in ("inputs", "outputs", "logs"):
-                candidate = self.root / section / relative
+            # Accept a bare name: search inputs, then each execution (newest first).
+            candidates = [self.root / "inputs" / relative]
+            execs = sorted((self.root / "execs").glob("exec[0-9][0-9]"), reverse=True) \
+                if (self.root / "execs").is_dir() else []
+            for exec_dir in execs:
+                candidates.append(exec_dir / "outputs" / relative)
+                candidates.append(exec_dir / "logs" / relative)
+            candidates += [self.root / "outputs" / relative, self.root / "logs" / relative]
+            for candidate in candidates:
                 if candidate.is_file():
-                    path, relative = candidate, "%s/%s" % (section, relative)
+                    path = candidate
+                    relative = candidate.relative_to(self.root).as_posix()
                     break
         if not path.is_file():
             raise TrailError("trail %s has no file %r" % (self.trail_id, relative))
@@ -156,6 +163,19 @@ class Trail:
                 "offset": start, "read_bytes": len(chunk), "next_offset": end,
                 "has_more": end < len(data), "sha256": sha256_bytes(data),
                 "text": text}
+
+    def exec_dir(self, index: int) -> Path:
+        """Directory of one execution; created on demand, never shared between indices."""
+        path = self.root / "execs" / ("exec%02d" % int(index))
+        path.mkdir(parents=True, exist_ok=True)
+        return path
+
+    def exec_dirs(self) -> List[Path]:
+        root = self.root / "execs"
+        if not root.is_dir():
+            return []
+        return sorted(path for path in root.iterdir()
+                      if path.is_dir() and path.name.startswith("exec"))
 
     def manifest(self) -> dict:
         if not self.manifest_path.is_file():
@@ -252,15 +272,20 @@ def _safe_relative(name: str) -> str:
 
 
 def _in_section(name: str, kind: str) -> str:
-    """Place inputs under ``inputs/`` and outputs under ``outputs/``, once."""
+    """Place inputs under ``inputs/`` and outputs under ``outputs/``, exactly once.
+
+    Paths that already name a section (``inputs/``, ``outputs/``, ``logs/`` or
+    ``execs/execNN/...``) are kept as they are: an execution's artifacts live inside its
+    own execution directory and must not be re-prefixed.
+    """
     section = {"input": "inputs", "output": "outputs", "log": "logs"}.get(kind, "")
     relative = _safe_relative(name)
     if not section:
         return relative
-    prefix = section + "/"
-    if relative.startswith(prefix):
-        return relative
-    return prefix + relative
+    for existing in ("inputs/", "outputs/", "logs/", "execs/"):
+        if relative.startswith(existing):
+            return relative
+    return section + "/" + relative
 
 
 def _now() -> str:

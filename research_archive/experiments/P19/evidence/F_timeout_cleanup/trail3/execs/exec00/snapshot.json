@@ -1,0 +1,13 @@
+{
+ "execution_index": 0,
+ "created": [],
+ "changed": [],
+ "deleted": [],
+ "unchanged_count": 0,
+ "pre_files": {},
+ "post_files": {},
+ "skipped_symlinks": [],
+ "special": [],
+ "errors": [],
+ "policy": "snapshot holds files this execution created or modified; the full before/after listing proves what did not change; symlinks are never followed"
+}

@@ -74,3 +74,26 @@ def test_paths_resolve_against_project_root(project: Path):
     loader = ConfigLoader(project_root=project)
     assert loader.settings.paths.toolchain_root == project / "toolchains"
     assert loader.settings.paths.research_data_root == project / "research_archive"
+
+
+def test_backend_settings_come_from_the_environment(project: Path, monkeypatch):
+    monkeypatch.setenv("WSL_DISTRO", "Ubuntu-24.04")
+    monkeypatch.setenv("WSL_USER", "researcher")
+    monkeypatch.setenv("GPU_IMAGE", "nvidia/cuda:13.0.0-devel-ubuntu24.04")
+    monkeypatch.setenv("WSL_CALL_TIMEOUT", "77")
+    monkeypatch.setenv("GPU_PULL_POLICY", "always")
+    monkeypatch.setenv("GPU_BACKEND_ENABLED", "0")
+    loader = ConfigLoader(project_root=project)
+    assert loader.backend.wsl_distro == "Ubuntu-24.04"
+    assert loader.backend.wsl_user == "researcher"
+    assert loader.backend.gpu_image.endswith("13.0.0-devel-ubuntu24.04")
+    assert loader.backend.call_timeout == 77
+    assert loader.backend.pull_policy == "always"
+    assert loader.backend.enabled is False
+    assert loader.settings.public_dict()["backend"]["pull_policy"] == "always"
+
+
+def test_invalid_pull_policy_is_rejected(project: Path, monkeypatch):
+    monkeypatch.setenv("GPU_PULL_POLICY", "sometimes")
+    with pytest.raises(ValueError):
+        ConfigLoader(project_root=project)

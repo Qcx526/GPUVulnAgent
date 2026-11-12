@@ -1,0 +1,19 @@
+{
+ "execution_index": 0,
+ "created": [
+  "poc",
+  "poc.cu"
+ ],
+ "changed": [],
+ "deleted": [],
+ "unchanged_count": 0,
+ "pre_files": {},
+ "post_files": {
+  "poc": "df326fb76467d3baf99ed8dd5ae9fd46ca7815bcaa9d68a8e2ed52871897e9a0",
+  "poc.cu": "462d42aee6fc15e7018670ed3a5f8635f7cbb3a97c7de724435d554ee9f45165"
+ },
+ "skipped_symlinks": [],
+ "special": [],
+ "errors": [],
+ "policy": "snapshot holds files this execution created or modified; the full before/after listing proves what did not change; symlinks are never followed"
+}

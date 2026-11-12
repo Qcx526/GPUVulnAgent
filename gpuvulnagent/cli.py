@@ -28,6 +28,7 @@ from .memory.store import LayeredMemory
 from .providers.deepseek import DeepSeekProvider
 from .runtime.loop import AgentRuntime
 from .runtime.workspace import Workspace
+from .backends.wsl_docker import WslConfig
 from .tools.build import build_assembly
 
 
@@ -47,6 +48,8 @@ def main(argv=None) -> int:
     run_p.add_argument("--resume", action="store_true")
     run_p.add_argument("--no-search", action="store_true")
     run_p.add_argument("--no-adapters", action="store_true")
+    run_p.add_argument("--no-gpu-backend", action="store_true",
+                       help="do not register the WSL/Docker GPU tools for this run")
 
     tools_p = subparsers.add_parser("tools", help="inspect the capability catalog")
     tools_p.add_argument("--search", default="")
@@ -115,7 +118,11 @@ def _cmd_run(args, settings) -> int:
                            toolchain_root=settings.paths.toolchain_root,
                            tavily_api_key=settings.tavily_api_key,
                            enable_search=not args.no_search,
-                           include_adapters=not args.no_adapters, resume=args.resume)
+                           include_adapters=not args.no_adapters,
+                           enable_gpu_backend=(settings.backend.enabled
+                                               and not args.no_gpu_backend),
+                           backend_config=WslConfig.from_settings(settings),
+                           resume=args.resume)
     for provider_state in runtime.assembly.providers:
         print("[provider] %s available=%s (%s)"
               % (provider_state["provider"], provider_state["available"],
@@ -208,7 +215,9 @@ def _cmd_bench(args, settings) -> int:
             max_tokens=settings.llm.max_tokens),
         research_root=settings.paths.research_data_root,
         toolchain_root=settings.paths.toolchain_root, manifest=manifest,
-        max_turns=args.turns, wall_clock=args.wall_clock)
+        max_turns=args.turns, wall_clock=args.wall_clock,
+        enable_gpu_backend=settings.backend.enabled,
+        backend_config=WslConfig.from_settings(settings))
     for case in args.cases:
         record = runner.run_case(case_id=case, mode=args.mode, turns=args.turns,
                                  wall_clock=args.wall_clock, seed=args.seed,
@@ -244,7 +253,9 @@ def _inspect_assembly(settings, manifest=None):
                            run_id="inspect", resolver=EvidenceResolver([tmp]))
     return build_assembly(workspace=workspace, runner=runner, log=log, memory=memory,
                           toolchain_root=settings.paths.toolchain_root,
-                          tavily_api_key=settings.tavily_api_key)
+                          tavily_api_key=settings.tavily_api_key,
+                          enable_gpu_backend=settings.backend.enabled,
+                          backend_config=WslConfig.from_settings(settings))
 
 
 if __name__ == "__main__":  # pragma: no cover

@@ -1,0 +1,78 @@
+{
+ "probe": {
+  "backend": "wsl2_docker",
+  "available": true,
+  "distro": "Ubuntu 22.04.5 LTS",
+  "distro_version": "22.04",
+  "kernel": "6.6.87.2-microsoft-standard-WSL2",
+  "user": "pocdev",
+  "docker": {
+   "version": "29.8.2",
+   "running": true
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce GTX 1660",
+   "memory": "6144 MiB",
+   "compute_capability": "7.5",
+   "driver": "610.47"
+  },
+  "cuda": {
+   "toolkit": "12.8.93"
+  },
+  "tools": {
+   "nvcc": {
+    "name": "nvcc",
+    "status": "ok",
+    "path": "/usr/local/cuda/bin/nvcc",
+    "version": "12.8.93",
+    "detail": "nvcc: NVIDIA (R) Cuda compiler driver"
+   },
+   "nvdisasm": {
+    "name": "nvdisasm",
+    "status": "ok",
+    "path": "/usr/local/cuda/bin/nvdisasm",
+    "version": "12.8.90",
+    "detail": "nvdisasm: NVIDIA (R) CUDA disassembler"
+   },
+   "cuobjdump": {
+    "name": "cuobjdump",
+    "status": "ok",
+    "path": "/usr/local/cuda/bin/cuobjdump",
+    "version": "12.8.90",
+    "detail": "cuobjdump: NVIDIA (R) fat binary listing tool"
+   }
+  },
+  "images": [
+   "cpg/cuda112-py3:1.0",
+   "cpg/cuda112-py3:demo-test",
+   "cpg/cuda112-py3:analysis",
+   "hello-world:latest",
+   "nvidia/cuda:13.1.0-devel-ubuntu24.04",
+   "nvidia/cuda:13.0.0-devel-ubuntu24.04",
+   "nvidia/cuda:12.8.0-base-ubuntu22.04",
+   "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "nvidia/cuda:12.4.1-devel-ubuntu22.04",
+   "nvidia/cuda:11.2.2-devel-ubuntu20.04",
+   "dockerproxy.net/nvidia/cuda:11.2.2-devel-ubuntu20.04"
+  ],
+  "gpu_in_container": {
+   "ok": true,
+   "raw": "==========\n== CUDA ==\n==========\n\nCUDA Version 12.8.0\n\nContainer image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n\nThis container image and its contents are governed by the NVIDIA Deep Learning Container License.\nBy pulling and using the container, you accept the terms and conditions of this license:\nhttps://developer.nvidia.com/ngc/nvidia-deep-learning-container-license\n\nA copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.\n\nNVIDIA GeForce GTX 1660, 7.5, 6144 MiB"
+  },
+  "problems": []
+ },
+ "backend": {
+  "backend": "wsl2_docker",
+  "distro": "Ubuntu-22.04",
+  "user": "pocdev",
+  "worker_root": "/home/pocdev/gpuvulnagent-worker",
+  "worker_path": "/home/pocdev/gpuvulnagent-worker/worker.py",
+  "default_image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+  "wsl_exe": "C:\\Windows\\system32\\wsl.exe",
+  "call_timeout": 300,
+  "pull_policy": "missing",
+  "worker_sha256": "143ea682c18ada8c1c4e317f01474cdded789730305de719913515645deacb1b",
+  "supervisor_source_sha256": "6d3d8cc36d6cc2b852c080e266eab317b343769422e147bdb9373c41c429cd3c"
+ },
+ "run_dir": "F:\\qcx\\code\\GPUVulnAgent\\.local\\runs\\p19r1-acceptance-run-20261112T025231Z-b8c0af"
+}

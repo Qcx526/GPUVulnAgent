@@ -48,11 +48,12 @@ gpuvulnagent/
 
 ```
 tests/            pytest suite (no network, no credentials)
-scripts/          setup_toolchain.py, archive_p18.py, acceptance.py
+scripts/          setup_toolchain.py, archive_p18.py, archive_p19.py,
+                  acceptance.py, p19_acceptance.py, p19r1_acceptance.py
 configs/          default.yaml
 data/             cases, benchmarks, knowledge
 toolchains/       cuda, binary_tools, compilers, debuggers, installers, manifests
-research_archive/ legacy_pipeline (pointer only), p17, p18, migration, memory
+research_archive/ legacy_pipeline (pointer only), p17, p18, experiments/P19, migration, memory
 .local/           runs, artifacts, logs, cache, tmp, migration_source   (not tracked)
 ```
 
@@ -120,9 +121,47 @@ gpuvulnagent tools --search docker          # the tools are discoverable, not pr
 named fields, so `--privileged`, host mounts and the docker socket are not reachable. The
 only mount is the trail's work directory at `/work`; network is `none` by default.
 
-Known limit: containers share the WSL2 kernel and use the host NVIDIA driver, so this is
-**not** isolation for kernel-mode or physical GPU driver research. See
-`docs/P19_LINUX_GPU_BACKEND.md`.
+Each call writes its own snapshot under `execs/execNN/`, so running the same experiment
+twice keeps both versions of every file:
+
+```
+trails/trail0/
+  inputs/                     staged by the agent, never overwritten
+  execs/exec00/               result.json, snapshot.json, outputs/, logs/
+  execs/exec01/               same names, different bytes - nothing is replaced
+```
+
+A small supervisor (`gpuvulnagent/backends/worker/gpuvuln_supervise.c`, built statically in
+WSL) reports the child's wait status, so `exit(139)` and SIGSEGV are different results. When
+the supervisor is unavailable the run is marked `unverified_signal` and is never reported as
+a crash.
+
+`pull_policy` is explicit: `missing` (default), `always`, `never`. The resolved image digest
+and the policy are recorded with the execution. `network=none` limits the container, not the
+docker engine — the engine can still pull an image.
+
+## Scope and limits
+
+Read this before pointing the agent at anything that matters.
+
+* **The `shell` tool is not sandboxed.** It runs on the Windows host with the user's
+  privileges and can start any command that user can. `--privileged`-style protection
+  applies to `container_exec`, not to `shell`.
+* **The docker option allowlist is not a security sandbox.** It limits blast radius (one
+  mount, no docker socket, no privileged mode, `no-new-privileges`, network `none`), and
+  it stops argument injection because the command is an argv array. It does not defend
+  against a malicious image, a kernel bug, or a container escape.
+* **WSL2 shares the Linux kernel and the Windows NVIDIA driver.** The backend is for Linux
+  user-space work: CUDA programs, GPU kernels, user-mode driver interfaces. It cannot
+  isolate, and should not be used to claim results about, kernel-mode or physical GPU
+  driver vulnerabilities; those need a VM or a dedicated machine.
+* **User-mode CUDA PoC is in scope; driver-level PoC is not.** The GPU is reached through
+  the container runtime, so anything that requires replacing or instrumenting the KMD,
+  the kernel module, or the physical device stack is outside this backend.
+
+See `docs/P19_LINUX_GPU_BACKEND.md` for the design and
+`docs/P19_R1_EVIDENCE_CORRECTNESS.md` for the evidence rules (snapshots, symlink safety,
+signal classification, cleanup, pull policy, archived bundle).
 
 ## Independence
 

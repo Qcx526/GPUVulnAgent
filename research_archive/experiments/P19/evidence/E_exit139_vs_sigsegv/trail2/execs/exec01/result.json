@@ -1,0 +1,151 @@
+{
+ "ok": false,
+ "exit_code": 139,
+ "timed_out": false,
+ "oom_killed": false,
+ "termination": {
+  "kind": "error_exit",
+  "crash": false,
+  "detail": "supervisor: child exited with code 139 (a normal exit, not a signal)",
+  "signal_verified": true,
+  "signaled": false,
+  "signal": 0,
+  "signal_name": ""
+ },
+ "duration_ms": 505,
+ "started_at": "2026-11-12T10:53:05",
+ "finished_at": "2026-11-12T10:53:06",
+ "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+ "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+ "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+ "pull_policy": "missing",
+ "image_pull": {
+  "policy": "missing",
+  "present_before": true,
+  "pulled": false,
+  "duration_ms": 0,
+  "error": "",
+  "ok": true,
+  "note": "network=none applies to the container; the engine may still pull"
+ },
+ "container_id": "823ea42d29104f176dfd7850f4b886906e5216dd007c010bbc9012853239653f",
+ "container_name": "gpuvulnagent-run-p19r1-signals-run-20261112T025236Z-4f4cfe-trail2-451985",
+ "argv": [
+  "./returns139"
+ ],
+ "cwd": "/work",
+ "workdir": "/work",
+ "network": "none",
+ "gpu": true,
+ "gpu_name": "NVIDIA GeForce GTX 1660",
+ "cuda_version": "",
+ "stdout_preview": "\n==========\n== CUDA ==\n==========\n\nCUDA Version 12.8.0\n\nContainer image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n\nThis container image and its contents are governed by the NVIDIA Deep Learning Container License.\nBy pulling and using the container, you accept the terms and conditions of this license:\nhttps://developer.nvidia.com/ngc/nvidia-deep-learning-container-license\n\nA copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.\n\n",
+ "stderr_preview": "",
+ "stdout_artifact": {
+  "artifact": "execs/exec01/logs/docker_run.stdout",
+  "sha256": "aea56eccbdcdda61273241546488c3e982ef05d5a9cd415d0c986a59bb1bb875",
+  "bytes": 523
+ },
+ "stderr_artifact": {
+  "artifact": "execs/exec01/logs/docker_run.stderr",
+  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "bytes": 0
+ },
+ "artifacts": [
+  {
+   "name": "execs/exec01/logs/docker_run.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0,
+   "kind": "log",
+   "source": "container"
+  },
+  {
+   "name": "execs/exec01/logs/docker_run.stdout",
+   "sha256": "aea56eccbdcdda61273241546488c3e982ef05d5a9cd415d0c986a59bb1bb875",
+   "bytes": 523,
+   "kind": "log",
+   "source": "container"
+  }
+ ],
+ "trail": "trail2",
+ "exec_index": 1,
+ "exec_dir": "execs/exec01",
+ "snapshot": {
+  "execution_index": 1,
+  "created": [],
+  "changed": [],
+  "deleted": [],
+  "unchanged_count": 4,
+  "pre_files": {
+   "returns139": "59a8090024955c0b07e3ad57f20cf3f7b5183489e61a34f8c546e9d863d7180e",
+   "returns139.c": "0e031070aa5358839642d1d1a6ca845bc18504104525ae76cd84bf08e833068f",
+   "segfaults": "5f23b1d018b3aa04480f8e7854e9c21b298b3067d918afe291e244a26ba0c18d",
+   "segfaults.c": "ce5acc8a3014ad4e3d5347a808ace05989b51a40726fab470813de211856a607"
+  },
+  "post_files": {
+   "returns139": "59a8090024955c0b07e3ad57f20cf3f7b5183489e61a34f8c546e9d863d7180e",
+   "returns139.c": "0e031070aa5358839642d1d1a6ca845bc18504104525ae76cd84bf08e833068f",
+   "segfaults": "5f23b1d018b3aa04480f8e7854e9c21b298b3067d918afe291e244a26ba0c18d",
+   "segfaults.c": "ce5acc8a3014ad4e3d5347a808ace05989b51a40726fab470813de211856a607"
+  },
+  "skipped_symlinks": [],
+  "special": [],
+  "errors": [],
+  "policy": "snapshot holds files this execution created or modified; the full before/after listing proves what did not change; symlinks are never followed"
+ },
+ "supervision": {
+  "used": true,
+  "readable": true,
+  "exited": true,
+  "exit_code": 139,
+  "signaled": false,
+  "signal": 0,
+  "signal_name": "",
+  "child_pid": 27,
+  "exec_error": 0
+ },
+ "signal_verified": true,
+ "signaled": false,
+ "signal": 0,
+ "signal_name": "",
+ "cleanup": {
+  "attempted": true,
+  "target": "823ea42d29104f176dfd7850f4b886906e5216dd007c010bbc9012853239653f",
+  "exit": 0,
+  "detail": "removed"
+ },
+ "cleanup_ok": true,
+ "run_id": "run-p19r1-signals-run-20261112T025236Z-4f4cfe",
+ "state": "exited",
+ "error": "",
+ "docker_argv": [
+  "docker",
+  "run",
+  "--name",
+  "gpuvulnagent-run-p19r1-signals-run-20261112T025236Z-4f4cfe-trail2-451985",
+  "--cidfile",
+  "/home/pocdev/gpuvulnagent-worker/runs/run-p19r1-signals-run-20261112T025236Z-4f4cfe/trail2/execs/exec01/container.cid",
+  "--label",
+  "gpuvulnagent.run_id=run-p19r1-signals-run-20261112T025236Z-4f4cfe",
+  "--label",
+  "gpuvulnagent.trail=trail2",
+  "--security-opt",
+  "no-new-privileges",
+  "--network",
+  "none",
+  "-v",
+  "/home/pocdev/gpuvulnagent-worker/runs/run-p19r1-signals-run-20261112T025236Z-4f4cfe/trail2/work:/work",
+  "-w",
+  "/work",
+  "--user",
+  "1000:1000",
+  "--gpus",
+  "all",
+  "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+  "/work/.gpuvulnagent/gpuvuln_supervise",
+  "/work/.gpuvulnagent/status.json",
+  "./returns139"
+ ],
+ "collect_paths": null,
+ "worker_error": ""
+}

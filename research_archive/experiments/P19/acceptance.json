@@ -1,0 +1,195 @@
+{
+ "backend": {
+  "status": "ok",
+  "run_dir": "F:\\qcx\\code\\GPUVulnAgent\\.local\\runs\\p19r1-acceptance-run-20261112T025231Z-b8c0af",
+  "config": {
+   "backend": "wsl2_docker",
+   "distro": "Ubuntu-22.04",
+   "user": "pocdev",
+   "worker_root": "/home/pocdev/gpuvulnagent-worker",
+   "worker_path": "/home/pocdev/gpuvulnagent-worker/worker.py",
+   "default_image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "wsl_exe": "C:\\Windows\\system32\\wsl.exe",
+   "call_timeout": 300,
+   "pull_policy": "missing",
+   "worker_sha256": "143ea682c18ada8c1c4e317f01474cdded789730305de719913515645deacb1b",
+   "supervisor_source_sha256": "6d3d8cc36d6cc2b852c080e266eab317b343769422e147bdb9373c41c429cd3c"
+  }
+ },
+ "supervisor": {
+  "status": "ok",
+  "sha256": "bf3983363dbdcdac4bc5ff7087ad11d5c3bb4636551c13415c81dce6316e0038",
+  "static": true,
+  "built": false
+ },
+ "C_snapshot_two_versions": {
+  "status": "ok",
+  "trail": "trail0",
+  "exec_dirs": [
+   "execs/exec00",
+   "execs/exec01"
+  ],
+  "v1_sha256": "462d42aee6fc15e7018670ed3a5f8635f7cbb3a97c7de724435d554ee9f45165",
+  "v2_sha256": "6368ebc8e902c1b66a0ab3114a990d43a90fd0ed5da5f735419538a79228291e",
+  "binary_v1_sha256": "df326fb76467d3baf99ed8dd5ae9fd46ca7815bcaa9d68a8e2ed52871897e9a0",
+  "binary_v2_sha256": "8d0d704e9714981988e14af7c28779ca30415406748856ebe8457521504f8539",
+  "checks": {
+   "exec00_dir": true,
+   "exec01_dir": true,
+   "v1_source_kept": true,
+   "v2_source_kept": true,
+   "sources_differ": true,
+   "v1_is_the_original": true,
+   "v2_is_the_mutation": true,
+   "v1_binary_kept": true,
+   "v2_binary_kept": true,
+   "binaries_differ": true,
+   "first_created": true,
+   "second_changed": true,
+   "evidence_links_own_dir": true
+  },
+  "stdout": "eep-learning-container-license\n\nA copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.\n\npoc v2 (mutated)\n"
+ },
+ "D_symlink_escape": {
+  "status": "ok",
+  "trail": "trail1",
+  "checks": {
+   "leak_file_skipped": true,
+   "leak_dir_skipped": true,
+   "no_leak_in_artifacts": true,
+   "real_output_collected": true,
+   "skipped_reason_recorded": true
+  },
+  "skipped": [
+   "leak-home",
+   "leak-passwd.txt"
+  ],
+  "leaked_files": []
+ },
+ "E_exit139_vs_sigsegv": {
+  "status": "ok",
+  "trail": "trail2",
+  "checks": {
+   "build_ok": true,
+   "exit139_is_not_a_crash": true,
+   "sigsegv_is_a_crash": true,
+   "shell_propagates_signal": true
+  },
+  "exit139": {
+   "exit": 139,
+   "kind": "error_exit",
+   "crash": false,
+   "supervision": {
+    "used": true,
+    "readable": true,
+    "exited": true,
+    "exit_code": 139,
+    "signaled": false,
+    "signal": 0,
+    "signal_name": "",
+    "child_pid": 27,
+    "exec_error": 0
+   }
+  },
+  "sigsegv": {
+   "exit": 139,
+   "kind": "sigsegv",
+   "crash": true,
+   "signal": "SIGSEGV",
+   "supervision": {
+    "used": true,
+    "readable": true,
+    "exited": false,
+    "exit_code": 139,
+    "signaled": true,
+    "signal": 11,
+    "signal_name": "SIGSEGV",
+    "child_pid": 27,
+    "exec_error": 0
+   }
+  },
+  "via_shell": {
+   "exit": 139,
+   "kind": "sigsegv",
+   "crash": true
+  }
+ },
+ "F_timeout_cleanup": {
+  "status": "ok",
+  "trail": "trail3",
+  "checks": {
+   "timed_out": true,
+   "kind_timeout": true,
+   "not_a_crash": true,
+   "cleanup_ok": true,
+   "no_leftovers": true,
+   "stdout_kept": true
+  },
+  "cleanup": {
+   "attempted": true,
+   "target": "850578fd3c1758ade3771072ede3954a05854636a03e7b12aba795b87c2347d8",
+   "exit": 0,
+   "detail": "removed"
+  },
+  "leftovers": {
+   "removed": []
+  }
+ },
+ "G_config_effect": {
+  "status": "ok",
+  "checks": {
+   "distro_applied": true,
+   "user_applied": true,
+   "image_applied": true,
+   "call_timeout_applied": true,
+   "pull_policy_applied": true,
+   "default_image_used": true,
+   "pull_policy_recorded": true,
+   "missing_image_refused": true,
+   "bad_user_is_reported": true
+  },
+  "image_used": "nvidia/cuda:12.8.0-base-ubuntu22.04",
+  "missing_image": {
+   "kind": "container_error",
+   "error": "image 'nvidia/cuda:12.8.0-devel-ubuntu22.04-r1missing' is not present and pull_policy=never"
+  },
+  "broken_user_error": "BackendError: worker was written but does not answer ping: <3>WSL (29812 - Relay) ERROR: CreateProcessParseCommon:988: getpwnam(no-such-user-r1) failed 0"
+ },
+ "H_agent_end_to_end": {
+  "status": "ok",
+  "run_id": "run-20261112T025246Z-491b2a",
+  "run_dir": "F:\\qcx\\code\\GPUVulnAgent\\.local\\runs\\p19r1-autonomy-run-20261112T025246Z-bd2ff8",
+  "stopped": "max_turns",
+  "decisions": 12,
+  "executions": 21,
+  "container_execs": 4,
+  "execs_records": 5,
+  "trails": [
+   "trail0",
+   "trail1"
+  ],
+  "evidence_records": 47,
+  "evidence_ok": true,
+  "usage": {
+   "prompt_tokens": 190337,
+   "completion_tokens": 11404,
+   "total_tokens": 201741
+  },
+  "seconds": 94.4,
+  "tools_used": [
+   "container_exec",
+   "cubin_disassemble",
+   "fs_list",
+   "fs_read",
+   "fs_write",
+   "gpu_environment_probe",
+   "memory_note",
+   "memory_search",
+   "toolchain_lookup",
+   "trail_manifest",
+   "trail_new",
+   "trail_write"
+  ],
+  "final_head": "## 最终结论 — P19R1-AUTONOMY\n\n### 做了什么\n\n1. **环境探测**：用 `gpu_environment_probe(deep=true)` 查看宿主、WSL2、Docker 与 GPU 的真实状态（evidence `run-20261112T025246Z-491b2a#5`）；用 `toolchain_lookup` 确认本机 CUDA 工具（nvcc/nvdisasm/cuobjdump 的 11.2/12.4/13.4 版本）确实存在。\n2. **建立 baseline**：新建 trail0，把工作区 `samples/vector_add.cu`（sha256 `53c08235dc76…`）逐字复制为输入，然后在 `nvidia/cuda:12.8.0-devel-ubuntu22.04` 容器内编译（普通可执行文件 + `-cubin` + `-ptx`）并运行（#18、#21、#24）。\n3. **验证变异版本**：新建 trail1（parent=trail0），写入两个派生程序：int4 向量化版 `va_vec4.cu` 和故意注入缺陷的负对照 `va_broken.cu`，编译、运行，并用 `nvdisasm` 反汇编（#36）。\n4. **归档**：用 `trail_manifest` 核对产物清单，并向 case 记忆写入"
+ }
+}

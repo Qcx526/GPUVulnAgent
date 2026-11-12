@@ -1,0 +1,167 @@
+{
+ "ok": true,
+ "exit_code": 0,
+ "timed_out": false,
+ "oom_killed": false,
+ "termination": {
+  "kind": "success",
+  "crash": false,
+  "detail": "supervisor: child exited with code 0",
+  "signal_verified": true,
+  "signaled": false,
+  "signal": 0,
+  "signal_name": ""
+ },
+ "duration_ms": 1585,
+ "started_at": "2026-11-12T10:52:59",
+ "finished_at": "2026-11-12T10:53:00",
+ "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+ "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+ "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+ "pull_policy": "missing",
+ "image_pull": {
+  "policy": "missing",
+  "present_before": true,
+  "pulled": false,
+  "duration_ms": 0,
+  "error": "",
+  "ok": true,
+  "note": "network=none applies to the container; the engine may still pull"
+ },
+ "container_id": "737ba54f2f61d9ab4caa66e97a9f22188157db26a9f5e02fbb536752c2b67ff9",
+ "container_name": "gpuvulnagent-run-p19r1-snapshot-run-20261112T025231Z-de94b5-trail0-451979",
+ "argv": [
+  "bash",
+  "-lc",
+  "printf '%s' \"$SRC\" > /work/poc.cu && nvcc -O2 /work/poc.cu -o /work/poc && ./poc"
+ ],
+ "cwd": "/work",
+ "workdir": "/work",
+ "network": "none",
+ "gpu": true,
+ "gpu_name": "NVIDIA GeForce GTX 1660",
+ "cuda_version": "",
+ "stdout_preview": "\n==========\n== CUDA ==\n==========\n\nCUDA Version 12.8.0\n\nContainer image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.\n\nThis container image and its contents are governed by the NVIDIA Deep Learning Container License.\nBy pulling and using the container, you accept the terms and conditions of this license:\nhttps://developer.nvidia.com/ngc/nvidia-deep-learning-container-license\n\nA copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.\n\npoc v1\n",
+ "stderr_preview": "nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).\n",
+ "stdout_artifact": {
+  "artifact": "execs/exec00/logs/docker_run.stdout",
+  "sha256": "a41a8e92ea84121f43b1d27e31b1ebe9b880f25a1b8fa4a5b8006465a7acd101",
+  "bytes": 530
+ },
+ "stderr_artifact": {
+  "artifact": "execs/exec00/logs/docker_run.stderr",
+  "sha256": "4a9039e3453232c01f7268ec2cf78f30738e225eb22be0155616a8713600c863",
+  "bytes": 187
+ },
+ "artifacts": [
+  {
+   "name": "execs/exec00/outputs/poc",
+   "sha256": "df326fb76467d3baf99ed8dd5ae9fd46ca7815bcaa9d68a8e2ed52871897e9a0",
+   "bytes": 1002008,
+   "kind": "output",
+   "source": "container"
+  },
+  {
+   "name": "execs/exec00/outputs/poc.cu",
+   "sha256": "462d42aee6fc15e7018670ed3a5f8635f7cbb3a97c7de724435d554ee9f45165",
+   "bytes": 55,
+   "kind": "output",
+   "source": "container"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stderr",
+   "sha256": "4a9039e3453232c01f7268ec2cf78f30738e225eb22be0155616a8713600c863",
+   "bytes": 187,
+   "kind": "log",
+   "source": "container"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stdout",
+   "sha256": "a41a8e92ea84121f43b1d27e31b1ebe9b880f25a1b8fa4a5b8006465a7acd101",
+   "bytes": 530,
+   "kind": "log",
+   "source": "container"
+  }
+ ],
+ "trail": "trail0",
+ "exec_index": 0,
+ "exec_dir": "execs/exec00",
+ "snapshot": {
+  "execution_index": 0,
+  "created": [
+   "poc",
+   "poc.cu"
+  ],
+  "changed": [],
+  "deleted": [],
+  "unchanged_count": 0,
+  "pre_files": {},
+  "post_files": {
+   "poc": "df326fb76467d3baf99ed8dd5ae9fd46ca7815bcaa9d68a8e2ed52871897e9a0",
+   "poc.cu": "462d42aee6fc15e7018670ed3a5f8635f7cbb3a97c7de724435d554ee9f45165"
+  },
+  "skipped_symlinks": [],
+  "special": [],
+  "errors": [],
+  "policy": "snapshot holds files this execution created or modified; the full before/after listing proves what did not change; symlinks are never followed"
+ },
+ "supervision": {
+  "used": true,
+  "readable": true,
+  "exited": true,
+  "exit_code": 0,
+  "signaled": false,
+  "signal": 0,
+  "signal_name": "",
+  "child_pid": 27,
+  "exec_error": 0
+ },
+ "signal_verified": true,
+ "signaled": false,
+ "signal": 0,
+ "signal_name": "",
+ "cleanup": {
+  "attempted": true,
+  "target": "737ba54f2f61d9ab4caa66e97a9f22188157db26a9f5e02fbb536752c2b67ff9",
+  "exit": 0,
+  "detail": "removed"
+ },
+ "cleanup_ok": true,
+ "run_id": "run-p19r1-snapshot-run-20261112T025231Z-de94b5",
+ "state": "exited",
+ "error": "",
+ "docker_argv": [
+  "docker",
+  "run",
+  "--name",
+  "gpuvulnagent-run-p19r1-snapshot-run-20261112T025231Z-de94b5-trail0-451979",
+  "--cidfile",
+  "/home/pocdev/gpuvulnagent-worker/runs/run-p19r1-snapshot-run-20261112T025231Z-de94b5/trail0/execs/exec00/container.cid",
+  "--label",
+  "gpuvulnagent.run_id=run-p19r1-snapshot-run-20261112T025231Z-de94b5",
+  "--label",
+  "gpuvulnagent.trail=trail0",
+  "--security-opt",
+  "no-new-privileges",
+  "--network",
+  "none",
+  "-v",
+  "/home/pocdev/gpuvulnagent-worker/runs/run-p19r1-snapshot-run-20261112T025231Z-de94b5/trail0/work:/work",
+  "-w",
+  "/work",
+  "--user",
+  "1000:1000",
+  "--gpus",
+  "all",
+  "-e",
+  "SRC=#include <cstdio>\nint main(){puts(\"poc v1\");return 0;}\n",
+  "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+  "/work/.gpuvulnagent/gpuvuln_supervise",
+  "/work/.gpuvulnagent/status.json",
+  "bash",
+  "-lc",
+  "printf '%s' \"$SRC\" > /work/poc.cu && nvcc -O2 /work/poc.cu -o /work/poc && ./poc"
+ ],
+ "collect_paths": null,
+ "worker_error": ""
+}

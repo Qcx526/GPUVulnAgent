@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import os
+import uuid
 from pathlib import Path
 
 import pytest
@@ -72,9 +73,12 @@ def test_cuda_kernel_compiles_and_runs_on_the_gpu(backend, trail):
     assert result.container_id
 
     outputs = {item.name: item for item in result.artifacts}
-    assert "outputs/vector_add" in outputs
-    assert outputs["outputs/vector_add"].bytes > 100_000
-    assert outputs["outputs/vector_add"].sha256
+    assert "execs/exec00/outputs/vector_add" in outputs
+    assert outputs["execs/exec00/outputs/vector_add"].bytes > 100_000
+    assert outputs["execs/exec00/outputs/vector_add"].sha256
+    assert result.exec_dir == "execs/exec00"
+    assert result.signal_verified is True
+    assert result.cleanup_ok is True
 
 
 def test_timeout_kills_the_container_and_leaves_nothing_behind(backend, tmp_path):
@@ -97,10 +101,11 @@ def test_container_exec_tool_writes_verifiable_evidence(tmp_path, monkeypatch):
         monkeypatch.delenv(name, raising=False)
     workspace = Workspace(tmp_path / "ws")
     artifacts = ArtifactStore(tmp_path / "artifacts")
-    log = EvidenceLog(tmp_path / "evidence.jsonl", "run-live-tool", artifacts)
+    run_id = "run-live-tool-" + uuid.uuid4().hex[:8]
+    log = EvidenceLog(tmp_path / "evidence.jsonl", run_id, artifacts)
     runner = Runner(workspace.root, log, timeout=30)
     memory = LayeredMemory(run_dir=tmp_path, research_root=tmp_path / "archive",
-                           run_id="run-live-tool")
+                           run_id=run_id)
     assembly = build_assembly(workspace=workspace, runner=runner, log=log, memory=memory,
                               toolchain_root=None, enable_search=False)
 
@@ -136,9 +141,116 @@ def test_container_exec_tool_writes_verifiable_evidence(tmp_path, monkeypatch):
         assert record.get(field) not in (None, ""), field
     assert record["termination"]["kind"] == "success"
     assert any(item["name"].endswith("vector_add") for item in record["artifact_hashes"])
+    assert record["signal_verified"] is True
+    assert record["cleanup_ok"] is True
+    assert record["exec_dir"] == "execs/exec00"
+    assert record["snapshot"]["created"]
     assert verify_chain(tmp_path / "evidence.jsonl")["ok"] is True
 
     manifest = json.loads((tmp_path / "trails" / trail_id / "manifest.json")
                           .read_text(encoding="utf-8"))
-    assert manifest["run_id"] == "run-live-tool"
+    assert manifest["run_id"] == run_id
     assert manifest["executions"][0]["exit_code"] == 0
+
+
+def test_exit139_and_sigsegv_are_distinguished(backend, tmp_path):
+    from gpuvulnagent.backends.trails import TrailStore
+
+    store = TrailStore(tmp_path / "trails", "run-live-signals-" + uuid.uuid4().hex[:8])
+    trail = store.allocate(purpose="signal evidence")
+    trail.add_file("returns139.c", "int main(void){return 139;}\n")
+    trail.add_file("segfaults.c", "int main(){int *p=0;*p=1;return 0;}\n")
+    build = backend.exec(trail, image=IMAGE, timeout_s=300, argv=[
+        "bash", "-lc",
+        "gcc -O0 returns139.c -o returns139 && gcc -O0 segfaults.c -o segfaults && echo ok"])
+    assert build.exit_code == 0, build.stderr
+
+    normal = backend.exec(trail, image=IMAGE, timeout_s=120, argv=["./returns139"])
+    assert normal.exit_code == 139
+    assert normal.termination["kind"] == "error_exit"
+    assert normal.termination["crash"] is False
+    assert normal.signal_verified is True
+
+    crashed = backend.exec(trail, image=IMAGE, timeout_s=120, argv=["./segfaults"])
+    assert crashed.termination["kind"] == "sigsegv"
+    assert crashed.termination["crash"] is True
+    assert crashed.signal_name == "SIGSEGV"
+
+
+def test_a_symlink_to_a_host_file_is_not_collected(backend, tmp_path):
+    from gpuvulnagent.backends.trails import TrailStore
+
+    store = TrailStore(tmp_path / "trails", "run-live-symlink-" + uuid.uuid4().hex[:8])
+    trail = store.allocate(purpose="symlink")
+    result = backend.exec(trail, image=IMAGE, timeout_s=300, argv=[
+        "bash", "-lc",
+        "ln -s /etc/passwd /work/leak.txt; echo kept > /work/real.txt"])
+    skipped = {item["name"]: item for item in result.snapshot.get("skipped_symlinks") or []}
+    assert "leak.txt" in skipped
+    assert not (trail.root / "execs/exec00/outputs/leak.txt").exists()
+    assert (trail.root / "execs/exec00/outputs/real.txt").is_file()
+    for path in (trail.root / "execs/exec00/outputs").rglob("*"):
+        if path.is_file():
+            assert b"root:x:" not in path.read_bytes()
+
+
+def test_exit139_and_sigsegv_are_distinguished(backend, tmp_path):
+    from gpuvulnagent.backends.trails import TrailStore
+
+    store = TrailStore(tmp_path / "trails", "run-live-signals-" + uuid.uuid4().hex[:8])
+    trail = store.allocate(purpose="signal evidence")
+    trail.add_file("returns139.c", "int main(void){return 139;}\n")
+    trail.add_file("segfaults.c", "int main(){int *p=0;*p=1;return 0;}\n")
+    build = backend.exec(trail, image=IMAGE, timeout_s=300, argv=[
+        "bash", "-lc",
+        "gcc -O0 returns139.c -o returns139 && gcc -O0 segfaults.c -o segfaults && echo ok"])
+    assert build.exit_code == 0, build.stderr
+
+    normal = backend.exec(trail, image=IMAGE, timeout_s=120, argv=["./returns139"])
+    assert normal.exit_code == 139
+    assert normal.termination["kind"] == "error_exit"
+    assert normal.termination["crash"] is False
+    assert normal.signal_verified is True
+
+    crashed = backend.exec(trail, image=IMAGE, timeout_s=120, argv=["./segfaults"])
+    assert crashed.termination["kind"] == "sigsegv"
+    assert crashed.termination["crash"] is True
+    assert crashed.signal_name == "SIGSEGV"
+
+
+def test_two_mutations_of_the_same_name_are_both_kept(backend, tmp_path):
+    from gpuvulnagent.backends.trails import TrailStore
+
+    store = TrailStore(tmp_path / "trails", "run-live-versions-" + uuid.uuid4().hex[:8])
+    trail = store.allocate(purpose="versions")
+    command = ["bash", "-lc",
+               "printf '%s' \"$SRC\" > /work/poc.cu && nvcc -O2 /work/poc.cu -o /work/poc"]
+    first = backend.exec(trail, image=IMAGE, timeout_s=300, argv=command,
+                         env={"SRC": "int main(){return 0;}\n"})
+    second = backend.exec(trail, image=IMAGE, timeout_s=300, argv=command,
+                          env={"SRC": "int main(){return 1;}\n"})
+    v1 = trail.root / "execs/exec00/outputs/poc.cu"
+    v2 = trail.root / "execs/exec01/outputs/poc.cu"
+    assert v1.read_text() == "int main(){return 0;}\n"
+    assert v2.read_text() == "int main(){return 1;}\n"
+    assert (trail.root / "execs/exec00/outputs/poc").is_file()
+    assert (trail.root / "execs/exec01/outputs/poc").is_file()
+    assert "poc.cu" in (first.snapshot.get("created") or [])
+    assert "poc.cu" in (second.snapshot.get("changed") or [])
+
+
+def test_a_symlink_to_a_host_file_is_not_collected(backend, tmp_path):
+    from gpuvulnagent.backends.trails import TrailStore
+
+    store = TrailStore(tmp_path / "trails", "run-live-symlink-" + uuid.uuid4().hex[:8])
+    trail = store.allocate(purpose="symlink")
+    result = backend.exec(trail, image=IMAGE, timeout_s=300, argv=[
+        "bash", "-lc",
+        "ln -s /etc/passwd /work/leak.txt; echo kept > /work/real.txt"])
+    skipped = {item["name"]: item for item in result.snapshot.get("skipped_symlinks") or []}
+    assert "leak.txt" in skipped
+    assert not (trail.root / "execs/exec00/outputs/leak.txt").exists()
+    assert (trail.root / "execs/exec00/outputs/real.txt").is_file()
+    for path in (trail.root / "execs/exec00/outputs").rglob("*"):
+        if path.is_file():
+            assert b"root:x:" not in path.read_bytes()

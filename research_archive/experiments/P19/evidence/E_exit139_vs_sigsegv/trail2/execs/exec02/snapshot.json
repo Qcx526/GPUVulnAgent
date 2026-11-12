@@ -1,0 +1,23 @@
+{
+ "execution_index": 2,
+ "created": [],
+ "changed": [],
+ "deleted": [],
+ "unchanged_count": 4,
+ "pre_files": {
+  "returns139": "59a8090024955c0b07e3ad57f20cf3f7b5183489e61a34f8c546e9d863d7180e",
+  "returns139.c": "0e031070aa5358839642d1d1a6ca845bc18504104525ae76cd84bf08e833068f",
+  "segfaults": "5f23b1d018b3aa04480f8e7854e9c21b298b3067d918afe291e244a26ba0c18d",
+  "segfaults.c": "ce5acc8a3014ad4e3d5347a808ace05989b51a40726fab470813de211856a607"
+ },
+ "post_files": {
+  "returns139": "59a8090024955c0b07e3ad57f20cf3f7b5183489e61a34f8c546e9d863d7180e",
+  "returns139.c": "0e031070aa5358839642d1d1a6ca845bc18504104525ae76cd84bf08e833068f",
+  "segfaults": "5f23b1d018b3aa04480f8e7854e9c21b298b3067d918afe291e244a26ba0c18d",
+  "segfaults.c": "ce5acc8a3014ad4e3d5347a808ace05989b51a40726fab470813de211856a607"
+ },
+ "skipped_symlinks": [],
+ "special": [],
+ "errors": [],
+ "policy": "snapshot holds files this execution created or modified; the full before/after listing proves what did not change; symlinks are never followed"
+}

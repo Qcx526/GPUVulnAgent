@@ -1,0 +1,338 @@
+{
+ "schema": "gpuvulnagent-experiment-bundle/v1",
+ "experiment": "P19-R1",
+ "archived_at": "2026-11-12T10:58:31",
+ "source_run_dir": "F:\\qcx\\code\\GPUVulnAgent\\.local\\runs\\p19r1-acceptance-run-20261112T025231Z-b8c0af",
+ "host": {
+  "os": "Ubuntu 22.04.5 LTS",
+  "kernel": "6.6.87.2-microsoft-standard-WSL2",
+  "docker": "29.8.2",
+  "gpu": "NVIDIA GeForce GTX 1660",
+  "compute_capability": "7.5",
+  "cuda": "12.8.93"
+ },
+ "checks": {
+  "backend": {
+   "status": "ok"
+  },
+  "supervisor": {
+   "status": "ok"
+  },
+  "C_snapshot_two_versions": {
+   "status": "ok"
+  },
+  "D_symlink_escape": {
+   "status": "ok"
+  },
+  "E_exit139_vs_sigsegv": {
+   "status": "ok"
+  },
+  "F_timeout_cleanup": {
+   "status": "ok"
+  },
+  "G_config_effect": {
+   "status": "ok"
+  },
+  "H_agent_end_to_end": {
+   "status": "ok"
+  }
+ },
+ "files": [
+  {
+   "source": "probe",
+   "destination": "research_archive/experiments/P19/environment.json",
+   "sha256": "e42cfdbb01877ad0a38a30093dbf8de10eb3353cdd86789f408036437e97e1b0",
+   "bytes": 2851
+  },
+  {
+   "source": ".local/logs/p19r1_acceptance.json",
+   "destination": "research_archive/experiments/P19/acceptance.json",
+   "sha256": "6ef518be2e0a9d44799694b0ab7e84313bfb99a6c2f2edc0952b257eba079bea",
+   "bytes": 6186
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/manifest.json",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/manifest.json",
+   "sha256": "5661859dd6aa66a945cb2a038002e59ce701cf184554e7bfaedd731332f7b63f",
+   "bytes": 7120
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec00/result.json",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec00/result.json",
+   "sha256": "a6651f352e1f7fd867cdda50887320a1d157c5489dba00f0ed7403b86feb46b9",
+   "bytes": 5559
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec00/snapshot.json",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec00/snapshot.json",
+   "sha256": "a7c1367ed57842abf9f8952be39d154c60886da331501248badc5f9911274378",
+   "bytes": 544
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec00/logs/docker_run.stdout",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec00/logs/docker_run.stdout",
+   "sha256": "a41a8e92ea84121f43b1d27e31b1ebe9b880f25a1b8fa4a5b8006465a7acd101",
+   "bytes": 530
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec00/logs/docker_run.stderr",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec00/logs/docker_run.stderr",
+   "sha256": "4a9039e3453232c01f7268ec2cf78f30738e225eb22be0155616a8713600c863",
+   "bytes": 187
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec00/outputs/poc",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec00/outputs/poc",
+   "sha256": "df326fb76467d3baf99ed8dd5ae9fd46ca7815bcaa9d68a8e2ed52871897e9a0",
+   "bytes": 1002008
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec00/outputs/poc.cu",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec00/outputs/poc.cu",
+   "sha256": "462d42aee6fc15e7018670ed3a5f8635f7cbb3a97c7de724435d554ee9f45165",
+   "bytes": 55
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec01/result.json",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec01/result.json",
+   "sha256": "95325fa075dbf065fbaee743f79710d1e9146247d5c6756e5d9e2ddf3b1a8f8c",
+   "bytes": 5743
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec01/snapshot.json",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec01/snapshot.json",
+   "sha256": "ca609aa8222209e3d20b62726a44742957635b5deecf669cbab4559420862cea",
+   "bytes": 705
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec01/logs/docker_run.stdout",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec01/logs/docker_run.stdout",
+   "sha256": "5ea858072cebd841a148935cf1d2b31c04007fef17e075e2cef1c118276eb426",
+   "bytes": 540
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec01/logs/docker_run.stderr",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec01/logs/docker_run.stderr",
+   "sha256": "4a9039e3453232c01f7268ec2cf78f30738e225eb22be0155616a8713600c863",
+   "bytes": 187
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec01/outputs/poc",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec01/outputs/poc",
+   "sha256": "8d0d704e9714981988e14af7c28779ca30415406748856ebe8457521504f8539",
+   "bytes": 1002008
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail0/execs/exec01/outputs/poc.cu",
+   "destination": "research_archive/experiments/P19/evidence/C_snapshot_two_versions/trail0/execs/exec01/outputs/poc.cu",
+   "sha256": "6368ebc8e902c1b66a0ab3114a990d43a90fd0ed5da5f735419538a79228291e",
+   "bytes": 65
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail1/manifest.json",
+   "destination": "research_archive/experiments/P19/evidence/D_symlink_escape/trail1/manifest.json",
+   "sha256": "3d3921994acc3ce392dd0cbee922b08a3ec57eada0a3715fa75bb67eaddf30d4",
+   "bytes": 3442
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail1/execs/exec00/result.json",
+   "destination": "research_archive/experiments/P19/evidence/D_symlink_escape/trail1/execs/exec00/result.json",
+   "sha256": "bba7e368b95b48dd1d33f240a5701bf3f78a54a2f50c93d3865b9fb7e3baa437",
+   "bytes": 5506
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail1/execs/exec00/snapshot.json",
+   "destination": "research_archive/experiments/P19/evidence/D_symlink_escape/trail1/execs/exec00/snapshot.json",
+   "sha256": "9202f26aaf144d0ae93a56908fdf7b7e43a899a9805beccf61ec85d3447e50cc",
+   "bytes": 692
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail1/execs/exec00/logs/docker_run.stdout",
+   "destination": "research_archive/experiments/P19/evidence/D_symlink_escape/trail1/execs/exec00/logs/docker_run.stdout",
+   "sha256": "ea7e0d86f57a7a42ba0cea2567959ac8cf4792a903cea0b2e75000c0141c61b6",
+   "bytes": 714
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail1/execs/exec00/logs/docker_run.stderr",
+   "destination": "research_archive/experiments/P19/evidence/D_symlink_escape/trail1/execs/exec00/logs/docker_run.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail1/execs/exec00/outputs/real.txt",
+   "destination": "research_archive/experiments/P19/evidence/D_symlink_escape/trail1/execs/exec00/outputs/real.txt",
+   "sha256": "b5ba5099c255619b95a61cad905e23a051ae2575e887f84f5f5e7715fd5c0444",
+   "bytes": 12
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/manifest.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/manifest.json",
+   "sha256": "70ef154bad0f32ff96417e0833c01c87ff1a0d2fc6bab3a1e115a45314d7ae36",
+   "bytes": 12347
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec00/result.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec00/result.json",
+   "sha256": "e2ee1be2cf9802230597e71d4ea425e3f8603b47d51e60dfeb55ff1452ec19d6",
+   "bytes": 5668
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec00/snapshot.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec00/snapshot.json",
+   "sha256": "9652b8bc1179c6d86f16eb3a5073b25408f90dc8fbdbfdfd3456dc48b23f1673",
+   "bytes": 912
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec00/logs/docker_run.stdout",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec00/logs/docker_run.stdout",
+   "sha256": "7778d33cb2144e463c0b8aa519947e9ac11a3cfe3067a280ca8315fbc9e975ed",
+   "bytes": 529
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec00/logs/docker_run.stderr",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec00/logs/docker_run.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec00/outputs/returns139",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec00/outputs/returns139",
+   "sha256": "59a8090024955c0b07e3ad57f20cf3f7b5183489e61a34f8c546e9d863d7180e",
+   "bytes": 15784
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec00/outputs/segfaults",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec00/outputs/segfaults",
+   "sha256": "5f23b1d018b3aa04480f8e7854e9c21b298b3067d918afe291e244a26ba0c18d",
+   "bytes": 15784
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec01/result.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec01/result.json",
+   "sha256": "f7d2f966e8f8ccddba2a3a5f7035bc9f122589a3b46dfccc4d1823747adea6b6",
+   "bytes": 5233
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec01/snapshot.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec01/snapshot.json",
+   "sha256": "8be3969503ad026a37910550ed9272a79664d952c957e0368c27afb9f4ef9afb",
+   "bytes": 1046
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec01/logs/docker_run.stdout",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec01/logs/docker_run.stdout",
+   "sha256": "aea56eccbdcdda61273241546488c3e982ef05d5a9cd415d0c986a59bb1bb875",
+   "bytes": 523
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec01/logs/docker_run.stderr",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec01/logs/docker_run.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec02/result.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec02/result.json",
+   "sha256": "9b9e47e11ed7b9c1132f1359064d3d455f0cdff8421062909d7504667341986d",
+   "bytes": 5232
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec02/snapshot.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec02/snapshot.json",
+   "sha256": "161323e88d53a97c5b20ff3141c4993c519b756a68c456d7f268baa3939893c1",
+   "bytes": 1046
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec02/logs/docker_run.stdout",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec02/logs/docker_run.stdout",
+   "sha256": "aea56eccbdcdda61273241546488c3e982ef05d5a9cd415d0c986a59bb1bb875",
+   "bytes": 523
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec02/logs/docker_run.stderr",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec02/logs/docker_run.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec03/result.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec03/result.json",
+   "sha256": "d9bb249714238afa8a96891c9105cbd0134cfaa8dd7c1b436e81ae31fea669db",
+   "bytes": 5274
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec03/snapshot.json",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec03/snapshot.json",
+   "sha256": "b40b14f2edf5c1647edc9e5fa8b796c9c964c5b8d9fd2c03f055dbaf4ae4c6aa",
+   "bytes": 1046
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec03/logs/docker_run.stdout",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec03/logs/docker_run.stdout",
+   "sha256": "aea56eccbdcdda61273241546488c3e982ef05d5a9cd415d0c986a59bb1bb875",
+   "bytes": 523
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail2/execs/exec03/logs/docker_run.stderr",
+   "destination": "research_archive/experiments/P19/evidence/E_exit139_vs_sigsegv/trail2/execs/exec03/logs/docker_run.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail3/manifest.json",
+   "destination": "research_archive/experiments/P19/evidence/F_timeout_cleanup/trail3/manifest.json",
+   "sha256": "2eac9bb9101292facfc9d25c3e8bf178276eb57bb9d5ccb452e126bafe586368",
+   "bytes": 3043
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail3/execs/exec00/result.json",
+   "destination": "research_archive/experiments/P19/evidence/F_timeout_cleanup/trail3/execs/exec00/result.json",
+   "sha256": "cc78b1b1a168e387336fc1efdf2400b05ae6b0998dd0ced8c9865713aa03e545",
+   "bytes": 4527
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail3/execs/exec00/snapshot.json",
+   "destination": "research_archive/experiments/P19/evidence/F_timeout_cleanup/trail3/execs/exec00/snapshot.json",
+   "sha256": "728704a5751170f36b6e1c0d125d13ed1cdf59709664778c29a5e3b6712a1be3",
+   "bytes": 358
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail3/execs/exec00/logs/docker_run.stdout",
+   "destination": "research_archive/experiments/P19/evidence/F_timeout_cleanup/trail3/execs/exec00/logs/docker_run.stdout",
+   "sha256": "e288d707e51b930d1daf797ca563f772a0cc07e068fbe68b1e00165bb4ab6b92",
+   "bytes": 531
+  },
+  {
+   "source": ".local/runs/p19r1-acceptance-run-20261112T025231Z-b8c0af/trails/trail3/execs/exec00/logs/docker_run.stderr",
+   "destination": "research_archive/experiments/P19/evidence/F_timeout_cleanup/trail3/execs/exec00/logs/docker_run.stderr",
+   "sha256": "e3a88dbdc8fc63a07ef91dc995a190784b88221478bd041db7f80511858d6365",
+   "bytes": 45
+  },
+  {
+   "source": ".local/runs/p19r1-autonomy-run-20261112T025246Z-bd2ff8/result.json",
+   "destination": "research_archive/experiments/P19/agent/result.json",
+   "sha256": "eb2f049319e56a580b380ba7ab4fcf2b402f1e7e787a3892dc7125f1ff8164d8",
+   "bytes": 45463
+  },
+  {
+   "source": ".local/runs/p19r1-autonomy-run-20261112T025246Z-bd2ff8/evidence.jsonl",
+   "destination": "research_archive/experiments/P19/agent/evidence.jsonl",
+   "sha256": "e6a7d32e7ebf65817478f544be353fa0d56d352e9c610095877c84c1d2aa5059",
+   "bytes": 109332
+  },
+  {
+   "source": ".local/runs/p19r1-autonomy-run-20261112T025246Z-bd2ff8/trails/trail0/manifest.json",
+   "destination": "research_archive/experiments/P19/agent/trails/trail0/manifest.json",
+   "sha256": "ac029467e73e4ae260b5d7caa5cebf1863e692a278483dfa33957993396cc343",
+   "bytes": 12334
+  },
+  {
+   "source": ".local/runs/p19r1-autonomy-run-20261112T025246Z-bd2ff8/trails/trail1/manifest.json",
+   "destination": "research_archive/experiments/P19/agent/trails/trail1/manifest.json",
+   "sha256": "6d8d842f23be9ea887bedfc91889be84d7855ccd01a54342204910fc495c048a",
+   "bytes": 7716
+  }
+ ],
+ "skipped": [],
+ "policy": "trimmed bundle: environment, acceptance results, trail manifests, execution records, stdout/stderr and small artifacts; no toolchain, no container filesystem, no credentials"
+}

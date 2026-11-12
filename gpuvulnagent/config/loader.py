@@ -41,6 +41,7 @@ DEFAULTS: Dict[str, str] = {
     "WSL_WORKER_ROOT": "/home/pocdev/gpuvulnagent-worker",
     "GPU_IMAGE": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
     "WSL_CALL_TIMEOUT": "300",
+    "GPU_PULL_POLICY": "missing",
 }
 
 SECRET_NAMES = ("DEEPSEEK_API_KEY", "TAVILY_API_KEY", "LLM_API_KEY")
@@ -155,11 +156,13 @@ class BackendSettings:
     wsl_worker_root: str = DEFAULTS["WSL_WORKER_ROOT"]
     gpu_image: str = DEFAULTS["GPU_IMAGE"]
     call_timeout: int = int(DEFAULTS["WSL_CALL_TIMEOUT"])
+    pull_policy: str = DEFAULTS["GPU_PULL_POLICY"]
 
     def describe(self) -> dict:
         return {"enabled": self.enabled, "wsl_distro": self.wsl_distro,
                 "wsl_user": self.wsl_user, "wsl_worker_root": self.wsl_worker_root,
-                "gpu_image": self.gpu_image, "call_timeout": self.call_timeout}
+                "gpu_image": self.gpu_image, "call_timeout": self.call_timeout,
+                "pull_policy": self.pull_policy}
 
 
 @dataclass
@@ -230,7 +233,8 @@ class ConfigLoader:
                 "WSL_USER": ("backend", "wsl_user"),
                 "WSL_WORKER_ROOT": ("backend", "wsl_worker_root"),
                 "GPU_IMAGE": ("backend", "gpu_image"),
-                "WSL_CALL_TIMEOUT": ("backend", "call_timeout")}
+                "WSL_CALL_TIMEOUT": ("backend", "call_timeout"),
+                "GPU_PULL_POLICY": ("backend", "pull_policy")}
         section, key = flat.get(name, ("", ""))
         node = self.yaml.get(section) if section else None
         return node.get(key) if isinstance(node, dict) else None
@@ -286,6 +290,10 @@ class ConfigLoader:
         backend.wsl_worker_root, sources["WSL_WORKER_ROOT"] = self._get("WSL_WORKER_ROOT")
         backend.gpu_image, sources["GPU_IMAGE"] = self._get("GPU_IMAGE")
         backend.call_timeout, _ = self._number("WSL_CALL_TIMEOUT", int, minimum=10)
+        backend.pull_policy, sources["GPU_PULL_POLICY"] = self._get("GPU_PULL_POLICY")
+        if backend.pull_policy not in ("missing", "always", "never"):
+            raise ValueError("GPU_PULL_POLICY must be missing, always or never; got %r"
+                             % backend.pull_policy)
 
         sources["TAVILY_API_KEY"] = tavily_source
         return Settings(project_root=self.project_root, llm=llm, tavily_api_key=tavily_key,

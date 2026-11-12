@@ -105,7 +105,8 @@ class BenchmarkRunner:
                  toolchain_root: Optional[Path] = None, manifest=None,
                  target_tools=DEFAULT_TARGET_TOOLS, max_turns: int = 8,
                  wall_clock: int = 1800, enable_search: bool = True,
-                 include_adapters: bool = True) -> None:
+                 include_adapters: bool = True, enable_gpu_backend: bool = True,
+                 backend_config=None) -> None:
         self.cases_root = Path(cases_root)
         self.summary = SummaryIndex(summary_root)
         self.provider_factory = provider_factory
@@ -117,6 +118,8 @@ class BenchmarkRunner:
         self.wall_clock = wall_clock
         self.enable_search = enable_search
         self.include_adapters = include_adapters
+        self.enable_gpu_backend = enable_gpu_backend
+        self.backend_config = backend_config
 
     # -- one case --------------------------------------------------------
     def run_case(self, *, case_id: str, mode: str = "blind", turns: Optional[int] = None,
@@ -160,7 +163,9 @@ class BenchmarkRunner:
                 research_root=self.research_root, toolchain_root=self.toolchain_root,
                 manifest_path=(self.manifest.path if self.manifest is not None else None),
                 enable_search=self.enable_search,
-                include_adapters=self.include_adapters, deadline=deadline)
+                include_adapters=self.include_adapters,
+                enable_gpu_backend=self.enable_gpu_backend,
+                backend_config=self.backend_config, deadline=deadline)
             result = runtime.run()
             final_text, stopped = result.final, result.stopped
             usage = result.usage.to_dict()

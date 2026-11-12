@@ -144,3 +144,43 @@ def test_tool_manifest_records_trail_relationship(assembly):
     assert child["summary"]["parent_trail"] == "trail0"
     payload = json.dumps(child["summary"], ensure_ascii=False)
     assert "\"run_id\": \"run-tools\"" in payload
+
+
+def test_pull_policy_is_part_of_the_contract(assembly):
+    schema = assembly.registry.get("container_exec").json_schema()
+    assert schema["properties"]["pull_policy"]["enum"] == ["missing", "always", "never"]
+    assert schema["properties"]["pull_policy"]["default"] == "missing"
+
+
+def test_container_exec_summary_carries_snapshot_and_supervision(assembly, monkeypatch):
+    from gpuvulnagent.backends.base import Artifact, ExecResult
+
+    def fake_exec(trail, **kwargs):
+        result = ExecResult(ok=True, exit_code=0, termination={"kind": "success",
+                                                              "crash": False,
+                                                              "signal_verified": True},
+                            image=kwargs.get("image", "img"), image_digest="repo@sha256:x",
+                            pull_policy="missing",
+                            image_pull={"policy": "missing", "present_before": True,
+                                        "pulled": False, "ok": True, "error": ""},
+                            container_id="abc", argv=list(kwargs.get("argv") or []),
+                            trail=trail.trail_id, exec_index=0, exec_dir="execs/exec00",
+                            snapshot={"created": ["poc"], "changed": [], "deleted": [],
+                                      "unchanged_count": 2, "skipped_symlinks": []},
+                            supervision={"used": True, "readable": True},
+                            signal_verified=True, signaled=False,
+                            cleanup={"attempted": True, "exit": 0}, cleanup_ok=True,
+                            stdout="ok", stderr="")
+        result.artifacts = [Artifact(name="execs/exec00/outputs/poc", sha256="a" * 64,
+                                     bytes=10, kind="output")]
+        return result
+
+    monkeypatch.setattr(assembly.backend, "exec", fake_exec)
+    outcome = assembly.registry.call("container_exec", {"argv": ["true"], "image": "img"})
+    summary = outcome["summary"]
+    assert outcome["ok"] is True
+    assert summary["exec_dir"] == "execs/exec00"
+    assert summary["signal_verified"] is True
+    assert summary["snapshot"]["created"] == ["poc"]
+    assert summary["cleanup_ok"] is True
+    assert summary["pull_policy"] == "missing"

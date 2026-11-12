@@ -1,0 +1,213 @@
+{
+ "schema": "gpuvulnagent-trail/v1",
+ "run_id": "run-20261112T025246Z-491b2a",
+ "trail": "trail1",
+ "purpose": "变异：A) int4 向量化版本（应 PASS），B) 故意索引错误版本（应 VERIFY FAILED），用来验证校验逻辑有判别力；并确认不覆盖 trail0 产物",
+ "parent_trail": "trail0",
+ "created_at": "2026-11-12T10:53:33",
+ "updated_at": "2026-11-12T10:53:58",
+ "files": [
+  {
+   "name": "inputs/va_vec4.cu",
+   "sha256": "78ba39947222c7b7982e045096fd778632496ff254dd30589522e6087498adc6",
+   "bytes": 2525,
+   "kind": "input",
+   "source": "agent",
+   "added_at": "2026-11-12T10:53:44",
+   "relation": "derived from trail0 inputs/vector_add.cu: same problem, int4 vectorized kernel + full checksum"
+  },
+  {
+   "name": "inputs/va_broken.cu",
+   "sha256": "d90fef7f379ab2d51b9f4a87d656755a95688f14da32c68c3841ec834de9b25d",
+   "bytes": 2125,
+   "kind": "input",
+   "source": "agent",
+   "added_at": "2026-11-12T10:53:44",
+   "relation": "derived from trail0 inputs/vector_add.cu: single injected defect at i==12345, negative control for the verifier"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/hashes_variants.txt",
+   "sha256": "d8f483992f997df7e6c51853052c83f56f27267673b6ebd81df40cf52b0f6890",
+   "bytes": 405,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/run_broken.log",
+   "sha256": "1eee14f8926bad224dd38642a43c0c19cffc721fb2d600963ac4cf575a5eeee5",
+   "bytes": 161,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/run_vec4.log",
+   "sha256": "9f673ab515174965f2fa8e0c8b5d2bb287bb04388800f65428877aeba452f524",
+   "bytes": 176,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/va_broken",
+   "sha256": "1a8cd740a1a1f45e6c6496afc3b9f401a777ca468634ebc58366b0aca2fe7e13",
+   "bytes": 1007088,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/va_broken.cubin",
+   "sha256": "70d10fc4862551bc4af132b3119517ca26235d9326bcb6eca1b245ddc75d07fa",
+   "bytes": 3112,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/va_vec4",
+   "sha256": "eab702a429e34ca812adf29a32d724d5a894699fd03c176f85e19ce9c22cdbf3",
+   "bytes": 1007096,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/va_vec4.cubin",
+   "sha256": "74b75039bc01b6a5e54fe0cbd4218f94aed69a1bdeffc4892ba9ac4cc066b279",
+   "bytes": 3112,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/va_vec4.ptx",
+   "sha256": "75b7a29c947c079dd4ee8d01f01231bc90db1832c621d26b8226f9cc381aa5e9",
+   "bytes": 1512,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/t1/va_vec4.sass",
+   "sha256": "f761af2c891863c36a2108765c479ee4ecf8d11b9e6fa588383f224f3dce3a03",
+   "bytes": 2099,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stderr",
+   "sha256": "b0198abc635001fe5bef9ebd12c7c8342df463e1743f1629d315c29fe83dd684",
+   "bytes": 845,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stdout",
+   "sha256": "1672abce8013d99f4ccdceca10e6d4f042d56bb3d9d2d5d72a85c8f80b6e82e8",
+   "bytes": 3470,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/snapshot.json",
+   "sha256": "4a662475c048534f8b1d2f7b3b8b678c2cd1aeccd0317920d31d734cdf594491",
+   "bytes": 1724,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/result.json",
+   "sha256": "c2d53bd077144368111d17997a22aab69312a2ba401f36e1be9a3e828fbd5e55",
+   "bytes": 13428,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:53:58",
+   "relation": "execution 0"
+  }
+ ],
+ "executions": [
+  {
+   "argv": [
+    "bash",
+    "-lc",
+    "set -x; mkdir -p t1; nvcc -O2 -arch=sm_75 va_vec4.cu -o t1/va_vec4; echo VEC4_BUILD_RC=$?; nvcc -O2 -arch=sm_75 -cubin va_vec4.cu -o t1/va_vec4.cubin; nvcc -O2 -arch=sm_75 -ptx va_vec4.cu -o t1/va_vec4.ptx; nvcc -O2 -arch=sm_75 va_broken.cu -o t1/va_broken; echo BROKEN_BUILD_RC=$?; nvcc -O2 -arch=sm_75 -cubin va_broken.cu -o t1/va_broken.cubin; sha256sum t1/va_vec4 t1/va_vec4.cubin t1/va_vec4.ptx t1/va_broken t1/va_broken.cubin | tee t1/hashes_variants.txt; ./t1/va_vec4 > t1/run_vec4.log 2>&1; echo VEC4_RUN_EXIT=$? | tee -a t1/run_vec4.log; ./t1/va_broken > t1/run_broken.log 2>&1; echo BROKEN_RUN_EXIT=$? | tee -a t1/run_broken.log; echo '===== vec4 ====='; cat t1/run_vec4.log; echo '===== broken ====='; cat t1/run_broken.log; /usr/local/cuda/bin/nvdisasm -c t1/va_vec4.cubin > t1/va_vec4.sass 2>&1; echo DISASM_RC=$?; wc -l t1/va_vec4.sass; grep -n -A40 'vector_add_vec4' t1/va_vec4.sass | head -60"
+   ],
+   "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "pull_policy": "missing",
+   "image_pull": {
+    "policy": "missing",
+    "present_before": true,
+    "pulled": false,
+    "duration_ms": 0,
+    "error": "",
+    "ok": true,
+    "note": "network=none applies to the container; the engine may still pull"
+   },
+   "container_id": "29195ecab9858f17df195d50365cfbd231e599beb7bb8f92e2abfb28421c0315",
+   "exit_code": 0,
+   "termination": "success",
+   "crash": false,
+   "signal_verified": true,
+   "signaled": false,
+   "signal": "",
+   "timed_out": false,
+   "oom_killed": false,
+   "duration_ms": 3411,
+   "started_at": "2026-11-12T10:54:21",
+   "finished_at": "2026-11-12T10:54:25",
+   "network": "none",
+   "gpu": true,
+   "exec_dir": "execs/exec00",
+   "snapshot": {
+    "created": 9,
+    "changed": 0,
+    "deleted": 0,
+    "skipped_symlinks": 0
+   },
+   "cleanup": {
+    "attempted": true,
+    "target": "29195ecab9858f17df195d50365cfbd231e599beb7bb8f92e2abfb28421c0315",
+    "exit": 0,
+    "detail": "removed"
+   },
+   "cleanup_ok": true,
+   "stdout": "execs/exec00/logs/docker_run.stdout",
+   "stderr": "execs/exec00/logs/docker_run.stderr",
+   "artifacts": [
+    "execs/exec00/outputs/t1/hashes_variants.txt",
+    "execs/exec00/outputs/t1/run_broken.log",
+    "execs/exec00/outputs/t1/run_vec4.log",
+    "execs/exec00/outputs/t1/va_broken",
+    "execs/exec00/outputs/t1/va_broken.cubin",
+    "execs/exec00/outputs/t1/va_vec4",
+    "execs/exec00/outputs/t1/va_vec4.cubin",
+    "execs/exec00/outputs/t1/va_vec4.ptx",
+    "execs/exec00/outputs/t1/va_vec4.sass",
+    "execs/exec00/logs/docker_run.stderr",
+    "execs/exec00/logs/docker_run.stdout"
+   ],
+   "index": 0,
+   "recorded_at": "2026-11-12T10:53:58"
+  }
+ ]
+}

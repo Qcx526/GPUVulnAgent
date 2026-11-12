@@ -1,0 +1,368 @@
+{
+ "schema": "gpuvulnagent-trail/v1",
+ "run_id": "run-20261112T025246Z-491b2a",
+ "trail": "trail0",
+ "purpose": "基线：用 samples/vector_add.cu 原样编译并运行，验证 a=10,b=20 -> c=30，采集 nvcc 版本、cubin、SASS/ELF 产物",
+ "parent_trail": "",
+ "created_at": "2026-11-12T10:53:01",
+ "updated_at": "2026-11-12T10:53:25",
+ "files": [
+  {
+   "name": "inputs/vector_add.cu",
+   "sha256": "2d8a329c5d64279d2797d889b199a30e7e98e2def15cbf66430fb9f7f9ab8ee1",
+   "bytes": 1818,
+   "kind": "input",
+   "source": "agent",
+   "added_at": "2026-11-12T10:53:07",
+   "relation": "copied verbatim from workspace samples/vector_add.cu (sha256 53c08235dc76...)"
+  },
+  {
+   "name": "execs/exec00/outputs/out/hashes.txt",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:11",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/out/run.log",
+   "sha256": "7c1a5a197aef754f8571b0dabda599ac28002f5fb5e83b83b442b8a2ddb6c2a3",
+   "bytes": 65,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:11",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stderr",
+   "sha256": "529f8b03474ab1756c2868334f3ee4e8bb3fc844de460f7ea2516db78733ae1f",
+   "bytes": 941,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:11",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stdout",
+   "sha256": "95919f1d11600f36832c61c67a2b53d74784c9f4721b6cdc534a8c38548348bd",
+   "bytes": 719,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:11",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/snapshot.json",
+   "sha256": "5992d7b710b57b2c11ad8f2a9dbae8c83bf0964b768a17237360649e7c75a5b1",
+   "bytes": 754,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:53:11",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/result.json",
+   "sha256": "05b4aeba9a380b528f4b6376acc0a6af937456bc8043ed6e36205971ce5aa80c",
+   "bytes": 7476,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:53:11",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec01/logs/docker_run.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:16",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec01/logs/docker_run.stdout",
+   "sha256": "899ab0c616611a8b6112344bc5a61c2d2c7d29c4dc3b88f98eb0d137d0458541",
+   "bytes": 881,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:16",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec01/snapshot.json",
+   "sha256": "ee7b19b94b1a81b34ad3278e173ac5e85550ba252be246e4f46d45c9204cbde0",
+   "bytes": 888,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:53:16",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec01/result.json",
+   "sha256": "5653de43aefb1b3b71dadfd7385dbf0dacb283e200a3d689837e38bc20c2416e",
+   "bytes": 5453,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:53:16",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec02/outputs/out/hashes_baseline.txt",
+   "sha256": "e450316dec7b74d95a2acac4594f25326a6e350d2c217fe63cadff002a8bf8c5",
+   "bytes": 256,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  },
+  {
+   "name": "execs/exec02/outputs/out/run_baseline.log",
+   "sha256": "5e544258710f9fc87f1d9f04ff07c24ababf0d25948b74ffc0e00c0eb8ce0756",
+   "bytes": 108,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  },
+  {
+   "name": "execs/exec02/outputs/out/va_baseline",
+   "sha256": "4f4709728c299a811e51a1953ea854d1f446928eab23e272b02302ea0cb22bbb",
+   "bytes": 1007080,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  },
+  {
+   "name": "execs/exec02/outputs/out/va_baseline.cubin",
+   "sha256": "c3fcf6140ad3a340380f0ee618a23de4df7bde899b76d67d4495a4ec0f2d02e6",
+   "bytes": 2856,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  },
+  {
+   "name": "execs/exec02/outputs/out/va_baseline.ptx",
+   "sha256": "3d053e8db18b28b38b2490e67d95ecbcb8e0e889c9db22ec91de074cfa5b5f79",
+   "bytes": 1253,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  },
+  {
+   "name": "execs/exec02/logs/docker_run.stderr",
+   "sha256": "15e1ffb5fd003f7eaf5523412960d4204ffa9fab4f590a63e1f8bf08cc210094",
+   "bytes": 509,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  },
+  {
+   "name": "execs/exec02/logs/docker_run.stdout",
+   "sha256": "d1be85d5bd83325564dc09b7b8b8436c9c102fbd08c6806503dae425e40d0c7a",
+   "bytes": 1047,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  },
+  {
+   "name": "execs/exec02/snapshot.json",
+   "sha256": "926e3824f173930b4b96d82328f97f9fc1586e5f03917c3da24e31a1ca7b4d1b",
+   "bytes": 1496,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  },
+  {
+   "name": "execs/exec02/result.json",
+   "sha256": "a0581d7e4100eefe48f3ef77d3930494b77079f3511350290db617b7cb22cc36",
+   "bytes": 8824,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:53:25",
+   "relation": "execution 2"
+  }
+ ],
+ "executions": [
+  {
+   "argv": [
+    "bash",
+    "-lc",
+    "set -x; nvcc --version | tail -2; nvidia-smi --query-gpu=name,driver_version,memory.total --format=csv,noheader; mkdir -p out; nvcc -O2 -arch=sm_75 inputs/vector_add.cu -o out/vector_add && echo BUILD_OK; nvcc -O2 -arch=sm_75 -cubin inputs/vector_add.cu -o out/vector_add.cubin && echo CUBIN_OK; nvcc -O2 -arch=sm_75 -ptx inputs/vector_add.cu -o out/vector_add.ptx && echo PTX_OK; sha256sum out/vector_add out/vector_add.cubin out/vector_add.ptx | tee out/hashes.txt; ./out/vector_add 2>&1 | tee out/run.log; echo EXIT=$? | tee -a out/run.log"
+   ],
+   "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "pull_policy": "missing",
+   "image_pull": {
+    "policy": "missing",
+    "present_before": true,
+    "pulled": false,
+    "duration_ms": 0,
+    "error": "",
+    "ok": true,
+    "note": "network=none applies to the container; the engine may still pull"
+   },
+   "container_id": "10c727e2fb2981cfa238ce1df0b9fd503f603d1369d7e6c79b9a1e662ec8db45",
+   "exit_code": 0,
+   "termination": "success",
+   "crash": false,
+   "signal_verified": true,
+   "signaled": false,
+   "signal": "",
+   "timed_out": false,
+   "oom_killed": false,
+   "duration_ms": 654,
+   "started_at": "2026-11-12T10:53:38",
+   "finished_at": "2026-11-12T10:53:39",
+   "network": "none",
+   "gpu": true,
+   "exec_dir": "execs/exec00",
+   "snapshot": {
+    "created": 2,
+    "changed": 0,
+    "deleted": 0,
+    "skipped_symlinks": 0
+   },
+   "cleanup": {
+    "attempted": true,
+    "target": "10c727e2fb2981cfa238ce1df0b9fd503f603d1369d7e6c79b9a1e662ec8db45",
+    "exit": 0,
+    "detail": "removed"
+   },
+   "cleanup_ok": true,
+   "stdout": "execs/exec00/logs/docker_run.stdout",
+   "stderr": "execs/exec00/logs/docker_run.stderr",
+   "artifacts": [
+    "execs/exec00/outputs/out/hashes.txt",
+    "execs/exec00/outputs/out/run.log",
+    "execs/exec00/logs/docker_run.stderr",
+    "execs/exec00/logs/docker_run.stdout"
+   ],
+   "index": 0,
+   "recorded_at": "2026-11-12T10:53:11"
+  },
+  {
+   "argv": [
+    "bash",
+    "-lc",
+    "pwd; ls -la /work; echo ---; find /work -maxdepth 3 -type f | head -50"
+   ],
+   "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "pull_policy": "missing",
+   "image_pull": {
+    "policy": "missing",
+    "present_before": true,
+    "pulled": false,
+    "duration_ms": 0,
+    "error": "",
+    "ok": true,
+    "note": "network=none applies to the container; the engine may still pull"
+   },
+   "container_id": "e5dd5ecf820db525d38a04872d862971b37b6742dfb5e44b19664ae697907e25",
+   "exit_code": 0,
+   "termination": "success",
+   "crash": false,
+   "signal_verified": true,
+   "signaled": false,
+   "signal": "",
+   "timed_out": false,
+   "oom_killed": false,
+   "duration_ms": 515,
+   "started_at": "2026-11-12T10:53:42",
+   "finished_at": "2026-11-12T10:53:43",
+   "network": "none",
+   "gpu": true,
+   "exec_dir": "execs/exec01",
+   "snapshot": {
+    "created": 0,
+    "changed": 0,
+    "deleted": 0,
+    "skipped_symlinks": 0
+   },
+   "cleanup": {
+    "attempted": true,
+    "target": "e5dd5ecf820db525d38a04872d862971b37b6742dfb5e44b19664ae697907e25",
+    "exit": 0,
+    "detail": "removed"
+   },
+   "cleanup_ok": true,
+   "stdout": "execs/exec01/logs/docker_run.stdout",
+   "stderr": "execs/exec01/logs/docker_run.stderr",
+   "artifacts": [
+    "execs/exec01/logs/docker_run.stderr",
+    "execs/exec01/logs/docker_run.stdout"
+   ],
+   "index": 1,
+   "recorded_at": "2026-11-12T10:53:16"
+  },
+  {
+   "argv": [
+    "bash",
+    "-lc",
+    "set -o pipefail; set -x; nvcc --version | tail -2; nvcc -O2 -arch=sm_75 vector_add.cu -o out/va_baseline; echo BUILD_RC=$?; nvcc -O2 -arch=sm_75 -cubin vector_add.cu -o out/va_baseline.cubin; echo CUBIN_RC=$?; nvcc -O2 -arch=sm_75 -ptx vector_add.cu -o out/va_baseline.ptx; echo PTX_RC=$?; sha256sum out/va_baseline out/va_baseline.cubin out/va_baseline.ptx | tee out/hashes_baseline.txt; ./out/va_baseline > out/run_baseline.log 2>&1; rc=$?; echo RUN_EXIT=$rc | tee -a out/run_baseline.log; echo '===== run_baseline.log ====='; cat out/run_baseline.log"
+   ],
+   "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "pull_policy": "missing",
+   "image_pull": {
+    "policy": "missing",
+    "present_before": true,
+    "pulled": false,
+    "duration_ms": 0,
+    "error": "",
+    "ok": true,
+    "note": "network=none applies to the container; the engine may still pull"
+   },
+   "container_id": "d05f6cb59a1ba3c6fc0136d1ac6199197aabb4bbbe5a5c1f91fa4290ca25d76e",
+   "exit_code": 0,
+   "termination": "success",
+   "crash": false,
+   "signal_verified": true,
+   "signaled": false,
+   "signal": "",
+   "timed_out": false,
+   "oom_killed": false,
+   "duration_ms": 2123,
+   "started_at": "2026-11-12T10:53:49",
+   "finished_at": "2026-11-12T10:53:51",
+   "network": "none",
+   "gpu": true,
+   "exec_dir": "execs/exec02",
+   "snapshot": {
+    "created": 5,
+    "changed": 0,
+    "deleted": 0,
+    "skipped_symlinks": 0
+   },
+   "cleanup": {
+    "attempted": true,
+    "target": "d05f6cb59a1ba3c6fc0136d1ac6199197aabb4bbbe5a5c1f91fa4290ca25d76e",
+    "exit": 0,
+    "detail": "removed"
+   },
+   "cleanup_ok": true,
+   "stdout": "execs/exec02/logs/docker_run.stdout",
+   "stderr": "execs/exec02/logs/docker_run.stderr",
+   "artifacts": [
+    "execs/exec02/outputs/out/hashes_baseline.txt",
+    "execs/exec02/outputs/out/run_baseline.log",
+    "execs/exec02/outputs/out/va_baseline",
+    "execs/exec02/outputs/out/va_baseline.cubin",
+    "execs/exec02/outputs/out/va_baseline.ptx",
+    "execs/exec02/logs/docker_run.stderr",
+    "execs/exec02/logs/docker_run.stdout"
+   ],
+   "index": 2,
+   "recorded_at": "2026-11-12T10:53:25"
+  }
+ ]
+}

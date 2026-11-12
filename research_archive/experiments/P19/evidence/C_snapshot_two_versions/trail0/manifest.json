@@ -1,0 +1,237 @@
+{
+ "schema": "gpuvulnagent-trail/v1",
+ "run_id": "run-p19r1-snapshot-run-20261112T025231Z-de94b5",
+ "trail": "trail0",
+ "purpose": "same file name, two mutations",
+ "parent_trail": "",
+ "created_at": "2026-11-12T10:52:31",
+ "updated_at": "2026-11-12T10:52:35",
+ "files": [
+  {
+   "name": "execs/exec00/outputs/poc",
+   "sha256": "df326fb76467d3baf99ed8dd5ae9fd46ca7815bcaa9d68a8e2ed52871897e9a0",
+   "bytes": 1002008,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:33",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/outputs/poc.cu",
+   "sha256": "462d42aee6fc15e7018670ed3a5f8635f7cbb3a97c7de724435d554ee9f45165",
+   "bytes": 55,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:33",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stderr",
+   "sha256": "4a9039e3453232c01f7268ec2cf78f30738e225eb22be0155616a8713600c863",
+   "bytes": 187,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:33",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stdout",
+   "sha256": "a41a8e92ea84121f43b1d27e31b1ebe9b880f25a1b8fa4a5b8006465a7acd101",
+   "bytes": 530,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:33",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/snapshot.json",
+   "sha256": "a7c1367ed57842abf9f8952be39d154c60886da331501248badc5f9911274378",
+   "bytes": 544,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:52:33",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/result.json",
+   "sha256": "a6651f352e1f7fd867cdda50887320a1d157c5489dba00f0ed7403b86feb46b9",
+   "bytes": 5559,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:52:33",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec01/outputs/poc",
+   "sha256": "8d0d704e9714981988e14af7c28779ca30415406748856ebe8457521504f8539",
+   "bytes": 1002008,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:35",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec01/outputs/poc.cu",
+   "sha256": "6368ebc8e902c1b66a0ab3114a990d43a90fd0ed5da5f735419538a79228291e",
+   "bytes": 65,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:35",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec01/logs/docker_run.stderr",
+   "sha256": "4a9039e3453232c01f7268ec2cf78f30738e225eb22be0155616a8713600c863",
+   "bytes": 187,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:35",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec01/logs/docker_run.stdout",
+   "sha256": "5ea858072cebd841a148935cf1d2b31c04007fef17e075e2cef1c118276eb426",
+   "bytes": 540,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:35",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec01/snapshot.json",
+   "sha256": "ca609aa8222209e3d20b62726a44742957635b5deecf669cbab4559420862cea",
+   "bytes": 705,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:52:35",
+   "relation": "execution 1"
+  },
+  {
+   "name": "execs/exec01/result.json",
+   "sha256": "95325fa075dbf065fbaee743f79710d1e9146247d5c6756e5d9e2ddf3b1a8f8c",
+   "bytes": 5743,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:52:35",
+   "relation": "execution 1"
+  }
+ ],
+ "executions": [
+  {
+   "argv": [
+    "bash",
+    "-lc",
+    "printf '%s' \"$SRC\" > /work/poc.cu && nvcc -O2 /work/poc.cu -o /work/poc && ./poc"
+   ],
+   "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "pull_policy": "missing",
+   "image_pull": {
+    "policy": "missing",
+    "present_before": true,
+    "pulled": false,
+    "duration_ms": 0,
+    "error": "",
+    "ok": true,
+    "note": "network=none applies to the container; the engine may still pull"
+   },
+   "container_id": "737ba54f2f61d9ab4caa66e97a9f22188157db26a9f5e02fbb536752c2b67ff9",
+   "exit_code": 0,
+   "termination": "success",
+   "crash": false,
+   "signal_verified": true,
+   "signaled": false,
+   "signal": "",
+   "timed_out": false,
+   "oom_killed": false,
+   "duration_ms": 1585,
+   "started_at": "2026-11-12T10:52:59",
+   "finished_at": "2026-11-12T10:53:00",
+   "network": "none",
+   "gpu": true,
+   "exec_dir": "execs/exec00",
+   "snapshot": {
+    "created": 2,
+    "changed": 0,
+    "deleted": 0,
+    "skipped_symlinks": 0
+   },
+   "cleanup": {
+    "attempted": true,
+    "target": "737ba54f2f61d9ab4caa66e97a9f22188157db26a9f5e02fbb536752c2b67ff9",
+    "exit": 0,
+    "detail": "removed"
+   },
+   "cleanup_ok": true,
+   "stdout": "execs/exec00/logs/docker_run.stdout",
+   "stderr": "execs/exec00/logs/docker_run.stderr",
+   "artifacts": [
+    "execs/exec00/outputs/poc",
+    "execs/exec00/outputs/poc.cu",
+    "execs/exec00/logs/docker_run.stderr",
+    "execs/exec00/logs/docker_run.stdout"
+   ],
+   "index": 0,
+   "recorded_at": "2026-11-12T10:52:33"
+  },
+  {
+   "argv": [
+    "bash",
+    "-lc",
+    "printf '%s' \"$SRC\" > /work/poc.cu && nvcc -O2 /work/poc.cu -o /work/poc && ./poc"
+   ],
+   "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "pull_policy": "missing",
+   "image_pull": {
+    "policy": "missing",
+    "present_before": true,
+    "pulled": false,
+    "duration_ms": 0,
+    "error": "",
+    "ok": true,
+    "note": "network=none applies to the container; the engine may still pull"
+   },
+   "container_id": "9a544fe2253d51fb733759dcf54bf4663fcde4882bf7bb4cc8678f74dbf9c1a3",
+   "exit_code": 0,
+   "termination": "success",
+   "crash": false,
+   "signal_verified": true,
+   "signaled": false,
+   "signal": "",
+   "timed_out": false,
+   "oom_killed": false,
+   "duration_ms": 1207,
+   "started_at": "2026-11-12T10:53:01",
+   "finished_at": "2026-11-12T10:53:03",
+   "network": "none",
+   "gpu": true,
+   "exec_dir": "execs/exec01",
+   "snapshot": {
+    "created": 0,
+    "changed": 2,
+    "deleted": 0,
+    "skipped_symlinks": 0
+   },
+   "cleanup": {
+    "attempted": true,
+    "target": "9a544fe2253d51fb733759dcf54bf4663fcde4882bf7bb4cc8678f74dbf9c1a3",
+    "exit": 0,
+    "detail": "removed"
+   },
+   "cleanup_ok": true,
+   "stdout": "execs/exec01/logs/docker_run.stdout",
+   "stderr": "execs/exec01/logs/docker_run.stderr",
+   "artifacts": [
+    "execs/exec01/outputs/poc",
+    "execs/exec01/outputs/poc.cu",
+    "execs/exec01/logs/docker_run.stderr",
+    "execs/exec01/logs/docker_run.stdout"
+   ],
+   "index": 1,
+   "recorded_at": "2026-11-12T10:52:35"
+  }
+ ]
+}

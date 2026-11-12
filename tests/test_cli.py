@@ -56,3 +56,19 @@ def test_verify_reports_a_clean_chain(project: Path, capsys):
 def test_no_command_prints_help(project: Path, capsys):
     assert main(["--project-root", str(project)]) == 2
     assert "usage" in capsys.readouterr().out.lower()
+
+
+def test_backend_toggle_disables_the_gpu_tools(project: Path, capsys, monkeypatch):
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    monkeypatch.setenv("GPU_BACKEND_ENABLED", "0")
+    code = main(["--project-root", str(project), "tools", "--search", "gpu"])
+    output = capsys.readouterr().out
+    assert code == 0
+    assert "container_exec" not in output
+
+
+def test_backend_toggle_can_be_overridden_per_run(project: Path, capsys, monkeypatch):
+    monkeypatch.delenv("DEEPSEEK_API_KEY", raising=False)
+    code = main(["--project-root", str(project), "run", "--goal", "x", "--no-gpu-backend"])
+    assert code == 3          # no key: the flag was accepted, then the run stopped
+    assert "DEEPSEEK_API_KEY" in capsys.readouterr().err

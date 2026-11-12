@@ -85,3 +85,60 @@ def classify_container_exit(exit_code: Optional[int], *, timed_out: bool = False
 
 def is_container_crash(kind: str) -> bool:
     return kind in CRASH_KINDS
+
+
+# Signal numbers as they appear in the supervisor's status file.
+SIGNAL_KINDS = {
+    4: "sigill", 6: "sigabrt", 7: "sigbus", 8: "sigfpe", 11: "sigsegv",
+    9: "killed", 13: "other_signal", 15: "other_signal",
+}
+
+
+def classify_container_result(*, exit_code: Optional[int], timed_out: bool = False,
+                              oom_killed: bool = False, state: str = "",
+                              started: bool = True, daemon_error: bool = False,
+                              supervision: Optional[dict] = None) -> dict:
+    """Classify a run using the supervisor's evidence, not just the exit status.
+
+    ``exit(139)`` and SIGSEGV both leave 139 behind. If the supervisor reported that the
+    child *exited* with 139, that is a normal exit and is recorded as one. If the
+    supervisor is missing, the number proves nothing, so the run is marked
+    ``unverified_signal`` and is never reported as a crash.
+    """
+    supervision = supervision or {}
+    base = classify_container_exit(exit_code, timed_out=timed_out, oom_killed=oom_killed,
+                                   state=state, started=started, daemon_error=daemon_error)
+    base.setdefault("signal_verified", False)
+    if base["kind"] in ("timeout", "oom_killed", "container_error", "unknown"):
+        return base
+
+    used = bool(supervision.get("used"))
+    readable = bool(supervision.get("readable"))
+    if used and readable:
+        if supervision.get("signaled"):
+            number = int(supervision.get("signal") or 0)
+            kind = SIGNAL_KINDS.get(number, "other_signal")
+            return {"kind": kind, "crash": kind in CRASH_KINDS,
+                    "detail": "supervisor: child terminated by signal %d (%s)"
+                              % (number, supervision.get("signal_name") or "?"),
+                    "signal_verified": True, "signaled": True, "signal": number,
+                    "signal_name": supervision.get("signal_name") or ""}
+        code = supervision.get("exit_code")
+        if code is None:
+            code = exit_code
+        # A reported normal exit is authoritative, including 139.
+        detail = "supervisor: child exited with code %s" % code
+        if code in (139, 134, 132, 135, 136):
+            detail += " (a normal exit, not a signal)"
+        return {"kind": "success" if code == 0 else "error_exit", "crash": False,
+                "detail": detail, "signal_verified": True, "signaled": False,
+                "signal": 0, "signal_name": ""}
+
+    if isinstance(exit_code, int) and 128 < exit_code < 160:
+        return {"kind": "unverified_signal", "crash": False,
+                "detail": ("exit %d is in the signal range but no supervisor status was "
+                           "recorded; refusing to call it a crash" % exit_code),
+                "signal_verified": False, "signaled": False, "signal": 0,
+                "signal_name": ""}
+
+    return base

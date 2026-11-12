@@ -68,3 +68,59 @@ def test_plain_nonzero_is_an_error_exit():
 @pytest.mark.parametrize("code", [0, 1, 125, 126, 127, 137, 143])
 def test_non_fault_codes_never_report_crash(code):
     assert is_container_crash(classify_container_exit(code)["kind"]) is False
+
+
+# --- P19-R1: the supervisor decides, not the exit status ---------------------
+
+from gpuvulnagent.evidence.container_outcome import classify_container_result
+
+
+def test_supervisor_signalled_child_is_a_crash():
+    result = classify_container_result(exit_code=139, supervision={
+        "used": True, "readable": True, "signaled": True, "signal": 11,
+        "signal_name": "SIGSEGV"})
+    assert result["kind"] == "sigsegv"
+    assert result["crash"] is True
+    assert result["signal_verified"] is True
+
+
+def test_supervisor_normal_exit_with_139_is_not_a_crash():
+    result = classify_container_result(exit_code=139, supervision={
+        "used": True, "readable": True, "signaled": False, "exit_code": 139})
+    assert result["kind"] == "error_exit"
+    assert result["crash"] is False
+    assert result["signal_verified"] is True
+    assert "not a signal" in result["detail"]
+
+
+def test_exit_139_without_supervisor_is_unverified_not_a_crash():
+    result = classify_container_result(exit_code=139,
+                                       supervision={"used": False, "readable": False})
+    assert result["kind"] == "unverified_signal"
+    assert result["crash"] is False
+    assert result["signal_verified"] is False
+
+
+def test_unreadable_supervisor_status_is_conservative():
+    result = classify_container_result(exit_code=134, supervision={
+        "used": True, "readable": False, "reason": "status file was not written"})
+    assert result["kind"] == "unverified_signal"
+    assert result["crash"] is False
+
+
+def test_harness_events_win_over_supervision():
+    for kwargs, kind in (
+            ({"timed_out": True}, "timeout"),
+            ({"oom_killed": True}, "oom_killed"),
+            ({"daemon_error": True}, "container_error")):
+        result = classify_container_result(exit_code=137, supervision={
+            "used": True, "readable": True, "signaled": True, "signal": 9}, **kwargs)
+        assert result["kind"] == kind, (kwargs, result)
+        assert result["crash"] is False
+
+
+def test_normal_success_through_the_supervisor():
+    result = classify_container_result(exit_code=0, supervision={
+        "used": True, "readable": True, "signaled": False, "exit_code": 0})
+    assert result["kind"] == "success"
+    assert result["crash"] is False

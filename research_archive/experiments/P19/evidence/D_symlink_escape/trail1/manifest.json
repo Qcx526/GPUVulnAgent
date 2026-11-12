@@ -1,0 +1,115 @@
+{
+ "schema": "gpuvulnagent-trail/v1",
+ "run_id": "run-p19r1-symlink-run-20261112T025235Z-1dd4d9",
+ "trail": "trail1",
+ "purpose": "symlink escape attempt",
+ "parent_trail": "",
+ "created_at": "2026-11-12T10:52:35",
+ "updated_at": "2026-11-12T10:52:36",
+ "files": [
+  {
+   "name": "execs/exec00/outputs/real.txt",
+   "sha256": "b5ba5099c255619b95a61cad905e23a051ae2575e887f84f5f5e7715fd5c0444",
+   "bytes": 12,
+   "kind": "output",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:36",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:36",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/logs/docker_run.stdout",
+   "sha256": "ea7e0d86f57a7a42ba0cea2567959ac8cf4792a903cea0b2e75000c0141c61b6",
+   "bytes": 714,
+   "kind": "log",
+   "source": "container",
+   "added_at": "2026-11-12T10:52:36",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/snapshot.json",
+   "sha256": "9202f26aaf144d0ae93a56908fdf7b7e43a899a9805beccf61ec85d3447e50cc",
+   "bytes": 692,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:52:36",
+   "relation": "execution 0"
+  },
+  {
+   "name": "execs/exec00/result.json",
+   "sha256": "bba7e368b95b48dd1d33f240a5701bf3f78a54a2f50c93d3865b9fb7e3baa437",
+   "bytes": 5506,
+   "kind": "log",
+   "source": "backend",
+   "added_at": "2026-11-12T10:52:36",
+   "relation": "execution 0"
+  }
+ ],
+ "executions": [
+  {
+   "argv": [
+    "bash",
+    "-lc",
+    "ln -s /etc/passwd /work/leak-passwd.txt; ln -s /home/pocdev /work/leak-home; echo real-output > /work/real.txt; ls -l /work"
+   ],
+   "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+   "image_id": "sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+   "pull_policy": "missing",
+   "image_pull": {
+    "policy": "missing",
+    "present_before": true,
+    "pulled": false,
+    "duration_ms": 0,
+    "error": "",
+    "ok": true,
+    "note": "network=none applies to the container; the engine may still pull"
+   },
+   "container_id": "b078c41af6962000b6ce3fb4f0236280293873ef08cde6dba391e71e0e4b5cbf",
+   "exit_code": 0,
+   "termination": "success",
+   "crash": false,
+   "signal_verified": true,
+   "signaled": false,
+   "signal": "",
+   "timed_out": false,
+   "oom_killed": false,
+   "duration_ms": 509,
+   "started_at": "2026-11-12T10:53:03",
+   "finished_at": "2026-11-12T10:53:04",
+   "network": "none",
+   "gpu": true,
+   "exec_dir": "execs/exec00",
+   "snapshot": {
+    "created": 1,
+    "changed": 0,
+    "deleted": 0,
+    "skipped_symlinks": 2
+   },
+   "cleanup": {
+    "attempted": true,
+    "target": "b078c41af6962000b6ce3fb4f0236280293873ef08cde6dba391e71e0e4b5cbf",
+    "exit": 0,
+    "detail": "removed"
+   },
+   "cleanup_ok": true,
+   "stdout": "execs/exec00/logs/docker_run.stdout",
+   "stderr": "execs/exec00/logs/docker_run.stderr",
+   "artifacts": [
+    "execs/exec00/outputs/real.txt",
+    "execs/exec00/logs/docker_run.stderr",
+    "execs/exec00/logs/docker_run.stdout"
+   ],
+   "index": 0,
+   "recorded_at": "2026-11-12T10:52:36"
+  }
+ ]
+}

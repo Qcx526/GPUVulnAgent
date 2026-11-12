@@ -120,3 +120,40 @@ def test_unknown_trail_and_bad_ids_are_refused(tmp_path):
         trails.open("trail7")
     with pytest.raises(TrailError):
         trails.open("../../etc")
+
+
+def test_execution_artifacts_are_not_reprefixed(tmp_path):
+    trail = store(tmp_path).allocate()
+    directory = trail.exec_dir(0) / "outputs"
+    directory.mkdir(parents=True, exist_ok=True)
+    (directory / "poc.cu").write_text("version-A", encoding="utf-8")
+    record = trail.register_file("execs/exec00/outputs/poc.cu", kind="output",
+                                 source="container")
+    assert record.name == "execs/exec00/outputs/poc.cu"
+    assert (trail.root / "execs/exec00/outputs/poc.cu").is_file()
+    assert trail.exec_dirs() == [trail.root / "execs" / "exec00"]
+
+
+def test_bare_name_reads_the_latest_execution(tmp_path):
+    trail = store(tmp_path).allocate()
+    for index, text in enumerate(("version-A", "version-B")):
+        directory = trail.exec_dir(index) / "outputs"
+        directory.mkdir(parents=True, exist_ok=True)
+        (directory / "poc.cu").write_text(text, encoding="utf-8")
+        trail.register_file("execs/exec%02d/outputs/poc.cu" % index)
+
+    assert trail.read_file("poc.cu")["text"] == "version-B"
+    assert trail.read_file("execs/exec00/outputs/poc.cu")["text"] == "version-A"
+    assert trail.read_file("execs/exec01/outputs/poc.cu")["text"] == "version-B"
+
+
+def test_two_executions_keep_two_manifest_entries_and_two_dirs(tmp_path):
+    trail = store(tmp_path).allocate()
+    trail.exec_dir(0)
+    trail.exec_dir(1)
+    trail.record_execution({"argv": ["true"], "exit_code": 0})
+    trail.record_execution({"argv": ["true"], "exit_code": 0})
+    manifest = trail.manifest()
+    assert len(manifest["executions"]) == 2
+    assert [item["index"] for item in manifest["executions"]] == [0, 1]
+    assert len([path for path in (trail.root / "execs").iterdir() if path.is_dir()]) == 2

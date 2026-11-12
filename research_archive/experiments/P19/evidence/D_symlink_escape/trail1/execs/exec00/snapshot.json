@@ -1,0 +1,28 @@
+{
+ "execution_index": 0,
+ "created": [
+  "real.txt"
+ ],
+ "changed": [],
+ "deleted": [],
+ "unchanged_count": 0,
+ "pre_files": {},
+ "post_files": {
+  "real.txt": "b5ba5099c255619b95a61cad905e23a051ae2575e887f84f5f5e7715fd5c0444"
+ },
+ "skipped_symlinks": [
+  {
+   "name": "leak-home",
+   "target": "/home/pocdev",
+   "reason": "symlinked directory was not entered"
+  },
+  {
+   "name": "leak-passwd.txt",
+   "target": "/etc/passwd",
+   "reason": "symlink was not followed"
+  }
+ ],
+ "special": [],
+ "errors": [],
+ "policy": "snapshot holds files this execution created or modified; the full before/after listing proves what did not change; symlinks are never followed"
+}

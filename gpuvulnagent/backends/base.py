@@ -100,6 +100,8 @@ class ExecResult:
     image: str = ""
     image_id: str = ""
     image_digest: str = ""
+    pull_policy: str = "missing"
+    image_pull: Dict = field(default_factory=dict)
     container_id: str = ""
     container_name: str = ""
     argv: List[str] = field(default_factory=list)
@@ -115,6 +117,16 @@ class ExecResult:
     stderr_artifact: Dict = field(default_factory=dict)
     artifacts: List[Artifact] = field(default_factory=list)
     trail: str = ""
+    exec_index: int = 0
+    exec_dir: str = ""
+    snapshot: Dict = field(default_factory=dict)
+    supervision: Dict = field(default_factory=dict)
+    signal_verified: bool = False
+    signaled: bool = False
+    signal: int = 0
+    signal_name: str = ""
+    cleanup: Dict = field(default_factory=dict)
+    cleanup_ok: bool = True
     run_id: str = ""
     state: str = ""
     error: str = ""
@@ -125,6 +137,7 @@ class ExecResult:
                 "duration_ms": self.duration_ms, "started_at": self.started_at,
                 "finished_at": self.finished_at, "image": self.image,
                 "image_id": self.image_id, "image_digest": self.image_digest,
+                "pull_policy": self.pull_policy, "image_pull": dict(self.image_pull),
                 "container_id": self.container_id, "container_name": self.container_name,
                 "argv": list(self.argv), "cwd": self.cwd, "workdir": self.workdir,
                 "network": self.network, "gpu": self.gpu, "gpu_name": self.gpu_name,
@@ -133,8 +146,13 @@ class ExecResult:
                 "stdout_artifact": dict(self.stdout_artifact),
                 "stderr_artifact": dict(self.stderr_artifact),
                 "artifacts": [item.to_dict() for item in self.artifacts],
-                "trail": self.trail, "run_id": self.run_id, "state": self.state,
-                "error": self.error}
+                "trail": self.trail, "exec_index": self.exec_index,
+                "exec_dir": self.exec_dir, "snapshot": dict(self.snapshot),
+                "supervision": dict(self.supervision),
+                "signal_verified": self.signal_verified, "signaled": self.signaled,
+                "signal": self.signal, "signal_name": self.signal_name,
+                "cleanup": dict(self.cleanup), "cleanup_ok": self.cleanup_ok,
+                "run_id": self.run_id, "state": self.state, "error": self.error}
 
 
 class Backend(Protocol):

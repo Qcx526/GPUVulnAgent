@@ -137,7 +137,7 @@ def build_gpu_tools(*, backend: WslDockerBackend, trail_root, run_id: str, log,
     # -- execution -------------------------------------------------------
     def container_exec(trail: str = "", image: str = "", argv: Optional[list] = None,
                        gpu: bool = True, gpus: str = "all", network: str = "none",
-                       timeout_s: int = 600,
+                       timeout_s: int = 600, pull_policy: str = "",
                        workdir: str = "/work", env: Optional[dict] = None,
                        memory: str = "", cpus: str = "", as_root: bool = False,
                        collect_paths: Optional[list] = None,
@@ -160,6 +160,7 @@ def build_gpu_tools(*, backend: WslDockerBackend, trail_root, run_id: str, log,
         try:
             result = backend.exec(handle, image=image, argv=command, gpu=gpu, gpus=gpus,
                                   network=network, timeout_s=timeout_s,
+                                  pull_policy=pull_policy,
                                   workdir=workdir, env=env or {}, memory=memory, cpus=cpus,
                                   as_root=as_root, collect_paths=collect_paths or [])
         except BackendUnavailable as exc:
@@ -189,6 +190,19 @@ def build_gpu_tools(*, backend: WslDockerBackend, trail_root, run_id: str, log,
             "crash": result.termination["crash"], "timed_out": result.timed_out,
             "oom_killed": result.oom_killed, "duration_ms": result.duration_ms,
             "stdout": result.stdout[:6000], "stderr": result.stderr[:3000],
+            "exec_dir": result.exec_dir,
+            "signal_verified": result.signal_verified,
+            "signaled": result.signaled,
+            "signal": result.signal_name,
+            "snapshot": {key: (result.snapshot.get(key) or [])[:20] if key != "unchanged_count"
+                         else result.snapshot.get(key)
+                         for key in ("created", "changed", "deleted", "unchanged_count",
+                                     "skipped_symlinks")},
+            "pull_policy": result.pull_policy,
+            "image_pull": {k: result.image_pull.get(k) for k in
+                           ("policy", "present_before", "pulled", "ok", "error")},
+            "cleanup_ok": result.cleanup_ok,
+            "cleanup": result.cleanup,
             "artifacts": [{"artifact": "trails/%s/%s" % (handle.trail_id, item.name),
                            "sha256": item.sha256, "bytes": item.bytes}
                           for item in result.artifacts if item.kind != "input"],
@@ -294,7 +308,11 @@ def build_gpu_tools(*, backend: WslDockerBackend, trail_root, run_id: str, log,
             "Run one argv inside a Docker container on the GPU machine. The trail directory "
             "is mounted at /work and its files are staged before the run; everything written "
             "under /work is copied back as an artifact. Exit status, termination kind, image "
-            "digest and container id are recorded. Timeouts kill the container. Use argv "
+            "digest, pull policy and container id are recorded. Each call writes its own "
+            "artifact snapshot under execs/execNN/, so an earlier binary or log is never "
+            "overwritten. A supervisor records whether the program exited or was killed by "
+            "a signal, so exit 139 alone is not treated as a crash. Timeouts kill the "
+            "container. Use argv "
             "arrays: [\"nvcc\",\"-O2\",\"poc.cu\",\"-o\",\"poc\"] or for shell syntax "
             "[\"bash\",\"-lc\",\"...\"]. No privileged mode, no host mounts, no docker "
             "socket, network=none by default."),
@@ -320,6 +338,11 @@ def build_gpu_tools(*, backend: WslDockerBackend, trail_root, run_id: str, log,
                                   enum=("none", "bridge", "host")),
                         ParamSpec("timeout_s", "integer", "Kill the container after this.",
                                   required=False, default=600, minimum=1, maximum=3600),
+                        ParamSpec("pull_policy", "string",
+                                  "Image pull policy: missing (default), always, never. "
+                                  "network=none limits the container, not the engine.",
+                                  required=False, default="missing",
+                                  enum=("missing", "always", "never")),
                         ParamSpec("workdir", "string", "Working directory inside the container.",
                                   required=False, default="/work"),
                         ParamSpec("env", "object",
@@ -401,6 +424,18 @@ def _evidence_payload(result, trail: Trail, backend, stdout_ref: dict,
         "state": result.state,
         "termination": result.termination,
         "crash": result.termination.get("crash", False),
+        "signal_verified": result.signal_verified,
+        "signaled": result.signaled,
+        "signal": result.signal_name,
+        "exec_dir": result.exec_dir,
+        "snapshot": {key: len(result.snapshot.get(key) or []) if key != "unchanged_count"
+                     else result.snapshot.get(key)
+                     for key in ("created", "changed", "deleted", "skipped_symlinks",
+                                 "unchanged_count")},
+        "pull_policy": result.pull_policy,
+        "image_pull": dict(result.image_pull),
+        "cleanup": dict(result.cleanup),
+        "cleanup_ok": result.cleanup_ok,
         "stdout_preview": result.stdout[:4000],
         "stderr_preview": result.stderr[:2000],
         "stdout_bytes": len(result.stdout),
