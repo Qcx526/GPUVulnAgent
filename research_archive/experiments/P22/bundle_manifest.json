@@ -41,6 +41,21 @@
    "path": "research_archive/experiments/P22/rel_size_plus1.cubin",
    "sha256": "7a49ad9fcc9ad81d4b72f6cb1a36a25a93cc0c163a40b28e851b443f042966fb",
    "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P22/research/findings/FND-t22-0001.json",
+   "sha256": "be8e3da299588663bd893a98ae05f539e0375cab4d8c9c47b0c1bd44a19604b8",
+   "bytes": 1877
+  },
+  {
+   "path": "research_archive/experiments/P22/research/findings/FND-t22-0001.md",
+   "sha256": "ada125eaabdcf8916917b0dce8335e63ddfd75a0fe18caf01475ade670bc7e8c",
+   "bytes": 1992
+  },
+  {
+   "path": "research_archive/experiments/P22/research/findings.jsonl",
+   "sha256": "375aa1575003ae10d8347baee2d9584a76df76820ebcabd1a587bf52cc1c7d72",
+   "bytes": 1764
   }
  ],
  "skipped": [],

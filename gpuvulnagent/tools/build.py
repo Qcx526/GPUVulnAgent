@@ -110,6 +110,17 @@ def build_assembly(*, workspace, runner, log, memory, toolchain_root: Optional[P
                                 "usage": "container_exec(...)", "tags": ["gpu", "docker"],
                                 "reason": backend_status["error"]})
 
+    # Track B: findings live in the trial, next to the evidence chain that supports them.
+    try:
+        from .findings import build_finding_tools
+        evidence_path = Path(log.path)
+        trial_root = evidence_path.parent.parent if evidence_path.parent.name == "evidence"             else evidence_path.parent
+        registry.extend(build_finding_tools(trial_root=trial_root,
+                                            trial_id=getattr(log, "run_id", "trial"),
+                                            log=log))
+    except Exception as exc:  # noqa: BLE001 - finding tools must not break a run
+        adapter_errors["findings"] = "findings unavailable: %s" % exc
+
     catalog.registry = registry
     if manifest is not None:
         catalog.add_manifest(manifest)
