@@ -1,0 +1,10 @@
+{
+ "gpu": "NVIDIA GeForce GTX 1660",
+ "compute_capability": "7.5",
+ "cuda_toolkit": "12.8.93",
+ "image": "nvidia/cuda:12.8.0-devel-ubuntu22.04",
+ "image_digest": "nvidia/cuda@sha256:54f18e2a8e1b3d03f77b9a6dc905533da46ac93a5513f10e8ba8e560db9fa5ab",
+ "compile": "nvcc -arch=sm_75",
+ "trial": "runs/trial2",
+ "note": "values recorded by the tool calls in evidence.jsonl"
+}

@@ -103,9 +103,16 @@ def tool_message(call_id: str, name: str, payload: Any, limit: int = 8000) -> di
         text = payload
     else:
         text = json.dumps(payload, ensure_ascii=False)
+    header = ""
+    if isinstance(payload, dict) and payload.get("evidence_id"):
+        # The id goes on its own line, ahead of anything that can be cut. A model that cannot
+        # see the id guesses one, and a guessed id is worse than no citation at all.
+        header = "evidence_id=%s\n" % payload["evidence_id"]
+        limit = max(200, limit - len(header))
     if len(text) > limit:
         text = text[:limit] + "\n...[truncated; use artifact_read for the full body]"
-    return {"role": "tool", "tool_call_id": call_id, "name": name, "content": text}
+    return {"role": "tool", "tool_call_id": call_id, "name": name,
+            "content": header + text}
 
 
 class Provider:

@@ -1,0 +1,48 @@
+[
+ {
+  "evidence_id": "run-20261112T083257Z-5857f0#13",
+  "argv": [
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cuobjdump.EXE",
+   "-sass",
+   "F:\\qcx\\code\\GPUVulnAgent\\runs\\trial2\\session\\run\\workspace\\trails\\trail0\\execs\\exec00\\outputs\\build\\vector_scale_v1.cubin"
+  ],
+  "exit": 1,
+  "lines": []
+ },
+ {
+  "evidence_id": "run-20261112T083257Z-5857f0#15",
+  "argv": [
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cuobjdump.EXE",
+   "-sass",
+   "F:\\qcx\\code\\GPUVulnAgent\\runs\\trial2\\session\\run\\workspace\\trails\\trail0\\execs\\exec00\\outputs\\build\\vector_scale_v2.cubin"
+  ],
+  "exit": 1,
+  "lines": []
+ },
+ {
+  "evidence_id": "run-20261112T083257Z-5857f0#22",
+  "argv": [
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cuobjdump.EXE",
+   "-sass",
+   "F:\\qcx\\code\\GPUVulnAgent\\runs\\trial2\\evidence\\trails\\trail0\\execs\\exec00\\outputs\\build\\vector_scale_v1.cubin"
+  ],
+  "exit": 0,
+  "lines": [
+   "\t\tFunction : _Z9vec_scalePKfPfi",
+   "        /*00a0*/                   FADD R7, R2, R2 ;                             /* 0x0000000202077221 */"
+  ]
+ },
+ {
+  "evidence_id": "run-20261112T083257Z-5857f0#24",
+  "argv": [
+   "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.4\\bin\\cuobjdump.EXE",
+   "-sass",
+   "F:\\qcx\\code\\GPUVulnAgent\\runs\\trial2\\evidence\\trails\\trail0\\execs\\exec00\\outputs\\build\\vector_scale_v2.cubin"
+  ],
+  "exit": 0,
+  "lines": [
+   "\t\tFunction : _Z9vec_scalePKfPfi",
+   "        /*00a0*/                   FMUL R7, R2, 3 ;                              /* 0x4040000002077820 */"
+  ]
+ }
+]

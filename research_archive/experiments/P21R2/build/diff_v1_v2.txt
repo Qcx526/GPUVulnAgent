@@ -1,0 +1,13 @@
+--- vector_scale_v1.cu	2026-11-12 08:34:28.517561683 +0000
++++ vector_scale_v2.cu	2026-11-12 08:34:28.517561683 +0000
+@@ -4,8 +4,8 @@
+ #include <cmath>
+ #include <cuda_runtime.h>
+ 
+-#define VERSION_STR "v1"
+-#define COEFF 2.0f
++#define VERSION_STR "v2"
++#define COEFF 3.0f
+ #define N 1024
+ #define TPB 256
+ 

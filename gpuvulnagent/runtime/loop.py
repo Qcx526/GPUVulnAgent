@@ -128,7 +128,12 @@ class AgentRuntime:
         self.runner = Runner(self.workspace.root, self.log, timeout=shell_timeout,
                              deadline=self.deadline)
 
-        self.resolver = EvidenceResolver([self.paths.root])
+        # The evidence file lives under the trial, not under the run directory, so the
+        # resolver has to search both or every citation looks unresolvable.
+        search_roots = [self.paths.root]
+        if self.trial is not None and self.trial.root not in search_roots:
+            search_roots.append(self.trial.root)
+        self.resolver = EvidenceResolver(search_roots)
         self.memory = LayeredMemory(run_dir=self.paths.root,
                                     research_root=Path(research_root or
                                                        self.paths.root.parent),
@@ -251,8 +256,7 @@ class AgentRuntime:
                     payload = (outcome["result"] if outcome["dispatched"]
                                else {"error": outcome["error"]})
                     if isinstance(payload, dict):
-                        payload = dict(payload)
-                        payload["evidence_id"] = turn.evidence_id
+                        payload = {"evidence_id": turn.evidence_id, **payload}
                     messages.append(tool_message(call.id, call.name, payload))
                     if time.monotonic() >= self.deadline:
                         stopped = "wall_clock"

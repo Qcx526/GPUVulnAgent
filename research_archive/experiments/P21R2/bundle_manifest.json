@@ -1,0 +1,176 @@
+{
+ "schema": "gpuvulnagent-experiment-bundle/v1",
+ "experiment": "P21R2",
+ "case": "P21R2-CUDA",
+ "trial": "runs/trial2",
+ "total_bytes": 101824,
+ "limit_bytes": 307200,
+ "within_limit": true,
+ "files": [
+  {
+   "path": "research_archive/experiments/P21R2/sources/vector_scale_v1.cu",
+   "sha256": "9ad8f9366455fdfae67e5ed40e4f212382701a9cc9fb96698a4d23e27a90a907",
+   "bytes": 2822,
+   "source": "session/run/workspace/cuda_p21r2/vector_scale_v1.cu"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/sources/vector_scale_v2.cu",
+   "sha256": "93e6a435b47a05e7bbc05bed4055b4cc2733e5951db844324a6d147ea70fcc75",
+   "bytes": 2822,
+   "source": "session/run/workspace/cuda_p21r2/vector_scale_v2.cu"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/artifacts/vector_scale_v1.cubin",
+   "sha256": "00906277ef55a35e942e53400b95d43074b8ab35a8e90749f74de7de5e679f04",
+   "bytes": 2728,
+   "source": "session/run/workspace/cuda_p21r2/build/vector_scale_v1.cubin"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/artifacts/vector_scale_v2.cubin",
+   "sha256": "5e16d8846507cf5029fefed09ee82d07976bd2224e98419ed7e22bb714e23941",
+   "bytes": 2728,
+   "source": "session/run/workspace/cuda_p21r2/build/vector_scale_v2.cubin"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/diff_v1_v2.txt",
+   "sha256": "4027122d5115d479f297ae14513e90dcae518d87dc1ba54b454470be0ec44640",
+   "bytes": 308,
+   "source": "session/run/workspace/cuda_p21r2/build/diff_v1_v2.txt"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/nvcc_version.txt",
+   "sha256": "fc8ae1e160e2c922233faf6c9c15d04074acc08e24a94f8ec9b057ceaf3d2381",
+   "bytes": 208,
+   "source": "session/run/workspace/cuda_p21r2/build/nvcc_version.txt"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/sha256sums.txt",
+   "sha256": "5a0cbae97cb9cc33fb075383e7a08b6bf6ae6cc92485104807417d656cd56257",
+   "bytes": 534,
+   "source": "session/run/workspace/cuda_p21r2/build/sha256sums.txt"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/nvcc_cubin_v1.log",
+   "sha256": "6c22abebe5c849ec4684e9d8f04009d85cd3634342565331fdc1263a2361324f",
+   "bytes": 21,
+   "source": "session/run/workspace/cuda_p21r2/build/nvcc_cubin_v1.log"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/nvcc_cubin_v2.log",
+   "sha256": "e18b12b17821c97284dae789088c081cdbddd07f589a01243a9d80bbdcde5efe",
+   "bytes": 21,
+   "source": "session/run/workspace/cuda_p21r2/build/nvcc_cubin_v2.log"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/nvcc_exe_v1.log",
+   "sha256": "2ea54dda2c869ac1c05d59e0962bf3e4bd77f1a6007fedae80f64e82d1044fe9",
+   "bytes": 19,
+   "source": "session/run/workspace/cuda_p21r2/build/nvcc_exe_v1.log"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/nvcc_exe_v2.log",
+   "sha256": "2eaaec9f97d757f7d5fc7a993e576f71177237fed2d5ddbf1152813178396e88",
+   "bytes": 19,
+   "source": "session/run/workspace/cuda_p21r2/build/nvcc_exe_v2.log"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/run_v1.exit",
+   "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+   "bytes": 2,
+   "source": "session/run/workspace/cuda_p21r2/build/run_v1.exit"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/run_v2.exit",
+   "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+   "bytes": 2,
+   "source": "session/run/workspace/cuda_p21r2/build/run_v2.exit"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/run_v1.stdout",
+   "sha256": "9930fa4817ddbf14a715bb2419ad26eaa52f93cee43ac91f8e4a23a53c34ea23",
+   "bytes": 127,
+   "source": "session/run/workspace/cuda_p21r2/build/run_v1.stdout"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/run_v2.stdout",
+   "sha256": "8a72f9043e696ccd054d498ed52d8707a7bfbcc87427a715876beb61fdd82ff7",
+   "bytes": 127,
+   "source": "session/run/workspace/cuda_p21r2/build/run_v2.stdout"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/run_v1.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0,
+   "source": "session/run/workspace/cuda_p21r2/build/run_v1.stderr"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/build/run_v2.stderr",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "bytes": 0,
+   "source": "session/run/workspace/cuda_p21r2/build/run_v2.stderr"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/report/final_report.md",
+   "sha256": "d0ce21d1a4a7e1e54c5abf5c1f17d621d4acc46d06c651c3bd67b317d5cccc12",
+   "bytes": 8981,
+   "source": "report/final_report.md"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/session/task.json",
+   "sha256": "41d168642fdf3900c1db909fa1946e87e5eb6c3227f5e25b281b9ef2600747d6",
+   "bytes": 1459,
+   "source": "session/task.json"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/evidence/artifact_index.json",
+   "sha256": "5a1312ffbb400c9713cfd62fc9a215f2dc4472661001ee048a0e9210d957efcb",
+   "bytes": 14929,
+   "source": "evidence/artifact_index.json"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/session/transcript.jsonl",
+   "sha256": "64f5b28cc676e30417c98c70e6f9751e7e684b1d4264d2601c34f99ac0cc638b",
+   "bytes": 30061,
+   "source": "session/transcript.jsonl"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/session/decisions.jsonl",
+   "sha256": "ee6c70f68dbe9c667e5d46999156d343723065d06069e27939c453051d37dd3e",
+   "bytes": 5260,
+   "source": "session/decisions.jsonl"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/session/tool_calls.jsonl",
+   "sha256": "a2e93f3617604a3b542f1e5cbaac4debde9d7ebb91c6f8d6a16b14a4b3add9e7",
+   "bytes": 26568,
+   "source": "session/tool_calls.jsonl"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/sass_evidence.json",
+   "sha256": "79044d0f15c41ec69cea88aefe38547431c0b3dabef6a781d92f2776bf5e6f16",
+   "bytes": 1699,
+   "source": "derived from evidence.jsonl (verbatim record fields)"
+  },
+  {
+   "path": "research_archive/experiments/P21R2/environment.json",
+   "sha256": "4ac494174d5a3c428147ce49e1be01b2016abe1243d05fa119742dc307ad2437",
+   "bytes": 379,
+   "source": "run context"
+  }
+ ],
+ "skipped": [
+  {
+   "path": "session/run/workspace/cuda_p21r2/build/vector_scale_v1",
+   "bytes": 1007496,
+   "sha256": "5be3a6f8edbdd54424f74e49023dc4801ad260787c71793725cda8da1229b67d",
+   "reason": "larger than the 200000 byte per-file budget"
+  },
+  {
+   "path": "session/run/workspace/cuda_p21r2/build/vector_scale_v2",
+   "bytes": 1007496,
+   "sha256": "5c42a2c0e4209882e1a6729781a7a22e1637a0f596efa3be0269188cdef3a2fe",
+   "reason": "larger than the 200000 byte per-file budget"
+  }
+ ],
+ "note": "executables are skipped only if they exceed the per-file budget; nothing was truncated or re-hashed to fit"
+}
