@@ -118,7 +118,7 @@ class ArtifactRegistry:
         target = self.root / section / name
         target.parent.mkdir(parents=True, exist_ok=True)
         if target.exists() and target.read_bytes() != payload:
-            target = versioned_name(target, 1 + max(
+            target = versioned_name(target, max(
                 [item.version for item in self._items.values()
                  if item.relative_path.startswith(section + "/")], default=0) + 1)
         target.write_bytes(payload)
