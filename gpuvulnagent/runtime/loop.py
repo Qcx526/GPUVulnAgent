@@ -234,9 +234,12 @@ class AgentRuntime:
                     turn = self._record(call.name, call.arguments, outcome,
                                         thought=(response.content or "")[:400],
                                         tool_call_id=call.id, via="native", mode="native")
-                    messages.append(tool_message(call.id, call.name,
-                                                 outcome["result"] if outcome["dispatched"]
-                                                 else {"error": outcome["error"]}))
+                    payload = (outcome["result"] if outcome["dispatched"]
+                               else {"error": outcome["error"]})
+                    if isinstance(payload, dict):
+                        payload = dict(payload)
+                        payload["evidence_id"] = turn.evidence_id
+                    messages.append(tool_message(call.id, call.name, payload))
                     if time.monotonic() >= self.deadline:
                         stopped = "wall_clock"
                         break
@@ -334,6 +337,16 @@ class AgentRuntime:
             "artifacts": outcome.get("artifacts", []),
         }, status=evidence_status)
 
+        # The model can only cite what it can see: put the record id on the observation
+        # itself, so "cite the evidence id" does not depend on the model guessing it.
+        if isinstance(observation, dict):
+            observation = dict(observation)
+            observation.setdefault("evidence_id", record.get("evidence_id", ""))
+        # The model can only cite what it can see: put the record id on the observation
+        # itself, so "cite the evidence id" does not depend on the model guessing it.
+        if isinstance(observation, dict):
+            observation = dict(observation)
+            observation.setdefault("evidence_id", record.get("evidence_id", ""))
         turn = Turn(step=self.decisions, index=len(self.turns) + 1, thought=thought,
                     tool=tool, args=args, observation=observation, status=status,
                     tool_call_id=tool_call_id, via=via, mode=mode,

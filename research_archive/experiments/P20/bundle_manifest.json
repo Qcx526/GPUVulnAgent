@@ -1,0 +1,79 @@
+{
+ "schema": "gpuvulnagent-experiment-bundle/v1",
+ "experiment": "P20",
+ "case": "CVE-2024-0124",
+ "archived_at": "2026-11-12T11:22:04",
+ "runs": [
+  "p20-cve-2024-0124",
+  "p20-cve-2024-0124-followup"
+ ],
+ "note": "agent-led study; CUDA Toolkit nvdisasm, affected <= 12.6U1; container 12.8.55 patched, host 12.4 in range, four crafted inputs rejected",
+ "files": [
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/run.json",
+   "sha256": "e122ab8b66253a32506f2c0b6e4105fa8868a405ce0e0a60ae6ee57e8305e1df",
+   "bytes": 2684
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/result.json",
+   "sha256": "3c4ca1b9353cf5f28742fb7ffdf31d8a4aa82c272ff49e7621db9a0312dff321",
+   "bytes": 51627
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/evidence.jsonl",
+   "sha256": "6170528965e53f84fcc2d7a738aa32c3c000436929db24e1f4a296cefa205c6d",
+   "bytes": 112843
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/trails/trail0/manifest.json",
+   "sha256": "e4e4f1729aa33e024d37210087ab2f60d6d26b40c357d2ade7b483bea2c0f7c3",
+   "bytes": 3525
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/trails/trail1/manifest.json",
+   "sha256": "0836032e14486ad81ebeddaf3dd3a6f9d38742d2c98b408e3b5643a4b4659487",
+   "bytes": 5709
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124-followup/run.json",
+   "sha256": "21743a1d345efc626c6a15dbfc734e9c9d1e405644ee6f074d82e5daf7a83e7b",
+   "bytes": 2024
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124-followup/result.json",
+   "sha256": "b45603d16ea312b74efa9727cd90dfc29a1ccc562e7ebf89a9c1ab15bfd36dc3",
+   "bytes": 29326
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124-followup/evidence.jsonl",
+   "sha256": "a8f85c9839b8f0c62cccb29bc06f1398ec1f52f86afd2dcc3aa93f6c1d0572bd",
+   "bytes": 57585
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124-followup/trails/trail0/manifest.json",
+   "sha256": "4960db74870aed8c4e3c8c41c31b4f0683a88fff4202854a2ca81ae94175c569",
+   "bytes": 411
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v2_shnum_ffff.cubin",
+   "sha256": "ce359ef168820465152b9f2ff7aa5a7edf925cf15e3d4edd128c82972811f93a",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v3_shoff_oob.cubin",
+   "sha256": "3865d859107f82553bc0f1cdd2acef239a17579702acc49251fc361040130565",
+   "bytes": 2728
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/v4_trunc512.cubin",
+   "sha256": "6453817741f73ac9185b135a946d84b28cade0d263d1133c571965c7e80fb158",
+   "bytes": 512
+  },
+  {
+   "path": "research_archive/experiments/P20/runs/p20-cve-2024-0124/artifacts/trail1/execs/exec00/outputs/build/vector_add.cubin",
+   "sha256": "823f15a6f2c83f6ddba58c93f8a19ee161f5439be5c6fd2607792af8e889398c",
+   "bytes": 2728
+  }
+ ],
+ "skipped": []
+}
