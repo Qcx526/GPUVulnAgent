@@ -38,16 +38,57 @@ Work in small steps: act, read the result, then decide. Do not narrate a plan yo
 """
 
 
+
+def _campaign_note(campaign, log, kind: str, text: str, evidence_ids=None) -> str:
+    ids = list(evidence_ids or [])
+    result = {"kind": kind, "text": text, "evidence_ids": ids}
+    if kind.upper() == "FACT_CLAIM":
+        resolved = [i for i in ids
+                    if any(r.get("evidence_id") == i and r.get("kind") == "exec"
+                           for r in log.records())]
+        result["promoted"] = bool(ids) and len(resolved) == len(ids)
+        if campaign is not None:
+            campaign.claim(kind, text, ids, promoted=result["promoted"])
+            if result["promoted"]:
+                campaign.fact(text, ids)
+    elif kind.upper() == "NEXT_STEP" and campaign is not None:
+        campaign.next_step(text)
+    elif campaign is not None:
+        campaign.claim(kind, text, ids, promoted=False)
+    return json.dumps(result, ensure_ascii=False)
+
+
+def _wsl_ls(relpath: str = "") -> str:
+    import subprocess
+    from gpuvulnagent.backends.wsl_docker import WslConfig
+    base = str(Path(WslConfig().worker_root) / "refs")
+    target = (Path(base) / relpath).as_posix() if relpath else base
+    if ".." in Path(target).parts:
+        return json.dumps({"ok": False, "error": "path traversal refused"})
+    out = subprocess.run(["wsl.exe", "-e", "ls", "-1", target],
+                         capture_output=True, text=True, timeout=60)
+    return json.dumps({"ok": out.returncode == 0, "root": target,
+                       "entries": out.stdout.split()[:40]}, ensure_ascii=False)
+
+
+
 class AgentState(TypedDict):
     messages: Annotated[List[BaseMessage], add_messages]
     spent_tokens: int
     steps: int
 
 
+KEEP = ("evidence_id", "dispatched", "exit", "termination", "signal_verified",
+        "signaled", "signal", "artifacts", "exec_dir", "image", "cuda", "gpu_name")
+
+
 def _summary_of(result: dict, limit: int = 2500) -> str:
-    payload = {"ok": result.get("ok"), "status": result.get("status"),
-               "error": result.get("error"),
-               "summary": result.get("summary")}
+    payload = {key: result[key] for key in KEEP if key in result}
+    payload["ok"] = result.get("ok")
+    payload["status"] = result.get("status")
+    if result.get("error"):
+        payload["error"] = result.get("error")
+    payload["summary"] = result.get("summary")
     text = json.dumps(payload, ensure_ascii=False, default=str)
     return text if len(text) <= limit else text[:limit] + "...[offloaded]"
 
@@ -58,7 +99,21 @@ campaign_claims: List[dict] = []
 campaign_steps: List[str] = []
 
 
-def build_tools(registry, log) -> List[StructuredTool]:
+def extra_tools(campaign=None, log=None) -> List[StructuredTool]:
+    """The two agent-facing extras; used by both the graph and the offline tests."""
+    def campaign_note(kind: str, text: str, evidence_ids: list | None = None) -> str:
+        return _campaign_note(campaign, log, kind, text, evidence_ids)
+
+    def wsl_ls(relpath: str = "") -> str:
+        return _wsl_ls(relpath)
+
+    return [StructuredTool.from_function(func=campaign_note, name="campaign_note",
+                description="Record HYPOTHESIS / NEXT_STEP / FACT_CLAIM with evidence ids."),
+            StructuredTool.from_function(func=wsl_ls, name="wsl_ls",
+                description="List the WSL refs directory before trail_stage.")]
+
+
+def build_tools(registry, log, campaign=None) -> List[StructuredTool]:
     """Existing ToolSpec -> LangChain tools. Schema comes from the spec, not from guesses."""
     from pydantic import create_model
 
@@ -76,10 +131,12 @@ def build_tools(registry, log) -> List[StructuredTool]:
             def caller(**kwargs):
                 result = registry.call(spec_name, kwargs)
                 record = None
-                try:
-                    record = log.records()[-1] if log.records() else None
-                except Exception:  # noqa: BLE001
-                    pass
+                before = len(log.records())
+                # after the call, find the record whose tool_call_id matches this call
+                after = log.records()[before:]
+                matching = [r for r in after
+                            if r.get("tool_call_id") == kwargs.get("tool_call_id")]
+                record = matching[-1] if matching else (after[-1] if after else None)
                 if record:
                     result = dict(result)
                     result["evidence_id"] = record.get("evidence_id")
@@ -102,52 +159,7 @@ def _budget_exceeded(state: AgentState, max_tokens: int) -> bool:
 def build_graph(registry, log, *, model: str, base_url: str, api_key: str,
                 max_tokens: int = 300_000, max_steps: int = 40,
                 campaign_dir: Optional[Path] = None, campaign=None):
-    tools = build_tools(registry, log)
-    llm = ChatOpenAI(model=model, base_url=base_url, api_key=api_key, temperature=0,
-                     timeout=180).bind_tools(tools)
-    def campaign_note(kind: str, text: str, evidence_ids: list | None = None) -> str:
-        """Record a HYPOTHESIS / NEXT_STEP / FACT_CLAIM. A FACT_CLAIM is only promoted to a
-        verified fact when every cited evidence id resolves in this campaign's log."""
-        ids = list(evidence_ids or [])
-        result = {"kind": kind, "text": text, "evidence_ids": ids}
-        if kind.upper() == "FACT_CLAIM":
-            resolved = [i for i in ids if log.get(int(str(i).split("#")[-1]))] if ids else []
-            if not ids or len(resolved) != len(ids):
-                result["promoted"] = False
-                result["reason"] = "no resolvable evidence; kept as unverified claim"
-                if campaign is not None:
-                    campaign.claim(kind, text, ids, promoted=False)
-            else:
-                result["promoted"] = True
-                if campaign is not None:
-                    campaign.fact(text, ids)
-                    campaign.claim(kind, text, ids, promoted=True)
-        elif kind.upper() == "NEXT_STEP":
-            if campaign is not None:
-                campaign.next_step(text)
-        elif campaign is not None:
-            campaign.claim(kind, text, ids, promoted=False)
-        return json.dumps(result, ensure_ascii=False)
-
-    def wsl_ls(relpath: str = "") -> str:
-        """List a directory under the WSL refs root (read-only)."""
-        from gpuvulnagent.backends.wsl_docker import WslConfig
-        import subprocess
-        base = str(Path(WslConfig().worker_root) / "refs")
-        target = (Path(base) / relpath).as_posix() if relpath else base
-        if ".." in Path(target).parts:
-            return json.dumps({"ok": False, "error": "path traversal refused"})
-        out = subprocess.run(["wsl.exe", "-e", "bash", "-lc", "ls -1 %s | head -40" % target],
-                             capture_output=True, text=True, timeout=60)
-        return json.dumps({"ok": out.returncode == 0, "root": target,
-                           "entries": out.stdout.split()[:40]}, ensure_ascii=False)
-
-    tools.append(StructuredTool.from_function(func=campaign_note, name="campaign_note",
-                 description="Record HYPOTHESIS / NEXT_STEP / FACT_CLAIM. FACT_CLAIM needs "
-                             "evidence_ids that exist, otherwise it stays unverified."))
-    tools.append(StructuredTool.from_function(func=wsl_ls, name="wsl_ls",
-                 description="List a directory under the WSL refs root; use it before trail_stage "
-                             "to learn the real relative paths."))
+    tools = build_tools(registry, log, campaign)
     by_name = {tool.name: tool for tool in tools}
 
     def agent_node(state: AgentState):
