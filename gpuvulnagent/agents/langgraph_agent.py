@@ -162,6 +162,9 @@ def build_graph(registry, log, *, model: str, base_url: str, api_key: str,
     tools = build_tools(registry, log, campaign)
     by_name = {tool.name: tool for tool in tools}
 
+    llm = ChatOpenAI(model=model, base_url=base_url, api_key=api_key,
+                     temperature=0, timeout=180).bind_tools(tools)
+
     def agent_node(state: AgentState):
         if _budget_exceeded(state, max_tokens) or state.get("steps", 0) >= max_steps:
             return {"messages": [AIMessage(content="BUDGET_OR_STEPS_REACHED: stopping without "
