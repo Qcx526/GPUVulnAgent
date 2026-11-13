@@ -52,6 +52,12 @@ def _summary_of(result: dict, limit: int = 2500) -> str:
     return text if len(text) <= limit else text[:limit] + "...[offloaded]"
 
 
+campaign_auto: List[dict] = []
+campaign_facts: List[dict] = []
+campaign_claims: List[dict] = []
+campaign_steps: List[str] = []
+
+
 def build_tools(registry, log) -> List[StructuredTool]:
     """Existing ToolSpec -> LangChain tools. Schema comes from the spec, not from guesses."""
     from pydantic import create_model
@@ -77,6 +83,9 @@ def build_tools(registry, log) -> List[StructuredTool]:
                 if record:
                     result = dict(result)
                     result["evidence_id"] = record.get("evidence_id")
+                    if campaign is not None:
+                        campaign.observation(spec_name, result.get("ok"),
+                                             record.get("evidence_id"))
                 return _summary_of(result)
             return caller
 
@@ -92,10 +101,53 @@ def _budget_exceeded(state: AgentState, max_tokens: int) -> bool:
 
 def build_graph(registry, log, *, model: str, base_url: str, api_key: str,
                 max_tokens: int = 300_000, max_steps: int = 40,
-                campaign_dir: Optional[Path] = None):
+                campaign_dir: Optional[Path] = None, campaign=None):
     tools = build_tools(registry, log)
     llm = ChatOpenAI(model=model, base_url=base_url, api_key=api_key, temperature=0,
                      timeout=180).bind_tools(tools)
+    def campaign_note(kind: str, text: str, evidence_ids: list | None = None) -> str:
+        """Record a HYPOTHESIS / NEXT_STEP / FACT_CLAIM. A FACT_CLAIM is only promoted to a
+        verified fact when every cited evidence id resolves in this campaign's log."""
+        ids = list(evidence_ids or [])
+        result = {"kind": kind, "text": text, "evidence_ids": ids}
+        if kind.upper() == "FACT_CLAIM":
+            resolved = [i for i in ids if log.get(int(str(i).split("#")[-1]))] if ids else []
+            if not ids or len(resolved) != len(ids):
+                result["promoted"] = False
+                result["reason"] = "no resolvable evidence; kept as unverified claim"
+                if campaign is not None:
+                    campaign.claim(kind, text, ids, promoted=False)
+            else:
+                result["promoted"] = True
+                if campaign is not None:
+                    campaign.fact(text, ids)
+                    campaign.claim(kind, text, ids, promoted=True)
+        elif kind.upper() == "NEXT_STEP":
+            if campaign is not None:
+                campaign.next_step(text)
+        elif campaign is not None:
+            campaign.claim(kind, text, ids, promoted=False)
+        return json.dumps(result, ensure_ascii=False)
+
+    def wsl_ls(relpath: str = "") -> str:
+        """List a directory under the WSL refs root (read-only)."""
+        from gpuvulnagent.backends.wsl_docker import WslConfig
+        import subprocess
+        base = str(Path(WslConfig().worker_root) / "refs")
+        target = (Path(base) / relpath).as_posix() if relpath else base
+        if ".." in Path(target).parts:
+            return json.dumps({"ok": False, "error": "path traversal refused"})
+        out = subprocess.run(["wsl.exe", "-e", "bash", "-lc", "ls -1 %s | head -40" % target],
+                             capture_output=True, text=True, timeout=60)
+        return json.dumps({"ok": out.returncode == 0, "root": target,
+                           "entries": out.stdout.split()[:40]}, ensure_ascii=False)
+
+    tools.append(StructuredTool.from_function(func=campaign_note, name="campaign_note",
+                 description="Record HYPOTHESIS / NEXT_STEP / FACT_CLAIM. FACT_CLAIM needs "
+                             "evidence_ids that exist, otherwise it stays unverified."))
+    tools.append(StructuredTool.from_function(func=wsl_ls, name="wsl_ls",
+                 description="List a directory under the WSL refs root; use it before trail_stage "
+                             "to learn the real relative paths."))
     by_name = {tool.name: tool for tool in tools}
 
     def agent_node(state: AgentState):
@@ -170,9 +222,28 @@ class Campaign:
         self.path.write_text(json.dumps(self.data, ensure_ascii=False, indent=1),
                              encoding="utf-8")
 
-    def fact(self, text: str) -> None:
-        if text and text not in self.data["facts"]:
-            self.data["facts"].append(text)
+    def fact(self, text, evidence_ids=None):
+        entry = {"text": text, "evidence_ids": list(evidence_ids or []),
+                 "run": self.data.get("runs", 0)}
+        if text and all(e["text"] != text for e in self.data["facts"]):
+            self.data["facts"].append(entry)
+            self.save()
+
+    def observation(self, tool, ok, evidence_id):
+        self.data.setdefault("observations", []).append(
+            {"tool": tool, "ok": ok, "evidence_id": evidence_id,
+             "run": self.data.get("runs", 0)})
+        self.save()
+
+    def claim(self, kind, text, evidence_ids=None, promoted=False):
+        self.data.setdefault("claims", []).append(
+            {"kind": kind, "text": text, "evidence_ids": list(evidence_ids or []),
+             "promoted": promoted, "run": self.data.get("runs", 0)})
+        self.save()
+
+    def next_step(self, text):
+        if text and text not in self.data["next_steps"]:
+            self.data["next_steps"].append(text)
             self.save()
 
     def prompt(self) -> str:
@@ -187,7 +258,7 @@ def run_campaign(*, registry, log, campaign_dir: Path, goal: str, campaign_id: s
                  resume: bool = True) -> dict:
     campaign = Campaign(campaign_dir, campaign_id=campaign_id, goal=goal)
     app = build_graph(registry, log, model=model, base_url=base_url, api_key=api_key,
-                      max_tokens=max_tokens, max_steps=max_steps, campaign_dir=campaign_dir)
+                      max_tokens=max_tokens, max_steps=max_steps, campaign_dir=campaign_dir, campaign=campaign)
     config = {"configurable": {"thread_id": campaign_id}}
     snapshot = app.get_state(config)
     has_history = bool(snapshot and snapshot.values.get("messages"))
@@ -195,6 +266,8 @@ def run_campaign(*, registry, log, campaign_dir: Path, goal: str, campaign_id: s
         "messages": [SystemMessage(content=SYSTEM), HumanMessage(content=campaign.prompt())],
         "spent_tokens": 0, "steps": 0}
     result = app.invoke(inputs, config)
+    campaign.data["spent_tokens"] = result.get("spent_tokens", 0)
+    campaign.save()
     messages = result.get("messages", [])
     return {"campaign": campaign.data, "messages": messages,
             "spent_tokens": result.get("spent_tokens", 0),
