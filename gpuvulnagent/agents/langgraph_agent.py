@@ -113,6 +113,18 @@ def extra_tools(campaign=None, log=None) -> List[StructuredTool]:
                 description="List the WSL refs directory before trail_stage.")]
 
 
+def dispatch(registry, log, name: str, args: dict, tool_call_id: str = "") -> dict:
+    """Call a tool AND append its evidence record, so the two are linked by tool_call_id."""
+    result = registry.call(name, args)
+    record = log.append("tool", {"tool_name": name, "tool_call_id": tool_call_id,
+                                 "ok": result.get("ok"), "status": result.get("status"),
+                                 "error": result.get("error")})
+    result = dict(result)
+    result["evidence_id"] = record.get("evidence_id")
+    result["tool_call_id"] = tool_call_id
+    return result
+
+
 def build_tools(registry, log, campaign=None) -> List[StructuredTool]:
     """Existing ToolSpec -> LangChain tools. Schema comes from the spec, not from guesses."""
     from pydantic import create_model
@@ -129,20 +141,11 @@ def build_tools(registry, log, campaign=None) -> List[StructuredTool]:
 
         def make(spec_name: str):
             def caller(**kwargs):
-                result = registry.call(spec_name, kwargs)
-                record = None
-                before = len(log.records())
-                # after the call, find the record whose tool_call_id matches this call
-                after = log.records()[before:]
-                matching = [r for r in after
-                            if r.get("tool_call_id") == kwargs.get("tool_call_id")]
-                record = matching[-1] if matching else (after[-1] if after else None)
-                if record:
-                    result = dict(result)
-                    result["evidence_id"] = record.get("evidence_id")
-                    if campaign is not None:
-                        campaign.observation(spec_name, result.get("ok"),
-                                             record.get("evidence_id"))
+                result = dispatch(registry, log, spec_name, kwargs,
+                                  tool_call_id=kwargs.get("tool_call_id", ""))
+                if campaign is not None:
+                    campaign.observation(spec_name, result.get("ok"),
+                                         result.get("evidence_id"))
                 return _summary_of(result)
             return caller
 
@@ -159,7 +162,7 @@ def _budget_exceeded(state: AgentState, max_tokens: int) -> bool:
 def build_graph(registry, log, *, model: str, base_url: str, api_key: str,
                 max_tokens: int = 300_000, max_steps: int = 40,
                 campaign_dir: Optional[Path] = None, campaign=None):
-    tools = build_tools(registry, log, campaign)
+    tools = build_tools(registry, log, campaign) + extra_tools(campaign, log)
     by_name = {tool.name: tool for tool in tools}
 
     llm = ChatOpenAI(model=model, base_url=base_url, api_key=api_key,
