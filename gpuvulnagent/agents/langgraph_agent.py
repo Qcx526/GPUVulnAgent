@@ -1,0 +1,201 @@
+# -*- coding: utf-8 -*-
+"""LangGraph-based research agent (v2), replacing the hand-written loop.
+
+Why this exists: the hand-written AgentRuntime lost cross-run state, re-explored the
+environment every run and kept every tool result in context. LangGraph gives durable state
+(SqliteSaver), resume-by-thread-id and a clean tool node; LangChain gives the model adapter.
+What stays ours: the GPU tools, the backend, Evidence/Artifact/Trail and the finding rules.
+
+A Campaign is the long-lived unit: one CVE or research goal, many runs, one checkpoint file.
+A Run is one invocation of the graph on the same thread; resuming is invoking again.
+"""
+
+from __future__ import annotations
+
+import json
+import time
+from pathlib import Path
+from typing import Annotated, Any, Dict, List, Optional, TypedDict
+
+from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage, ToolMessage
+from langchain_core.tools import StructuredTool
+from langchain_openai import ChatOpenAI
+from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.graph import END, START, StateGraph
+from langgraph.graph.message import add_messages
+
+SYSTEM = """You are GPUVulnAgent, a GPU/CUDA vulnerability researcher.
+
+Rules that matter:
+- Every claim needs a tool result behind it. Never infer a crash from an exit code.
+- The tool result carries evidence_id and, for executions, signal_verified/signaled. Cite them.
+- Deliver files with trail_stage (wsl-ref:... or repo:...), never by writing base64.
+- Container has no Python; run mutators on the WSL host through run_program with argv.
+- Register unrelated anomalies with finding_new; never call a finding a CVE.
+- Keep the campaign facts file current: write what is verified, what failed, what is next.
+
+Work in small steps: act, read the result, then decide. Do not narrate a plan you cannot execute.
+"""
+
+
+class AgentState(TypedDict):
+    messages: Annotated[List[BaseMessage], add_messages]
+    spent_tokens: int
+    steps: int
+
+
+def _summary_of(result: dict, limit: int = 2500) -> str:
+    payload = {"ok": result.get("ok"), "status": result.get("status"),
+               "error": result.get("error"),
+               "summary": result.get("summary")}
+    text = json.dumps(payload, ensure_ascii=False, default=str)
+    return text if len(text) <= limit else text[:limit] + "...[offloaded]"
+
+
+def build_tools(registry, log) -> List[StructuredTool]:
+    """Existing ToolSpec -> LangChain tools. Schema comes from the spec, not from guesses."""
+    from pydantic import create_model
+
+    tools = []
+    for spec in registry.all():
+        fields = {}
+        for param in spec.parameters:
+            python_type = {"string": str, "integer": int, "number": float,
+                           "boolean": bool, "array": list, "object": dict}.get(param.type, str)
+            default = param.default if not param.required else ...
+            fields[param.name] = (python_type, default)
+        schema = create_model(spec.name + "_args", **fields)
+
+        def make(spec_name: str):
+            def caller(**kwargs):
+                result = registry.call(spec_name, kwargs)
+                record = None
+                try:
+                    record = log.records()[-1] if log.records() else None
+                except Exception:  # noqa: BLE001
+                    pass
+                if record:
+                    result = dict(result)
+                    result["evidence_id"] = record.get("evidence_id")
+                return _summary_of(result)
+            return caller
+
+        tools.append(StructuredTool.from_function(
+            func=make(spec.name), name=spec.name, description=spec.description[:900],
+            args_schema=schema))
+    return tools
+
+
+def _budget_exceeded(state: AgentState, max_tokens: int) -> bool:
+    return bool(max_tokens) and state.get("spent_tokens", 0) >= max_tokens
+
+
+def build_graph(registry, log, *, model: str, base_url: str, api_key: str,
+                max_tokens: int = 300_000, max_steps: int = 40,
+                campaign_dir: Optional[Path] = None):
+    tools = build_tools(registry, log)
+    llm = ChatOpenAI(model=model, base_url=base_url, api_key=api_key, temperature=0,
+                     timeout=180).bind_tools(tools)
+    by_name = {tool.name: tool for tool in tools}
+
+    def agent_node(state: AgentState):
+        if _budget_exceeded(state, max_tokens) or state.get("steps", 0) >= max_steps:
+            return {"messages": [AIMessage(content="BUDGET_OR_STEPS_REACHED: stopping without "
+                                                   "new work; report what is verified so far.")]}
+        response = llm.invoke(state["messages"])
+        spent = state.get("spent_tokens", 0) + int(
+            (response.usage_metadata or {}).get("total_tokens", 0))
+        return {"messages": [response], "spent_tokens": spent,
+                "steps": state.get("steps", 0) + 1}
+
+    def tool_node(state: AgentState):
+        last = state["messages"][-1]
+        outputs = []
+        for call in getattr(last, "tool_calls", []) or []:
+            tool = by_name.get(call["name"])
+            if tool is None:
+                outputs.append(ToolMessage(content="unknown tool %s" % call["name"],
+                                           tool_call_id=call["id"]))
+                continue
+            try:
+                content = tool.invoke(call.get("args") or {})
+            except Exception as exc:  # noqa: BLE001 - a rejected call is an observation
+                content = json.dumps({"ok": False, "error": "%s: %s"
+                                      % (type(exc).__name__, exc)})
+            outputs.append(ToolMessage(content=str(content), tool_call_id=call["id"]))
+        return {"messages": outputs}
+
+    def route(state: AgentState) -> str:
+        if _budget_exceeded(state, max_tokens) or state.get("steps", 0) >= max_steps:
+            return END
+        last = state["messages"][-1]
+        return "tools" if getattr(last, "tool_calls", None) else END
+
+    graph = StateGraph(AgentState)
+    graph.add_node("agent", agent_node)
+    graph.add_node("tools", tool_node)
+    graph.add_edge(START, "agent")
+    graph.add_conditional_edges("agent", route, {"tools": "tools", END: END})
+    graph.add_edge("tools", "agent")
+
+    if campaign_dir is not None:
+        campaign_dir.mkdir(parents=True, exist_ok=True)
+        import sqlite3
+        conn = sqlite3.connect(str(Path(campaign_dir) / "checkpoint.sqlite"),
+                               check_same_thread=False)
+        saver = SqliteSaver(conn)
+    else:
+        from langgraph.checkpoint.memory import MemorySaver
+        saver = MemorySaver()
+    app = graph.compile(checkpointer=saver)
+    app._checkpoint_conn = locals().get("conn")   # keep the connection alive
+    return app
+
+
+class Campaign:
+    """The durable unit above a run: what is verified, what failed, what is next."""
+
+    def __init__(self, root: Path, *, campaign_id: str, goal: str, case: str = "") -> None:
+        self.root = Path(root)
+        self.root.mkdir(parents=True, exist_ok=True)
+        self.path = self.root / "campaign.json"
+        self.data = json.loads(self.path.read_text(encoding="utf-8")) if self.path.is_file() else {
+            "campaign_id": campaign_id, "goal": goal, "case": case,
+            "created_at": time.strftime("%Y-%m-%dT%H:%M:%S"), "runs": 0,
+            "facts": [], "failed_hypotheses": [], "next_steps": [], "spent_tokens": 0}
+        self.data["runs"] = int(self.data.get("runs", 0)) + 1
+        self.save()
+
+    def save(self) -> None:
+        self.path.write_text(json.dumps(self.data, ensure_ascii=False, indent=1),
+                             encoding="utf-8")
+
+    def fact(self, text: str) -> None:
+        if text and text not in self.data["facts"]:
+            self.data["facts"].append(text)
+            self.save()
+
+    def prompt(self) -> str:
+        facts = "\n".join("- %s" % item for item in self.data["facts"][-40:]) or "- (none yet)"
+        nxt = "\n".join("- %s" % item for item in self.data["next_steps"][-10:]) or "- (none)"
+        return ("CAMPAIGN %s (run #%d)\nGOAL: %s\n\nVERIFIED FACTS:\n%s\n\nNEXT STEPS:\n%s\n"
+                % (self.data["campaign_id"], self.data["runs"], self.data["goal"], facts, nxt))
+
+
+def run_campaign(*, registry, log, campaign_dir: Path, goal: str, campaign_id: str,
+                 model: str, base_url: str, api_key: str, max_tokens: int, max_steps: int,
+                 resume: bool = True) -> dict:
+    campaign = Campaign(campaign_dir, campaign_id=campaign_id, goal=goal)
+    app = build_graph(registry, log, model=model, base_url=base_url, api_key=api_key,
+                      max_tokens=max_tokens, max_steps=max_steps, campaign_dir=campaign_dir)
+    config = {"configurable": {"thread_id": campaign_id}}
+    snapshot = app.get_state(config)
+    has_history = bool(snapshot and snapshot.values.get("messages"))
+    inputs = None if (resume and has_history) else {
+        "messages": [SystemMessage(content=SYSTEM), HumanMessage(content=campaign.prompt())],
+        "spent_tokens": 0, "steps": 0}
+    result = app.invoke(inputs, config)
+    messages = result.get("messages", [])
+    return {"campaign": campaign.data, "messages": messages,
+            "spent_tokens": result.get("spent_tokens", 0),
+            "steps": result.get("steps", 0), "resumed": bool(resume and has_history)}
